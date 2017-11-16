@@ -13,24 +13,34 @@ public class Tile {
 	
 	public void change(boolean base, int size, Color e) {
 		if(tile[0].getGroup() != Color.Group.BASE && tile[size] == Color.NONEE) {
-			if(base) {
+			if(base && isTileEmpty()) {
+				Color color = Color.RBASE;
 				switch(e) {
 				case REDDD:
-					tile[0] = Color.RBASE;
+					color = Color.RBASE;
 					break;
 				case PURPL:
-					tile[0] = Color.PBASE;
+					color = Color.PBASE;
 					break;
 				case GREEN:
-					tile[0] = Color.GBASE;
+					color = Color.GBASE;
 					break;
 				case YELLO:
-					tile[0] = Color.YBASE;
+					color = Color.YBASE;
+					break;
+				case SBASE:
+					color = Color.SBASE;
 					break;
 				default:
 					System.out.println("Coloring went wrong!");
 					break;
 				}
+				for(int i = 0; i < RINGS; i++) {
+					tile[i] = color;
+				}
+			}
+			else if(base) {
+				System.out.println("Tile is not empty");
 			}
 			else {
 				tile[size] = e;
@@ -47,6 +57,32 @@ public class Tile {
 			output += tile[i].toString() + " ";
 		}
 		return output;
+	}
+	
+	public Color getColor(int size) {
+		return tile[size];
+	}
+	
+	public boolean isTileEmpty() {
+		for(int i = 0; i < RINGS; i++) {
+			if(tile[i] != Color.NONEE) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean contains(Color.ColGroup e) {
+		for(int i = 0; i < RINGS; i++) {
+			if(tile[i].getColGroup() == e||tile[i] == Color.SBASE) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isSpotEmpty(int size) {
+		return (tile[size] == Color.NONEE);
 	}
 
 }

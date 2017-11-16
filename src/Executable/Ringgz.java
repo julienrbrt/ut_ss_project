@@ -16,6 +16,13 @@ public class Ringgz {
 		System.out.println(board.toString());
 		
 		in = new Scanner(System.in);
+		System.out.println("Enter coords for home base (x first)");
+		int startX = in.nextInt();
+		System.out.println("Now enter y");
+		int startY = in.nextInt();
+		board.addHome(startX, startY);
+		in.nextLine();
+		System.out.println(board.toString());
 		while(!exit) {
 			String input = in.nextLine();
 			switch(input) {
