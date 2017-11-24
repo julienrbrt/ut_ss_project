@@ -2,6 +2,8 @@ package Model;
 
 public class Tile {
 	
+	//The smaller the number, the smaller the ring (0=smallest, 3=largest, 4=base), for GUI purposes
+	
 	final int RINGS = 4;
 	Color[] tile = new Color[RINGS];	//array for storing colors (4 positions for the 4 possible ring sizes)
 	
