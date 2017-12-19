@@ -25,7 +25,7 @@ public class Network extends JFrame {
 		portUser = JOptionPane.showInputDialog("Enter Server Port");
 			
 		// Check if correct IP
-		if(!Tools.validIP(address) || !Tools.validPort(portUser)) {
+		if(!Tools.validIP(address) || !Tools.validNum(portUser)) {
 		}
 				
 		// JFrame properties

@@ -89,12 +89,16 @@ public class Board {
 		return SIZE;
 	}
 	
-	public boolean gameOver() {
+	public boolean isWinner(Color color) {
 		return false;
 	}
 	
-	public boolean isWinner(Color color) {
-		return false;
+	public boolean hasWinner() {
+		
+	}
+	
+	public boolean gameOver() {
+		return this.isFull() || this.hasWinner();
 	}
 	
 	public String toString() {

@@ -18,7 +18,7 @@ public interface Strategy {
 	
 	/**
 	 * @param b The board of the game
-	 * @param m The mark which must make the move
+	 * @param c The color which must make the move
 	 * @return the next legal move on the board b for the player with Color c
 	 */
 	public int[] determineMove(Board b, Color c);
