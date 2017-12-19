@@ -1,10 +1,8 @@
 package gui;
 
 import game.*;
-import gui.*;
 import game.player.Color;
 
-import java.lang.Thread;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -27,6 +25,9 @@ public class Control extends JFrame {
     JButton place = new JButton("PLACE");
     JButton change = new JButton("CHANGE");
     JButton exit = new JButton("EXIT");
+    
+    // Booleans
+    boolean startBase = true;
     
     public Control() {
     	
@@ -69,10 +70,9 @@ public class Control extends JFrame {
     }
 
 	public void place() {
-		int first = 1;
 		boolean Base;
 		
-		if(first == 1) {
+		if(startBase) {
            String startX = JOptionPane.showInputDialog(null, "Enter coords for home base (x first)");
            String startY = JOptionPane.showInputDialog(null, "Now enter y");
    		   
@@ -81,12 +81,12 @@ public class Control extends JFrame {
         	   int X = Integer.parseInt(startX);
         	   int Y = Integer.parseInt(startY);
         	   board.addHome(X, Y);
-        	   first++;
+        	   startBase = false;
            }
 
 		}
 		
-		if(first > 1) {
+		if(!startBase) {
 			String giveX = JOptionPane.showInputDialog(null, "Give X");
 	        String giveY = JOptionPane.showInputDialog(null, "Give Y");
 	        String giveBase = JOptionPane.showInputDialog(null, "Give Base (0 or 1)");
@@ -144,7 +144,7 @@ public class Control extends JFrame {
 	}
 	
 	public void exit() {
-		// Close properly the application
+		// Close the application properly
 	}
     
     public static void main(String[] args) {
