@@ -3,6 +3,8 @@ package gui;
 import game.*;
 import game.player.Color;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -29,11 +31,20 @@ public class Control extends JFrame {
     // Booleans
     boolean startBase = true;
     
+    // GUI variables
+    final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    final double HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    
     public Control() {
     	
     	// Adding to JPanel
+    	panel.setPreferredSize(new Dimension((int)WIDTH, (int)HEIGHT));
+    	panel.setLayout(null);
+    	place.setBounds((int)(WIDTH/2)-100, (int)(HEIGHT/4)-50, 200, 100);
         panel.add(place);
+        change.setBounds((int)(WIDTH/2)-100, (int)(HEIGHT/2)-50, 200, 100);
         panel.add(change);
+        exit.setBounds((int)(WIDTH/2)-100, (int)(HEIGHT/4*3)-50, 200, 100);
         panel.add(exit);
         add(panel);
         
@@ -59,9 +70,9 @@ public class Control extends JFrame {
         });
 
         // JFrame properties
-        setSize(500, 500);
+        setSize((int)WIDTH, (int)HEIGHT);
         setTitle("Ringgz");
-        setLocationRelativeTo(null);
+        setLocation(0, 0);
 		// Ensure closing windows close app
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
