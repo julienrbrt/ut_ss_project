@@ -96,16 +96,21 @@ public class Game {
      * is over. Players can make a move one after the other. After each move,
      * the changed game situation is printed.
      */
+    // FIX COLOR HANDLING
     private void play() {
+    	int colors = 1;
     	while (!board.gameOver()) {
     		update();    		
     		currentPlayer = (currentPlayer + 1) % MAXPLAYER;
     		if(players[2] == null || players[3] == null) {
     			currentPlayer = currentPlayer + 1;
+    			colors = 1;
     		} else if(players[2] == null && players[4] == null) {
     			currentPlayer = currentPlayer + 2;
+    			colors = 1;
     		}
-    		players[currentPlayer].makeMove(board);
+    		players[currentPlayer].makeFirstMove(board);
+    		players[currentPlayer].makeMove(board, colors);
     	}
     	printResult();
     }
@@ -123,22 +128,26 @@ public class Game {
     /**
      * Prints the result of the last game.
     */
+    
+    
+    // FIX COLOR HANDLING
+    
     private void printResult() {
     	update();
     	Player winner;
 
-    	if(board.isWinner(players[0].getColor())) {
+    	if(board.isWinner(players[0].getColor(1))) {
     		winner = players[0];
-    	} else if(board.isWinner(players[1].getColor())) {
+    	} else if(board.isWinner(players[1].getColor(1))) {
     		winner = players[1];
-    	} else if(board.isWinner(players[2].getColor())) {
+    	} else if(board.isWinner(players[2].getColor(1))) {
     		winner = players[2];
-    	} else if(board.isWinner(players[3].getColor())) {
+    	} else if(board.isWinner(players[3].getColor(1))) {
     		winner = players[3];
     	} else {
     		winner = null;
     	}
         System.out.println("Player " + winner.getName()
-        	+ " (" + winner.getColor().toString() + ") has won!");
+        	+ " (" + winner.getColor(1).toString() + ") has won!");
     }
 }

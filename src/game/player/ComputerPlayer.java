@@ -15,20 +15,20 @@ public class ComputerPlayer extends Player {
 	
 	/**
 	 * This constructor permit to assign the default IA (Random) to his color.
-	 * @param color is the mark of the IA chosen
+	 * @param firstColor && secondColor are the color of the IA chosen
 	 * @param strategy is the name of the IA chosen
 	 */
-	public ComputerPlayer(Color color, Strategy strategy) {
-		super(strategy.getName() + "-" + color, color);
+	public ComputerPlayer(Strategy strategy, Color firstColor, Color secondColor) {
+		super(strategy.getName() + "-" + firstColor, firstColor, secondColor);
 		this.strategy = strategy;
 	}
 
 	/**
 	 * This constructor permit to assign the default IA (Random) to his color.
-	 * @param color is the color of the IA chosen
+	 * @param firstColor && secondColor are the color of the IA chosen
 	 */
-	public ComputerPlayer(Color color) {
-		super("Random" + "-" + color, color);
+	public ComputerPlayer(Color firstColor, Color secondColor) {
+		super("Random" + "-" + firstColor, firstColor, secondColor);
 		strategy = new RandomStrategy();
 	}
 
@@ -37,7 +37,11 @@ public class ComputerPlayer extends Player {
 	 * @return the move to be made by the strategy
 	 */
 	public int[] determineBase(Board board) {
-		return strategy.determineMove(board, super.getColor());
+		if(super.getColor(2) != null) {
+			return strategy.determineBase(board, super.getColor(1), super.getColor(2));
+		} else {
+			return strategy.determineBase(board, super.getColor(1), null);
+		}
 	}
 	
 	/**
@@ -45,6 +49,11 @@ public class ComputerPlayer extends Player {
 	 * @return the move to be made by the strategy
 	 */
 	public Object[] determineMove(Board board) {
-		return strategy.determineMove(board, super.getColor());
+		if(super.getColor(2) != null) {
+			return strategy.determineMove(board, super.getColor(1), super.getColor(2));
+		} else {
+			return strategy.determineMove(board, super.getColor(1), null);
+
+		}
 	}
 }

@@ -94,7 +94,11 @@ public class Board {
 	}
 	
 	public boolean hasWinner() {
-		
+		return false;
+	}
+	
+	public boolean isFull() {
+		return false;
 	}
 	
 	public boolean gameOver() {
@@ -121,19 +125,19 @@ public class Board {
 		    	if(args.length == 2) {
 		    		p0 = new ComputerPlayer(Color.REDDD, Color.YELLO);
 		    	} else {
-				    p0 = new ComputerPlayer(Color.REDDD);
+				    p0 = new ComputerPlayer(Color.REDDD, null);
 		    	}
 		    } else if (args[0].equals("-R")) {
 		    	if(args.length == 2) {
-		    		p0 = new ComputerPlayer(Color.REDDD, Color.YELLO, new RandomStrategy());
+		    		p0 = new ComputerPlayer(new RandomStrategy(), Color.REDDD, Color.YELLO);
 		    	} else {
-		    		p0 = new ComputerPlayer(Color.REDDD, null, new RandomStrategy());
+		    		p0 = new ComputerPlayer(new RandomStrategy(), Color.REDDD, null);
 		    	}
 		    } else {
 		    	if(args.length == 2) {
 				    p0 = new HumanPlayer(args[0], Color.REDDD, Color.YELLO);
 		    	} else {
-				    p0 = new HumanPlayer(args[0], Color.REDDD);
+				    p0 = new HumanPlayer(args[0], Color.REDDD, null);
 		    	}
 		    }
 			  
@@ -141,29 +145,29 @@ public class Board {
 		    	if(args.length == 2) {
 		    		p1 = new ComputerPlayer(Color.GREEN, Color.PURPL);
 		    	} else {
-			    	p1 = new ComputerPlayer(Color.GREEN);
+			    	p1 = new ComputerPlayer(Color.GREEN, null);
 		    	}
 		    } else if (args[1].equals("-R")) {
 		    	if(args.length == 2) {
-		    		p1 = new ComputerPlayer(Color.GREEN, Color.PURPL, new RandomStrategy());
+		    		p1 = new ComputerPlayer(new RandomStrategy(), Color.GREEN, Color.PURPL);
 		    	} else {
-		    		p1 = new ComputerPlayer(Color.GREEN, null, new RandomStrategy());
+		    		p1 = new ComputerPlayer(new RandomStrategy(), Color.GREEN, null);
 		    	}
 		    } else {
 		    	if(args.length == 2) {
 				    p1 = new HumanPlayer(args[0], Color.GREEN, Color.PURPL);
 		    	} else {
-				    p1 = new HumanPlayer(args[0], Color.GREEN);
+				    p1 = new HumanPlayer(args[0], Color.GREEN, null);
 		    	}
 		    }
 		    
 		    if(args.length >= Game.MAXPLAYER-1) {
 		    	if (args[2].equals("-D")) {
-			    	p2 = new ComputerPlayer(Color.YELLO);
+			    	p2 = new ComputerPlayer(Color.YELLO, null);
 			    } else if (args[2].equals("-R")) {
-		    		p2 = new ComputerPlayer(Color.YELLO, null, new RandomStrategy());
+		    		p2 = new ComputerPlayer(new RandomStrategy(), Color.YELLO, null);
 			    } else {
-			    	p2 = new HumanPlayer(args[2], Color.YELLO);
+			    	p2 = new HumanPlayer(args[2], Color.YELLO, null);
 			    }
 		    } else {
 		    	p2 = null;
@@ -171,11 +175,11 @@ public class Board {
 		    
 		    if(args.length == Game.MAXPLAYER) {
 			    if (args[3].equals("-D")) {
-			    	p3 = new ComputerPlayer(Color.PURPL);
+			    	p3 = new ComputerPlayer(Color.PURPL, null);
 			    } else if (args[3].equals("-R")) {
-		    		p3 = new ComputerPlayer(Color.PURPL, null, new RandomStrategy());
+		    		p3 = new ComputerPlayer(new RandomStrategy(), Color.PURPL, null);
 			    } else {
-			    	p3 = new HumanPlayer(args[3], Color.PURPL);
+			    	p3 = new HumanPlayer(args[3], Color.PURPL, null);
 			    }
 		    } else {
 		    	p3 = null;
