@@ -1,4 +1,6 @@
-package Model;
+package game;
+
+import game.player.*;
 
 public class Tile {
 	
