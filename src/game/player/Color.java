@@ -13,11 +13,11 @@ public enum Color {
 	
 	NONEE(Group.NONE,ColGroup.NONE),
 	REDDD(Group.RING,ColGroup.RED),
-	PURPL(Group.RING,ColGroup.PURPLE),
+	BLUEE(Group.RING,ColGroup.BLUE),
 	GREEN(Group.RING,ColGroup.GREEN),
 	YELLO(Group.RING,ColGroup.YELLOW),
 	RBASE(Group.BASE,ColGroup.RED),
-	PBASE(Group.BASE,ColGroup.PURPLE),
+	BBASE(Group.BASE,ColGroup.BLUE),
 	GBASE(Group.BASE,ColGroup.GREEN),
 	YBASE(Group.BASE,ColGroup.YELLOW),
 	SBASE(Group.BASE,ColGroup.NONE); //starting base
@@ -56,7 +56,7 @@ public enum Color {
 	public enum ColGroup {
 		NONE,
 		RED,
-		PURPLE,
+		BLUE,
 		GREEN,
 		YELLOW,;
 	}

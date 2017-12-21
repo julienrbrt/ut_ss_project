@@ -129,7 +129,7 @@ public class Control extends JFrame {
 	}
 	
 	public void change() {
-		String giveColor = JOptionPane.showInputDialog(null, "Give new color number (0=Red, 1=Purple, 2=Green, 3=Yellow");
+		String giveColor = JOptionPane.showInputDialog(null, "Give new color number (0=Red, 1=BLUEEe, 2=Green, 3=Yellow");
 		
 		if(Tools.validNum(giveColor)) {
 			int colorNum = Integer.parseInt(giveColor);
@@ -137,8 +137,8 @@ public class Control extends JFrame {
 				c = Color.REDDD;
 				System.out.println("Changed to Red");
 			} else if (colorNum == 1) {
-				c = Color.PURPL;
-				System.out.println("Changed to Purple");
+				c = Color.BLUEE;
+				System.out.println("Changed to blue");
 				
 			} else if (colorNum == 2) {
 				c = Color.GREEN;

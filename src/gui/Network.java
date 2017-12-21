@@ -11,6 +11,10 @@ import javax.swing.*;
 
 public class Network extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int port;
 	String portUser;
 	String address;

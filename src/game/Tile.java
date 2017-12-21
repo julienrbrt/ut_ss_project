@@ -23,8 +23,8 @@ public class Tile {
 				case REDDD:
 					color = Color.RBASE;
 					break;
-				case PURPL:
-					color = Color.PBASE;
+				case BLUEE:
+					color = Color.BBASE;
 					break;
 				case GREEN:
 					color = Color.GBASE;
