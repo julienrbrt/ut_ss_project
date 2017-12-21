@@ -3,7 +3,7 @@ package game.player;
 import game.*;
 
 /**
- * This class is an inferface managing the Strategy of the Ringgz game.
+ * This class is an interface managing the Strategy of the Ringgz game.
  * @author Richard
  * @author Julien
  * @version 0.1
@@ -17,9 +17,10 @@ public interface Strategy {
 	public String getName();
 	
 	/**
-	 * @param b The board of the game
-	 * @param m The mark which must make the move
+	 * @param board The board of the game
+	 * @param firstColor && secondColor The color which must make the move
 	 * @return the next legal move on the board b for the player with Color c
 	 */
-	public int[] determineMove(Board b, Color c);
+	public int[] determineBase(Board board, Color firstColor, Color secondColor);
+	public Object[] determineMove(Board board, Color firstColor, Color secondColor);
 }
