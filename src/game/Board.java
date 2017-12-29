@@ -1,12 +1,12 @@
 package game;
 
-import game.*;
+//import game.*;
 import game.player.*;
-import gui.Tools;
+//import gui.Tools;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import javax.swing.*;
 
 // MVC (model)
 public class Board {
