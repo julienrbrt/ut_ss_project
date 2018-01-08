@@ -13,7 +13,7 @@ public class Board {
 
 	// Tile representing the board
 	public static final int SIZE = 5;
-	Tile[][] board;
+	private Tile[][] board;
 	int posCount = 0;
 	
 	// ------------- Constructor ------------------------------------------
@@ -24,16 +24,12 @@ public class Board {
 				board[i][j] = new Tile();
 			}
 		}
-		clearBoard();
 	}
 	
 	// ------------- Commands ----------------------------------------------
 	/**
 	 * Sets all the fields of the instance to empty.
 	 */
-
-	public void clearBoard() {
-	}
 	
 	public void addRing(int x, int y, boolean base, int size, Color e) {
 		if (canPlace(x, y, base, size, e)) {
@@ -112,5 +108,8 @@ public class Board {
 		}
 		return output;
 	}
-	
+
+	public Tile getTile(int x, int y) {
+		return board[x][y];
+	}
 }

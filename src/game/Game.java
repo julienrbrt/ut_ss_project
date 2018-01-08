@@ -98,7 +98,7 @@ public class Game {
      */
     private void reset() {
         currentPlayer = 0;
-        board.clearBoard();
+        board = new Board();
     }
     
     /**
