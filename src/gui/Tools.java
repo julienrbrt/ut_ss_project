@@ -15,8 +15,8 @@ public class Tools {
 	            return false;
 	        }
 
-	        String[] parts = ip.split( "\\." );
-	        if ( parts.length != 4 ) {
+	        String[] parts = ip.split("\\.");
+	        if (parts.length != 4) {
 	            return false;
 	        }
 

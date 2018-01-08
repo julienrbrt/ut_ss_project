@@ -26,7 +26,7 @@ public abstract class Player {
        requires firstColor == Color.GREEN || color== Color.PURPL || color== Color.REDDD || color== Color.YELLOW;
        requires secondColor == Color.GREEN || color== Color.PURPL || color== Color.REDDD || color== Color.YELLOW || null;;
        ensures this.getName() == name;
-       ensures this.getcolor() == firstColor || secondColor;
+//       ensures this.getColor() == firstColor || secondColor;
      */
     /**
      * Creates a new Player object.
@@ -35,7 +35,7 @@ public abstract class Player {
     public Player(String name, Color firstColor, Color secondColor) {
         this.name = name;
         this.firstColor = firstColor;
-        if(secondColor != null) {
+        if (secondColor != null) {
         	this.secondColor = secondColor;
         }
     }
@@ -53,9 +53,9 @@ public abstract class Player {
      * Returns the color of the player.
      */
     /*@ pure */ public Color getColor(int colors) {
-        if(colors == 1) {
+        if (colors == 1) {
         	return firstColor;
-        } else if (colors == 2){
+        } else if (colors == 2) {
         	return secondColor;
         } else {
         	return null;
@@ -89,7 +89,7 @@ public abstract class Player {
      */
     public void makeMove(Board board, int colors) {
         Object[] choice = determineMove(board);
-        board.addRing((Integer)choice[0], (Integer)choice[1], (Boolean)choice[2], (Integer)choice[3], getColor(colors));
+        board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor(colors));
     }
     
     /*@

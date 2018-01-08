@@ -9,7 +9,7 @@ import game.player.*;
 //import javax.swing.*;
 
 // MVC (model)
-public class Board {
+public class Board implements Runnable {
 
 	// Tile representing the board
 	public static final int SIZE = 5;
@@ -19,8 +19,8 @@ public class Board {
 	// ------------- Constructor ------------------------------------------
 	public Board() {
 		board = new Tile[SIZE][SIZE];	//set up 2D matrix for the board
-		for(int i = 0; i < SIZE; i++) {	//fill board with empty tiles
-			for(int j = 0; j < SIZE; j++) {
+		for (int i = 0; i < SIZE; i++) {	//fill board with empty tiles
+			for (int j = 0; j < SIZE; j++) {
 				board[i][j] = new Tile();
 			}
 		}
@@ -36,10 +36,9 @@ public class Board {
 	}
 	
 	public void addRing(int x, int y, boolean base, int size, Color e) {
-		if(canPlace(x, y, base, size, e)) {
+		if (canPlace(x, y, base, size, e)) {
 			board[x][y].change(base, size, e);
-		}
-		else {
+		} else {
 			System.out.println("Can not place");
 		}
 	}
@@ -57,17 +56,16 @@ public class Board {
 		int highY;
 		int posCount = 0;
 		
-		for(int i = 0; i < SIZE; i++) {	//fill xs and ys with positions the ring/base can be placed in
-			for(int j = 0; j < SIZE; j++) {
-				lowX = (i-1)<0 ? 0 : i-1;
+		for (int i = 0; i < SIZE; i++) {	//fill xs and ys with positions the ring/base can be placed in
+			for (int j = 0; j < SIZE; j++) {
+				lowX = (i-1) < 0 ? 0 : i-1;
 				highX = (i+1)>SIZE-1 ? SIZE-1 : i+1;
 				lowY = (j-1)<0 ? 0 : j-1;
 				highY = (j+1)>SIZE-1 ? SIZE-1 : j+1;
-				if((board[i][j].contains(e.getColGroup())||board[lowX][j].contains(e.getColGroup())||board[highX][j].contains(e.getColGroup())||board[i][lowY].contains(e.getColGroup())||board[i][highY].contains(e.getColGroup()))&&board[i][j].isSpotEmpty(size)) {
-					if(base&&!board[i][j].isTileEmpty()) {
+				if ((board[i][j].contains(e.getColGroup())||board[lowX][j].contains(e.getColGroup())||board[highX][j].contains(e.getColGroup())||board[i][lowY].contains(e.getColGroup())||board[i][highY].contains(e.getColGroup()))&&board[i][j].isSpotEmpty(size)) {
+					if (base&&!board[i][j].isTileEmpty()) {
 						//don't add
-					}
-					else {
+					} else {
 						xs[posCount] = i;
 						ys[posCount] = j;
 						posCount++;
@@ -76,8 +74,8 @@ public class Board {
 			}
 		}
 		
-		for(int i = 0; i < posCount; i++) {
-			if((xs[i] == x)&&(ys[i] == y)) {
+		for (int i = 0; i < posCount; i++) {
+			if ((xs[i] == x) && (ys[i] == y)) {
 				return true;
 			}
 		}

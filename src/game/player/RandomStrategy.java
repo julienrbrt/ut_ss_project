@@ -28,11 +28,10 @@ public class RandomStrategy implements Strategy {
     	int x = (int) Math.round(Math.random() * (Board.SIZE - 1));
     	int y = 0;
     	
-  	   if(board.canPlace(x, y, true, 0, firstColor)) {
+  	    if (board.canPlace(x, y, true, 0, firstColor)) {
 	        int[] choice = {x, y};
 	        return choice;
-  	   }
-	    else if (secondColor != null && board.canPlace(x, y, true, 0, secondColor)) {
+  	    } else if (secondColor != null && board.canPlace(x, y, true, 0, secondColor)) {
 	    	int[] choice = {x, y};
 	    	return choice;
         } else {
@@ -57,11 +56,10 @@ public class RandomStrategy implements Strategy {
     	boolean base = false;
     	int ringSize = 0;
     	
-  	   if(board.canPlace(x, y, base, ringSize, firstColor)) {
+  	    if (board.canPlace(x, y, base, ringSize, firstColor)) {
   	        Object[] choice = {x, y, base, ringSize};
 	        return choice;
-  	   }
-	    else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)) {
+  	    } else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)) {
 	        Object[] choice = {x, y, base, ringSize};
 	    	return choice;
         } else {

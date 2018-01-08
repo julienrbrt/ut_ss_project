@@ -60,7 +60,7 @@ public class Game {
         players[0] = p0;
         players[1] = p1;
         
-        if(p2 != null) {
+        if (p2 != null) {
         	players[2] = p2;
         }
         
@@ -102,10 +102,10 @@ public class Game {
     	while (!board.gameOver()) {
     		update();    		
     		currentPlayer = (currentPlayer + 1) % MAXPLAYER;
-    		if(players[2] == null || players[3] == null) {
+    		if (players[2] == null || players[3] == null) {
     			currentPlayer = currentPlayer + 1;
     			colors = 1;
-    		} else if(players[2] == null && players[4] == null) {
+    		} else if (players[2] == null && players[4] == null) {
     			currentPlayer = currentPlayer + 2;
     			colors = 1;
     		}
@@ -136,13 +136,13 @@ public class Game {
     	update();
     	Player winner;
 
-    	if(board.isWinner(players[0].getColor(1))) {
+    	if (board.isWinner(players[0].getColor(1))) {
     		winner = players[0];
-    	} else if(board.isWinner(players[1].getColor(1))) {
+    	} else if (board.isWinner(players[1].getColor(1))) {
     		winner = players[1];
-    	} else if(board.isWinner(players[2].getColor(1))) {
+    	} else if (board.isWinner(players[2].getColor(1))) {
     		winner = players[2];
-    	} else if(board.isWinner(players[3].getColor(1))) {
+    	} else if (board.isWinner(players[3].getColor(1))) {
     		winner = players[3];
     	} else {
     		winner = null;
