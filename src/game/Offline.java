@@ -5,7 +5,7 @@ import game.player.*;
 public class Offline {
 
 	public static void main(String[] args) {
-		if (args.length >= 2) {
+		if (args.length > 1) {
 			Player p0, p1, p2, p3;
 			
 		    if (args[0].equals("-S")) {

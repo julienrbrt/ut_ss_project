@@ -15,7 +15,7 @@ public class Game {
 	// -- Instance variables -----------------------------------------
     
 	// Four players maximum by design
-    public int maxPlayer = 4;
+    private static int maxPlayer = 4;
 	
 	/*@
     	private invariant board != null;
@@ -42,7 +42,7 @@ public class Game {
 	*/
     private int currentPlayer;
 
- // -- Constructors -----------------------------------------------
+    // -- Constructors -----------------------------------------------
 
    /*@
    	requires p0 != null;
@@ -128,4 +128,5 @@ public class Game {
     private void update() {
         System.out.println("\nSituation: \n\n" + board.toString() + "\n");
     }
+    
 }
