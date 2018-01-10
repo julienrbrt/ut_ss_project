@@ -13,6 +13,11 @@ public class HumanPlayer extends Player {
 	Color firstColor;
 	Color secondColor;
 	
+	public HumanPlayer(String name, Color firstColor) {
+		super(name, firstColor);
+		this.firstColor = firstColor;
+	}
+	
 	public HumanPlayer(String name, Color firstColor, Color secondColor) {
 		super(name, firstColor, secondColor);
 		this.firstColor = firstColor;
@@ -32,7 +37,6 @@ public class HumanPlayer extends Player {
 	     	    x = Integer.parseInt(startX);
 	     	    y = Integer.parseInt(startY);
 	     
-	     	    System.out.println(board.canPlace(x, y, true, 0, firstColor));
 	     	    if (board.canPlace(x, y, true, 0, firstColor)) {
 	     		    valid = true;
 	     	    } else if (secondColor != null) {

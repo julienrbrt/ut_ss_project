@@ -8,8 +8,6 @@
 
 package game;
 
-import javax.swing.JOptionPane;
-
 import game.player.*;
 
 public class Game {
@@ -17,7 +15,7 @@ public class Game {
 	// -- Instance variables -----------------------------------------
     
 	// Four players maximum by design
-    public static int maxPlayer = 4;
+    public int maxPlayer = 4;
 	
 	/*@
     	private invariant board != null;
@@ -28,7 +26,7 @@ public class Game {
     private Board board;
     
 	/*@
-		requires players.length == maxPlayer;
+		requires players.length <= maxPlayer;
 		requires (\forall int i; 0 <= i && i < maxPlayer; players[i] != null); 
 	*/
 	/**
@@ -37,7 +35,7 @@ public class Game {
     private Player[] players;
     
     /*@
-    	requires 0 <= currentPlayer  && currentPlayer < maxPlayer;
+    	requires 0 <= currentPlayer  && currentPlayer <= maxPlayer;
     */
 	/**
 	 * Index of the current player.
@@ -54,17 +52,19 @@ public class Game {
     * Creates a new Game object.
     * 
     * @param p0 the first player
-    * @param p1 he second player
+    * @param p1 the second player
+    * @param p2 the third possible player
+    * @param p3 he fourth possible player
     */
     public Game(Player p0, Player p1, Player p2, Player p3) {
     	board = new Board();
-    	
-        if (p2 != null) {
-        	maxPlayer++;
+    	    	
+        if (p2 == null) {
+        	maxPlayer--;
         }
         
-        if (p3 != null) {
-        	maxPlayer++;
+        if (p3 == null) {
+        	maxPlayer--;
         }
         
         players = new Player[maxPlayer];
@@ -113,14 +113,13 @@ public class Game {
     	while (!board.gameOver()) {
     		update();
     		if (firstPlayer == 0) {
-    			players[currentPlayer].makeFirstMove(board);
+    			players[currentPlayer].makeBaseMove(board);
         		update();
     			firstPlayer++;
     		}
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
     		players[currentPlayer].makeMove(board, colors);
     	}
-    	// add condition stuff
     }
     
     /**

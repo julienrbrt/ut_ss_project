@@ -3,20 +3,23 @@ package game.player;
 import game.*;
 
 /**
- * This class manage the random IA of the Ringgz game.
+ * This class manage the smart IA of the Ringgz game.
  * @author Richard 
  * @author Julien
  * @version 0.1
  */
 
-public class RandomStrategy implements Strategy {
+
+// == RANDOM RIGHT NOW, MAKE IT SMART AFTER
+
+public class SmartStrategy implements Strategy {
 	
 	/**
 	 * @see game.player.Strategy#getName()
 	 * @return the name of the Strategy
 	 */
 	public String getName() {
-		return "Random";
+		return "Smart";
 	}
 	
 	/**

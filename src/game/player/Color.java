@@ -21,15 +21,6 @@ public enum Color {
 	GBASE(Group.BASE, ColGroup.GREEN),
 	YBASE(Group.BASE, ColGroup.YELLOW),
 	SBASE(Group.BASE, ColGroup.NONE); //starting base
-//	
-//	  /*@
-//    ensures this == Color.NONEE ==> \result == Color.NONEE;
-//    ensures this == Color.REDDD ==> \result == Color.REDDD;
-//    ensures this == Color.GREEN ==> \result == Color.GREEN;
-//    ensures this == Color.YELLO ==> \result == Color.YELLO;
-//	ensures this == Color.BLUEE ==> \result == Color.BLUEE;
-//	*/
-	
 	
 	private Group group;
 	private ColGroup colGroup;

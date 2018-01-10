@@ -26,18 +26,20 @@ public abstract class Player {
        requires firstColor == Color.GREEN || color== Color.PURPL || color== Color.REDDD || color== Color.YELLOW;
        requires secondColor == Color.GREEN || color== Color.PURPL || color== Color.REDDD || color== Color.YELLOW || null;;
        ensures this.getName() == name;
-//       ensures this.getColor() == firstColor || secondColor;
      */
     /**
      * Creates a new Player object.
      * 
      */
+    public Player(String name, Color firstColor) {
+        this.name = name;
+        this.firstColor = firstColor;
+    }
+    
     public Player(String name, Color firstColor, Color secondColor) {
         this.name = name;
         this.firstColor = firstColor;
-        if (secondColor != null) {
-        	this.secondColor = secondColor;
-        }
+        this.secondColor = secondColor;
     }
 
     // -- Queries ----------------------------------------------------
@@ -45,31 +47,27 @@ public abstract class Player {
     /**
      * Returns the name of the player.
      */
-    /*@ pure */ public String getName() {
+    /*@ pure */
+    public String getName() {
         return name;
     }
 
     /**
      * Returns the color of the player.
      */
-    /*@ pure */ public Color getColor(int colors) {
-        if (colors == 1) {
-        	return firstColor;
-        } else if (colors == 2) {
-        	return secondColor;
-        } else {
-        	return null;
-        }
+    /*@ pure */
+    public Color[] getColor() {
+        Color[] colors = {firstColor, secondColor};
+        return colors;
     }
 
     /*@
-       requires board != null & !board.isFull();
+       requires board != null & !board.gameOver();
      */
     /**
      * Determines the field for the next move.
      * 
-     * @param board
-     *            the current game board
+     * @param board the current game board
      * @return the player's choice
      */
     public abstract int[] determineBase(Board board);
@@ -80,7 +78,20 @@ public abstract class Player {
     // -- Commands ---------------------------------------------------
 
     /*@
-       requires board != null & !board.isFull();
+    requires board != null & !board.gameOver();
+     */
+	 /**
+	  * Makes a base move on the board. <br>
+	  * 
+	  * @param board the current board
+	  */
+    public void makeBaseMove(Board board) {
+        int[] choice = determineBase(board);
+        board.addHome(choice[0], choice[1]);
+    }
+    
+    /*@
+       requires board != null & !board.gameOver();
      */
     /**
      * Makes a move on the board. <br>
@@ -89,20 +100,7 @@ public abstract class Player {
      */
     public void makeMove(Board board, int colors) {
         Object[] choice = determineMove(board);
-        board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor(colors));
+        board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor()[colors]);
     }
-    
-    /*@
-    requires board != null & !board.isFull();
-     */
-	 /**
-	  * Makes a base move on the board. <br>
-	  * 
-	  * @param board the current board
-	  */
-    public void makeFirstMove(Board board) {
-        int[] choice = determineBase(board);
-        board.addHome(choice[0], choice[1]);
-    }
-    
+
 }

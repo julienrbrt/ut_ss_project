@@ -22,38 +22,38 @@ public class WinConditions {
 			for (int j = 0; j < size; j++) {
 				counter = new int[4];	//0 = red, 1 = blue, 2 = green, 3 = yellow
 				ringCounter = 0;
-				for (int k = 0; k < rings; k++) {	//reset counter before next tile counting attempt
+				for (int k = 0; k < rings; k++) { //reset counter before next tile counting attempt
 					counter[k] = 0;
 				}
 				for (int k = 0; k < rings; k++) {	//count colors in current tile
 					switch (board.getTile(i, j).getColor(k)) {
-					case NONEE:
-						break;
-					case REDDD:
-						counter[0]++;
-						ringCounter++;
-						break;
-					case BLUEE:
-						counter[1]++;
-						ringCounter++;
-						break;
-					case GREEN:
-						counter[2]++;
-						ringCounter++;
-						break;
-					case YELLO:
-						counter[3]++;
-						ringCounter++;
-						break;
-					case RBASE:
-					case BBASE:
-					case GBASE:
-					case YBASE:
-					case SBASE:
-						k = rings;
-						break;
-					default:
-						break;
+						case NONEE:
+							break;
+						case REDDD:
+							counter[0]++;
+							ringCounter++;
+							break;
+						case BLUEE:
+							counter[1]++;
+							ringCounter++;
+							break;
+						case GREEN:
+							counter[2]++;
+							ringCounter++;
+							break;
+						case YELLO:
+							counter[3]++;
+							ringCounter++;
+							break;
+						case RBASE:
+						case BBASE:
+						case GBASE:
+						case YBASE:
+						case SBASE:
+							k = rings;
+							break;
+						default:
+							break;
 					}
 				}
 				if (!(ringCounter == 0)) {
@@ -81,7 +81,7 @@ public class WinConditions {
 					} else {
 						int store = 5;
 						for (int k = 0; k < rings; k++) {
-							if (counter[k] == 3 || counter [k] == 4) {
+							if (counter[k] == 3 || counter[k] == 4) {
 								scores[k]++;
 								break;
 							}

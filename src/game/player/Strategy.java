@@ -18,8 +18,16 @@ public interface Strategy {
 	
 	/**
 	 * @param board The board of the game
-	 * @param firstColor && secondColor The color which must make the move
-	 * @return the next legal move on the board b for the player with Color c
+	 * @param firstColor the color which must make the move
+	 * @return the next legal move on the board for the player with Color firstColor
+	 */
+	public int[] determineBase(Board board, Color firstColor);
+	public Object[] determineMove(Board board, Color firstColor);
+	
+	/**
+	 * @param board The board of the game
+	 * @param firstColor and secondColor The color which must make the move
+	 * @return the next legal move on the board for the player with Color firstColor or secondColor
 	 */
 	public int[] determineBase(Board board, Color firstColor, Color secondColor);
 	public Object[] determineMove(Board board, Color firstColor, Color secondColor);
