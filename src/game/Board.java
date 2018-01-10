@@ -37,13 +37,13 @@ public class Board {
 	public boolean canPlace(int x, int y, boolean base, int size, Color e) {
 		
 		// check if numbers are correct
-		if (x > 25 || y > 5) {
+		if (x > 4 || y > 4) {
 			return false;
 		} else {
 			
-			// base placement check
+			// starting base placement check
 			if (base) {
-				if ((x < 1 || x > 4) && (y < 4 || y > 16)) {
+				if ((x < 1 || x > 4) && (y < 1 || y > 4)) {
 					return false;
 				} else {
 					if (board[x][y].isTileEmpty()) {
