@@ -42,7 +42,7 @@ public class Game {
 	*/
     private int currentPlayer;
 
- // -- Constructors -----------------------------------------------
+    // -- Constructors -----------------------------------------------
 
    /*@
    	requires p0 != null;
@@ -149,5 +149,11 @@ public class Game {
     	}
         System.out.println("Player " + winner.getName()
         	+ " (" + winner.getColor(1).toString() + ") has won!");
+    }
+    
+    // ------------- Queries (getters) -------------------------------------
+    
+    public int getPlayers() {
+    	return MAXPLAYER;
     }
 }

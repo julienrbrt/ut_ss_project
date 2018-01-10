@@ -79,10 +79,6 @@ public class Board {
 		return false;
 	}
 	
-	public int getSize() {
-		return SIZE;
-	}
-	
 	public boolean isWinner(Color color) {
 		return false;
 	}
@@ -112,10 +108,10 @@ public class Board {
 	
 	// TO DELETE
 	public static void main(String[] args) {
-		if(args.length >= Game.MAXPLAYER-2) {
+		if(args.length > 1) {
 			Player p0, p1, p2, p3;
 			
-		    if (args[0].equals("-D")) {
+		    if (args[0].equals("-C")) {
 		    	if(args.length == 2) {
 		    		p0 = new ComputerPlayer(Color.REDDD, Color.YELLO);
 		    	} else {
@@ -184,6 +180,12 @@ public class Board {
 		} else {
 			System.out.println("You have to play this game with a minimum of two players. Try again.");
 		}
+	}
+	
+	// ------------- Queries (getters) -------------------------------------
+	
+	public int getSize() {
+		return SIZE;
 	}
 	
 	public Tile getTile(int x, int y) {
