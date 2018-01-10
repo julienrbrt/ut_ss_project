@@ -17,7 +17,7 @@ public class Game {
 	// -- Instance variables -----------------------------------------
     
 	// Four players maximum by design
-    public static int maxPlayer = 4;
+    private static int maxPlayer = 4;
 	
 	/*@
     	private invariant board != null;

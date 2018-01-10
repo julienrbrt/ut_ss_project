@@ -52,16 +52,6 @@ public class Board {
 		int highY;
 		int posCount = 0;
 		
-<<<<<<< HEAD
-		for(int i = 0; i < SIZE; i++) {	//fill xs and ys with positions the ring/base can be placed in
-			for(int j = 0; j < SIZE; j++) {
-				lowX = (i-1)<0 ? 0 : i-1;
-				highX = (i+1)>SIZE-1 ? SIZE-1 : i+1;
-				lowY = (j-1)<0 ? 0 : j-1;
-				highY = (j+1)>SIZE-1 ? SIZE-1 : j+1;
-				if((board[i][j].contains(e.getColGroup())||board[lowX][j].contains(e.getColGroup())||board[highX][j].contains(e.getColGroup())||board[i][lowY].contains(e.getColGroup())||board[i][highY].contains(e.getColGroup()))&&board[i][j].isSpotEmpty(size)) {
-					if(!(base&&!board[i][j].isTileEmpty())) {
-=======
 		//fill xs and ys with positions the ring/base can be placed in
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
@@ -71,7 +61,6 @@ public class Board {
 				highY = (j + 1) > SIZE - 1 ? SIZE - 1 : j + 1;
 				if ((board[i][j].contains(e.getColGroup())||board[lowX][j].contains(e.getColGroup())||board[highX][j].contains(e.getColGroup())||board[i][lowY].contains(e.getColGroup())||board[i][highY].contains(e.getColGroup()))&&board[i][j].isSpotEmpty(size)) {
 					if (!(base && !board[i][j].isTileEmpty())) {
->>>>>>> a4f3365a5a94adb03ac6dc64b2378c611b758729
 						xs[posCount] = i;
 						ys[posCount] = j;
 						posCount++;
