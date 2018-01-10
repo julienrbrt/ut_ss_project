@@ -64,10 +64,7 @@ public class Board {
 				lowY = (j-1)<0 ? 0 : j-1;
 				highY = (j+1)>SIZE-1 ? SIZE-1 : j+1;
 				if((board[i][j].contains(e.getColGroup())||board[lowX][j].contains(e.getColGroup())||board[highX][j].contains(e.getColGroup())||board[i][lowY].contains(e.getColGroup())||board[i][highY].contains(e.getColGroup()))&&board[i][j].isSpotEmpty(size)) {
-					if(base&&!board[i][j].isTileEmpty()) {
-						//don't add
-					}
-					else {
+					if(!(base&&!board[i][j].isTileEmpty())) {
 						xs[posCount] = i;
 						ys[posCount] = j;
 						posCount++;

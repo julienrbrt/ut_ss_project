@@ -3,7 +3,7 @@ package game.player;
 import game.*;
 
 /**
- * This is the class ComputerPlayer definining the methods for the IA.
+ * This is the class ComputerPlayer defining the methods for the IA.
  * @author Richard
  * @author Julien
  * @version 0.1
