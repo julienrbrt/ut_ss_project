@@ -8,6 +8,8 @@
 
 package game;
 
+//import javax.swing.JOptionPane;
+
 import game.player.*;
 
 public class Game {
@@ -15,7 +17,7 @@ public class Game {
 	// -- Instance variables -----------------------------------------
     
 	// Four players maximum by design
-    public static final int MAXPLAYER = 4;
+    public static int maxPlayer = 4;
 	
 	/*@
     	private invariant board != null;
@@ -26,8 +28,8 @@ public class Game {
     private Board board;
     
 	/*@
-		private invariant players.length == MAXPLAYER;
-		private invariant (\forall int i; 0 <= i && i < MAXPLAYER; players[i] != null); 
+		requires players.length == maxPlayer;
+		requires (\forall int i; 0 <= i && i < maxPlayer; players[i] != null); 
 	*/
 	/**
 	* The four players of the game.
@@ -35,7 +37,7 @@ public class Game {
     private Player[] players;
     
     /*@
-    	private invariant 0 <= currentPlayer  && currentPlayer < MAXPLAYER;
+    	requires 0 <= currentPlayer  && currentPlayer < maxPlayer;
     */
 	/**
 	 * Index of the current player.
@@ -56,15 +58,24 @@ public class Game {
     */
     public Game(Player p0, Player p1, Player p2, Player p3) {
     	board = new Board();
-        players = new Player[MAXPLAYER];
-        players[0] = p0;
-        players[1] = p1;
-        
+    	
         if (p2 != null) {
-        	players[2] = p2;
+        	maxPlayer++;
         }
         
         if (p3 != null) {
+        	maxPlayer++;
+        }
+        
+        players = new Player[maxPlayer];
+        players[0] = p0;
+        players[1] = p1;
+        
+        if (maxPlayer >=  3) {
+        	players[2] = p2;
+        }
+        
+        if (maxPlayer >= 4) {
         	players[3] = p3;
         }
         
@@ -96,23 +107,20 @@ public class Game {
      * is over. Players can make a move one after the other. After each move,
      * the changed game situation is printed.
      */
-    // FIX COLOR HANDLING
     private void play() {
     	int colors = 1;
+    	int firstPlayer = 0;
     	while (!board.gameOver()) {
-    		update();    		
-    		currentPlayer = (currentPlayer + 1) % MAXPLAYER;
-    		if (players[2] == null || players[3] == null) {
-    			currentPlayer = currentPlayer + 1;
-    			colors = 1;
-    		} else if (players[2] == null && players[4] == null) {
-    			currentPlayer = currentPlayer + 2;
-    			colors = 1;
+    		update();
+    		if (firstPlayer == 0) {
+    			players[currentPlayer].makeFirstMove(board);
+        		update();
+    			firstPlayer++;
     		}
-    		players[currentPlayer].makeFirstMove(board);
+    		currentPlayer = (currentPlayer + 1) % maxPlayer;
     		players[currentPlayer].makeMove(board, colors);
     	}
-    	printResult();
+    	// add condition stuff
     }
     
     /**
@@ -122,38 +130,4 @@ public class Game {
         System.out.println("\nSituation: \n\n" + board.toString() + "\n");
     }
     
-    /*@
-    	requires this.board.gameOver();
-    */
-    /**
-     * Prints the result of the last game.
-    */
-    
-    
-    // FIX COLOR HANDLING
-    
-    private void printResult() {
-    	update();
-    	Player winner;
-
-    	if (board.isWinner(players[0].getColor(1))) {
-    		winner = players[0];
-    	} else if (board.isWinner(players[1].getColor(1))) {
-    		winner = players[1];
-    	} else if (board.isWinner(players[2].getColor(1))) {
-    		winner = players[2];
-    	} else if (board.isWinner(players[3].getColor(1))) {
-    		winner = players[3];
-    	} else {
-    		winner = null;
-    	}
-        System.out.println("Player " + winner.getName()
-        	+ " (" + winner.getColor(1).toString() + ") has won!");
-    }
-    
-    // ------------- Queries (getters) -------------------------------------
-    
-    public int getPlayers() {
-    	return MAXPLAYER;
-    }
 }

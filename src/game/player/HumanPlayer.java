@@ -27,11 +27,12 @@ public class HumanPlayer extends Player {
         while (!valid) {
 			String startX = JOptionPane.showInputDialog(null, "Enter coords for home base (x first)");
 	        String startY = JOptionPane.showInputDialog(null, "Now enter y");
-	       	
+	       	       	
 	        if (Tools.validNum(startX) && Tools.validNum(startY)) {
 	     	    x = Integer.parseInt(startX);
 	     	    y = Integer.parseInt(startY);
 	     
+	     	    System.out.println(board.canPlace(x, y, true, 0, firstColor));
 	     	    if (board.canPlace(x, y, true, 0, firstColor)) {
 	     		    valid = true;
 	     	    } else if (secondColor != null) {
@@ -61,19 +62,19 @@ public class HumanPlayer extends Player {
             String giveBase = JOptionPane.showInputDialog(null, "Give Base (0 or 1)");
             String giveRingSize = JOptionPane.showInputDialog(null, "Give Ring Size");
 
-	        if(Tools.validNum(giveX) && Tools.validNum(giveY) && Tools.validNum(giveBase) && Tools.validNum(giveRingSize)) {
+	        if (Tools.validNum(giveX) && Tools.validNum(giveY) && Tools.validNum(giveBase) && Tools.validNum(giveRingSize)) {
 	        	x = Integer.parseInt(giveX);
 	        	y = Integer.parseInt(giveY);
 	        	
-	        	if(Integer.parseInt(giveBase) == 0) {
+	        	if (Integer.parseInt(giveBase) == 0) {
 	        		base = false;
 	        	} else {
 	        		base = true;
-	        	};
+	        	}
 	        	
 	        	ringSize = Integer.parseInt(giveRingSize);
 
-	        	if(x < board.getSize() && y < board.getSize() && ringSize < 4) {
+	        	if (x < board.getSize() && y < board.getSize() && ringSize < 4) {
 					valid = true;
 				} else {
 		        	JOptionPane.showMessageDialog(null, "ERROR, fields invalid, please try-again.");

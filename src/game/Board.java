@@ -105,6 +105,12 @@ public class Board {
 		return output;
 	}
 	
+	// ------------- Queries -----------------------------------------------
+	
+	public int getSize() {
+		return SIZE;
+	}
+	
 	public Tile getTile(int x, int y) {
 		return board[x][y];
 	}
