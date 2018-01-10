@@ -2,7 +2,7 @@ package game.player;
 
 /**
  * Represents the color in the Ringgz game.
- * There is four colors available and one empty field, Color.REDDD (Red), Color.PURPL (Purple),
+ * There is four colors available and one empty field, Color.REDDD (Red), Color.BLUEE (Blue),
  * Color.GREEN (Green), Color.YELLO (Yellow) and Color.NONEE (Empty) 
  * @author Richard
  * @author Julien
@@ -11,24 +11,24 @@ package game.player;
 
 public enum Color {
 	
-	NONEE(Group.NONE,ColGroup.NONE),
-	REDDD(Group.RING,ColGroup.RED),
-	BLUEE(Group.RING,ColGroup.BLUE),
-	GREEN(Group.RING,ColGroup.GREEN),
-	YELLO(Group.RING,ColGroup.YELLOW),
-	RBASE(Group.BASE,ColGroup.RED),
-	BBASE(Group.BASE,ColGroup.BLUE),
-	GBASE(Group.BASE,ColGroup.GREEN),
-	YBASE(Group.BASE,ColGroup.YELLOW),
-	SBASE(Group.BASE,ColGroup.NONE); //starting base
-	
-	  /*@
-    ensures this == Color.NONEE ==> \result == Color.NONEE;
-    ensures this == Color.REDDD ==> \result == Color.REDDD;
-    ensures this == Color.GREEN ==> \result == Color.GREEN;
-    ensures this == Color.YELLO ==> \result == Color.YELLO;
-	ensures this == Color.PURPL ==> \result == Color.PURPL;
-	*/
+	NONEE(Group.NONE, ColGroup.NONE),
+	REDDD(Group.RING, ColGroup.RED),
+	BLUEE(Group.RING, ColGroup.BLUE),
+	GREEN(Group.RING, ColGroup.GREEN),
+	YELLO(Group.RING, ColGroup.YELLOW),
+	RBASE(Group.BASE, ColGroup.RED),
+	BBASE(Group.BASE, ColGroup.BLUE),
+	GBASE(Group.BASE, ColGroup.GREEN),
+	YBASE(Group.BASE, ColGroup.YELLOW),
+	SBASE(Group.BASE, ColGroup.NONE); //starting base
+//	
+//	  /*@
+//    ensures this == Color.NONEE ==> \result == Color.NONEE;
+//    ensures this == Color.REDDD ==> \result == Color.REDDD;
+//    ensures this == Color.GREEN ==> \result == Color.GREEN;
+//    ensures this == Color.YELLO ==> \result == Color.YELLO;
+//	ensures this == Color.BLUEE ==> \result == Color.BLUEE;
+//	*/
 	
 	
 	private Group group;

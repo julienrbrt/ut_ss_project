@@ -1,12 +1,12 @@
 package gui;
 
-import game.*;
+/*import game.*;
 import gui.*;
 
 import java.lang.Thread;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;*/
 import javax.swing.*;
 
 public class Network extends JFrame {
@@ -29,7 +29,7 @@ public class Network extends JFrame {
 		portUser = JOptionPane.showInputDialog("Enter Server Port");
 			
 		// Check if correct IP
-		if(!Tools.validIP(address) || !Tools.validNum(portUser)) {
+		if (!Tools.validIP(address) || !Tools.validNum(portUser)) {
 		}
 				
 		// JFrame properties

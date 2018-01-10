@@ -37,7 +37,7 @@ public class ComputerPlayer extends Player {
 	 * @return the move to be made by the strategy
 	 */
 	public int[] determineBase(Board board) {
-		if(super.getColor(2) != null) {
+		if (super.getColor(2) != null) {
 			return strategy.determineBase(board, super.getColor(1), super.getColor(2));
 		} else {
 			return strategy.determineBase(board, super.getColor(1), null);
@@ -49,7 +49,7 @@ public class ComputerPlayer extends Player {
 	 * @return the move to be made by the strategy
 	 */
 	public Object[] determineMove(Board board) {
-		if(super.getColor(2) != null) {
+		if (super.getColor(2) != null) {
 			return strategy.determineMove(board, super.getColor(1), super.getColor(2));
 		} else {
 			return strategy.determineMove(board, super.getColor(1), null);
