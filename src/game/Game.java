@@ -116,13 +116,13 @@ public class Game {
      */
     private void play() {
     	int colors = 1;
-    	int firstPlayer = 0;
+    	boolean firstPlayer = true;
     	while (!board.gameOver()) {
     		update();
-    		if (firstPlayer == 0) {
+    		if (firstPlayer) {
     			players[currentPlayer].makeBaseMove(board);
         		update();
-    			firstPlayer++;
+    			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
     		players[currentPlayer].makeMove(board, colors);
