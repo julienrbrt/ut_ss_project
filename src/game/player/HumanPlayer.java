@@ -1,27 +1,82 @@
 package game.player;
 
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import game.*;
 import gui.Tools;
 
 public class HumanPlayer extends Player {
-		
-	Color firstColor;
-	Color secondColor;
 	
+	private Color firstColor;
+	private Color secondColor;
+	
+	// GUI handling
+	JFrame humanUI = new JFrame("Ringzz");
+	JTextArea jTextArea = new JTextArea();
+	JButton[] settingsButton = new JButton[4];
+	JButton[] boardButtons = new JButton[Board.SIZE * Board.SIZE];
+	
+	// Constructor for one color
 	public HumanPlayer(String name, Color firstColor) {
 		super(name, firstColor);
 		this.firstColor = firstColor;
+		init();
+		humanUI.pack();
+		humanUI.setDefaultCloseOperation(humanUI.DISPOSE_ON_CLOSE);
+		humanUI.setVisible(true);
+		
 	}
 	
+	// Constructor for two colors
 	public HumanPlayer(String name, Color firstColor, Color secondColor) {
 		super(name, firstColor, secondColor);
 		this.firstColor = firstColor;
 		this.secondColor = secondColor;
+		init();
+		humanUI.pack();
+		humanUI.setDefaultCloseOperation(humanUI.DISPOSE_ON_CLOSE);
+		humanUI.setVisible(true);
+	}
+	
+	
+	public void init() {
+		Container c = humanUI.getContentPane();
+		c.setLayout(new BorderLayout());
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(5, 5));
+		
+		for (int x = 0; x < boardButtons.length; x++) {	
+			boardButtons[x] = new JButton();
+			c.add(boardButtons[x]);
+			c.add(panel);
+			boardButtons[x].addActionListener(new UserBoard(x));
+		}
+	}
+	
+	private class UserBoard implements ActionListener {
+		
+		public int TileNum;
+		
+		public UserBoard(int x) {
+			TileNum = x;
+		}
+		
+		public void actionPerformed(ActionEvent ev) {
+			// buttons actions to be defined
+		}
 	}
 	
 	public int[] determineBase(Board board) {
@@ -44,7 +99,11 @@ public class HumanPlayer extends Player {
 	     	    }
 	     	   
 	        } else {
-	        	JOptionPane.showMessageDialog(null, "ERROR, fields invalid, please try-again.");
+	        	JOptionPane.showMessageDialog(null, "Error, fields invalid, please try-again.");
+	        }
+	        
+	        if (!valid) {
+	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try-again");
 	        }
         }
         
@@ -81,8 +140,12 @@ public class HumanPlayer extends Player {
 	        	if (x < board.getSize() && y < board.getSize() && ringSize < 4) {
 					valid = true;
 				} else {
-		        	JOptionPane.showMessageDialog(null, "ERROR, fields invalid, please try-again.");
+		        	JOptionPane.showMessageDialog(null, "Error, fields invalid, please try-again.");
 				}
+	        }
+	        
+	        if (!valid) {
+	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try-again");
 	        }
         }
         
@@ -90,4 +153,5 @@ public class HumanPlayer extends Player {
         return choice;
         
 	}
+	
 }
