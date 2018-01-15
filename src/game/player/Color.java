@@ -49,21 +49,22 @@ public enum Color {
 		RED,
 		BLUE,
 		GREEN,
-		YELLOW,;
+		YELLOW;
 	}
 	
 	public Color getColor(int i) {
 		switch (i) {
-		case 0:
-			return REDDD;
-		case 1:
-			return BLUEE;
-		case 2:
-			return GREEN;
-		case 3:
-			return YELLO;
-		default:
-			return NONEE;
+			case 0:
+				return REDDD;
+			case 1:
+				return BLUEE;
+			case 2:
+				return GREEN;
+			case 3:
+				return YELLO;
+			default:
+				return NONEE;
 		}
 	}
+	
 }

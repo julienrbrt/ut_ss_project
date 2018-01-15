@@ -1,7 +1,7 @@
 package game.player;
 
 import game.*;
-import gui.Tools;
+import network.Tools;
 
 public class HumanPlayer extends Player {
 	

@@ -6,7 +6,7 @@
  * @version 0.1
  */
 
-package gui;
+package network;
 
 public class Tools {
 	public static boolean validIP(String ip) {

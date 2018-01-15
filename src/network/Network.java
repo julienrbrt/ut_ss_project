@@ -1,4 +1,4 @@
-package gui;
+package network;
 
 /*import game.*;
 import gui.*;

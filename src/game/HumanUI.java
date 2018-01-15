@@ -5,7 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.io.*;
-import javax.imageio.ImageIO;
 
 public class HumanUI extends JFrame {
 
@@ -20,6 +19,7 @@ public class HumanUI extends JFrame {
 		pack();
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(665, 665);
+		setTitle("Ringzz");
 		setResizable(false);
 		setVisible(true);
 	}
@@ -39,16 +39,13 @@ public class HumanUI extends JFrame {
 			boardButtons[x].setContentAreaFilled(false);
 			boardButtons[x].setMargin(new Insets(0, 0, 0, 0));
 			
-			try {
-				
-				// Source https://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=20482705
-				
-				File buttonFile = new File("Resources/Empty.png");
-				Image buttonImage = ImageIO.read(buttonFile);
-				boardButtons[x].setIcon(new ImageIcon(buttonImage));
-			} catch (IOException ex) {
-				System.out.println(ex);
-			}
+			// Image Manager - Default
+			ColorUI colorUI = new ColorUI(null, false, 0);
+			Image buttonImage = colorUI.getColorUI();
+			boardButtons[x].setIcon(new ImageIcon(buttonImage));
+			boardButtons[x].setRolloverIcon(new ImageIcon(buttonImage));
+			boardButtons[x].setPressedIcon(new ImageIcon(buttonImage));
+			boardButtons[x].setDisabledIcon(new ImageIcon(buttonImage));
 			
 			c.add(boardButtons[x]);
 			boardButtons[x].addMouseListener(new UserBoard(x));
@@ -57,15 +54,15 @@ public class HumanUI extends JFrame {
 
 	private class UserBoard implements MouseListener {
 		
-		public int TileNum;
+		public int tileNum;
 		
 		public UserBoard(int x) {
-			TileNum = x;
+			tileNum = x;
 		}
 		
 		@Override
 		public void mouseClicked(MouseEvent ev) {
-			// buttons actions to be defined
+			boardButtons[tileNum].setVisible(false);
 			
 		}
 
@@ -97,5 +94,4 @@ public class HumanUI extends JFrame {
 	static public void main(String[] arg0) {
 		new HumanUI();
 	}
-
 }
