@@ -45,9 +45,28 @@ public class Board {
 		int lowY;
 		
 		// check if numbers are correct
+<<<<<<< HEAD
 		if (x > 5 || y > 5 || x < 0 || y < 0 || size < 0) {
 			return false;
 		}
+=======
+		if (x > 4 || y > 4) {
+			return false;
+		} else {
+			
+			// starting base placement check
+			if (base) {
+				if ((x < 1 || x > 4) && (y < 1 || y > 4)) {
+					return false;
+				} else {
+					if (board[x][y].isTileEmpty()) {
+						return true;
+					}
+				}
+			}
+			
+			// normal ring check
+>>>>>>> 90211a0ca13b38cb5b002f244f8c61f04467a0ee
 			
 		// base placement check
 		if (base) {

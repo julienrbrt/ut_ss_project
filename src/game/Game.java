@@ -81,6 +81,13 @@ public class Game {
         
     	currentPlayer = 0;
     }
+    
+    public Game(Player[] players) {
+    	board = new Board();
+    	maxPlayer = players.length;
+        this.players = players;
+    	currentPlayer = 0;
+    }
 
     // -- Commands ---------------------------------------------------
 

@@ -51,4 +51,19 @@ public enum Color {
 		GREEN,
 		YELLOW,;
 	}
+	
+	public Color getColor(int i) {
+		switch (i) {
+		case 0:
+			return REDDD;
+		case 1:
+			return BLUEE;
+		case 2:
+			return GREEN;
+		case 3:
+			return YELLO;
+		default:
+			return NONEE;
+		}
+	}
 }
