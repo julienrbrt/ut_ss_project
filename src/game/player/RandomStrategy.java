@@ -103,7 +103,7 @@ public class RandomStrategy implements Strategy {
 	
     public Object[] determineMove(Board board, Color firstColor, Color secondColor) {
     	        
-    	int x = (int) Math.round(Math.random() * (Board.SIZE - 1));
+    	int x = (int) Math.random() * (Board.SIZE - 1);
     	int y = 0;
     	boolean base = false;
     	int ringSize = 0;
@@ -115,18 +115,11 @@ public class RandomStrategy implements Strategy {
 	        Object[] choice = {x, y, base, ringSize};
 	    	return choice;
         } else {
-        	while (!(board.canPlace(x, y, true, 0, firstColor) || (secondColor != null && board.canPlace(x, y, true, 0, secondColor)))) {
-        		if (y < Board.SIZE - 1) {
-    				y++;
-    			} else if (y == Board.SIZE) {
-    				y--;
-        		} else if (x == Board.SIZE) {
-        			x--;
-        		} else if (ringSize == Board.SIZE) {
-        			ringSize--;
-        		} else if (base || !base) {
-        			base = !base;
-        		}
+        	while (!(board.canPlace(x, y, base, ringSize, firstColor) && !(secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)))) {
+        		base = Math.round(Math.random() * 100) <= 50;
+            	x = (int) Math.abs(Math.random() * (Board.SIZE - 1));
+            	y = (int) Math.abs(Math.random() * (Board.SIZE - 1));
+            	ringSize = (int) Math.abs(Math.random() * (Board.SIZE - 2));
         	}
             Object[] choice = {x, y, base, ringSize};
 	        return choice;

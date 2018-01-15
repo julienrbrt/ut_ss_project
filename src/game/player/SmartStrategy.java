@@ -118,7 +118,7 @@ public class SmartStrategy implements Strategy {
 	        Object[] choice = {x, y, base, ringSize};
 	    	return choice;
         } else {
-        	while (!(board.canPlace(x, y, true, 0, firstColor) || (secondColor != null && board.canPlace(x, y, true, 0, secondColor)))) {
+        	while (!(board.canPlace(x, y, base, ringSize, firstColor) || !(secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)))) {
         		if (y < Board.SIZE - 1) {
     				y++;
     			} else if (y == Board.SIZE) {

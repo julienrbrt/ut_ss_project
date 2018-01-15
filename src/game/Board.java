@@ -33,33 +33,52 @@ public class Board {
 	public void addHome(int x, int y) {
 		board[x][y].change(true, 1, Color.SBASE);
 	}
+	
+	
+	/// base counting by colors + check for 3 players
 		
-	public boolean canPlace(int x, int y, boolean base, int size, Color e) {
+	public boolean canPlace(int x, int y, boolean base, int size, Color color) {
+		
+		int highX;
+		int lowX;
+		int highY;
+		int lowY;
 		
 		// check if numbers are correct
-		if (x > 25 || y > 5) {
+		if (x > 5 || y > 5 || x < 0 || y < 0 || size < 0) {
 			return false;
-		} else {
+		}
 			
-			// base placement check
-			if (base) {
-				if ((x < 1 || x > 4) && (y < 4 || y > 16)) {
-					return false;
-				} else {
-					if (board[x][y].isTileEmpty()) {
-						return true;
-					}
-				}
-			}
-			
-			// normal ring check
-			
-			// TO-FIX
-			if (board[x][y].isTileEmpty()) {
+		// base placement check
+		if (base) {
+			// start base placement check
+			if ((x > 0 && x < 4) && isBoardEmpty()) {
+				return true;
+			} else if (board[x][y].isTileEmpty() && !isBoardEmpty()) {
 				return true;
 			}
-				
 		}
+		
+		// normal ring check
+		highX = x + 1;
+		lowX = x - 1;
+		highY = y + 1;
+		lowY = y - 1;
+		
+		if (highX > 4) {
+			highX = 4;
+		} else if (highY > 4) {
+			highY = 4;
+		} else if (lowX < 0) {
+			lowX = 0;
+		} else if (lowY < 0) {
+			lowY = 0;
+		}
+		
+		if ((board[x][y].contains(color.getColGroup()) || board[lowX][y].contains(color.getColGroup()) || board[highX][y].contains(color.getColGroup()) || board[x][lowY].contains(color.getColGroup()) || board[x][highY].contains(color.getColGroup())) && board[x][y].isSpotEmpty(size)) {
+			return true;
+		}
+		
 		return false;
 	}
 	
@@ -67,6 +86,16 @@ public class Board {
 		return SIZE;
 	}
 	
+	public boolean isBoardEmpty() {
+		for (int x = 0; x < (Board.SIZE); x++) {
+			for (int y = 0; y < (Board.SIZE); y++) {
+				if (!board[x][y].isTileEmpty()) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}	
 	public Tile getTile(int x, int y) {
 		return board[x][y];
 	}

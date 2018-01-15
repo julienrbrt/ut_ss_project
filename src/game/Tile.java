@@ -74,6 +74,10 @@ public class Tile {
 		return true;
 	}
 	
+	public boolean isSpotEmpty(int size) {
+		return tile[size] == Color.NONEE;
+	}
+		
 	public boolean contains(Color.ColGroup e) {
 		for (int i = 0; i < rings; i++) {
 			if (tile[i].getColGroup() == e || tile[i] == Color.SBASE) {
@@ -82,9 +86,4 @@ public class Tile {
 		}
 		return false;
 	}
-	
-	public boolean isSpotEmpty(int size) {
-		return tile[size] == Color.NONEE;
-	}
-
 }
