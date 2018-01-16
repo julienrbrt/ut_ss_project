@@ -33,10 +33,7 @@ public class Board {
 	public void addHome(int x, int y) {
 		board[x][y].change(true, 1, Color.SBASE);
 	}
-	
-	
-	/// base counting by colors + check for 3 players
-		
+			
 	public boolean canPlace(int x, int y, boolean base, int size, Color color) {
 		
 		int highX;
@@ -45,7 +42,7 @@ public class Board {
 		int lowY;
 		
 		// check if numbers are correct
-		if (x > 5 || y > 5 || x < 0 || y < 0 || size < 0) {
+		if (x > 4 || y > 4 || x < 0 || y < 0 || size < 0) {
 			return false;
 		}
 			
@@ -107,17 +104,33 @@ public class Board {
 	}
 	
 	public boolean gameOver() {
-		return false;
-	}
-	
-	public String toString() {
-		String output = "";
-		for (int i = 0; i < SIZE; i++) {
-			for (int j = 0; j < SIZE; j++) {
-				output += board[j][i].toString() + "\t";
+		
+		int tileCount = 0;
+		
+		for (int x = 0; x < SIZE; x++) {
+			for (int y = 0; y < SIZE; y++) {
+				if (!board[x][y].isTileEmpty()) {
+					tileCount++;
+				}
 			}
-			output += "\n";
 		}
-		return output;
+		
+		if (tileCount == (Board.SIZE * Board.SIZE)) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
+		
+//	public String toString() {
+//		String output = "";
+//		for (int x = 0; x < SIZE; x++) {
+//			for (int y = 0; y < SIZE; y++) {
+//				output += board[y][x].toString() + "\t";
+//			}
+//			output += "\n";
+//		}
+//		return output;
+//	}
 }

@@ -10,7 +10,6 @@ import game.*;
  * @version 0.1
  */
 
-
 public abstract class Player {
 
     // -- Instance variables -----------------------------------------
@@ -18,6 +17,9 @@ public abstract class Player {
     private String name;
     private Color firstColor;
     private Color secondColor;
+    
+	// GUI Handling
+	HumanUI gui = new HumanUI();
 
     // -- Constructors -----------------------------------------------
 
@@ -88,6 +90,7 @@ public abstract class Player {
     public void makeBaseMove(Board board) {
         int[] choice = determineBase(board);
         board.addHome(choice[0], choice[1]);
+        gui.updateButton(choice[0], choice[1], true, 0, null);
     }
     
     /*@
@@ -101,6 +104,7 @@ public abstract class Player {
     public void makeMove(Board board, int colors) {
         Object[] choice = determineMove(board);
         board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor()[colors]);
+        gui.updateButton((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor()[colors]);
     }
 
 }

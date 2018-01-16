@@ -55,33 +55,7 @@ public class Game {
     * @param p1 the second player
     * @param p2 the third possible player
     * @param p3 he fourth possible player
-    */
-    public Game(Player p0, Player p1, Player p2, Player p3) {
-    	board = new Board();
-    	    	
-        if (p2 == null) {
-        	maxPlayer--;
-        }
-        
-        if (p3 == null) {
-        	maxPlayer--;
-        }
-        
-        players = new Player[maxPlayer];
-        players[0] = p0;
-        players[1] = p1;
-        
-        if (maxPlayer >=  3) {
-        	players[2] = p2;
-        }
-        
-        if (maxPlayer >= 4) {
-        	players[3] = p3;
-        }
-        
-    	currentPlayer = 0;
-    }
-    
+    */    
     public Game(Player[] players) {
     	board = new Board();
     	maxPlayer = players.length;
@@ -90,14 +64,6 @@ public class Game {
     }
 
     // -- Commands ---------------------------------------------------
-
-    /**
-     * Starts the Ringgz.
-     */
-    public void start() {
-    	reset();
-        play();
-    }
     
     /**
      * Resets the game.
@@ -114,26 +80,18 @@ public class Game {
      * is over. Players can make a move one after the other. After each move,
      * the changed game situation is printed.
      */
-    private void play() {
+    public void play() {
     	int colors = 1;
     	boolean firstPlayer = true;
     	while (!board.gameOver()) {
-    		update();
     		if (firstPlayer) {
     			players[currentPlayer].makeBaseMove(board);
-        		update();
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
     		players[currentPlayer].makeMove(board, colors);
     	}
-    }
-    
-    /**
-     * Prints the game situation.
-     */
-    private void update() {
-        System.out.println("\nSituation: \n\n" + board.toString() + "\n");
+    	reset();
     }
     
 }

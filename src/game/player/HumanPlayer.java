@@ -1,5 +1,7 @@
 package game.player;
 
+import javax.swing.JOptionPane;
+
 import game.*;
 import network.Tools;
 

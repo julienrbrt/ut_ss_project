@@ -45,10 +45,10 @@ public class ColorUI {
 		Image buttonImage = null;
 		File buttonFile;
 		
-		if (base && color != null) {
+		if ((base || size == 4) && color != null) {
 			// Color Base
 			buttonFile = new File("Resources/" + color + "Base.png");
-		} else if (base && color == null) {
+		} else if ((base || size == 4) && color == null) {
 			// Default Base
 			buttonFile = new File("Resources/SBase.png");
 		} else if (!base && color != null) {

@@ -59,7 +59,7 @@ public class Offline {
 			}
 			
 			Game game = new Game(players);
-			game.start();
+			game.play();
 		} else {
 			System.out.println("This game needs a minimum of two players and a maximum of 4 players. Try again.");
 		}
