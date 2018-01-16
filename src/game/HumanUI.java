@@ -2,6 +2,7 @@ package game;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.io.*;
@@ -59,6 +60,7 @@ public class HumanUI extends JFrame {
 	}
 		
 	public void updateButton(int x, int y, boolean base, int size, game.player.Color color) {
+		
 		colorUI = new ColorUI(color, base, size);
 		buttonImage = colorUI.getColorUI();
 		

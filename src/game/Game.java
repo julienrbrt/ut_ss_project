@@ -42,6 +42,11 @@ public class Game {
 	*/
     private int currentPlayer;
 
+  	/**
+  	 * Game GUI Handling.
+  	*/
+	HumanUI gui = new HumanUI();
+	
     // -- Constructors -----------------------------------------------
 
    /*@
@@ -80,16 +85,23 @@ public class Game {
      * is over. Players can make a move one after the other. After each move,
      * the changed game situation is printed.
      */
+    /*@
+    requires board != null & !board.gameOver();
+     */
     public void play() {
     	int colors = 1;
     	boolean firstPlayer = true;
     	while (!board.gameOver()) {
     		if (firstPlayer) {
-    			players[currentPlayer].makeBaseMove(board);
+    			int[] choice = players[currentPlayer].determineBase(board);
+    	        board.addHome(choice[0], choice[1]);
+    	        gui.updateButton(choice[0], choice[1], true, 0, null);
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
-    		players[currentPlayer].makeMove(board, colors);
+    		Object[] choice = players[currentPlayer].determineMove(board);
+            board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors]);
+            gui.updateButton((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors]);
     	}
     	reset();
     }

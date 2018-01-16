@@ -17,9 +17,6 @@ public abstract class Player {
     private String name;
     private Color firstColor;
     private Color secondColor;
-    
-	// GUI Handling
-	HumanUI gui = new HumanUI();
 
     // -- Constructors -----------------------------------------------
 
@@ -74,37 +71,6 @@ public abstract class Player {
      */
     public abstract int[] determineBase(Board board);
     
-    public abstract Object[] determineMove(Board board);
-    
-
-    // -- Commands ---------------------------------------------------
-
-    /*@
-    requires board != null & !board.gameOver();
-     */
-	 /**
-	  * Makes a base move on the board. <br>
-	  * 
-	  * @param board the current board
-	  */
-    public void makeBaseMove(Board board) {
-        int[] choice = determineBase(board);
-        board.addHome(choice[0], choice[1]);
-        gui.updateButton(choice[0], choice[1], true, 0, null);
-    }
-    
-    /*@
-       requires board != null & !board.gameOver();
-     */
-    /**
-     * Makes a move on the board. <br>
-     * 
-     * @param board the current board
-     */
-    public void makeMove(Board board, int colors) {
-        Object[] choice = determineMove(board);
-        board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor()[colors]);
-        gui.updateButton((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], getColor()[colors]);
-    }
-
+    public abstract Object[] determineMove(Board board);    
+     
 }
