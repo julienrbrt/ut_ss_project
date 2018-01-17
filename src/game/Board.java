@@ -57,28 +57,17 @@ public class Board {
 		}
 		
 		// normal ring check
-		highX = x + 1;
-		lowX = x - 1;
-		highY = y + 1;
-		lowY = y - 1;
+		highX = ((x + 1) > 4) ? 4 : x + 1;
+		lowX = ((x - 1) < 0) ? 0 : x - 1;
+		highY = ((y + 1) > 4) ? 4 : y + 1;
+		lowY = ((y - 1) < 0) ? 0 : y - 1;
 		
-		if (highX > 4) {
-			highX = 4;
-		}
-		
-		if (highY > 4) {
-			highY = 4;
-		}
-		
-		if (lowX < 0) {
-			lowX = 0;
-		}
-		
-		if (lowY < 0) {
-			lowY = 0;
-		}
-		
-		if ((board[x][y].contains(color.getColGroup()) || board[lowX][y].contains(color.getColGroup()) || board[highX][y].contains(color.getColGroup()) || board[x][lowY].contains(color.getColGroup()) || board[x][highY].contains(color.getColGroup())) && board[x][y].isSpotEmpty(size)) {
+		if ((board[x][y].contains(color.getColGroup()) ||
+				board[lowX][y].contains(color.getColGroup()) || 
+				board[highX][y].contains(color.getColGroup()) || 
+				board[x][lowY].contains(color.getColGroup()) || 
+				board[x][highY].contains(color.getColGroup())) && 
+				board[x][y].isSpotEmpty(size)) {
 			return true;
 		}
 		
