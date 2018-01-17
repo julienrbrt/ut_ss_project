@@ -83,18 +83,69 @@ public class Board {
 		return SIZE;
 	}
 	
-	public boolean isBoardEmpty() {
-		for (int x = 0; x < (Board.SIZE); x++) {
-			for (int y = 0; y < (Board.SIZE); y++) {
-				if (!board[x][y].isTileEmpty()) {
-					return false;
+//	public boolean isBoardEmpty() {
+//		for (int x = 0; x < (Board.SIZE); x++) {
+//			for (int y = 0; y < (Board.SIZE); y++) {
+//				if (!board[x][y].isTileEmpty()) {
+//					return false;
+//				}
+//			}
+//		}
+//		return true;
+//	}	
+	
+	public Tile getTile(int x, int y) {
+		return board[x][y];
+	}
+	
+	//returns an array of possible moves in the form x*100+y*10+size, with size 4 being a base, for a specified color
+	public int[] getPossibleMoves(Color color) {
+		int[] result = new int[SIZE * SIZE * SIZE];
+		int count = 0;
+		int[] actResult;
+		for (int size = 0; size < 4; size++) {
+			actResult = getPossibleMoves(color, false, size);
+			if (actResult.length > 0) {
+				for (int i = 0; i < actResult.length; i++) {
+					result[count] = (actResult[i] * 10) + size;
+					count++;
 				}
 			}
 		}
-		return true;
-	}	
-	public Tile getTile(int x, int y) {
-		return board[x][y];
+		
+		actResult = getPossibleMoves(color, true, 0);
+		if (actResult.length > 0) {
+			for (int i = 0; i < actResult.length; i++) {
+				result[count] = (actResult[i] * 10) + 4;
+				count++;
+			}
+		}
+		
+		actResult = new int[count];
+		for (int i = 0; i < count; i++) {
+			actResult[i] = result[i];
+		}
+		
+		return actResult;
+	}
+	
+	//returns an array of possible moves in the form x*10+y, for the given size and color
+	public int[] getPossibleMoves(Color color, boolean base, int size) {
+		int[] result = new int[SIZE * SIZE];
+		int count = 0;
+		for (int x = 0; x < SIZE; x++) {
+			for (int y = 0; y < SIZE; y++) {
+				if (canPlace(x, y, base, size, color)) {
+					result[count] = (x * 10) + y;
+					count++;
+				}
+			}
+		}
+		int[] actResult = new int[count];
+		for (int i = 0; i < count; i++) {
+			actResult[i] = result[i];
+		}
+		return actResult;
 	}
 	
 	public boolean gameOver() {
