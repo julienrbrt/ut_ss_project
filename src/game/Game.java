@@ -8,6 +8,8 @@
 
 package game;
 
+import java.awt.Image;
+
 import game.player.*;
 
 public class Game {
@@ -46,6 +48,8 @@ public class Game {
   	 * Game GUI Handling.
   	*/
 	HumanUI gui = new HumanUI();
+	Image buttonImage;
+	ColorUI colorUI;
 	
     // -- Constructors -----------------------------------------------
 
@@ -89,19 +93,26 @@ public class Game {
     requires board != null & !board.gameOver();
      */
     public void play() {
+    	/// TO FIX COLOR HANDLING
     	int colors = 1;
+    	Image oldImg;
     	boolean firstPlayer = true;
     	while (!board.gameOver()) {
     		if (firstPlayer) {
     			int[] choice = players[currentPlayer].determineBase(board);
     	        board.addHome(choice[0], choice[1]);
-    	        gui.updateButton(choice[0], choice[1], true, 0, null);
+    	    	colorUI = new ColorUI(null, false, 0);
+    			oldImg = colorUI.getColorUI();
+    	        gui.updateButton(choice[0], choice[1], true, 0, null, oldImg);
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
     		Object[] choice = players[currentPlayer].determineMove(board);
             board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors]);
-            gui.updateButton((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors]);
+	    	colorUI = new ColorUI(null, false, 0);
+			oldImg = colorUI.getColorUI();
+            // Updating the GUI through manual command for keeping TUI possibility
+            gui.updateButton((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors], oldImg);
     	}
     	reset();
     }

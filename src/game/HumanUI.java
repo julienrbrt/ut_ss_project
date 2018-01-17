@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.io.*;
 import game.player.*;
+import network.Tools;
 
 public class HumanUI extends JFrame {
 
@@ -54,21 +55,29 @@ public class HumanUI extends JFrame {
 				boardButtons[x][y].setMargin(new Insets(0, 0, 0, 0));
 				
 				// Default Empty board
-				updateButton(x, y, false, 0, null);
+				updateButton(x, y, false, 0, null, null);
 			}
 		}
 	}
 		
-	public void updateButton(int x, int y, boolean base, int size, game.player.Color color) {
+	public void updateButton(int x, int y, boolean base, int size, game.player.Color color, Image oldImg) {
 		
 		colorUI = new ColorUI(color, base, size);
 		buttonImage = colorUI.getColorUI();
 		
+		if (oldImg == null) {
+			oldImg = buttonImage;
+		}
+		
+		Image merged = Tools.mergeImg(oldImg, buttonImage);
+		
+		ImageIcon rings = new ImageIcon(merged);
+		
 		// Image manager
-		boardButtons[x][y].setIcon(new ImageIcon(buttonImage));
-		boardButtons[x][y].setRolloverIcon(new ImageIcon(buttonImage));
-		boardButtons[x][y].setPressedIcon(new ImageIcon(buttonImage));
-		boardButtons[x][y].setDisabledIcon(new ImageIcon(buttonImage));
+		boardButtons[x][y].setIcon(rings);
+		boardButtons[x][y].setRolloverIcon(rings);
+		boardButtons[x][y].setPressedIcon(rings);
+		boardButtons[x][y].setDisabledIcon(rings);
 		c.add(boardButtons[x][y]);
 		boardButtons[x][y].addMouseListener(new UserBoard(x, y));
 		
