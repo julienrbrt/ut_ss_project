@@ -9,6 +9,7 @@ public class Board {
 	public static final int SIZE = 5;
 	private Tile[][] board;
 	int posCount = 0;
+	boolean start = true;
 	
 	// ------------- Constructor ------------------------------------------
 	public Board() {
@@ -42,36 +43,40 @@ public class Board {
 		int lowY;
 		
 		// check if numbers are correct
-		if (x > 4 || y > 4 || x < 0 || y < 0 || size < 0) {
+		if (x > 4 || y > 4 || x < 0 || y < 0 || size < 0 || color == null) {	//check if color exists, just in case
 			return false;
 		}
 			
 		// base placement check
 		if (base) {
 			// start base placement check
-			if ((x > 0 && x < 4) && isBoardEmpty()) {
+			if (start && x > 0 && x < 4 && y > 0 && y < 4) {
+				start = false;
 				return true;
-			} else if (board[x][y].isTileEmpty() && !isBoardEmpty()) {
+			} else if (!start && board[x][y].isTileEmpty()) {
 				return true;
+			} else {
+				return false;
+			}
+		} else {
+			// normal ring check
+			highX = ((x + 1) > 4) ? 4 : x + 1;
+			lowX = ((x - 1) < 0) ? 0 : x - 1;
+			highY = ((y + 1) > 4) ? 4 : y + 1;
+			lowY = ((y - 1) < 0) ? 0 : y - 1;
+			
+			if (board[x][y].isSpotEmpty(size) && 
+					(board[x][y].contains(color.getColGroup()) ||
+					board[lowX][y].contains(color.getColGroup()) || 
+					board[highX][y].contains(color.getColGroup()) || 
+					board[x][lowY].contains(color.getColGroup()) || 
+					board[x][highY].contains(color.getColGroup()))
+					) {
+				return true;
+			} else {
+				return false;
 			}
 		}
-		
-		// normal ring check
-		highX = ((x + 1) > 4) ? 4 : x + 1;
-		lowX = ((x - 1) < 0) ? 0 : x - 1;
-		highY = ((y + 1) > 4) ? 4 : y + 1;
-		lowY = ((y - 1) < 0) ? 0 : y - 1;
-		
-		if ((board[x][y].contains(color.getColGroup()) ||
-				board[lowX][y].contains(color.getColGroup()) || 
-				board[highX][y].contains(color.getColGroup()) || 
-				board[x][lowY].contains(color.getColGroup()) || 
-				board[x][highY].contains(color.getColGroup())) && 
-				board[x][y].isSpotEmpty(size)) {
-			return true;
-		}
-		
-		return false;
 	}
 	
 	public int getSize() {
