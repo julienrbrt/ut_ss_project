@@ -88,13 +88,13 @@ public interface GameProtocol {
 
     /**
      * Used to let the server know that the client wants to start a game with x amount of player
-     * 
+     *
      * code: "gamerequest 2"
      *
      * Direction: Client -> Server
      */
     public static final String CLIENT_GAMEREQUEST = "gamerequest";
-    
+
     /**
      * Used to let the clients know that a game has been started
      *
@@ -128,7 +128,7 @@ public interface GameProtocol {
      * Direction: Server -> Client
      */
     public static final String SERVER_MOVEREQUEST = "moverequest";
-    
+
 
     /**
      * Used by the client to do a move
@@ -142,18 +142,12 @@ public interface GameProtocol {
      *  I want to place a move on the position x = 1 && y = 1 && ring_size = 2 && color = RED
      *
      *  code: "setmove 1 1 2 1"
-     * 
-     *  CColour code:
-     * 
-     *      0: special Base
-     *      1: Primary Colour
-     *      2: Secondary Colour
      *
      * Direction: Client -> Server
      */
     public static final String CLIENT_SETMOVE = "setmove";
 
-    
+
     /**
      * Used to deny a move if the move is not valid.
      *
@@ -162,8 +156,8 @@ public interface GameProtocol {
      * Direction: Server -> Client
      */
     public static final String SERVER_DENYMOVE = "denymove";
-    
-    
+
+
     /**
      * Used to let the clients know that a move has been made
      *
@@ -197,7 +191,7 @@ public interface GameProtocol {
      *  Draw between teun and pittt
      *
      * code: "gameover teun pittt"
-     * 
+     *
      * Direction: Server -> Client
      */
     public static final String SERVER_GAMEOVER = "gameover";
@@ -255,7 +249,7 @@ public interface GameProtocol {
      * Direction: Server -> Client
      */
     public static final String SERVER_SENDCHAT = "sendChat";
-    
+
 
     /**
      * Used to request a list of all the clients that support the challenge feature
@@ -397,5 +391,9 @@ public interface GameProtocol {
      *
      */
     public static final String SERVER_BROADCASTLEADERBOARD = "broadcastleaderboard";
+
+    public static final String SERVER_PUBLICKEY = "publickey";
+
+    public static final String CLIENT_ENCRYPTPASS = "encryptpass";
 
 }
