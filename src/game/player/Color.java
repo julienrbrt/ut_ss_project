@@ -52,7 +52,7 @@ public enum Color {
 		YELLOW;
 	}
 	
-	public Color getColor(int i) {
+	public Color getColor(int i) {	//simple number to color converter
 		switch (i) {
 			case 0:
 				return REDDD;
