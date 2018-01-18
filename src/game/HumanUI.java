@@ -5,7 +5,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.event.*;
-import java.io.*;
 import game.player.*;
 
 public class HumanUI extends JFrame {
@@ -87,9 +86,7 @@ public class HumanUI extends JFrame {
 		
 		@Override
 		public void mouseClicked(MouseEvent ev) {
-			colorUI = new ColorUI(null, false, 0);
-			buttonImage = colorUI.getColorUI();
-			boardButtons[buttonX][buttonY].setIcon(new ImageIcon(buttonImage));
+			boardButtons[buttonX][buttonY].setText("Test");
 		}
 
 		@Override

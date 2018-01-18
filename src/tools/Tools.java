@@ -5,7 +5,7 @@
  * @version 0.1
  */
 
-package network;
+package tools;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
