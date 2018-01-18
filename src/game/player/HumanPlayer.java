@@ -82,7 +82,9 @@ public class HumanPlayer extends Player {
 	        	
 	        	ringSize = Integer.parseInt(giveRingSize);
 
-	        	if (x < board.getSize() && y < board.getSize() && ringSize < 4) {
+	        	if (board.canPlace(x, y, base, ringSize, firstColor)) {
+					valid = true;
+				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)) {
 					valid = true;
 				} else {
 		        	JOptionPane.showMessageDialog(null, "Error, fields invalid, please try-again.");

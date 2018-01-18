@@ -41,8 +41,8 @@ public class HumanUI extends JFrame {
 	public void init() {
 		c.setLayout(new GridLayout(5, 5));
 		
-		for (int x = 0; x < Board.SIZE; x++) {	
-			for (int y = 0; y < Board.SIZE; y++) {
+		for (int y = Board.SIZE - 1; y >= 0; y--) {	
+			for (int x = 0; x < Board.SIZE; x++) {
 						
 				boardButtons[x][y] = new JButton();
 								
@@ -72,7 +72,7 @@ public class HumanUI extends JFrame {
 		boardButtons[x][y].setPressedIcon(rings);
 		boardButtons[x][y].setDisabledIcon(rings);
 		c.add(boardButtons[x][y]);
-//		boardButtons[x][y].addMouseListener(new UserBoard(x, y));
+		boardButtons[x][y].addMouseListener(new UserBoard(x, y));
 		
 	}
 
