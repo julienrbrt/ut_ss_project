@@ -54,7 +54,21 @@ public class Board {
 				start = false;
 				return true;
 			} else if (!start && board[x][y].isTileEmpty()) {
-				return true;
+				highX = ((x + 1) > 4) ? 4 : x + 1;
+				lowX = ((x - 1) < 0) ? 0 : x - 1;
+				highY = ((y + 1) > 4) ? 4 : y + 1;
+				lowY = ((y - 1) < 0) ? 0 : y - 1;
+				
+				if (board[x][y].isSpotEmpty(size) && 
+						(board[x][y].contains(color.getColGroup()) ||
+						board[lowX][y].contains(color.getColGroup()) || 
+						board[highX][y].contains(color.getColGroup()) || 
+						board[x][lowY].contains(color.getColGroup()) || 
+						board[x][highY].contains(color.getColGroup()))) {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}
