@@ -8,8 +8,14 @@
 package network;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+
+import javax.swing.*;
 
 public class Tools {
 	
@@ -70,5 +76,4 @@ public class Tools {
 		
 		return (Image) combined;
 	}
-	
 }

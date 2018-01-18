@@ -24,11 +24,23 @@ public class ColorUI {
 				case REDDD:
 					color = "R";
 					break;
-				case BLUEE:
+				case RBASE:
 					color = "R";
+					break;
+				case BBASE:
+					color = "B";
+					break;
+				case BLUEE:
+					color = "B";
+					break;
+				case GBASE:
+					color = "G";
 					break;
 				case GREEN:
 					color = "G";
+					break;
+				case YBASE:
+					color = "Y";
 					break;
 				case YELLO:
 					color = "Y";

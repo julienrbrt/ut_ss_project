@@ -42,8 +42,8 @@ public class Board {
 		int highY;
 		int lowY;
 		
-		// check if numbers are correct
-		if (x > 4 || y > 4 || x < 0 || y < 0 || size < 0 || color == null) {	//check if color exists, just in case
+		// check if numbers are correct and if color exists, just in case
+		if (x > 4 || y > 4 || x < 0 || y < 0 || size < 0 || color == null) {
 			return false;
 		}
 			
@@ -70,8 +70,7 @@ public class Board {
 					board[lowX][y].contains(color.getColGroup()) || 
 					board[highX][y].contains(color.getColGroup()) || 
 					board[x][lowY].contains(color.getColGroup()) || 
-					board[x][highY].contains(color.getColGroup()))
-					) {
+					board[x][highY].contains(color.getColGroup()))) {
 				return true;
 			} else {
 				return false;
@@ -168,14 +167,14 @@ public class Board {
 		
 	}
 		
-//	public String toString() {
-//		String output = "";
-//		for (int x = 0; x < SIZE; x++) {
-//			for (int y = 0; y < SIZE; y++) {
-//				output += board[y][x].toString() + "\t";
-//			}
-//			output += "\n";
-//		}
-//		return output;
-//	}
+	public String toString() {
+		String output = "";
+		for (int x = 0; x < SIZE; x++) {
+			for (int y = 0; y < SIZE; y++) {
+				output += board[y][x].toString() + "\t";
+			}
+			output += "\n";
+		}
+		return output;
+	}
 }

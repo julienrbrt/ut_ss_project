@@ -10,7 +10,10 @@ package game;
 
 import java.awt.Image;
 
+import javax.swing.JOptionPane;
+
 import game.player.*;
+import network.Tools;
 
 public class Game {
 
@@ -49,6 +52,8 @@ public class Game {
   	*/
 	HumanUI gui = new HumanUI();
 	Image buttonImage;
+	Image oldButtonImage;
+	Image merged;
 	ColorUI colorUI;
 	
     // -- Constructors -----------------------------------------------
@@ -95,25 +100,49 @@ public class Game {
     public void play() {
     	/// TO FIX COLOR HANDLING
     	int colors = 1;
-    	Image oldImg;
     	boolean firstPlayer = true;
     	while (!board.gameOver()) {
     		if (firstPlayer) {
     			int[] choice = players[currentPlayer].determineBase(board);
     	        board.addHome(choice[0], choice[1]);
-    	    	colorUI = new ColorUI(null, false, 0);
-    			oldImg = colorUI.getColorUI();
-    	        gui.updateButton(choice[0], choice[1], true, 0, null, oldImg);
+    	        // Empty Board Image
+    	        colorUI = new ColorUI(null, false, 0);
+        		oldButtonImage = colorUI.getColorUI();
+        		// SBase Button Image
+        		colorUI = new ColorUI(null, true, 0);
+           		buttonImage = colorUI.getColorUI();
+        		merged = Tools.mergeImg(oldButtonImage, buttonImage);
+        		System.out.print("" + board.toString()  + "/n");
+    	        gui.updateButton(choice[0], choice[1], merged);
+    	        merged = oldButtonImage;
     			firstPlayer = false;
     		}
+    		// TODEL
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
+    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
     		Object[] choice = players[currentPlayer].determineMove(board);
-            board.addRing((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors]);
-	    	colorUI = new ColorUI(null, false, 0);
-			oldImg = colorUI.getColorUI();
-            // Updating the GUI through manual command for keeping TUI possibility
-            gui.updateButton((Integer) choice[0], (Integer) choice[1], (Boolean) choice[2], (Integer) choice[3], players[currentPlayer].getColor()[colors], oldImg);
-    	}
+            
+    		board.addRing((Integer) choice[0],
+            		(Integer) choice[1],
+            		(Boolean) choice[2],
+            		(Integer) choice[3],
+            		players[currentPlayer].getColor()[colors]);
+			
+           	// Get previous button images
+           	for (int i = 3; i >= 0; i--) {
+           		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i);
+           		            		
+           		if (color != Color.NONEE) {
+           			colorUI = new ColorUI(color, (Boolean) choice[2], i);
+           			buttonImage = colorUI.getColorUI();
+           		}
+            		
+           		merged = Tools.mergeImg(merged, buttonImage);
+           		
+           	}
+       		System.out.print("" + board.toString() + "/n");
+			gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
+        }
     	reset();
     }
     
