@@ -116,7 +116,6 @@ public class Game {
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
-    		// TO REMOVE
     		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
     		Object[] choice = players[currentPlayer].determineMove(board);
     		
@@ -131,7 +130,7 @@ public class Game {
            	for (int i = 3; i >= 0; i--) {
            		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i);
            		            		
-           		if (color != Color.NONEE) {
+           		if (color != Color.NONEE && color != null) {
            			colorUI = new ColorUI(color, (Boolean) choice[2], i);
            			buttonImage = colorUI.getColorUI();
            		}

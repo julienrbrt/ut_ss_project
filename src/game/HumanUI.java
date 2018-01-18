@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.io.*;
 import game.player.*;
-import network.Tools;
 
 public class HumanUI extends JFrame {
 
@@ -32,7 +31,7 @@ public class HumanUI extends JFrame {
 		init();
 		pack();
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(665, 665);
+		setSize(700, 700);
 		setTitle("Ringzz");
 		setResizable(false);
 		setVisible(true);
