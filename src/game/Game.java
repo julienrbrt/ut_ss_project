@@ -52,7 +52,7 @@ public class Game {
   	*/
 	HumanUI gui = new HumanUI();
 	Image buttonImage;
-	Image oldButtonImage;
+	Image emptyButton;
 	Image merged;
 	ColorUI colorUI;
 	
@@ -107,28 +107,27 @@ public class Game {
     	        board.addHome(choice[0], choice[1]);
     	        // Empty Board Image
     	        colorUI = new ColorUI(null, false, 0);
-        		oldButtonImage = colorUI.getColorUI();
+        		emptyButton = colorUI.getColorUI();
         		// SBase Button Image
         		colorUI = new ColorUI(null, true, 0);
            		buttonImage = colorUI.getColorUI();
-        		merged = Tools.mergeImg(oldButtonImage, buttonImage);
-        		System.out.print("" + board.toString()  + "/n");
+        		merged = Tools.mergeImg(emptyButton, buttonImage);
     	        gui.updateButton(choice[0], choice[1], merged);
-    	        merged = oldButtonImage;
     			firstPlayer = false;
     		}
-    		// TODEL
     		currentPlayer = (currentPlayer + 1) % maxPlayer;
+    		// TO REMOVE
     		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
     		Object[] choice = players[currentPlayer].determineMove(board);
-            
+    		
     		board.addRing((Integer) choice[0],
             		(Integer) choice[1],
             		(Boolean) choice[2],
             		(Integer) choice[3],
             		players[currentPlayer].getColor()[colors]);
-			
+    		
            	// Get previous button images
+			merged = emptyButton;
            	for (int i = 3; i >= 0; i--) {
            		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i);
            		            		
@@ -140,7 +139,6 @@ public class Game {
            		merged = Tools.mergeImg(merged, buttonImage);
            		
            	}
-       		System.out.print("" + board.toString() + "/n");
 			gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
         }
     	reset();
