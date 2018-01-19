@@ -71,6 +71,6 @@ public abstract class Player {
      */
     public abstract int[] determineBase(Board board);
     
-    public abstract Object[] determineMove(Board board);    
+    public abstract Object[] determineMove(Board board, int colorsAmount);    
      
 }

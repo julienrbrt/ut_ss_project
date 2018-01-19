@@ -20,9 +20,6 @@ public class Game {
 
 	// -- Instance variables -----------------------------------------
     
-	// Four players maximum by design
-    private static int maxPlayer = 4;
-	
 	/*@
     	private invariant board != null;
 	*/
@@ -31,18 +28,12 @@ public class Game {
 	 */
     private Board board;
     
-	/*@
-		requires players.length <= maxPlayer;
-		requires (\forall int i; 0 <= i && i < maxPlayer; players[i] != null); 
-	*/
+    
 	/**
 	* The four players of the game.
 	*/
     private Player[] players;
     
-    /*@
-    	requires 0 <= currentPlayer  && currentPlayer <= maxPlayer;
-    */
 	/**
 	 * Index of the current player.
 	*/
@@ -56,6 +47,11 @@ public class Game {
 	Image emptyButton;
 	Image merged;
 	ColorUI colorUI;
+	
+	/**
+	 * Player skipping handling / Game-Over.
+	 */
+	boolean[] gotSkipped;
 	
     // -- Constructors -----------------------------------------------
 
@@ -73,9 +69,15 @@ public class Game {
     */    
     public Game(Player[] players) {
     	board = new Board();
-    	maxPlayer = players.length;
         this.players = players;
     	currentPlayer = 0;
+    	gotSkipped = new boolean[players.length];
+
+    	// Nobody skipped at first
+    	for (int i = 0; i < gotSkipped.length; i++) {
+    		gotSkipped[i] = false;
+    	}
+    	
     }
 
     // -- Commands ---------------------------------------------------
@@ -101,13 +103,15 @@ public class Game {
     public void play() {
     	
     	int colors = 0;
-    			
+    	int colorAmount = 1;
+    	
     	if (players.length > 2) {
-    		colors = 1;
+    		colorAmount = 2;
     	}
     	
     	boolean firstPlayer = true;
     	while (!board.gameOver()) {
+    		
     		if (firstPlayer) {
     			int[] choice = players[currentPlayer].determineBase(board);
     	        board.addHome(choice[0], choice[1]);
@@ -118,35 +122,55 @@ public class Game {
         		colorUI = new ColorUI(null, true, 0);
            		buttonImage = colorUI.getColorUI();
         		merged = Tools.mergeImg(emptyButton, buttonImage);
-    	        gui.updateButton(choice[0], choice[1], merged);
+        		
+    	        colorUI = new ColorUI(null, false, 0);
+        		emptyButton = colorUI.getColorUI();
+				System.out.println(board.toString());
+ 
+        		gui.updateButton(choice[0], choice[1], merged);
     			firstPlayer = false;
     		}
-    		currentPlayer = (currentPlayer + 1) % maxPlayer;
-    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
-    		Object[] choice = players[currentPlayer].determineMove(board);
+    		currentPlayer = (currentPlayer + 1) % players.length;
     		
-    		board.addRing((Integer) choice[0],
-            		(Integer) choice[1],
-            		(Boolean) choice[2],
-            		(Integer) choice[3],
-            		players[currentPlayer].getColor()[colors]);
+    		// Manage skipped players
+    		if (!gotSkipped[currentPlayer]) {
     		
-           	// Get previous button images
-			merged = emptyButton;
-           	for (int i = 3; i >= 0; i--) {
-           		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i);
-           		            		
-           		if (color != Color.NONEE && color != null) {
-           			colorUI = new ColorUI(color, (Boolean) choice[2], i);
-           			buttonImage = colorUI.getColorUI();
-           		}
-            		
-           		merged = Tools.mergeImg(merged, buttonImage);
-     
-           	}
-			gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
+	    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
+	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
+	    		
+	    		// Skip player if no possible choices
+	    		if (choice.length != 0) {
+		    		board.addRing((Integer) choice[0],
+		            		(Integer) choice[1],
+		            		(Boolean) choice[2],
+		            		(Integer) choice[3],
+		            		players[currentPlayer].getColor()[colors]);
+		    		
+		           	// Get previous button images
+					merged = emptyButton;
+		           	for (int i = 3; i >= 0; i--) {
+		           		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i);
+		           		            		
+		           		if (color != Color.NONEE && color != null) {
+		           			colorUI = new ColorUI(color, (Boolean) choice[2], i);
+		           			buttonImage = colorUI.getColorUI();
+		           		}
+		            		
+		           		merged = Tools.mergeImg(merged, buttonImage);
+		     
+		           	}
+					gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
+					System.out.println(board.toString());
+	    		} else {
+	    			gotSkipped[currentPlayer] = true;
+	    		}
+    		}
         }
     	reset();
+    }
+    
+    public boolean[] getSkipped() {
+    	return gotSkipped;
     }
     
 }

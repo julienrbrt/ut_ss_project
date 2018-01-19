@@ -54,7 +54,7 @@ public class HumanPlayer extends Player {
   	    return choice;
 	} 
 	
-	public Object[] determineMove(Board board) {
+	public Object[] determineMove(Board board, int colorAmount) {
 	
         boolean valid = false;
         boolean base = false;

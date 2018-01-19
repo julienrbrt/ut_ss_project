@@ -33,23 +33,14 @@ public class ComputerPlayer extends Player {
 	 * @return the move to be made by the strategy
 	 */
 	public int[] determineBase(Board board) {
-		if (super.getColor()[1] != null) {
-			return strategy.determineBase(board, super.getColor()[0], super.getColor()[1]);
-		} else {
-			return strategy.determineBase(board, super.getColor()[0]);
-		}
+		return strategy.determineBase(board);
 	}
 	
 	/**
 	 * @param board is the board
 	 * @return the move to be made by the strategy
 	 */
-	public Object[] determineMove(Board board) {
-		if (super.getColor()[1] != null) {
-			return strategy.determineMove(board, super.getColor()[0], super.getColor()[1]);
-		} else {
-			return strategy.determineMove(board, super.getColor()[0]);
-
-		}
+	public Object[] determineMove(Board board, int colorAmount) {
+		return strategy.determineMove(board, colorAmount, super.getColor()[0], super.getColor()[1]);
 	}
 }
