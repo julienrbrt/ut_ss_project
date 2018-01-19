@@ -165,23 +165,10 @@ public class Board {
 	}
 	
 	public boolean gameOver() {
-		
-		int tileCount = 0;
-		
-		for (int x = 0; x < SIZE; x++) {
-			for (int y = 0; y < SIZE; y++) {
-				if (!board[x][y].isTileEmpty()) {
-					tileCount++;
-				}
-			}
-		}
-		
-		if (tileCount == (Board.SIZE * Board.SIZE)) {
-			return true;
-		} else {
-			return false;
-		}
-		
+		return (getPossibleMoves(Color.REDDD).length == 0 && 
+				getPossibleMoves(Color.BLUEE).length == 0 && 
+				getPossibleMoves(Color.GREEN).length == 0 && 
+				getPossibleMoves(Color.YELLO).length == 0);
 	}
 		
 	public String toString() {
