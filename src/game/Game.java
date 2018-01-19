@@ -102,7 +102,6 @@ public class Game {
      */
     public void play() {
     	
-    	int colors = 0;
     	int colorAmount = 1;
     	
     	if (players.length > 2) {
@@ -144,7 +143,7 @@ public class Game {
 		            		(Integer) choice[1],
 		            		(Boolean) choice[2],
 		            		(Integer) choice[3],
-		            		players[currentPlayer].getColor()[colors]);
+		            		(Color) choice[4]);
 		    		
 		           	// Get previous button images
 					merged = emptyButton;
