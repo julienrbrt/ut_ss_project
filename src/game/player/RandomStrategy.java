@@ -107,7 +107,6 @@ public class RandomStrategy implements Strategy {
         }
     }*/
 	
-	
     public Object[] determineMove(Board board, int colorAmount, Color firstColor, Color secondColor) {
     	 
     	boolean multipleColors = (colorAmount == 2);
@@ -137,7 +136,7 @@ public class RandomStrategy implements Strategy {
     		return result;
     	}
     	
-    	int choice = (int) Math.floor(Math.random() * moves.length);
+    	int choice = (int) Math.floor(Math.random() * (moves.length - 1));
     	int move = moves[choice];
     	result = new Object[5];
     	result[0] = (int) move / 100;

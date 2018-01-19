@@ -137,7 +137,7 @@ public class SmartStrategy implements Strategy {
     		return result;
     	}
     	
-    	int choice = (int) Math.floor(Math.random() * moves.length);
+    	int choice = (int) Math.floor(Math.random() * (moves.length - 1));
     	int move = moves[choice];
     	result = new Object[5];
     	result[0] = (int) move / 100;
