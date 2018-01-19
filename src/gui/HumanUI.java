@@ -1,4 +1,4 @@
-package game;
+package gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.io.*;
 import game.player.*;
+import game.*;
 
 public class HumanUI extends JFrame {
 

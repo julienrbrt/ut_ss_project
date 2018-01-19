@@ -41,15 +41,18 @@ public class GameSession extends JFrame {
 	public void init() {
 		c.setLayout(new SpringLayout());
 		
+		String[] labels = {"Name: ", "Server IP: ", "Server Port: "};
+		
 		// Generate and add buttons
 		for (int x = 0; x < jTextField.length; x++) {
+			JLabel l = new JLabel(labels[1], JLabel.TRAILING);
+			c.add(l);
 			jTextField[x] = new JTextField();
 			jTextField[x].setPreferredSize(new Dimension(200, 25));
+            l.setLabelFor(jTextField[x]);
 			c.add(jTextField[x]);
 		}
-		
-		// Labels user input
-		
+				
 		// Set start button
 		startGame = new JButton();
 		startGame.setText("Start");
@@ -59,6 +62,9 @@ public class GameSession extends JFrame {
 		// Set offline switch
 		onlineOff = new JCheckBox("Offline");
 		c.add(onlineOff);
+		
+		// Layout panel
+		
 	}
 	
 	public class StartGame implements ActionListener {

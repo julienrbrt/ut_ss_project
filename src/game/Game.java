@@ -142,7 +142,7 @@ public class Game {
            		}
             		
            		merged = Tools.mergeImg(merged, buttonImage);
-           		
+     
            	}
 			gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
         }
