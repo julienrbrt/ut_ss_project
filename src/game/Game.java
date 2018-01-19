@@ -110,7 +110,7 @@ public class Game {
     	}
     	
     	boolean firstPlayer = true;
-    	while (!board.gameOver()) {
+    	while (!board.gameOver(gotSkipped)) {
     		
     		if (firstPlayer) {
     			int[] choice = players[currentPlayer].determineBase(board);
@@ -168,9 +168,4 @@ public class Game {
         }
     	reset();
     }
-    
-    public boolean[] getSkipped() {
-    	return gotSkipped;
-    }
-    
 }
