@@ -13,7 +13,7 @@ import java.awt.Image;
 import javax.swing.JOptionPane;
 
 import game.player.*;
-import network.Tools;
+import tools.Tools;
 
 public class Game {
 

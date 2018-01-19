@@ -5,17 +5,17 @@
  * @version 0.1
  */
 
-package network;
+package tools;
 
 import java.awt.Graphics;
-//import java.awt.Graphics2D;
-//import java.awt.GraphicsConfiguration;
-//import java.awt.GraphicsDevice;
-//import java.awt.GraphicsEnvironment;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-//import javax.swing.*;
+import javax.swing.*;
 
 public class Tools {
 	

@@ -27,6 +27,7 @@ public class Board {
 		if (canPlace(x, y, base, size, e)) {
 			board[x][y].change(base, size, e);
 		} else {
+			// Should never happen
 			System.out.println("Can not place");
 		}
 	}
@@ -110,7 +111,10 @@ public class Board {
 		return board[x][y];
 	}
 	
-	//returns an array of possible moves in the form x*100+y*10+size, with size 4 being a base, for a specified color
+	/*
+	 * returns an array of possible moves in the form x*100+y*10+size
+	 * with size 4 being a base, for a specified color
+	 */
 	public int[] getPossibleMoves(Color color) {
 		int[] result = new int[SIZE * SIZE * SIZE];
 		int count = 0;

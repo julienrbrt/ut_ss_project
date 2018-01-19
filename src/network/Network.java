@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;*/
 import javax.swing.*;
 
+import tools.Tools;
+
 public class Network extends JFrame {
 
 	/**
