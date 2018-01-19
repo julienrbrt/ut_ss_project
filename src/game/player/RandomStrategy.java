@@ -136,13 +136,13 @@ public class RandomStrategy implements Strategy {
     		return result;
     	}
     	
-    	int choice = (int) Math.floor(Math.random() * (moves.length - 1));
+    	int choice = (int) Math.floor(Math.random() * moves.length);
     	int move = moves[choice];
     	result = new Object[5];
     	result[0] = (int) move / 100;
     	result[1] = (int) (move % 100) / 10;
     	result[2] = (move % 10 == 4);
-    	result[3] = move % 10;
+    	result[3] = (move % 10 == 4) ? 3 : (move % 10);
     	
     	if (multipleColors && choice >= firstArray) {
     		result[4] = secondColor;
