@@ -13,6 +13,7 @@ import java.awt.Image;
 import javax.swing.JOptionPane;
 
 import game.player.*;
+import gui.HumanUI;
 import tools.Tools;
 
 public class Game {
@@ -98,8 +99,13 @@ public class Game {
     requires board != null & !board.gameOver();
      */
     public void play() {
-    	/// TO FIX COLOR HANDLING
-    	int colors = 1;
+    	
+    	int colors = 0;
+    			
+    	if (players.length > 2) {
+    		colors = 1;
+    	}
+    	
     	boolean firstPlayer = true;
     	while (!board.gameOver()) {
     		if (firstPlayer) {

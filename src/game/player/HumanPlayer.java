@@ -43,8 +43,6 @@ public class HumanPlayer extends Player {
 	     		    valid = board.canPlace(x, y, true, 0, secondColor);
 	     	    }
 	     	   
-	        } else {
-	        	JOptionPane.showMessageDialog(null, "Error, fields invalid, please try-again.");
 	        }
 	        
 	        if (!valid) {
@@ -86,9 +84,8 @@ public class HumanPlayer extends Player {
 					valid = true;
 				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)) {
 					valid = true;
-				} else {
-		        	JOptionPane.showMessageDialog(null, "Error, fields invalid, please try-again.");
 				}
+	        	
 	        }
 	        
 	        if (!valid) {
