@@ -164,11 +164,13 @@ public class Board {
 		return actResult;
 	}
 	
-	public boolean gameOver() {
-		return (getPossibleMoves(Color.REDDD).length == 0 && 
-				getPossibleMoves(Color.BLUEE).length == 0 && 
-				getPossibleMoves(Color.GREEN).length == 0 && 
-				getPossibleMoves(Color.YELLO).length == 0);
+	public boolean gameOver(boolean[] skipped) {
+		for (int i = 0; i < skipped.length; i++) {
+			if (!skipped[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 		
 	public String toString() {
