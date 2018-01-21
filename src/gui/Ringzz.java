@@ -30,6 +30,8 @@ public class Ringzz extends JFrame {
 		setTitle("Ringzz");
 		setResizable(false);
 		setVisible(true);
+		// Center Window
+		setLocationRelativeTo(null);
 	}
 	
 	public void init() {
@@ -65,9 +67,6 @@ public class Ringzz extends JFrame {
 	}
 	
 	public class GameSession implements ActionListener {
-				
-		public GameSession() {
-		}
 		
 		public void actionPerformed(ActionEvent e) {
 			new gui.GameSession();
@@ -77,9 +76,6 @@ public class Ringzz extends JFrame {
 	}
 	
 	public class ServerSession implements ActionListener {
-		
-		public ServerSession() {
-		}
 		
 		public void actionPerformed(ActionEvent e) {
 			new gui.ServerSession();

@@ -4,32 +4,40 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
 
-import game.ColorUI;
 import game.Game;
 import game.player.*;
 import game.player.Color;
 
+// Observer - Observable
+import java.util.Observable;
+import java.util.Observer;
+
+//// 2 Players = Human
+//player1 = new HumanPlayer(args[i], color.getColor(1), color.getColor(1));
+//// 3 Players - Human
+//player1 = new HumanPlayer(args[i], color.getColor(3), Color.YELLO);
+//// 4 Players - Human
+//players[i] = new HumanPlayer(args[i], color.getColor(i));
+
 public class GameSession extends JFrame {
 
 	/**
-	 * Generated serialVersionUID.
+	 * Generated UID.
 	 */
 	private static final long serialVersionUID = -3990482348703734954L;
 
-	
-	// GUI handling
-	JTextField name;;
-	JTextField[] serverSettings = new JTextField[2];
-	JButton startGame = new JButton();
-	JCheckBox onlineOff = new JCheckBox();
-	JCheckBox[] aiSelect = new JCheckBox[6];
+	// GUI handling	
 	Container c = getContentPane();
-	
+
+	JPanel title = new GameSessionBasic();
+	JPanel aiSelect = new GameSessionAISelect();
+	JPanel serverSettings = new GameSessionServerSettings();
+
+	JCheckBox onlineOff = new JCheckBox();
 	
 	// Player handling
-	Player[] players;
+	Color color = Color.NONEE;	//initiated to make static calls
 	
 	public GameSession() {
 		init();
@@ -39,83 +47,78 @@ public class GameSession extends JFrame {
 		setTitle("Ringzz");
 		setResizable(false);
 		setVisible(true);
+		// Center Window
+		setLocationRelativeTo(null);
 	}
 	
 	public void init() {
-		c.setLayout(new BoxLayout(c, BoxLayout.PAGE_AXIS));
-				
+		
+		// Layout fix
+		c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
+		serverSettings.setAlignmentX(Component.CENTER_ALIGNMENT);
+		serverSettings.setPreferredSize(new Dimension(340, 340));
+		serverSettings.setMaximumSize(new Dimension(340, 340));
+		aiSelect.setAlignmentX(Component.CENTER_ALIGNMENT);
+		aiSelect.setPreferredSize(new Dimension(340, 340));
+		aiSelect.setMaximumSize(new Dimension(340, 340));
+		
 		// Set name text field
-		JLabel l = new JLabel("Name: ", JLabel.TRAILING);
-		c.add(l);
-		name = new JTextField();
-		name.setPreferredSize(new Dimension(100, 25));
-		l.setLabelFor(name);
-		c.add(name);
-
-		// Set start button
-		startGame = new JButton();
-		startGame.setText("Start");
-		startGame.addActionListener(new StartGame());
-		c.add(startGame);
+		title.setPreferredSize(new Dimension(300, 75));
+		c.add(title);
+		
+		// Add Server settings and center
+		c.add(serverSettings);
 		
 		// Set offline switch
 		onlineOff = new JCheckBox("Offline");
-		c.add(onlineOff);
 		onlineOff.addActionListener(new OnlineOff());
+		c.add(onlineOff);
+		
+		JButton start = new JButton("Start");
+		start.addActionListener(new StartGame());
+		c.add(start);
 	
-		// Layout panel
 	}
 	
 	// Starting game handler
 	public class StartGame implements ActionListener {
 		
-		public StartGame() {
-			
-		}
 		
+		Player[] aiPlayers;
+		Player[] players = new Player[1];
+		
+		public StartGame() {
+		}
+	
 		public void actionPerformed(ActionEvent e) {
-			Game game = new Game(players);
-			game.play();
-			// Close Window
-			dispose();
+			
+			if (players.length < 2) { // Check Minimum players
+	        	JOptionPane.showMessageDialog(null, "A minimum of two players is required to play offline.");
+			} else {
+				Game game = new Game(players);
+				game.play();
+				// Close Window
+				dispose();
+			}
 		}
 	}
 
 	// Online / Offline management
 	public class OnlineOff implements ActionListener {
-		
-		JLabel l;
-		String[] labels = {"IP: ", "Port: "};
-		
-		public OnlineOff() {
-		}
-		
+
 		public void actionPerformed(ActionEvent e) {
-			
+						
 			if (onlineOff.isSelected()) {
-				// Generate Random AI buttons
-				for (int x = 0; x < aiSelect.length / 2; x++) {
-					aiSelect[x] = new JCheckBox();
-					aiSelect[x].setText("" + (x + 1) + "");
-					c.add(aiSelect[x]);
-					startGame.addActionListener(new RandomAI());
-				}
 				
-				// Generate Smart AI buttons
-				for (int x = 3; x < aiSelect.length; x++) {
-					aiSelect[x] = new JCheckBox();
-					aiSelect[x].setText("" + (x - 2) + "");
-					c.add(aiSelect[x]);
-					startGame.addActionListener(new SmartAI());
-				}
+				// Remove Server selection
+				c.remove(serverSettings);
 				
-				// Remove IP and Port buttons
-				for (int x = 0; x < serverSettings.length; x++) {
-					if (serverSettings[x] != null) {
-						c.remove(l);
-						c.remove(serverSettings[x]);
-					}
-				}
+				// Add AI Selection
+				c.add(aiSelect);
+				
+				// Offline always bottom-1
+				c.remove(onlineOff);
+				c.add(onlineOff);
 								
 				// Refresh the frame
 				revalidate();
@@ -123,20 +126,16 @@ public class GameSession extends JFrame {
 				
 			} else {
 				
-				// Delete all AI buttons
-				for (int x = 0; x < aiSelect.length; x++) {
-					c.remove(aiSelect[x]);
-				}
+				// Add Server selection
+				c.remove(serverSettings); // remove to be sure
+				c.add(serverSettings);
 				
-				// Add IP and Port buttons
-				for (int x = 0; x < serverSettings.length; x++) {
-					l = new JLabel(labels[x], JLabel.TRAILING);
-					c.add(l);
-					serverSettings[x] = new JTextField();
-					serverSettings[x].setPreferredSize(new Dimension(100, 25));
-		            l.setLabelFor(serverSettings[x]);
-					c.add(serverSettings[x]);
-				}
+				// Remove AI selection
+				c.remove(aiSelect);
+				
+				// Offline always bottom-1
+				c.remove(onlineOff);
+				c.add(onlineOff);
 				
 				// Refresh the frame
 				revalidate();
@@ -145,28 +144,5 @@ public class GameSession extends JFrame {
 			
 		}
 		
-	}
-	
-	// Random AI handler
-	public class RandomAI implements ActionListener {
-		public RandomAI() {
-			
-		}
-		
-		public void actionPerformed(ActionEvent e) {
-			
-		}
-	}
-	
-	// Smart AI handler
-	public class SmartAI implements ActionListener {
-		
-		public SmartAI() {
-			
-		}
-		
-		public void actionPerformed(ActionEvent e) {
-			
-		}
 	}
 }
