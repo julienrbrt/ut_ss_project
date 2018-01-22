@@ -86,4 +86,8 @@ public class Tile {
 		}
 		return false;
 	}
+	
+	public boolean hasBase() {
+		return (tile[0].getGroup()==Color.Group.BASE);
+	}
 }

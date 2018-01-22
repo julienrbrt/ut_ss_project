@@ -60,6 +60,14 @@ public class Board {
 				highY = ((y + 1) > 4) ? 4 : y + 1;
 				lowY = ((y - 1) < 0) ? 0 : y - 1;
 				
+				if (board[x][y].hasBase() ||
+						board[lowX][y].hasBase() ||
+						board[highX][y].hasBase() ||
+						board[x][lowY].hasBase() ||
+						board[x][highY].hasBase()) {
+					return false;
+				}
+				
 				if (board[x][y].contains(color.getColGroup()) ||
 						board[lowX][y].contains(color.getColGroup()) || 
 						board[highX][y].contains(color.getColGroup()) || 
