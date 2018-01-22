@@ -93,7 +93,7 @@ public class GameSessionAISelect extends JPanel {
 	}
 	
 	// AI handler - Observable / Observer
-	public class AI extends Observable implements ActionListener {
+	public class AI extends Observable implements ActionListener, Runnable {
 		
 		Player player2;
 		Player player3;
@@ -145,36 +145,36 @@ public class GameSessionAISelect extends JPanel {
 			
 			// Game 2 Players
 			if (oneR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(), color.getColor(1),
-						color.getColor(1));
+				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE,
+						Color.GREEN);
 			} else if (oneS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), color.getColor(1),
-						color.getColor(1));
+				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE,
+						Color.GREEN);
 			} else if (oneR.isSelected() && oneS.isSelected()) { // Game 3 Players
-				player2 = new ComputerPlayer(new RandomStrategy(), color.getColor(1), Color.YELLO);
-				player3 = new ComputerPlayer(new SmartStrategy(), color.getColor(2), Color.YELLO);
+				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE, Color.YELLO);
+				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN, Color.YELLO);
 			} else if (twoR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(), color.getColor(1), Color.YELLO);
-				player3 = new ComputerPlayer(new RandomStrategy(), color.getColor(2), Color.YELLO);
+				player2 = new ComputerPlayer(new RandomStrategy(),  Color.BLUEE, Color.YELLO);
+				player3 = new ComputerPlayer(new RandomStrategy(), Color.GREEN, Color.YELLO);
 			} else if (twoS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), color.getColor(1), Color.YELLO);
-				player3 = new ComputerPlayer(new SmartStrategy(), color.getColor(2), Color.YELLO);
+				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE, Color.YELLO);
+				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN, Color.YELLO);
 			} else if (twoR.isSelected() && oneS.isSelected()) { // Game 4 Players
-				player2 = new ComputerPlayer(new RandomStrategy(), color.getColor(1));
-				player3 = new ComputerPlayer(new RandomStrategy(), color.getColor(2));
-				player4 = new ComputerPlayer(new SmartStrategy(), color.getColor(3));
+				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE);
+				player3 = new ComputerPlayer(new RandomStrategy(), Color.GREEN);
+				player4 = new ComputerPlayer(new SmartStrategy(), Color.YELLO);
 			} else if (twoS.isSelected() && oneR.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), color.getColor(1));
-				player3 = new ComputerPlayer(new SmartStrategy(), color.getColor(2));
-				player4 = new ComputerPlayer(new RandomStrategy(), color.getColor(3));
+				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE);
+				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN);
+				player4 = new ComputerPlayer(new RandomStrategy(), Color.YELLO);
 			} else if (threeR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(), color.getColor(1));
-				player3 = new ComputerPlayer(new RandomStrategy(), color.getColor(2));
-				player4 = new ComputerPlayer(new RandomStrategy(), color.getColor(3));
+				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE);
+				player3 = new ComputerPlayer(new RandomStrategy(), Color.GREEN);
+				player4 = new ComputerPlayer(new RandomStrategy(), Color.YELLO);
 			} else if (threeS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), color.getColor(1));
-				player3 = new ComputerPlayer(new SmartStrategy(), color.getColor(2));
-				player4 = new ComputerPlayer(new SmartStrategy(), color.getColor(3));
+				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE);
+				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN);
+				player4 = new ComputerPlayer(new SmartStrategy(), Color.YELLO);
 			} else { // Not selected
 	        	JOptionPane.showMessageDialog(null,
 	        			"A minimum of two players is required to play offline.");
@@ -183,10 +183,14 @@ public class GameSessionAISelect extends JPanel {
 			aiPlayers[0] = player2;
 			aiPlayers[1] = player3;
 			aiPlayers[2] = player4;
-						
+			
+		}
+		
+	    public void run() {
 			setChanged();
             notifyObservers(aiPlayers);
-		}
+	    }
+
 	}
 
 }

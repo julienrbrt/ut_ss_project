@@ -9,19 +9,14 @@ import game.Game;
 import game.player.*;
 import game.player.Color;
 
+import gui.GameSessionAISelect.AI;
+
 // Observer - Observable
 import java.util.Observable;
 import java.util.Observer;
 
-//// 2 Players = Human
-//player1 = new HumanPlayer(args[i], color.getColor(1), color.getColor(1));
-//// 3 Players - Human
-//player1 = new HumanPlayer(args[i], color.getColor(3), Color.YELLO);
-//// 4 Players - Human
-//players[i] = new HumanPlayer(args[i], color.getColor(i));
-
 public class GameSession extends JFrame {
-
+	
 	/**
 	 * Generated UID.
 	 */
@@ -83,14 +78,45 @@ public class GameSession extends JFrame {
 	// Starting game handler
 	public class StartGame implements ActionListener {
 		
-		
 		Player[] aiPlayers;
-		Player[] players = new Player[1];
+		Player[] players;
 		
 		public StartGame() {
 		}
 	
 		public void actionPerformed(ActionEvent e) {
+			
+		
+			GameSessionAISelect selectAI = new GameSessionAISelect();
+			AI ai = selectAI.new AI();
+
+			ai.addObserver(new Observer() {
+	            public void update(Observable obj, Object arg) {
+	            	
+	            	
+	            	// Null pointer error
+	            	// aiPlayers isn't cleaned and maybe null assigned
+	            	
+	                aiPlayers = (Player[]) arg;
+	               
+	    			players = new Player[aiPlayers.length + 1];
+	    			
+	    			if (players.length == 2) {
+	    				players[0] = new HumanPlayer("Name", Color.REDDD, Color.YELLO);
+	    			} else if (players.length == 3) {
+	    				players[0] = new HumanPlayer("Name", Color.REDDD, Color.YELLO);
+	    			} else {
+	    				players[0] = new HumanPlayer("Name", Color.REDDD);
+	    			}
+	    			
+	    			for (int x = 1; x < aiPlayers.length + 1; x++) {
+	    				players[x] = aiPlayers[x - 1];
+	    			}
+	    			
+	            }
+	        });
+			
+			new Thread(ai).start();
 			
 			if (players.length < 2) { // Check Minimum players
 	        	JOptionPane.showMessageDialog(null, "A minimum of two players is required to play offline.");
