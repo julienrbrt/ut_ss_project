@@ -134,7 +134,7 @@ public class Game {
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
     		
-//	    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
+	    		JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
 	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
 	    		
 	    		// Skip player if no possible choices
@@ -143,8 +143,7 @@ public class Game {
 		            		(Integer) choice[1],
 		            		(Boolean) choice[2],
 		            		(Integer) choice[3],
-		            		(Color) choice[4]);
-		    		
+		            		(Color) choice[4]);		    		
 		           	// Get previous button images
 					merged = emptyButton;
 		           	for (int i = 3; i >= 0; i--) {
@@ -161,6 +160,7 @@ public class Game {
 					gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
 					System.out.println(board.toString());
 	    		} else {
+	    			System.out.println("Player" + currentPlayer + " have been skipped.");
 	    			gotSkipped[currentPlayer] = true;
 	    		}
     		}

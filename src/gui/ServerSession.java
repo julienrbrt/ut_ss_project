@@ -13,28 +13,24 @@ import java.io.PrintStream;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-public class ServerSession extends JFrame {
+public class ServerSession {
 	
-	/**
-	 * Generated UID.
-	 */
-	private static final long serialVersionUID = -8611100590707359106L;
-
+	private final JFrame frameSS = new JFrame();
+	
   	public ServerSession() {
-  		super();
-	    setSize(600, 600);
-	    setResizable(false);
-	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+  		frameSS.setSize(600, 600);
+  		frameSS.setResizable(false);
+  		frameSS.setDefaultCloseOperation(frameSS.EXIT_ON_CLOSE);
 	}
 	
 	public static void main(String[] args) {
 	    Console console = new Console();
 	    console.init();
 	    ServerSession launcher = new ServerSession();
-	    launcher.setVisible(true);
+	    launcher.frameSS.setVisible(true);
 	    console.getFrame().setLocation(
-	        launcher.getX() + launcher.getWidth() + launcher.getInsets().right,
-	        launcher.getY());
+	        launcher.frameSS.getX() + launcher.frameSS.getWidth() + launcher.frameSS.getInsets().right,
+	        launcher.frameSS.getY());
 	}
 }
 

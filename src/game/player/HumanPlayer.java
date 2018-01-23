@@ -48,7 +48,7 @@ public class HumanPlayer extends Player {
 	        }
 	        
 	        if (!valid) {
-	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try-again");
+	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try again");
 	        }
         }
         
@@ -94,7 +94,7 @@ public class HumanPlayer extends Player {
 	        }
 	        
 	        if (!valid) {
-	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try-again");
+	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try again");
 	        }
         }
         
