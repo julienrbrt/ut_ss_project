@@ -90,11 +90,11 @@ public class GameSession extends JFrame {
 	    			players = new Player[aiPlayers.length + 1];
 	    			
 	    			if (players.length == 2) {
-	    				players[0] = new HumanPlayer("Name", Color.REDDD, Color.YELLO);
+	    				players[0] = new HumanPlayer("Name", Color.REDDD, Color.YELLO, 0);
 	    			} else if (players.length == 3) {
-	    				players[0] = new HumanPlayer("Name", Color.REDDD, Color.YELLO);
+	    				players[0] = new HumanPlayer("Name", Color.REDDD, Color.YELLO, 0);
 	    			} else {
-	    				players[0] = new HumanPlayer("Name", Color.REDDD);
+	    				players[0] = new HumanPlayer("Name", Color.REDDD, 0);
 	    			}
 	    			
 	    			for (int x = 1; x < aiPlayers.length + 1; x++) {

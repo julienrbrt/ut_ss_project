@@ -39,10 +39,10 @@ public class HumanPlayer extends Player {
 	     	    x = Integer.parseInt(startX);
 	     	    y = Integer.parseInt(startY);
 	     
-	     	    if (board.canPlace(x, y, true, 0, firstColor)) {
+	     	    if (board.canPlace(x, y, true, 0, firstColor, playerNumber)) {
 	     		    valid = true;
 	     	    } else if (secondColor != null) {
-	     		    valid = board.canPlace(x, y, true, 0, secondColor);
+	     		    valid = board.canPlace(x, y, true, 0, secondColor, playerNumber);
 	     	    }
 	     	   
 	        }

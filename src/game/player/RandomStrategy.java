@@ -11,6 +11,12 @@ import game.*;
 
 public class RandomStrategy implements Strategy {
 	
+	int playerNumber;
+	
+	public RandomStrategy(int playerNumber) {
+		this.playerNumber = playerNumber;
+	}
+	
 	/**
 	 * @see game.player.Strategy#getName()
 	 * @return the name of the Strategy
@@ -40,9 +46,9 @@ public class RandomStrategy implements Strategy {
     	
     	//setup
     	if (multipleColors) {
-    		int[] tempMoves = board.getPossibleMoves(firstColor);
+    		int[] tempMoves = board.getPossibleMoves(firstColor, playerNumber);
     		firstArray = tempMoves.length;
-    		int[] tempMoves2 = board.getPossibleMoves(secondColor);
+    		int[] tempMoves2 = board.getPossibleMoves(secondColor, playerNumber);
     		moves = new int[firstArray + tempMoves2.length];
     		for (int i = 0; i < firstArray; i++) {	//concatenate arrays
     			moves[i] = tempMoves[i];
@@ -51,7 +57,7 @@ public class RandomStrategy implements Strategy {
     			}
     		}
     	} else {
-    		moves = board.getPossibleMoves(firstColor);
+    		moves = board.getPossibleMoves(firstColor, playerNumber);
     		firstArray = moves.length;
     	}
     	

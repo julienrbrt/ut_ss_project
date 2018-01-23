@@ -46,12 +46,7 @@ public class Board {
 	// ------------- Commands ----------------------------------------------
 
 	public void addRing(int x, int y, boolean base, int size, Color e) {
-		if (canPlace(x, y, base, size, e)) {
-			board[x][y].change(base, size, e);
-		} else {
-			// Should never happen
-			System.out.println("Can not place");
-		}
+		board[x][y].change(base, size, e);
 	}
 	
 	public void addHome(int x, int y) {
@@ -149,12 +144,12 @@ public class Board {
 	 * returns an array of possible moves in the form x*100+y*10+size
 	 * with size 4 being a base, for a specified color
 	 */
-	public int[] getPossibleMoves(Color color) {
+	public int[] getPossibleMoves(Color color, int playerNumber) {
 		int[] result = new int[SIZE * SIZE * SIZE];
 		int count = 0;
 		int[] actResult;
 		for (int size = 0; size < 4; size++) {
-			actResult = getPossibleMoves(color, false, size);
+			actResult = getPossibleMoves(color, false, size, playerNumber);
 			if (actResult.length > 0) {
 				for (int i = 0; i < actResult.length; i++) {
 					result[count] = (actResult[i] * 10) + size;
@@ -163,7 +158,7 @@ public class Board {
 			}
 		}
 		
-		actResult = getPossibleMoves(color, true, 0);
+		actResult = getPossibleMoves(color, true, 0, playerNumber);
 		if (actResult.length > 0) {
 			for (int i = 0; i < actResult.length; i++) {
 				result[count] = (actResult[i] * 10) + 4;
@@ -184,12 +179,12 @@ public class Board {
 	 */
 	
 	//returns an array of possible moves in the form x*10+y, for the given size and color
-	public int[] getPossibleMoves(Color color, boolean base, int size) {
+	public int[] getPossibleMoves(Color color, boolean base, int size, int playerNumber) {
 		int[] result = new int[SIZE * SIZE];
 		int count = 0;
 		for (int x = 0; x < SIZE; x++) {
 			for (int y = 0; y < SIZE; y++) {
-				if (canPlace(x, y, base, size, color)) {
+				if (canPlace(x, y, base, size, color, playerNumber)) {
 					result[count] = (x * 10) + y;
 					count++;
 				}

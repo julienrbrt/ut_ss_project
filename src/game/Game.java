@@ -134,13 +134,8 @@ public class Game {
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
     		
-<<<<<<< HEAD
-	    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
-	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount, currentPlayer);
-=======
 //	    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
 	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
->>>>>>> branch 'master' of https://git.snt.utwente.nl/ss-17-121/ringgz.git
 	    		
 	    		// Skip player if no possible choices
 	    		if (choice.length != 0) {

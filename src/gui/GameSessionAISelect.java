@@ -141,36 +141,36 @@ public class GameSessionAISelect extends JPanel {
 			
 			// Game 2 Players
 			if (oneR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE,
-						Color.GREEN);
+				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE,
+						Color.GREEN, 1);
 			} else if (oneS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE,
-						Color.GREEN);
+				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE,
+						Color.GREEN, 1);
 			} else if (oneR.isSelected() && oneS.isSelected()) { // Game 3 Players
-				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE, Color.YELLO);
-				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN, Color.YELLO);
+				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE, Color.YELLO, 1);
+				player3 = new ComputerPlayer(new SmartStrategy(2), Color.GREEN, Color.YELLO, 2);
 			} else if (twoR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(),  Color.BLUEE, Color.YELLO);
-				player3 = new ComputerPlayer(new RandomStrategy(), Color.GREEN, Color.YELLO);
+				player2 = new ComputerPlayer(new RandomStrategy(1),  Color.BLUEE, Color.YELLO, 1);
+				player3 = new ComputerPlayer(new RandomStrategy(2), Color.GREEN, Color.YELLO, 2);
 			} else if (twoS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE, Color.YELLO);
-				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN, Color.YELLO);
+				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE, Color.YELLO, 1);
+				player3 = new ComputerPlayer(new SmartStrategy(2), Color.GREEN, Color.YELLO, 2);
 			} else if (twoR.isSelected() && oneS.isSelected()) { // Game 4 Players
-				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE);
-				player3 = new ComputerPlayer(new RandomStrategy(), Color.GREEN);
-				player4 = new ComputerPlayer(new SmartStrategy(), Color.YELLO);
+				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE, 1);
+				player3 = new ComputerPlayer(new RandomStrategy(2), Color.GREEN, 2);
+				player4 = new ComputerPlayer(new SmartStrategy(3), Color.YELLO, 3);
 			} else if (twoS.isSelected() && oneR.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE);
-				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN);
-				player4 = new ComputerPlayer(new RandomStrategy(), Color.YELLO);
+				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE, 1);
+				player3 = new ComputerPlayer(new SmartStrategy(2), Color.GREEN, 2);
+				player4 = new ComputerPlayer(new RandomStrategy(3), Color.YELLO, 3);
 			} else if (threeR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(), Color.BLUEE);
-				player3 = new ComputerPlayer(new RandomStrategy(), Color.GREEN);
-				player4 = new ComputerPlayer(new RandomStrategy(), Color.YELLO);
+				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE, 1);
+				player3 = new ComputerPlayer(new RandomStrategy(2), Color.GREEN, 2);
+				player4 = new ComputerPlayer(new RandomStrategy(3), Color.YELLO, 3);
 			} else if (threeS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(), Color.BLUEE);
-				player3 = new ComputerPlayer(new SmartStrategy(), Color.GREEN);
-				player4 = new ComputerPlayer(new SmartStrategy(), Color.YELLO);
+				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE, 1);
+				player3 = new ComputerPlayer(new SmartStrategy(2), Color.GREEN, 2);
+				player4 = new ComputerPlayer(new SmartStrategy(3), Color.YELLO, 3);
 			} else { // Not selected
 	        	JOptionPane.showMessageDialog(null,
 	        			"A minimum of two players is required to play offline.");
