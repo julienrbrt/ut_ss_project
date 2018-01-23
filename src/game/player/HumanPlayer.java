@@ -9,21 +9,19 @@ public class HumanPlayer extends Player {
 	
 	private Color firstColor;
 	private Color secondColor;
-	private final int playerNumber;
 	
 	// Constructor for one color
-	public HumanPlayer(String name, Color firstColor, int playerNumber) {
-		super(name, firstColor, playerNumber);
+	public HumanPlayer(String name, Color firstColor) {
+		super(name, firstColor);
 		this.firstColor = firstColor;
-		this.playerNumber = playerNumber;
+		
 	}
 	
 	// Constructor for two colors
-	public HumanPlayer(String name, Color firstColor, Color secondColor, int playerNumber) {
-		super(name, firstColor, secondColor, playerNumber);
+	public HumanPlayer(String name, Color firstColor, Color secondColor) {
+		super(name, firstColor, secondColor);
 		this.firstColor = firstColor;
 		this.secondColor = secondColor;
-		this.playerNumber = playerNumber;
 	}
 	
 	public int[] determineBase(Board board) {
@@ -39,10 +37,10 @@ public class HumanPlayer extends Player {
 	     	    x = Integer.parseInt(startX);
 	     	    y = Integer.parseInt(startY);
 	     
-	     	    if (board.canPlace(x, y, true, 0, firstColor, playerNumber)) {
+	     	    if (board.canPlace(x, y, true, 0, firstColor, 0)) {
 	     		    valid = true;
 	     	    } else if (secondColor != null) {
-	     		    valid = board.canPlace(x, y, true, 0, secondColor, playerNumber);
+	     		    valid = board.canPlace(x, y, true, 0, secondColor, 0);
 	     	    }
 	     	   
 	        }
@@ -56,7 +54,7 @@ public class HumanPlayer extends Player {
   	    return choice;
 	} 
 	
-	public Object[] determineMove(Board board, int colorAmount) {
+	public Object[] determineMove(Board board, int colorAmount, int currentPlayer) {
 	
         boolean valid = false;
         boolean base = false;
@@ -83,10 +81,10 @@ public class HumanPlayer extends Player {
 	        	
 	        	ringSize = Integer.parseInt(giveRingSize);
 
-	        	if (board.canPlace(x, y, base, ringSize, firstColor, playerNumber)) {
+	        	if (board.canPlace(x, y, base, ringSize, firstColor, currentPlayer)) {
 	        		color = firstColor;
 					valid = true;
-				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor, playerNumber)) {
+				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor, currentPlayer)) {
 					color = secondColor;
 					valid = true;
 				}

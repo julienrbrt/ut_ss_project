@@ -34,8 +34,8 @@ public class Board {
     	slots = playerRings.length/playerAmount;	//10 for 2 players, 10 for 3 players, 5 for 4 players
     	
     	//fill playerRings with right values, depending on amount of players
-    	for(int i = 0; i < playerRings.length; i++) {
-    		if(playerAmount == 3 && (i % 10 > 4)) {
+    	for (int i = 0; i < playerRings.length; i++) {
+    		if (playerAmount == 3 && (i % 10 > 4)) {
     			playerRings[i] = 1;
     		} else {
     			playerRings[i] = 3;
