@@ -65,7 +65,7 @@ public class HumanUI {
 		boardButtons[x][y].setPressedIcon(rings);
 		boardButtons[x][y].setDisabledIcon(rings);
 		c.add(boardButtons[x][y]);
-		boardButtons[x][y].addMouseListener(new UserBoard(x, y));
+//		boardButtons[x][y].addMouseListener(new UserBoard(x, y));
 		
 	}
 

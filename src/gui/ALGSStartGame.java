@@ -50,7 +50,7 @@ public class ALGSStartGame implements ActionListener {
     			if ((players.length == 2 || players.length == 3) && playerName.equals("SMART")) {
     				players[0] = new ComputerPlayer(new SmartStrategy(0), Color.REDDD, Color.YELLO, 0);
     			} else if (players.length == 4 && playerName.equals("SMART")) {
-    				players[0] = new ComputerPlayer(new SmartStrategy(0), Color.YELLO, 0);
+    				players[0] = new ComputerPlayer(new SmartStrategy(0), Color.REDDD, 0);
     			}
     			
     			if ((players.length == 2 || players.length == 3) && playerName.equals("RANDOM")) {

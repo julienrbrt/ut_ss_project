@@ -121,15 +121,17 @@ public class Game {
         		colorUI = new ColorUI(null, true, 0);
            		buttonImage = colorUI.getColorUI();
         		merged = Tools.mergeImg(emptyButton, buttonImage);
-        		
-    	        colorUI = new ColorUI(null, false, 0);
-        		emptyButton = colorUI.getColorUI();
 				System.out.println(board.toString());
  
         		gui.updateButton(choice[0], choice[1], merged);
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % players.length;
+    		
+           	// Get previous button images
+    		emptyButton = new ColorUI(null, false, 0).getColorUI();
+			merged = emptyButton;
+			buttonImage = emptyButton;
     		
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
@@ -143,31 +145,27 @@ public class Game {
 		            		(Integer) choice[1],
 		            		(Boolean) choice[2],
 		            		(Integer) choice[3],
-		            		(Color) choice[4]);		    		
-		           	// Get previous button images
-					merged = emptyButton;
-		           	for (int i = 3; i >= 0; i--) {
-		           		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i);
-		           		            		
+		            		(Color) choice[4]);
+		           	for (int i = 0; i < 4; i++) {
+		           		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i); 		
 		           		if (color != Color.NONEE && color != null) {
 		           			colorUI = new ColorUI(color, (Boolean) choice[2], i);
 		           			buttonImage = colorUI.getColorUI();
 		           		}
-		            		
-		           		merged = Tools.mergeImg(merged, buttonImage);
-		     
+		           		merged = Tools.mergeImg(merged, buttonImage);		     
 		           	}
 					gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
 					System.out.println(board.toString());
 	    		} else {
 	    			if (!gotSkipped[currentPlayer]) {
-	    				JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " has already lost.");
+	    				JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " cannot move again.");
 	    			}
 	    			System.out.println(players[currentPlayer].getName() + " has been skipped.");
 	    			gotSkipped[currentPlayer] = true;
 	    		}
     		}
         }
+    	// add info about winner
     	reset();
     }
 }
