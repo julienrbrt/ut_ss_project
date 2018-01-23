@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +19,7 @@ public class GameSessionBasic extends JPanel {
 	private static final long serialVersionUID = 1194727121599067942L;
 	private JTextField txtUsername;
 	
-	String username = "Player1";
+	String username = "Change Me";
 
 	/**
 	 * Create the panel.
@@ -27,17 +29,21 @@ public class GameSessionBasic extends JPanel {
 		JLabel lblRingzz = new JLabel("RINGZZ");
 		lblRingzz.setFont(new Font("Dialog", Font.BOLD, 20));
 		
+		JButton btnNewButton = new JButton("Start");
+		
 		txtUsername = new JTextField();
-		txtUsername.setText("Player1");
+		txtUsername.setText(username);
 		txtUsername.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				username = txtUsername.getText();
+				// Add button only if username change
+				if (username.contains(" ")) {
+					JOptionPane.showMessageDialog(null, "Spaces are not allowed in username.");
+				}
+				btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, username));
 			} }
 		);
 		txtUsername.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, username));
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
