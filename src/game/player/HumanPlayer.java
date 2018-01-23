@@ -37,10 +37,10 @@ public class HumanPlayer extends Player {
 	     	    x = Integer.parseInt(startX);
 	     	    y = Integer.parseInt(startY);
 	     
-	     	    if (board.canPlace(x, y, true, 0, firstColor)) {
+	     	    if (board.canPlace(x, y, true, 0, firstColor, 0)) {
 	     		    valid = true;
 	     	    } else if (secondColor != null) {
-	     		    valid = board.canPlace(x, y, true, 0, secondColor);
+	     		    valid = board.canPlace(x, y, true, 0, secondColor, 0);
 	     	    }
 	     	   
 	        }
@@ -54,13 +54,14 @@ public class HumanPlayer extends Player {
   	    return choice;
 	} 
 	
-	public Object[] determineMove(Board board, int colorAmount) {
+	public Object[] determineMove(Board board, int colorAmount, int currentPlayer) {
 	
         boolean valid = false;
         boolean base = false;
 		int x = 0;
 		int y = 0;
 		int ringSize = 0;
+		Color color = Color.NONEE;
         
         while (!valid) {
         	String giveX = JOptionPane.showInputDialog(null, "Give X");
@@ -80,9 +81,11 @@ public class HumanPlayer extends Player {
 	        	
 	        	ringSize = Integer.parseInt(giveRingSize);
 
-	        	if (board.canPlace(x, y, base, ringSize, firstColor)) {
+	        	if (board.canPlace(x, y, base, ringSize, firstColor, currentPlayer)) {
+	        		color = firstColor;
 					valid = true;
-				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor)) {
+				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor, currentPlayer)) {
+					color = secondColor;
 					valid = true;
 				}
 	        	
@@ -93,7 +96,7 @@ public class HumanPlayer extends Player {
 	        }
         }
         
-        Object[] choice = {x, y, base, ringSize};
+        Object[] choice = {x, y, base, ringSize, color};
         return choice;
         
 	}
