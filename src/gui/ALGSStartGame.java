@@ -10,9 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import game.Game;
+import game.player.*;
 import game.player.Color;
-import game.player.HumanPlayer;
-import game.player.Player;
 
 // Start Offline Game Session
 public class ALGSStartGame implements ActionListener {
@@ -42,12 +41,22 @@ public class ALGSStartGame implements ActionListener {
                
     			players = new Player[aiPlayers.length + 1];
     			
-    			if (players.length == 2) {
-    				players[0] = new HumanPlayer(playerName, Color.REDDD, Color.YELLO, 0);
-    			} else if (players.length == 3) {
+    			if (players.length == 2 || players.length == 3) {
     				players[0] = new HumanPlayer(playerName, Color.REDDD, Color.YELLO, 0);
     			} else {
     				players[0] = new HumanPlayer(playerName, Color.REDDD, 0);
+    			}
+    			
+    			if ((players.length == 2 || players.length == 3) && playerName.equals("SMART")) {
+    				players[0] = new ComputerPlayer(new SmartStrategy(0), Color.REDDD, Color.YELLO, 0);
+    			} else if (players.length == 4 && playerName.equals("SMART")) {
+    				players[0] = new ComputerPlayer(new SmartStrategy(0), Color.YELLO, 0);
+    			}
+    			
+    			if ((players.length == 2 || players.length == 3) && playerName.equals("RANDOM")) {
+    				players[0] = new ComputerPlayer(new RandomStrategy(0), Color.REDDD, Color.YELLO, 0);
+    			} else if (players.length == 4 && playerName.equals("RANDOM")) {
+    				players[0] = new ComputerPlayer(new RandomStrategy(0), Color.REDDD, 0);
     			}
     			
     			for (int x = 1; x < aiPlayers.length + 1; x++) {

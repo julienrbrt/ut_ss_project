@@ -3,6 +3,9 @@ package gui;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,11 +14,10 @@ import javax.swing.GroupLayout.Alignment;
 
 public class GameSessionBasic extends JPanel {
 	
-	/**
-	 * Generated UID.
-	 */
 	private static final long serialVersionUID = 1194727121599067942L;
 	private JTextField txtUsername;
+	
+	String username = "Player1";
 
 	/**
 	 * Create the panel.
@@ -27,10 +29,15 @@ public class GameSessionBasic extends JPanel {
 		
 		txtUsername = new JTextField();
 		txtUsername.setText("Player1");
+		txtUsername.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				username = txtUsername.getText();
+			} }
+		);
 		txtUsername.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Start");
-		btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, txtUsername.getText()));
+		btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, username));
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

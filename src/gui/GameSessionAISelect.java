@@ -141,11 +141,9 @@ public class GameSessionAISelect extends JPanel {
 			
 			// Game 2 Players
 			if (oneR.isSelected()) {
-				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE,
-						Color.GREEN, 1);
+				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE, Color.GREEN, 1);
 			} else if (oneS.isSelected()) {
-				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE,
-						Color.GREEN, 1);
+				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE, Color.GREEN, 1);
 			} else if (oneR.isSelected() && oneS.isSelected()) { // Game 3 Players
 				player2 = new ComputerPlayer(new RandomStrategy(1), Color.BLUEE, Color.YELLO, 1);
 				player3 = new ComputerPlayer(new SmartStrategy(2), Color.GREEN, Color.YELLO, 2);

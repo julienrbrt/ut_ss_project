@@ -26,7 +26,7 @@ public class Board {
 		players = player;
 		playerAmount = amount;
 		
-		if(playerAmount == 3) {
+		if (playerAmount == 3) {
     		playerRings = new int[30];
     	} else {
     		playerRings = new int[20];
@@ -120,24 +120,13 @@ public class Board {
 	public int getSize() {
 		return SIZE;
 	}
-	
-//	public boolean isBoardEmpty() {
-//		for (int x = 0; x < (Board.SIZE); x++) {
-//			for (int y = 0; y < (Board.SIZE); y++) {
-//				if (!board[x][y].isTileEmpty()) {
-//					return false;
-//				}
-//			}
-//		}
-//		return true;
-//	}	
-	
+		
 	public Tile getTile(int x, int y) {
 		return board[x][y];
 	}
 	
 	/**
-	 * @return array of ints of 3 digits, where the first one means x, the second one means y, and the third one means ring size (ring size 4 = base)
+	 * @return array of int of 3 digits, where the first one means x, the second one means y, and the third one means ring size (ring size 4 = base)
 	 */
 	
 	/*
@@ -208,17 +197,17 @@ public class Board {
 	
 	public boolean hasRing(boolean base, int size, Color c, int currentPlayer) {
     	boolean firstColor = players[currentPlayer].getColor()[0] == c;
-    	if(base && firstColor && playerRings[slots*currentPlayer + 4] > 0) {
-    		playerRings[slots*currentPlayer + 4]--;
+    	if (base && firstColor && playerRings[slots * currentPlayer + 4] > 0) {
+    		playerRings[slots * currentPlayer + 4]--;
     		return true;
-    	} else if(base && !firstColor && playerRings[slots*currentPlayer + 9] > 0) {
-    		playerRings[slots*currentPlayer + 9]--;
+    	} else if (base && !firstColor && playerRings[slots * currentPlayer + 9] > 0) {
+    		playerRings[slots * currentPlayer + 9]--;
     		return true;
-    	} else if(!base && firstColor && playerRings[slots*currentPlayer + size] > 9) {
-    		playerRings[slots*currentPlayer + size]--;
+    	} else if (!base && firstColor && playerRings[slots * currentPlayer + size] > 9) {
+    		playerRings[slots * currentPlayer + size]--;
     		return true;
-    	} else if(!base && !firstColor && playerRings[slots*currentPlayer + size + 5] > 0) {
-    		playerRings[slots*currentPlayer + size + 5]--;
+    	} else if (!base && !firstColor && playerRings[slots * currentPlayer + size + 5] > 0) {
+    		playerRings[slots * currentPlayer + size + 5]--;
     		return true;
     	} else {
     		return false;
