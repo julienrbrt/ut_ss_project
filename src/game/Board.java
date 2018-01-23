@@ -10,15 +10,37 @@ public class Board {
 	private Tile[][] board;
 	int posCount = 0;
 	boolean start = true;
+	Player[] players;
+	int playerAmount;
+	private int[] playerRings;	//keeps track of amount of rings left per player
+	private final int slots;	//keeps track of amount of slots per player in playerRings
 	
 	// ------------- Constructor ------------------------------------------
-	public Board() {
+	public Board(int amount, Player[] player) {
 		board = new Tile[SIZE][SIZE];	//set up 2D matrix for the board
 		for (int i = 0; i < SIZE; i++) {	//fill board with empty tiles
 			for (int j = 0; j < SIZE; j++) {
 				board[i][j] = new Tile();
 			}
 		}
+		players = player;
+		playerAmount = amount;
+		
+		if(playerAmount == 3) {
+    		playerRings = new int[30];
+    	} else {
+    		playerRings = new int[20];
+    	}
+    	slots = playerRings.length/playerAmount;	//10 for 2 players, 10 for 3 players, 5 for 4 players
+    	
+    	//fill playerRings with right values, depending on amount of players
+    	for(int i = 0; i < playerRings.length; i++) {
+    		if(playerAmount == 3 && (i % 10 > 4)) {
+    			playerRings[i] = 1;
+    		} else {
+    			playerRings[i] = 3;
+    		}
+    	}
 	}
 	
 	// ------------- Commands ----------------------------------------------
@@ -36,7 +58,7 @@ public class Board {
 		board[x][y].change(true, 1, Color.SBASE);
 	}
 			
-	public boolean canPlace(int x, int y, boolean base, int size, Color color) {
+	public boolean canPlace(int x, int y, boolean base, int size, Color color, int currentPlayer) {
 		
 		int highX;
 		int lowX;
@@ -73,7 +95,7 @@ public class Board {
 						board[highX][y].contains(color.getColGroup()) || 
 						board[x][lowY].contains(color.getColGroup()) || 
 						board[x][highY].contains(color.getColGroup())) {
-					return true;
+					return hasRing(base, size, color, currentPlayer);
 				} else {
 					return false;
 				}
@@ -93,7 +115,7 @@ public class Board {
 					board[highX][y].contains(color.getColGroup()) || 
 					board[x][lowY].contains(color.getColGroup()) || 
 					board[x][highY].contains(color.getColGroup()))) {
-				return true;
+				return hasRing(base, size, color, currentPlayer);
 			} else {
 				return false;
 			}
@@ -118,6 +140,10 @@ public class Board {
 	public Tile getTile(int x, int y) {
 		return board[x][y];
 	}
+	
+	/**
+	 * @return array of ints of 3 digits, where the first one means x, the second one means y, and the third one means ring size (ring size 4 = base)
+	 */
 	
 	/*
 	 * returns an array of possible moves in the form x*100+y*10+size
@@ -153,6 +179,10 @@ public class Board {
 		return actResult;
 	}
 	
+	/**
+	 * @return array of ints of 2 digits, where the first one means x and the second one means y
+	 */
+	
 	//returns an array of possible moves in the form x*10+y, for the given size and color
 	public int[] getPossibleMoves(Color color, boolean base, int size) {
 		int[] result = new int[SIZE * SIZE];
@@ -180,6 +210,25 @@ public class Board {
 		}
 		return true;
 	}
+	
+	public boolean hasRing(boolean base, int size, Color c, int currentPlayer) {
+    	boolean firstColor = players[currentPlayer].getColor()[0] == c;
+    	if(base && firstColor && playerRings[slots*currentPlayer + 4] > 0) {
+    		playerRings[slots*currentPlayer + 4]--;
+    		return true;
+    	} else if(base && !firstColor && playerRings[slots*currentPlayer + 9] > 0) {
+    		playerRings[slots*currentPlayer + 9]--;
+    		return true;
+    	} else if(!base && firstColor && playerRings[slots*currentPlayer + size] > 9) {
+    		playerRings[slots*currentPlayer + size]--;
+    		return true;
+    	} else if(!base && !firstColor && playerRings[slots*currentPlayer + size + 5] > 0) {
+    		playerRings[slots*currentPlayer + size + 5]--;
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
 		
 	public String toString() {
 		String output = "";

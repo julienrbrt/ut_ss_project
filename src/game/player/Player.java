@@ -30,12 +30,12 @@ public abstract class Player {
      * Creates a new Player object.
      * 
      */
-    public Player(String name, Color firstColor) {
+    public Player(String name, Color firstColor, int playerNumber) {
         this.name = name;
         this.firstColor = firstColor;
     }
     
-    public Player(String name, Color firstColor, Color secondColor) {
+    public Player(String name, Color firstColor, Color secondColor, int playerNumber) {
         this.name = name;
         this.firstColor = firstColor;
         this.secondColor = secondColor;
@@ -71,6 +71,6 @@ public abstract class Player {
      */
     public abstract int[] determineBase(Board board);
     
-    public abstract Object[] determineMove(Board board, int colorsAmount, int currentPlayer);    
+    public abstract Object[] determineMove(Board board, int colorsAmount);    
      
 }
