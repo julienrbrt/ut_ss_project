@@ -56,7 +56,7 @@ public class GameSession {
 		onlineOff = new JCheckBox("Offline");
 		onlineOff.addActionListener(new OnlineOff());
 		c.add(onlineOff);
-	
+		
 	}
 	
 	// Online / Offline management
