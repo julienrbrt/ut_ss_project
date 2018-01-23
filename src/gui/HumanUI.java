@@ -4,38 +4,31 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
-import java.io.*;
 import game.player.*;
 import game.*;
 
-public class HumanUI extends JFrame {
-
-	
-	/**
-	 * Generated serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+public class HumanUI {
 	
 	// GUI handling
+	private final JFrame frameGame = new JFrame();
 	JTextArea jTextArea = new JTextArea();
 	JButton[] settingsButton = new JButton[4];
 	JButton[][] boardButtons = new JButton[Board.SIZE][Board.SIZE];
 	Image buttonImage;
 	ColorUI colorUI;
-	Container c = getContentPane();
+	Container c = frameGame.getContentPane();
 	
 	// Player Handling
 	Player[] players;
 	
 	public HumanUI() {
 		init();
-		pack();
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(700, 700);
-		setTitle("Ringzz");
-		setResizable(false);
-		setVisible(true);
+		frameGame.pack();
+		frameGame.setDefaultCloseOperation(frameGame.DISPOSE_ON_CLOSE);
+		frameGame.setSize(700, 700);
+		frameGame.setTitle("Ringzz");
+		frameGame.setResizable(false);
+		frameGame.setVisible(true);
 	}
 	
 	public void init() {

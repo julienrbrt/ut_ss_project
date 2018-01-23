@@ -4,34 +4,27 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
 
 import game.ColorUI;
-import game.player.*;
 import game.player.Color;
 
-public class Ringzz extends JFrame {
+public class Ringzz {
 
-	/**
-	 * Generated serialVersionUID.
-	 */
-	private static final long serialVersionUID = -3990482438703734954L;
-
-	
 	// GUI handling
+	private final JFrame frameMain = new JFrame();
 	JButton[] settingsButton = new JButton[2];
-	Container c = getContentPane();
+	Container c = frameMain.getContentPane();
 	
 	public Ringzz() {
 		init();
-		pack();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(700, 350);
-		setTitle("Ringzz");
-		setResizable(false);
-		setVisible(true);
+		frameMain.pack();
+		frameMain.setDefaultCloseOperation(frameMain.EXIT_ON_CLOSE);
+		frameMain.setSize(700, 350);
+		frameMain.setTitle("Ringzz");
+		frameMain.setResizable(false);
+		frameMain.setVisible(true);
 		// Center Window
-		setLocationRelativeTo(null);
+		frameMain.setLocationRelativeTo(null);
 	}
 	
 	public void init() {
@@ -71,7 +64,7 @@ public class Ringzz extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			new gui.GameSession();
 			// Close Window
-			dispose();
+			frameMain.dispose();
 		}
 	}
 	
@@ -80,7 +73,7 @@ public class Ringzz extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			new gui.ServerSession();
 			// Close Window
-			dispose();
+			frameMain.dispose();
 		}
 	}
 	

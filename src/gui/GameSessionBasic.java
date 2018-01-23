@@ -5,10 +5,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-
-import gui.GameSession.StartGame;
 
 public class GameSessionBasic extends JPanel {
 	
@@ -21,7 +20,7 @@ public class GameSessionBasic extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public GameSessionBasic() {
+	public GameSessionBasic(JFrame frameGS, JPanel panel) {
 		
 		JLabel lblRingzz = new JLabel("RINGZZ");
 		lblRingzz.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -31,7 +30,7 @@ public class GameSessionBasic extends JPanel {
 		txtUsername.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Start");
-//		btnNewButton.addActionListener(startGame);
+		btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, txtUsername.getText()));
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

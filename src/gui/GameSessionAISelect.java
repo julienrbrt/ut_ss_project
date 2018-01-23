@@ -197,7 +197,6 @@ public class GameSessionAISelect extends JPanel {
 					count++;
 				}
 			}
-			
 		}
 		
 	    public void run() {

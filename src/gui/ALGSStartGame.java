@@ -1,0 +1,72 @@
+package gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import game.Game;
+import game.player.Color;
+import game.player.HumanPlayer;
+import game.player.Player;
+
+// Start Offline Game Session
+public class ALGSStartGame implements ActionListener {
+	
+	JFrame frameGS;
+	JPanel aiSelect;
+	String playerName;
+	
+	public ALGSStartGame(JFrame frame, JPanel panel, String name) {
+		this.frameGS = frame;
+		this.aiSelect = panel;
+		this.playerName = name;
+	}
+	
+	Player[] aiPlayers;
+	Player[] players;
+	
+	public void actionPerformed(ActionEvent e) {
+	
+		GameSessionAISelect selectAI = (GameSessionAISelect) aiSelect;
+		GameSessionAISelect.AI ai = selectAI.new AI();
+
+		ai.addObserver(new Observer() {
+            public void update(Observable obj, Object arg) {
+            		            	
+                aiPlayers = (Player[]) arg;
+               
+    			players = new Player[aiPlayers.length + 1];
+    			
+    			if (players.length == 2) {
+    				players[0] = new HumanPlayer(playerName, Color.REDDD, Color.YELLO, 0);
+    			} else if (players.length == 3) {
+    				players[0] = new HumanPlayer(playerName, Color.REDDD, Color.YELLO, 0);
+    			} else {
+    				players[0] = new HumanPlayer(playerName, Color.REDDD, 0);
+    			}
+    			
+    			for (int x = 1; x < aiPlayers.length + 1; x++) {
+    				players[x] = aiPlayers[x - 1];
+    			}
+    			
+            }
+        });
+		
+		new Thread(ai).start();
+		
+		if (players.length < 2) { // Check Minimum players
+        	JOptionPane.showMessageDialog(null,
+        			"A minimum of two players is required to play offline.");
+		} else {
+			// Close Window
+			frameGS.dispose();
+			Game game = new Game(players);
+			game.play();
+		}
+	}
+}
