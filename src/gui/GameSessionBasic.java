@@ -5,8 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.FocusEvent;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -19,7 +19,7 @@ public class GameSessionBasic extends JPanel {
 	private static final long serialVersionUID = 1194727121599067942L;
 	private JTextField txtUsername;
 	
-	String username = "Change Me";
+	String username = "Player1";
 
 	/**
 	 * Create the panel.
@@ -33,15 +33,20 @@ public class GameSessionBasic extends JPanel {
 		
 		txtUsername = new JTextField();
 		txtUsername.setText(username);
-		txtUsername.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
+		txtUsername.addFocusListener(new FocusListener() {
+			public void focusGained(FocusEvent e) {
 				username = txtUsername.getText();
-				// Add button only if username change
+			}
+			
+			public void focusLost(FocusEvent e) {
+				username = txtUsername.getText();
 				if (username.contains(" ")) {
 					JOptionPane.showMessageDialog(null, "Spaces are not allowed in username.");
 				}
+				// Add button only if username change
 				btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, username));
-			} }
+			}	
+		}
 		);
 		txtUsername.setColumns(10);
 		

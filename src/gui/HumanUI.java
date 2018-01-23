@@ -46,7 +46,7 @@ public class HumanUI {
 				boardButtons[x][y].setBorder(null);
 				boardButtons[x][y].setContentAreaFilled(false);
 				boardButtons[x][y].setMargin(new Insets(0, 0, 0, 0));
-				
+								
 				// Default Empty board
 				colorUI = new ColorUI(null, false, 0);
         		buttonImage = colorUI.getColorUI();
@@ -58,56 +58,12 @@ public class HumanUI {
 	public void updateButton(int x, int y, Image merged) {
 		
 		ImageIcon rings = new ImageIcon(merged);
-		
+				
 		// Image manager
 		boardButtons[x][y].setIcon(rings);
 		boardButtons[x][y].setRolloverIcon(rings);
 		boardButtons[x][y].setPressedIcon(rings);
 		boardButtons[x][y].setDisabledIcon(rings);
-		c.add(boardButtons[x][y]);
-//		boardButtons[x][y].addMouseListener(new UserBoard(x, y));
-		
-	}
-
-	private class UserBoard implements MouseListener {
-		
-		int buttonX;
-		int buttonY;
-		
-		public UserBoard(int x, int y) {
-			buttonX = x;
-			buttonY = x;
-		}
-		
-		@Override
-		public void mouseClicked(MouseEvent ev) {
-			colorUI = new ColorUI(null, false, 0);
-			buttonImage = colorUI.getColorUI();
-			boardButtons[buttonX][buttonY].setIcon(new ImageIcon(buttonImage));
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent ev) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent ev) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent ev) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent ev) {
-			// TODO Auto-generated method stub
-			
-		}	
+		c.add(boardButtons[x][y]);		
 	}
 }

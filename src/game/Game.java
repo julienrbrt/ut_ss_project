@@ -121,15 +121,13 @@ public class Game {
         		colorUI = new ColorUI(null, true, 0);
            		buttonImage = colorUI.getColorUI();
         		merged = Tools.mergeImg(emptyButton, buttonImage);
-				System.out.println(board.toString());
- 
         		gui.updateButton(choice[0], choice[1], merged);
+				System.out.println(board.toString());
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % players.length;
     		
-           	// Get previous button images
-    		emptyButton = new ColorUI(null, false, 0).getColorUI();
+           	// Reset previous button images
 			merged = emptyButton;
 			buttonImage = emptyButton;
     		
@@ -166,6 +164,7 @@ public class Game {
     		}
         }
     	// add info about winner
+    	new WinConditions(board).calculate();
     	reset();
     }
 }

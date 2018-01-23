@@ -1,5 +1,7 @@
 package game;
 
+import javax.swing.JOptionPane;
+
 public class WinConditions {
 	
 	Board board;
@@ -113,9 +115,27 @@ public class WinConditions {
 			}
 		}
 		if (draw) {
-			System.out.println("It is a tie!");
+			JOptionPane.showMessageDialog(null, "It is a tie!");
 		} else {
-			System.out.println("The winner is " + winner + "! (0 = red, 1 = blue, 2 = green, 3 = yellow)");
+			String whowin;
+			switch (winner) {
+				case 0:
+					whowin = "RED";
+					break;
+				case 1:
+					whowin = "BLUE";
+					break;
+				case 2:
+					whowin = "GREEN";
+					break;
+				case 3:
+					whowin = "YELLOW";
+					break;
+				default:
+					whowin = "FOOLYOU";
+					break;
+			}
+			JOptionPane.showMessageDialog(null, "The winner is color" + whowin + "!");
 		}
 	}
 	
