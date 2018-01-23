@@ -104,7 +104,7 @@ public class Game {
     	
     	int colorAmount = 1;
     	
-    	if (players.length > 2) {
+    	if (players.length < 4) {
     		colorAmount = 2;
     	}
     	

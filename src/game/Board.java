@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Arrays;
+
 import game.player.*;
 
 // MVC (model)
@@ -90,7 +92,7 @@ public class Board {
 						board[highX][y].contains(color.getColGroup()) || 
 						board[x][lowY].contains(color.getColGroup()) || 
 						board[x][highY].contains(color.getColGroup())) {
-					return hasRing(base, size, color, currentPlayer);
+					return hasRing(base, size, color, currentPlayer, true);
 				} else {
 					return false;
 				}
@@ -110,7 +112,70 @@ public class Board {
 					board[highX][y].contains(color.getColGroup()) || 
 					board[x][lowY].contains(color.getColGroup()) || 
 					board[x][highY].contains(color.getColGroup()))) {
-				return hasRing(base, size, color, currentPlayer);
+				return hasRing(base, size, color, currentPlayer, true);
+			} else {
+				return false;
+			}
+		}
+	}
+	
+	public boolean canPlaceCheck(int x, int y, boolean base, int size, Color color, int currentPlayer) {
+		int highX;
+		int lowX;
+		int highY;
+		int lowY;
+		
+		// check if numbers are correct and if color exists, just in case
+		if (x > 4 || y > 4 || x < 0 || y < 0 || size < 0 || color == null) {
+			return false;
+		}
+			
+		// base placement check
+		if (base) {
+			// start base placement check
+			if (start && x > 0 && x < 4 && y > 0 && y < 4) {
+				start = false;
+				return true;
+			} else if (!start && board[x][y].isTileEmpty()) {
+				highX = ((x + 1) > 4) ? 4 : x + 1;
+				lowX = ((x - 1) < 0) ? 0 : x - 1;
+				highY = ((y + 1) > 4) ? 4 : y + 1;
+				lowY = ((y - 1) < 0) ? 0 : y - 1;
+				
+				if (board[x][y].hasBase(color) ||
+						board[lowX][y].hasBase(color) ||
+						board[highX][y].hasBase(color) ||
+						board[x][lowY].hasBase(color) ||
+						board[x][highY].hasBase(color)) {
+					return false;
+				}
+				
+				if (board[x][y].contains(color.getColGroup()) ||
+						board[lowX][y].contains(color.getColGroup()) || 
+						board[highX][y].contains(color.getColGroup()) || 
+						board[x][lowY].contains(color.getColGroup()) || 
+						board[x][highY].contains(color.getColGroup())) {
+					return hasRing(base, size, color, currentPlayer, false);
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} else {
+			// normal ring check
+			highX = ((x + 1) > 4) ? 4 : x + 1;
+			lowX = ((x - 1) < 0) ? 0 : x - 1;
+			highY = ((y + 1) > 4) ? 4 : y + 1;
+			lowY = ((y - 1) < 0) ? 0 : y - 1;
+			
+			if (board[x][y].isSpotEmpty(size) && 
+					(board[x][y].contains(color.getColGroup()) ||
+					board[lowX][y].contains(color.getColGroup()) || 
+					board[highX][y].contains(color.getColGroup()) || 
+					board[x][lowY].contains(color.getColGroup()) || 
+					board[x][highY].contains(color.getColGroup()))) {
+				return hasRing(base, size, color, currentPlayer, false);
 			} else {
 				return false;
 			}
@@ -170,7 +235,7 @@ public class Board {
 		for (int i = 0; i < count; i++) {
 			actResult[i] = result[i];
 		}
-		
+		System.out.println("Options: " + Arrays.toString(actResult));
 		return actResult;
 	}
 	
@@ -182,18 +247,21 @@ public class Board {
 	public int[] getPossibleMoves(Color color, boolean base, int size, int playerNumber) {
 		int[] result = new int[SIZE * SIZE];
 		int count = 0;
+		
 		for (int x = 0; x < SIZE; x++) {
 			for (int y = 0; y < SIZE; y++) {
-				if (canPlace(x, y, base, size, color, playerNumber)) {
+				if (canPlaceCheck(x, y, base, size, color, playerNumber)) {
 					result[count] = (x * 10) + y;
 					count++;
 				}
 			}
 		}
+		
 		int[] actResult = new int[count];
 		for (int i = 0; i < count; i++) {
 			actResult[i] = result[i];
 		}
+		System.out.println("Internal: " + Arrays.toString(actResult));
 		return actResult;
 	}
 	
@@ -206,19 +274,19 @@ public class Board {
 		return true;
 	}
 	
-	public boolean hasRing(boolean base, int size, Color c, int currentPlayer) {
+	public boolean hasRing(boolean base, int size, Color c, int currentPlayer, boolean change) {
     	boolean firstColor = players[currentPlayer].getColor()[0] == c;
     	if(base && firstColor && playerRings[slots*currentPlayer + 4] > 0) {
-    		playerRings[slots*currentPlayer + 4]--;
+    		if (change) { playerRings[slots*currentPlayer + 4]--; }
     		return true;
     	} else if(base && !firstColor && playerRings[slots*currentPlayer + 9] > 0) {
-    		playerRings[slots*currentPlayer + 9]--;
+    		if (change) { playerRings[slots*currentPlayer + 9]--; }
     		return true;
-    	} else if(!base && firstColor && playerRings[slots*currentPlayer + size] > 9) {
-    		playerRings[slots*currentPlayer + size]--;
+    	} else if(!base && firstColor && playerRings[slots*currentPlayer + size] > 0) {
+    		if (change) { playerRings[slots*currentPlayer + size]--; }
     		return true;
     	} else if(!base && !firstColor && playerRings[slots*currentPlayer + size + 5] > 0) {
-    		playerRings[slots*currentPlayer + size + 5]--;
+    		if (change) { playerRings[slots*currentPlayer + size + 5]--; }
     		return true;
     	} else {
     		return false;

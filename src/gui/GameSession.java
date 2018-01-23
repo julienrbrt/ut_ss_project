@@ -67,6 +67,10 @@ public class GameSession extends JFrame {
 		onlineOff = new JCheckBox("Offline");
 		onlineOff.addActionListener(new OnlineOff());
 		c.add(onlineOff);
+		
+		JButton button = new JButton("Start");
+		button.addActionListener(new StartGame());
+		c.add(button);
 	
 	}
 	
