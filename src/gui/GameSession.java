@@ -9,11 +9,10 @@ import game.Game;
 import game.player.*;
 import game.player.Color;
 
-import gui.GameSessionAISelect.AI;
-
 // Observer - Observable
 import java.util.Observable;
 import java.util.Observer;
+import gui.GameSessionAISelect.AI;
 
 public class GameSession extends JFrame {
 	
@@ -68,10 +67,6 @@ public class GameSession extends JFrame {
 		onlineOff = new JCheckBox("Offline");
 		onlineOff.addActionListener(new OnlineOff());
 		c.add(onlineOff);
-		
-		JButton start = new JButton("Start");
-		start.addActionListener(new StartGame());
-		c.add(start);
 	
 	}
 	
@@ -81,22 +76,15 @@ public class GameSession extends JFrame {
 		Player[] aiPlayers;
 		Player[] players;
 		
-		public StartGame() {
-		}
-	
 		public void actionPerformed(ActionEvent e) {
 			
 		
-			GameSessionAISelect selectAI = new GameSessionAISelect();
+			GameSessionAISelect selectAI = (GameSessionAISelect) aiSelect;
 			AI ai = selectAI.new AI();
 
 			ai.addObserver(new Observer() {
 	            public void update(Observable obj, Object arg) {
-	            	
-	            	
-	            	// Null pointer error
-	            	// aiPlayers isn't cleaned and maybe null assigned
-	            	
+	            		            	
 	                aiPlayers = (Player[]) arg;
 	               
 	    			players = new Player[aiPlayers.length + 1];
@@ -121,10 +109,10 @@ public class GameSession extends JFrame {
 			if (players.length < 2) { // Check Minimum players
 	        	JOptionPane.showMessageDialog(null, "A minimum of two players is required to play offline.");
 			} else {
-				Game game = new Game(players);
-				game.play();
 				// Close Window
 				dispose();
+				Game game = new Game(players);
+				game.play();
 			}
 		}
 	}

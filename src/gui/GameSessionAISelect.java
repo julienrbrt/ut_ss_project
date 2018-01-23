@@ -41,6 +41,7 @@ public class GameSessionAISelect extends JPanel {
 	
 	// Player handling
 	Player[] aiPlayers = new Player[3];
+	Player[] cleanAiPlayers;
 	Color color = Color.NONEE;	//initiated to make static calls
 	
 	/**
@@ -98,11 +99,6 @@ public class GameSessionAISelect extends JPanel {
 		Player player2;
 		Player player3;
 		Player player4;
-		
-		@Override
-		public boolean hasChanged() {
-			return true; //super.hasChanged();
-		}
 		
 		public void actionPerformed(ActionEvent e) {
 			
@@ -184,11 +180,29 @@ public class GameSessionAISelect extends JPanel {
 			aiPlayers[1] = player3;
 			aiPlayers[2] = player4;
 			
+			int count = 0;
+			
+			for (int x = 0; x < aiPlayers.length; x++) {
+				if (aiPlayers[x] != null) {
+					count++;
+				}
+			}
+			
+			cleanAiPlayers = new Player[count];
+			count = 0;
+			
+			for (int x = 0; x < aiPlayers.length; x++) {
+				if (aiPlayers[x] != null) {
+					cleanAiPlayers[count] = aiPlayers[x];
+					count++;
+				}
+			}
+			
 		}
 		
 	    public void run() {
 			setChanged();
-            notifyObservers(aiPlayers);
+            notifyObservers(cleanAiPlayers);
 	    }
 
 	}

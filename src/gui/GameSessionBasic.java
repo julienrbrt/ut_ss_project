@@ -5,10 +5,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import gui.GameSession.StartGame;
 
 public class GameSessionBasic extends JPanel {
 	
@@ -31,10 +31,8 @@ public class GameSessionBasic extends JPanel {
 		txtUsername.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Start");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+//		btnNewButton.addActionListener(startGame);
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
