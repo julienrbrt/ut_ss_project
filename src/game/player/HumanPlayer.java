@@ -93,6 +93,8 @@ public class HumanPlayer extends Player {
 	        }
         }
         
+        
+        
         Object[] choice = {x, y, base, ringSize};
         return choice;
         

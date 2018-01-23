@@ -134,7 +134,7 @@ public class Game {
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
     		
-	    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
+//	    		JOptionPane.showMessageDialog(null, "Player " + (currentPlayer + 1) + " turn");
 	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
 	    		
 	    		// Skip player if no possible choices
