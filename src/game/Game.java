@@ -160,7 +160,10 @@ public class Game {
 					gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
 					System.out.println(board.toString());
 	    		} else {
-	    			JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " has been skipped.");
+	    			if (!gotSkipped[currentPlayer]) {
+	    				JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " has already lost.");
+	    			}
+	    			System.out.println(players[currentPlayer].getName() + " has been skipped.");
 	    			gotSkipped[currentPlayer] = true;
 	    		}
     		}
