@@ -60,11 +60,11 @@ public class Board {
 				highY = ((y + 1) > 4) ? 4 : y + 1;
 				lowY = ((y - 1) < 0) ? 0 : y - 1;
 				
-				if (board[x][y].hasBase() ||
-						board[lowX][y].hasBase() ||
-						board[highX][y].hasBase() ||
-						board[x][lowY].hasBase() ||
-						board[x][highY].hasBase()) {
+				if (board[x][y].hasBase(color) ||
+						board[lowX][y].hasBase(color) ||
+						board[highX][y].hasBase(color) ||
+						board[x][lowY].hasBase(color) ||
+						board[x][highY].hasBase(color)) {
 					return false;
 				}
 				
