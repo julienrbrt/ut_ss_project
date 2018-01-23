@@ -20,29 +20,17 @@ public class ColorUI {
 		if (colorName == null) {
 			color = null;
 		} else {
-			switch (colorName) {
-				case REDDD:
+			switch (colorName.getColGroup()) {
+				case RED:
 					color = "R";
 					break;
-				case RBASE:
-					color = "R";
-					break;
-				case BBASE:
+				case BLUE:
 					color = "B";
-					break;
-				case BLUEE:
-					color = "B";
-					break;
-				case GBASE:
-					color = "G";
 					break;
 				case GREEN:
 					color = "G";
 					break;
-				case YBASE:
-					color = "Y";
-					break;
-				case YELLO:
+				case YELLOW:
 					color = "Y";
 					break;
 				default:

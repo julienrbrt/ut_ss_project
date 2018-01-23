@@ -51,7 +51,10 @@ public class Game {
 	/**
 	 * Player skipping handling / Game-Over.
 	 */
-	boolean[] gotSkipped;
+	private boolean[] gotSkipped;
+	
+	private int[] playerRings;	//keeps track of amount of rings left per player
+	private final int slots;	//keeps track of amount of slots per player in playerRings
 	
     // -- Constructors -----------------------------------------------
 
@@ -71,8 +74,24 @@ public class Game {
     	board = new Board();
         this.players = players;
     	currentPlayer = 0;
+    	
+    	if(players.length == 3) {
+    		playerRings = new int[30];
+    	} else {
+    		playerRings = new int[20];
+    	}
+    	slots = playerRings.length/players.length;	//10 for 2 players, 10 for 3 players, 5 for 4 players
+    	
+    	//fill playerRings with right values, depending on amount of players
+    	for(int i = 0; i < playerRings.length; i++) {
+    		if(players.length == 3 && (i % 10 > 4)) {
+    			playerRings[i] = 1;
+    		} else {
+    			playerRings[i] = 3;
+    		}
+    	}
+    	
     	gotSkipped = new boolean[players.length];
-
     	// Nobody skipped at first
     	for (int i = 0; i < gotSkipped.length; i++) {
     		gotSkipped[i] = false;
@@ -166,5 +185,24 @@ public class Game {
     		}
         }
     	reset();
+    }
+    
+    public boolean hasRing(boolean base, int size, Color c) {
+    	boolean firstColor = players[currentPlayer].getColor()[0] == c;
+    	if(base && firstColor && playerRings[slots*currentPlayer + 4] > 0) {
+    		playerRings[slots*currentPlayer + 4]--;
+    		return true;
+    	} else if(base && !firstColor && playerRings[slots*currentPlayer + 9] > 0) {
+    		playerRings[slots*currentPlayer + 9]--;
+    		return true;
+    	} else if(!base && firstColor && playerRings[slots*currentPlayer + size] > 9) {
+    		playerRings[slots*currentPlayer + size]--;
+    		return true;
+    	} else if(!base && !firstColor && playerRings[slots*currentPlayer + size + 5] > 0) {
+    		playerRings[slots*currentPlayer + size + 5]--;
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 }
