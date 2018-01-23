@@ -224,7 +224,7 @@ public class Board {
 		for (int i = 0; i < count; i++) {
 			actResult[i] = result[i];
 		}
-//		System.out.println("Options: " + Arrays.toString(actResult));
+		System.out.println("Options: " + Arrays.toString(actResult));
 		return actResult;
 	}
 	
@@ -237,8 +237,8 @@ public class Board {
 		int[] result = new int[SIZE * SIZE];
 		int count = 0;
 		
-		for (int x = 0; x < SIZE; x++) {
-			for (int y = 0; y < SIZE; y++) {
+		for (int x = 0; x <= SIZE; x++) {
+			for (int y = 0; y <= SIZE; y++) {
 				if (canPlaceCheck(x, y, base, size, color, playerNumber)) {
 					result[count] = (x * 10) + y;
 					count++;
@@ -250,7 +250,7 @@ public class Board {
 		for (int i = 0; i < count; i++) {
 			actResult[i] = result[i];
 		}
-//		System.out.println("Internal: " + Arrays.toString(actResult));
+		System.out.println("Internal: " + Arrays.toString(actResult));
 		return actResult;
 	}
 	
@@ -266,16 +266,16 @@ public class Board {
 	public boolean hasRing(boolean base, int size, Color c, int currentPlayer, boolean change) {
     	boolean firstColor = players[currentPlayer].getColor()[0] == c;
     	if (base && firstColor && playerRings[slots * currentPlayer + 4] > 0) {
-    		playerRings[slots * currentPlayer + 4]--;
+    		if (change) { playerRings[slots * currentPlayer + 4]--; }
     		return true;
     	} else if (base && !firstColor && playerRings[slots * currentPlayer + 9] > 0) {
-    		playerRings[slots * currentPlayer + 9]--;
+    		if (change) { playerRings[slots * currentPlayer + 9]--; }
     		return true;
     	} else if (!base && firstColor && playerRings[slots * currentPlayer + size] > 0) {
-    		playerRings[slots * currentPlayer + size]--;
+    		if (change) { playerRings[slots * currentPlayer + size]--; }
     		return true;
     	} else if (!base && !firstColor && playerRings[slots * currentPlayer + size + 5] > 0) {
-    		playerRings[slots * currentPlayer + size + 5]--;
+    		if (change) { playerRings[slots * currentPlayer + size + 5]--; }
     		return true;
     	} else {
     		return false;

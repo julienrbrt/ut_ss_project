@@ -52,11 +52,13 @@ public class RandomStrategy implements Strategy {
     		firstArray = tempMoves.length;
     		int[] tempMoves2 = board.getPossibleMoves(secondColor, playerNumber);
     		moves = new int[firstArray + tempMoves2.length];
-    		for (int i = 0; i < tempMoves2.length; i++) {	//concatenate arrays
+    		for (int i = 0; i < moves.length; i++) {	//concatenate arrays
     			if (i < firstArray) {
     				moves[i] = tempMoves[i];
     			}
-    			moves[firstArray + i] = tempMoves2[i];
+    			if (i < tempMoves2.length) {
+    				moves[firstArray + i] = tempMoves2[i];
+    			}
     		}
     	} else {
     		moves = board.getPossibleMoves(firstColor, playerNumber);
