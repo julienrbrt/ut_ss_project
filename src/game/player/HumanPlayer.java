@@ -98,9 +98,7 @@ public class HumanPlayer extends Player {
 	        }
         }
         
-        
-        
-        Object[] choice = {x, y, base, ringSize};
+        Object[] choice = {x, y, base, ringSize, color};
         return choice;
         
 	}
