@@ -6,10 +6,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import game.player.*;
-import game.player.Color;
 import game.*;
 
-public class HumanUI {
+// Observer - Observable
+import java.util.Observable;
+
+
+public class HumanUI extends Observable implements Runnable {
 	
 	// GUI handling
 	private final JFrame frameGame = new JFrame();
@@ -21,6 +24,10 @@ public class HumanUI {
 	
 	// Player Handling
 	Player[] players;
+	
+	// Coordinate give back
+	private int xSelect = -1;
+	private int ySelect = -1;
 	
 	public HumanUI() {
 		init();
@@ -51,25 +58,11 @@ public class HumanUI {
         		buttonImage = colorUI.getColorUI();
 				updateButton(x, y, buttonImage);
 				c.add(boardButtons[x][y]);	
-				boardButtons[x][y].addActionListener(new RingPlacement());
+				boardButtons[x][y].addActionListener(new RingPlacement(x, y));
 			}
 		}
 	}
 	
-	public class RingPlacement implements ActionListener {
-		
-		public RingPlacement() {
-
-			
-		}
-		
-		public void actionPerformed(ActionEvent ev) {
-			
-			
-		}
-		
-	}
-		
 	public void updateButton(int x, int y, Image merged) {
 		
 		ImageIcon rings = new ImageIcon(merged);
@@ -77,4 +70,32 @@ public class HumanUI {
 		// Image manager
 		boardButtons[x][y].setIcon(rings);
 	}
+	
+	public class RingPlacement implements ActionListener {
+		
+		int x;
+		int y;
+		
+		public RingPlacement(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		public void actionPerformed(ActionEvent ev) {
+			setPlacement(x, y);
+		}
+	
+	}
+	
+	public void setPlacement(int x, int y) {
+		this.xSelect = x;
+		this.ySelect = y;
+	}
+	
+	public void run() {
+		int[] choice = {xSelect, ySelect};
+		setChanged();
+        notifyObservers(choice);
+	}
+	
 }

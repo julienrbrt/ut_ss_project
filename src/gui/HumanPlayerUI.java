@@ -10,7 +10,7 @@ import javax.swing.event.*;
 import game.*;
 import game.player.*;
 import game.player.Color;
-import tools.Tools;
+import gui.*;
 
 public class HumanPlayerUI extends Player {
 	
@@ -143,6 +143,7 @@ public class HumanPlayerUI extends Player {
 	
 	public class PlaceRing implements ActionListener {
 
+		int[] choosen;
 		Color ringColor;
 		int ringSize;
 		
@@ -152,7 +153,6 @@ public class HumanPlayerUI extends Player {
 		}
 		
 		public void actionPerformed(ActionEvent ev) {
-			
 		}
 		
 	}
@@ -170,7 +170,8 @@ public class HumanPlayerUI extends Player {
 		frameHP.setVisible(true);
 		
         while (!valid) {
-        	// Just do nothing
+        	// TODO if too slow do automatic move
+        	
         }
         
         // Reset valid and never show starting base again
@@ -195,7 +196,7 @@ public class HumanPlayerUI extends Player {
 		frameHP.setVisible(true);
 		
         while (!valid) {
-        	// Just do nothing
+        	// TODO if too slow do automatic move
         }
         
         // Reset valid

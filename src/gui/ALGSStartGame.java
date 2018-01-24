@@ -66,14 +66,18 @@ public class ALGSStartGame implements ActionListener {
             }
         });
 		
-		new Thread(ai).start();
+		Thread threadAI = new Thread(ai);
+		threadAI.start();
 		
-		if (players == null || players.length < 2) { // Check Minimum players
+		if (players == null) {
+			// do nothing
+		} else if (players.length < 2) { // Check Minimum players
         	JOptionPane.showMessageDialog(null,
         			"A minimum of two players is required to play offline.");
 		} else {
 			// Close Window
 			frameGS.dispose();
+			threadAI.interrupt();
 			Game game = new Game(players);
 			game.play();
 		}

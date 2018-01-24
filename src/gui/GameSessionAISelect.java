@@ -17,7 +17,6 @@ import game.player.SmartStrategy;
 
 //Observer - Observable
 import java.util.Observable;
-//import java.util.Observer;
 
 public class GameSessionAISelect extends JPanel {
 
@@ -169,9 +168,6 @@ public class GameSessionAISelect extends JPanel {
 				player2 = new ComputerPlayer(new SmartStrategy(1), Color.BLUEE, 1);
 				player3 = new ComputerPlayer(new SmartStrategy(2), Color.GREEN, 2);
 				player4 = new ComputerPlayer(new SmartStrategy(3), Color.YELLO, 3);
-			} else { // Not selected
-	        	JOptionPane.showMessageDialog(null,
-	        			"A minimum of two players is required to play offline.");
 			}
 			
 			aiPlayers[0] = player2;
