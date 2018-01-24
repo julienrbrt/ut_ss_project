@@ -117,25 +117,25 @@ public class WinConditions {
 		if (draw) {
 			JOptionPane.showMessageDialog(null, "It is a tie!");
 		} else {
-			String whowin;
+			String whoWin;
 			switch (winner) {
 				case 0:
-					whowin = "RED";
+					whoWin = "RED";
 					break;
 				case 1:
-					whowin = "BLUE";
+					whoWin = "BLUE";
 					break;
 				case 2:
-					whowin = "GREEN";
+					whoWin = "GREEN";
 					break;
 				case 3:
-					whowin = "YELLOW";
+					whoWin = "YELLOW";
 					break;
 				default:
-					whowin = "FOOLYOU";
+					whoWin = "FOOLYOU";
 					break;
 			}
-			JOptionPane.showMessageDialog(null, "The winner is color" + whowin + "!");
+			JOptionPane.showMessageDialog(null, "The winner is color " + whoWin + "!");
 		}
 	}
 	

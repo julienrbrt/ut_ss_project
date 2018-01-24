@@ -84,6 +84,7 @@ public class RandomStrategy implements Strategy {
     	} else {
     		result[4] = firstColor;
     	}
+    	board.hasRing((boolean) result[2], (int) result[3], (Color) result[4], playerNumber, true);
     	System.out.println("result = " + Arrays.toString(result));
     	return result;
     	
