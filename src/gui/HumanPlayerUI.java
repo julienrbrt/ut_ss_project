@@ -18,7 +18,7 @@ public class HumanPlayerUI extends Player {
 	private Color secondColor;
 	private final int playerNumber;
 		
-	// GUI handling
+	// GUI handling	
 	private final JFrame frameHP = new JFrame();
 	ColorUI colorUI;
 	Container c = frameHP.getContentPane();
@@ -32,7 +32,7 @@ public class HumanPlayerUI extends Player {
 	private final int maxRings = 4; 
 	private int xPlace;
 	private int yPlace;
-	private int base;
+	private boolean base;
 	private Color color;
 	private int ringSize;
 	private boolean valid = false;
@@ -154,6 +154,13 @@ public class HumanPlayerUI extends Player {
 		
 		public void actionPerformed(ActionEvent ev) {
 			System.out.println(ringSize + "" + ringColor);
+			
+			if (ringSize == 5) {
+				base = true;
+			} else {
+				base = false;
+			}
+			
 		}
 		
 	}

@@ -97,5 +97,4 @@ public class HumanUI extends Observable implements Runnable {
 		setChanged();
         notifyObservers(choice);
 	}
-	
 }

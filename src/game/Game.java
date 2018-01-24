@@ -28,7 +28,6 @@ public class Game {
 	 */
     private Board board;
     
-    
 	/**
 	* The four players of the game.
 	*/
