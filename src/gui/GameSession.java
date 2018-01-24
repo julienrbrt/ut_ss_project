@@ -25,7 +25,7 @@ public class GameSession {
 	public GameSession() {
 		init();
 		frameGS.pack();
-		frameGS.setDefaultCloseOperation(frameGS.EXIT_ON_CLOSE);
+		frameGS.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameGS.setSize(700, 350);
 		frameGS.setTitle("Ringzz");
 		frameGS.setResizable(false);

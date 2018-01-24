@@ -12,7 +12,7 @@ import game.*;
 public class ComputerPlayer extends Player {
 	
 	private Strategy strategy;
-	private final int playerNumber;
+	//private final int playerNumber;
 	
 	/**
 	 * This constructor permit to assign the default IA (Random) to his color.
@@ -22,13 +22,13 @@ public class ComputerPlayer extends Player {
 	public ComputerPlayer(Strategy strategy, Color firstColor, int playerNumber) {
 		super(strategy.getName() + "-" + firstColor, firstColor, playerNumber);
 		this.strategy = strategy;
-		this.playerNumber = playerNumber;
+		//this.playerNumber = playerNumber;
 	}
 	
 	public ComputerPlayer(Strategy strategy, Color firstColor, Color secondColor, int playerNumber) {
 		super(strategy.getName() + "-" + firstColor, firstColor, secondColor, playerNumber);
 		this.strategy = strategy;
-		this.playerNumber = playerNumber;
+		//this.playerNumber = playerNumber;
 	}
 
 	/**

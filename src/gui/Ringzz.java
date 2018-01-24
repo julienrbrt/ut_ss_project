@@ -18,7 +18,7 @@ public class Ringzz {
 	public Ringzz() {
 		init();
 		frameMain.pack();
-		frameMain.setDefaultCloseOperation(frameMain.EXIT_ON_CLOSE);
+		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMain.setSize(700, 350);
 		frameMain.setTitle("Ringzz");
 		frameMain.setResizable(false);

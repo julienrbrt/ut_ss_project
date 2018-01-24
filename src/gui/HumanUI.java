@@ -1,7 +1,7 @@
 package gui;
 
 import java.awt.*;
-import java.awt.event.*;
+//import java.awt.event.*;
 
 import javax.swing.*;
 import game.player.*;
@@ -24,7 +24,7 @@ public class HumanUI {
 	public HumanUI() {
 		init();
 		frameGame.pack();
-		frameGame.setDefaultCloseOperation(frameGame.DISPOSE_ON_CLOSE);
+		frameGame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameGame.setSize(700, 700);
 		frameGame.setTitle("Ringzz");
 		frameGame.setResizable(false);

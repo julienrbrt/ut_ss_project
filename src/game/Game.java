@@ -86,10 +86,10 @@ public class Game {
      * Resets the game.
      * The board is emptied and player[0] becomes the current player.
      */
-    private void reset() {
+    /*private void reset() {
         currentPlayer = 0;
         board = new Board(players.length, players);
-    }
+    }*/
     
     /**
      * Plays the Ringgz game.

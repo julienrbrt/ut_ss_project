@@ -17,7 +17,7 @@ import game.player.SmartStrategy;
 
 //Observer - Observable
 import java.util.Observable;
-import java.util.Observer;
+//import java.util.Observer;
 
 public class GameSessionAISelect extends JPanel {
 
