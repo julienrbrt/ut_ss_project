@@ -165,6 +165,5 @@ public class Game {
         }
     	// add info about winner
     	new WinConditions(board).calculate();
-    	reset();
     }
 }
