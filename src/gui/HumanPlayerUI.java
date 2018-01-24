@@ -105,7 +105,7 @@ public class HumanPlayerUI extends Player {
 				colorUI = new ColorUI(secondColor, false, size);
 				ringsImage = colorUI.getColorUI();
 				rings[x].setIcon(new ImageIcon(ringsImage));
-				rings[x].addActionListener(new PlaceRing(firstColor, size));
+				rings[x].addActionListener(new PlaceRing(secondColor, size));
 				c.add(rings[x]);
 				size++;
 			}
@@ -120,7 +120,7 @@ public class HumanPlayerUI extends Player {
 			colorUI = new ColorUI(secondColor, true, 0);
 			ringsImage = colorUI.getColorUI();
 			rings[(maxRings * 2) + 1].setIcon(new ImageIcon(ringsImage));
-			rings[(maxRings * 2) + 1].addActionListener(new PlaceRing(firstColor, (maxRings * 2) + 1));
+			rings[(maxRings * 2) + 1].addActionListener(new PlaceRing(secondColor, (maxRings * 2) + 1));
 			c.add(rings[(maxRings * 2) + 1]);
 		}
 		
@@ -153,6 +153,7 @@ public class HumanPlayerUI extends Player {
 		}
 		
 		public void actionPerformed(ActionEvent ev) {
+			System.out.println(ringSize + "" + ringColor);
 		}
 		
 	}
@@ -210,7 +211,8 @@ public class HumanPlayerUI extends Player {
 	}
 	
 	public static void main(String[] arg0) {
-		new HumanPlayerUI("test", Color.YELLO, Color.GREEN, 2);
+		HumanPlayerUI test = new HumanPlayerUI("test", Color.YELLO, Color.GREEN, 2);
+		test.determineBase(null);
 	}
 	
 }
