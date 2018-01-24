@@ -41,7 +41,7 @@ public class Game {
   	/**
   	 * Game GUI Handling.
   	*/
-	HumanUI gui = new HumanUI();
+	HumanUI gui;
 	Image buttonImage;
 	Image emptyButton;
 	Image merged;
@@ -66,7 +66,7 @@ public class Game {
     * @param p2 the third possible player
     * @param p3 he fourth possible player
     */    
-    public Game(Player[] players) {
+    public Game(Player[] players, HumanUI gui) {
         this.players = players;
         board = new Board(players.length, players);
     	currentPlayer = 0;
@@ -77,6 +77,7 @@ public class Game {
     		gotSkipped[i] = false;
     	}
     	
+    	this.gui = gui;
     }
 
     // -- Commands ---------------------------------------------------

@@ -66,7 +66,6 @@ public class HumanUI extends Observable implements Runnable {
 	public void updateButton(int x, int y, Image merged) {
 		
 		ImageIcon rings = new ImageIcon(merged);
-		
 		// Image manager
 		boardButtons[x][y].setIcon(rings);
 	}

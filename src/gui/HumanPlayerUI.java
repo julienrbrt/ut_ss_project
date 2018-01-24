@@ -3,6 +3,8 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -10,7 +12,6 @@ import javax.swing.event.*;
 import game.*;
 import game.player.*;
 import game.player.Color;
-import gui.*;
 
 public class HumanPlayerUI extends Player {
 	
@@ -26,30 +27,33 @@ public class HumanPlayerUI extends Player {
 	Image ringsImage;
 	JButton hint;
 	JCheckBox hintOnOff;
+	HumanUI gui;
 	
 	// Game handling
 	private boolean showSBase = true;
 	private final int maxRings = 4; 
-	private int xPlace;
-	private int yPlace;
+	private int xPlace = -1;
+	private int yPlace = -1;
 	private boolean base;
 	private Color color;
-	private int ringSize;
+	private int ringSize = -1;
 	private boolean valid = false;
 	
 	// Constructor for one color
-	public HumanPlayerUI(String name, Color firstColor, int playerNumber) {
+	public HumanPlayerUI(String name, Color firstColor, int playerNumber, HumanUI gui) {
 		super(name, firstColor, playerNumber);
 		this.firstColor = firstColor;
 		this.playerNumber = playerNumber;
+		this.gui = gui;
 	}
 	
 	// Constructor for two colors
-	public HumanPlayerUI(String name, Color firstColor, Color secondColor, int playerNumber) {
+	public HumanPlayerUI(String name, Color firstColor, Color secondColor, int playerNumber, HumanUI gui) {
 		super(name, firstColor, secondColor, playerNumber);
 		this.firstColor = firstColor;
 		this.secondColor = secondColor;
 		this.playerNumber = playerNumber;
+		this.gui = gui;
 	}
 	
 	public void init() {
@@ -137,19 +141,18 @@ public class HumanPlayerUI extends Player {
 			rings[sBasePos].setIcon(new ImageIcon(ringsImage));
 			rings[sBasePos].addActionListener(new PlaceRing(Color.SBASE, 0));
 			c.add(rings[sBasePos]);
-		}
-		
+		}	
 	}
 	
 	public class PlaceRing implements ActionListener {
 
 		int[] choosen;
 		Color ringColor;
-		int ringSize;
+		int size;
 		
 		public PlaceRing(Color color, int size) {
 			this.ringColor = color;
-			this.ringSize = size;
+			this.size = size;
 		}
 		
 		public void actionPerformed(ActionEvent ev) {
@@ -160,9 +163,19 @@ public class HumanPlayerUI extends Player {
 			} else {
 				base = false;
 			}
-			
-		}
-		
+						
+			gui.addObserver(new Observer() {
+				public void update(Observable obj, Object arg) {
+					choosen = (int[]) arg;
+					System.out.println(choosen[0] + "" + choosen[1]);
+					xPlace = choosen[0];
+					yPlace = choosen[1];
+            	}
+            });
+				
+			color = ringColor;
+			ringSize = size;
+		}		
 	}
 	
 	public int[] determineBase(Board board) {
@@ -179,7 +192,9 @@ public class HumanPlayerUI extends Player {
 		
         while (!valid) {
         	// TODO if too slow do automatic move
-        	
+        	if (xPlace != -1 || yPlace != -1 || color != null) {
+        		valid = board.canPlace(xPlace, yPlace, true, 0, color, playerNumber);
+        	}
         }
         
         // Reset valid and never show starting base again
@@ -205,6 +220,9 @@ public class HumanPlayerUI extends Player {
 		
         while (!valid) {
         	// TODO if too slow do automatic move
+        	if (xPlace != -1 || yPlace != -1 || color != null || ringSize != -1) {
+        		valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+        	}
         }
         
         // Reset valid
@@ -215,11 +233,5 @@ public class HumanPlayerUI extends Player {
         
         Object[] choice = {xPlace, yPlace, base, ringSize, color};
         return choice;   
-	}
-	
-	public static void main(String[] arg0) {
-		HumanPlayerUI test = new HumanPlayerUI("test", Color.YELLO, Color.GREEN, 2);
-		test.determineBase(null);
-	}
-	
+	}	
 }

@@ -29,6 +29,9 @@ public class ALGSStartGame implements ActionListener {
 	Player[] aiPlayers;
 	Player[] players;
 	
+	// HumanUI trick
+	HumanUI gui = new HumanUI();
+	
 	public void actionPerformed(ActionEvent e) {
 	
 		GameSessionAISelect selectAI = (GameSessionAISelect) aiSelect;
@@ -42,9 +45,9 @@ public class ALGSStartGame implements ActionListener {
     			players = new Player[aiPlayers.length + 1];
     			
     			if (players.length == 2 || players.length == 3) {
-    				players[0] = new HumanPlayer(playerName, Color.REDDD, Color.YELLO, 0);
+    				players[0] = new HumanPlayerUI(playerName, Color.REDDD, Color.YELLO, 0, gui);
     			} else {
-    				players[0] = new HumanPlayer(playerName, Color.REDDD, 0);
+    				players[0] = new HumanPlayerUI(playerName, Color.REDDD, 0, gui);
     			}
     			
     			if ((players.length == 2 || players.length == 3) && playerName.equals("SMART")) {
@@ -78,7 +81,7 @@ public class ALGSStartGame implements ActionListener {
 			// Close Window
 			frameGS.dispose();
 			threadAI.interrupt();
-			Game game = new Game(players);
+			Game game = new Game(players, gui);
 			game.play();
 		}
 	}
