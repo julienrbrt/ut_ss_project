@@ -281,6 +281,52 @@ public class Board {
     		return false;
     	}
     }
+	
+	public int getWinner(int[] scores) {
+		int winner = 0;
+		int highScore = scores[0];
+		boolean draw = false;
+		if (playerAmount == 4) {
+			for (int i = 1; i < 4; i++) {
+				if (scores[i] == highScore) {
+					draw = true;
+				} else if (scores[i] > highScore) {
+					draw = false;
+					highScore = scores[i];
+					winner = i;
+				}
+			}
+		} else if (playerAmount == 3) {
+			for (int i = 1; i < 3; i++) {	//Yellow's score does not matter
+				if (scores[i] == highScore) {
+					draw = true;
+				} else if (scores[i] > highScore) {
+					draw = false;
+					highScore = scores[i];
+					winner = i;
+				}
+			}
+		} else {
+			//add up scores of the player's colors
+			int player1 = scores[players[0].getColor()[0].getIntFromColor()] + scores[players[0].getColor()[1].getIntFromColor()];
+			int player2 = scores[players[1].getColor()[0].getIntFromColor()] + scores[players[1].getColor()[1].getIntFromColor()];
+			if (player1 == player2) {
+				draw = true;
+			} else if (player1 > player2) {
+				draw = false;
+				winner = 0;
+			} else {
+				draw = false;
+				winner = 1;
+			}
+		}
+		
+		if (draw) {
+			return 5;	//max is 3, but clearly beyond to be sure 
+		} else {
+			return winner;
+		}
+	}
 		
 	public String toString() {
 		String output = "";

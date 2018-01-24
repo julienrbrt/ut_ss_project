@@ -134,7 +134,7 @@ public class Game {
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
     		
-	    		JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
+	    		//JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
 	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
 	    		
 	    		// Skip player if no possible choices
@@ -164,6 +164,15 @@ public class Game {
     		}
         }
     	// add info about winner
-    	new WinConditions(board).calculate();
+    	WinConditions win = new WinConditions(board);
+    	win.calculate();
+    	int[] scores = win.getScores();
+    	int winner = board.getWinner(scores);
+    	if (winner < 4) {
+    		JOptionPane.showMessageDialog(null, "The winner is " + players[winner].getName());
+    	} else {
+    		JOptionPane.showMessageDialog(null, "It is a tie");
+    	}
+    	
     }
 }

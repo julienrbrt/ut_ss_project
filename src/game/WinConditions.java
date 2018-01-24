@@ -1,6 +1,6 @@
 package game;
 
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 public class WinConditions {
 	
@@ -81,7 +81,7 @@ public class WinConditions {
 							}
 						}
 					} else {
-						int store = 5;
+						int store = 5;	//variable to keep track of the color that has occupied 2 spots (5 for tie or none)
 						for (int k = 0; k < rings; k++) {
 							if (counter[k] == 3 || counter[k] == 4) {
 								scores[k]++;
@@ -102,7 +102,7 @@ public class WinConditions {
 				}
 			}
 		}
-		boolean draw = false;
+		/*boolean draw = false;
 		int winner = 0;
 		int highScore = scores[0];
 		for (int i = 1; i < 4; i++) {
@@ -136,7 +136,10 @@ public class WinConditions {
 					break;
 			}
 			JOptionPane.showMessageDialog(null, "The winner is color " + whoWin + "!");
-		}
+		}*/
 	}
 	
+	public int[] getScores() {
+		return scores;
+	}
 }

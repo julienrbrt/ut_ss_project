@@ -67,4 +67,20 @@ public enum Color {
 		}
 	}
 	
+	public int getIntFromColor() {	//simple color to number converter
+		switch (getColGroup()) {	//NONE and default should never be reached
+		case RED:
+			return 0;
+		case BLUE:
+			return 1;
+		case GREEN:
+			return 2;
+		case YELLOW:
+			return 3;
+		case NONE:
+			return 4;
+		default:
+			return 5;
+		}
+	}
 }
