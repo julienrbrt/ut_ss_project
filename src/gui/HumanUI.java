@@ -1,10 +1,12 @@
 package gui;
 
 import java.awt.*;
-//import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import game.player.*;
+import game.player.Color;
 import game.*;
 
 public class HumanUI {
@@ -12,7 +14,6 @@ public class HumanUI {
 	// GUI handling
 	private final JFrame frameGame = new JFrame();
 	JTextArea jTextArea = new JTextArea();
-	JButton[] settingsButton = new JButton[4];
 	JButton[][] boardButtons = new JButton[Board.SIZE][Board.SIZE];
 	Image buttonImage;
 	ColorUI colorUI;
@@ -40,9 +41,7 @@ public class HumanUI {
 				boardButtons[x][y] = new JButton();
 								
 				// button size to match with image
-				boardButtons[x][y].setPreferredSize(new Dimension(128, 128));
-				
-				boardButtons[x][y].setBorder(null);
+				boardButtons[x][y].setPreferredSize(new Dimension(128, 128));				
 				boardButtons[x][y].setBorder(null);
 				boardButtons[x][y].setContentAreaFilled(false);
 				boardButtons[x][y].setMargin(new Insets(0, 0, 0, 0));
@@ -51,9 +50,24 @@ public class HumanUI {
 				colorUI = new ColorUI(null, false, 0);
         		buttonImage = colorUI.getColorUI();
 				updateButton(x, y, buttonImage);
-				c.add(boardButtons[x][y]);		
+				c.add(boardButtons[x][y]);	
+				boardButtons[x][y].addActionListener(new RingPlacement());
 			}
 		}
+	}
+	
+	public class RingPlacement implements ActionListener {
+		
+		public RingPlacement() {
+
+			
+		}
+		
+		public void actionPerformed(ActionEvent ev) {
+			
+			
+		}
+		
 	}
 		
 	public void updateButton(int x, int y, Image merged) {
@@ -62,8 +76,5 @@ public class HumanUI {
 		
 		// Image manager
 		boardButtons[x][y].setIcon(rings);
-//		boardButtons[x][y].setRolloverIcon(rings);
-//		boardButtons[x][y].setPressedIcon(rings);
-//		boardButtons[x][y].setDisabledIcon(rings);
 	}
 }

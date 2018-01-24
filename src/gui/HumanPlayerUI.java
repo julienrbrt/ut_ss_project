@@ -1,12 +1,15 @@
 package gui;
 
-import java.awt.Container;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import javax.swing.event.*;
 
 import game.*;
 import game.player.*;
+import game.player.Color;
 import tools.Tools;
 
 public class HumanPlayerUI extends Player {
@@ -14,10 +17,25 @@ public class HumanPlayerUI extends Player {
 	private Color firstColor;
 	private Color secondColor;
 	private final int playerNumber;
-	
+		
 	// GUI handling
 	private final JFrame frameHP = new JFrame();
+	ColorUI colorUI;
 	Container c = frameHP.getContentPane();
+	JButton[] rings;
+	Image ringsImage;
+	JButton hint;
+	JCheckBox hintOnOff;
+	
+	// Game handling
+	private boolean showSBase = true;
+	private final int maxRings = 4; 
+	private int xPlace;
+	private int yPlace;
+	private int base;
+	private Color color;
+	private int ringSize;
+	private boolean valid = false;
 	
 	// Constructor for one color
 	public HumanPlayerUI(String name, Color firstColor, int playerNumber) {
@@ -34,81 +52,164 @@ public class HumanPlayerUI extends Player {
 		this.playerNumber = playerNumber;
 	}
 	
+	public void init() {
+				
+		if (secondColor != null) {
+			c.setLayout(new GridLayout(0, 2));
+			rings = new JButton[(maxRings * 2) + 3];
+		} else {
+			c.setLayout(new GridLayout(0, 1));
+			rings = new JButton[maxRings + 2];
+		}
+		
+		int sBasePos = rings.length - 1;
+		
+		// First rings color generation
+		for (int x = 0; x < maxRings; x++) {
+			rings[x] = new JButton();
+			rings[x].setPreferredSize(new Dimension(128, 128));
+			rings[x].setContentAreaFilled(false);
+			rings[x].setMargin(new Insets(0, 0, 0, 0));
+			rings[x].setBackground(java.awt.Color.WHITE);
+			rings[x].setOpaque(true);
+			colorUI = new ColorUI(firstColor, false, x);
+			ringsImage = colorUI.getColorUI();
+			rings[x].setIcon(new ImageIcon(ringsImage));
+			rings[x].addActionListener(new PlaceRing(firstColor, x));
+			c.add(rings[x]);
+		}
+		
+		// Adding of base firstColor
+		rings[maxRings + 1] = new JButton();
+		rings[maxRings + 1].setPreferredSize(new Dimension(128, 128));
+		rings[maxRings + 1].setContentAreaFilled(false);
+		rings[maxRings + 1].setMargin(new Insets(0, 0, 0, 0));
+		rings[maxRings + 1].setBackground(java.awt.Color.WHITE);
+		rings[maxRings + 1].setOpaque(true);
+		colorUI = new ColorUI(firstColor, true, 0);
+		ringsImage = colorUI.getColorUI();
+		rings[maxRings + 1].setIcon(new ImageIcon(ringsImage));
+		rings[maxRings + 1].addActionListener(new PlaceRing(firstColor, maxRings + 1));
+		c.add(rings[maxRings + 1]);
+		
+		// Second color generation
+		if (secondColor != null) {
+			int size = 0;
+			for (int x = maxRings + 1; x < (maxRings * 2) + 1; x++) {
+				rings[x] = new JButton();
+				rings[x].setPreferredSize(new Dimension(128, 128));
+				rings[x].setContentAreaFilled(false);
+				rings[x].setMargin(new Insets(0, 0, 0, 0));
+				rings[x].setBackground(java.awt.Color.WHITE);
+				rings[x].setOpaque(true);
+				colorUI = new ColorUI(secondColor, false, size);
+				ringsImage = colorUI.getColorUI();
+				rings[x].setIcon(new ImageIcon(ringsImage));
+				rings[x].addActionListener(new PlaceRing(firstColor, size));
+				c.add(rings[x]);
+				size++;
+			}
+			
+			// Adding of base secondColor
+			rings[(maxRings * 2) + 1] = new JButton();
+			rings[(maxRings * 2) + 1].setPreferredSize(new Dimension(128, 128));
+			rings[(maxRings * 2) + 1].setContentAreaFilled(false);
+			rings[(maxRings * 2) + 1].setMargin(new Insets(0, 0, 0, 0));
+			rings[(maxRings * 2) + 1].setBackground(java.awt.Color.WHITE);
+			rings[(maxRings * 2) + 1].setOpaque(true);
+			colorUI = new ColorUI(secondColor, true, 0);
+			ringsImage = colorUI.getColorUI();
+			rings[(maxRings * 2) + 1].setIcon(new ImageIcon(ringsImage));
+			rings[(maxRings * 2) + 1].addActionListener(new PlaceRing(firstColor, (maxRings * 2) + 1));
+			c.add(rings[(maxRings * 2) + 1]);
+		}
+		
+		// Adding Default place
+		if (showSBase) {
+			rings[sBasePos] = new JButton();
+			rings[sBasePos].setPreferredSize(new Dimension(128, 128));
+			rings[sBasePos].setContentAreaFilled(false);
+			rings[sBasePos].setMargin(new Insets(0, 0, 0, 0));
+			rings[sBasePos].setBackground(java.awt.Color.WHITE);
+			rings[sBasePos].setOpaque(true);
+			colorUI = new ColorUI(null, true, 0);
+			ringsImage = colorUI.getColorUI();
+			rings[sBasePos].setIcon(new ImageIcon(ringsImage));
+			rings[sBasePos].addActionListener(new PlaceRing(Color.SBASE, 0));
+			c.add(rings[sBasePos]);
+		}
+		
+	}
+	
+	public class PlaceRing implements ActionListener {
+
+		Color ringColor;
+		int ringSize;
+		
+		public PlaceRing(Color color, int size) {
+			this.ringColor = color;
+			this.ringSize = size;
+		}
+		
+		public void actionPerformed(ActionEvent ev) {
+			
+		}
+		
+	}
+	
 	public int[] determineBase(Board board) {
-		boolean valid = false;
-		int x = 0;
-		int y = 0;
+		
+    	JOptionPane.showMessageDialog(null, "Place the starting base.");
+		
+		init();
+		frameHP.pack();
+		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameHP.setSize(350, 800);
+		frameHP.setTitle("Ringzz - Placement");
+		frameHP.setResizable(false);
+		frameHP.setVisible(true);
 		
         while (!valid) {
-			String startX = JOptionPane.showInputDialog(null, "Enter coords for home base (x first)");
-	        String startY = JOptionPane.showInputDialog(null, "Now enter y");
-	       	       	
-	        if (Tools.validNum(startX) && Tools.validNum(startY)) {
-	     	    x = Integer.parseInt(startX);
-	     	    y = Integer.parseInt(startY);
-	     
-	     	    if (board.canPlace(x, y, true, 0, firstColor, playerNumber)) {
-	     		    valid = true;
-	     	    } else if (secondColor != null) {
-	     		    valid = board.canPlace(x, y, true, 0, secondColor, playerNumber);
-	     	    }
-	     	   
-	        }
-	        
-	        if (!valid) {
-	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try again");
-	        }
+        	// Just do nothing
         }
         
-  	    int[] choice = {x, y};
+        // Reset valid and never show starting base again
+        valid = false;
+        showSBase = false;
+        
+  	    // Close frame
+  	    frameHP.dispose();
+        
+  	    int[] choice = {xPlace, yPlace};
   	    return choice;
 	} 
 	
 	public Object[] determineMove(Board board, int colorAmount) {
 	
-        boolean valid = false;
-        boolean base = false;
-		int x = 0;
-		int y = 0;
-		int ringSize = 0;
-		Color color = Color.NONEE;
-        
+		init();
+		frameHP.pack();
+		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameHP.setSize(350, 800);
+		frameHP.setTitle("Ringzz - Placement");
+		frameHP.setResizable(false);
+		frameHP.setVisible(true);
+		
         while (!valid) {
-        	String giveX = JOptionPane.showInputDialog(null, "Give X");
-            String giveY = JOptionPane.showInputDialog(null, "Give Y");
-            String giveBase = JOptionPane.showInputDialog(null, "Give Base (0 or 1)");
-            String giveRingSize = JOptionPane.showInputDialog(null, "Give Ring Size");
-
-	        if (Tools.validNum(giveX) && Tools.validNum(giveY) && Tools.validNum(giveBase) && Tools.validNum(giveRingSize)) {
-	        	x = Integer.parseInt(giveX);
-	        	y = Integer.parseInt(giveY);
-	        	
-	        	if (Integer.parseInt(giveBase) == 0) {
-	        		base = false;
-	        	} else {
-	        		base = true;
-	        	}
-	        	
-	        	ringSize = Integer.parseInt(giveRingSize);
-
-	        	if (board.canPlace(x, y, base, ringSize, firstColor, playerNumber)) {
-	        		color = firstColor;
-					valid = true;
-				} else if (secondColor != null && board.canPlace(x, y, base, ringSize, secondColor, playerNumber)) {
-					color = secondColor;
-					valid = true;
-				}
-	        	
-	        }
-	        
-	        if (!valid) {
-	        	JOptionPane.showMessageDialog(null, "Values incorrect. Please try again");
-	        }
+        	// Just do nothing
         }
         
-        Object[] choice = {x, y, base, ringSize, color};
-        return choice;
+        // Reset valid
+        valid = false;
         
+  	    // Close frame
+  	    frameHP.dispose();
+        
+        Object[] choice = {xPlace, yPlace, base, ringSize, color};
+        return choice;   
+	}
+	
+	public static void main(String[] arg0) {
+		new HumanPlayerUI("test", Color.YELLO, Color.GREEN, 2);
 	}
 	
 }
