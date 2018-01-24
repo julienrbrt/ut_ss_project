@@ -51,6 +51,7 @@ public class HumanUI {
 				colorUI = new ColorUI(null, false, 0);
         		buttonImage = colorUI.getColorUI();
 				updateButton(x, y, buttonImage);
+				c.add(boardButtons[x][y]);		
 			}
 		}
 	}
@@ -58,12 +59,11 @@ public class HumanUI {
 	public void updateButton(int x, int y, Image merged) {
 		
 		ImageIcon rings = new ImageIcon(merged);
-				
+		
 		// Image manager
 		boardButtons[x][y].setIcon(rings);
-		boardButtons[x][y].setRolloverIcon(rings);
-		boardButtons[x][y].setPressedIcon(rings);
-		boardButtons[x][y].setDisabledIcon(rings);
-		c.add(boardButtons[x][y]);		
+//		boardButtons[x][y].setRolloverIcon(rings);
+//		boardButtons[x][y].setPressedIcon(rings);
+//		boardButtons[x][y].setDisabledIcon(rings);
 	}
 }
