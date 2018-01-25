@@ -136,9 +136,16 @@ public class Game {
     		
 	    		JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
 	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
+	    		int checkNo = 1;
+	    		if (players[currentPlayer].getType() == "Human") {
+	    			checkNo = (players[currentPlayer].getColor()[1] != null) ?
+	    					board.getPossibleMoves(players[currentPlayer].getColor()[0], currentPlayer).length +
+	    					board.getPossibleMoves(players[currentPlayer].getColor()[1], currentPlayer).length : 
+	    						board.getPossibleMoves(players[currentPlayer].getColor()[0], currentPlayer).length;
+	    		}
 	    		
 	    		// Skip player if no possible choices
-	    		if (choice.length != 0) {
+	    		if (choice.length != 0 && checkNo != 0) {
 		    		board.addRing((Integer) choice[0],
 		            		(Integer) choice[1],
 		            		(Boolean) choice[2],

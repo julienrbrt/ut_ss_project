@@ -13,6 +13,7 @@ public class ComputerPlayer extends Player {
 	
 	private Strategy strategy;
 	//private final int playerNumber;
+	private final String type = "Computer";
 	
 	/**
 	 * This constructor permit to assign the default IA (Random) to his color.
@@ -45,5 +46,9 @@ public class ComputerPlayer extends Player {
 	 */
 	public Object[] determineMove(Board board, int colorAmount) {
 		return strategy.determineMove(board, colorAmount, super.getColor()[0], super.getColor()[1]);
+	}
+	
+	public String getType() {
+		return type;
 	}
 }

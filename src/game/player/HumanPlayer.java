@@ -10,6 +10,7 @@ public class HumanPlayer extends Player {
 	private Color firstColor;
 	private Color secondColor;
 	private final int playerNumber;
+	private final String type = "Human";
 	
 	// Constructor for one color
 	public HumanPlayer(String name, Color firstColor, int playerNumber) {
@@ -100,7 +101,10 @@ public class HumanPlayer extends Player {
         
         Object[] choice = {x, y, base, ringSize, color};
         return choice;
-        
+	}
+	
+	public String getType() {
+		return type;
 	}
 	
 }

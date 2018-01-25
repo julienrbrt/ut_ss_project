@@ -17,6 +17,7 @@ public abstract class Player {
     private String name;
     private Color firstColor;
     private Color secondColor;
+    private final String type = "none";
 
     // -- Constructors -----------------------------------------------
 
@@ -71,6 +72,10 @@ public abstract class Player {
      */
     public abstract int[] determineBase(Board board);
     
-    public abstract Object[] determineMove(Board board, int colorsAmount);    
+    public abstract Object[] determineMove(Board board, int colorsAmount);
+    
+    public String getType() {
+    	return type;
+    }
      
 }
