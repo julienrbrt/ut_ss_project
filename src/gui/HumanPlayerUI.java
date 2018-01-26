@@ -79,7 +79,7 @@ public class HumanPlayerUI extends Player {
 			rings = new JButton[maxRings + 2];
 		}
 		
-		int sBasePos = rings.length - 1;
+		sBasePos = rings.length - 1;
 		
 		// First rings color generation
 		for (int x = 0; x < maxRings; x++) {

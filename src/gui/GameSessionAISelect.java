@@ -92,7 +92,7 @@ public class GameSessionAISelect extends JPanel {
 	}
 	
 	// AI handler - Observable / Observer
-	public class AI extends Observable implements ActionListener, Runnable {
+	public class AI extends Observable implements ActionListener {
 		
 		Player player2;
 		Player player3;
@@ -192,13 +192,9 @@ public class GameSessionAISelect extends JPanel {
 			}
 		}
 		
-	    public void run() {
-	    	if (cleanAiPlayers != null) {
-				setChanged();
-	            notifyObservers(cleanAiPlayers);
-	    	}
-	    }
-
+		public Player[] getAiPlayers() {
+			return cleanAiPlayers;
+		}
 	}
 
 }
