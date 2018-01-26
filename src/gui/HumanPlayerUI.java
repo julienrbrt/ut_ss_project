@@ -170,8 +170,6 @@ public class HumanPlayerUI extends Player {
 			
 			xPlace = gui.getPlacement()[0];
 			yPlace = gui.getPlacement()[1];
-			
-			System.out.println(xPlace + " " + yPlace);
 						
 			if (size > 4) {
 				base = true;
@@ -201,7 +199,7 @@ public class HumanPlayerUI extends Player {
 			} catch (InterruptedException ie) {
 				
 			}
-			valid = board.canPlace(xPlace, yPlace, true, 0, secondColor, playerNumber);
+			valid = board.canPlace(xPlace, yPlace, true, 0, color, playerNumber);
 			System.out.println("It is " + valid + x++);
 		}
                 
