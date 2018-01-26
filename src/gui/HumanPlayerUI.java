@@ -7,17 +7,17 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.*;
-import javax.swing.event.*;
 
 import game.*;
 import game.player.*;
 import game.player.Color;
 
 public class HumanPlayerUI extends Player {
-	
+		
 	private Color firstColor;
 	private Color secondColor;
 	private final int playerNumber;
+	private final String type = "Human";
 		
 	// GUI handling	
 	private final JFrame frameHP = new JFrame();
@@ -28,16 +28,16 @@ public class HumanPlayerUI extends Player {
 	JButton hint;
 	JCheckBox hintOnOff;
 	HumanUI gui;
+	Thread human;
 	
 	// Game handling
 	private boolean showSBase = true;
 	private final int maxRings = 4; 
 	private int xPlace = -1;
 	private int yPlace = -1;
+	private int ringSize = -1;
 	private boolean base;
 	private Color color;
-	private int ringSize = -1;
-	private boolean valid = false;
 	
 	// Constructor for one color
 	public HumanPlayerUI(String name, Color firstColor, int playerNumber, HumanUI gui) {
@@ -56,7 +56,7 @@ public class HumanPlayerUI extends Player {
 		this.gui = gui;
 	}
 	
-	public void init() {
+	public synchronized void init() {
 				
 		if (secondColor != null) {
 			c.setLayout(new GridLayout(0, 2));
@@ -156,14 +156,7 @@ public class HumanPlayerUI extends Player {
 		}
 		
 		public void actionPerformed(ActionEvent ev) {
-			System.out.println(ringSize + "" + ringColor);
 			
-			if (ringSize == 5) {
-				base = true;
-			} else {
-				base = false;
-			}
-						
 			gui.addObserver(new Observer() {
 				public void update(Observable obj, Object arg) {
 					choosen = (int[]) arg;
@@ -172,15 +165,23 @@ public class HumanPlayerUI extends Player {
 					yPlace = choosen[1];
             	}
             });
-				
+			
+			human = new Thread(new HumanUI());
+			human.run();
+			
+			if (size > 4) {
+				base = true;
+			} else {
+				base = false;
+			}
+			
 			color = ringColor;
 			ringSize = size;
-		}		
+			
+		}
 	}
 	
 	public int[] determineBase(Board board) {
-		
-    	JOptionPane.showMessageDialog(null, "Place the starting base.");
 		
 		init();
 		frameHP.pack();
@@ -190,15 +191,19 @@ public class HumanPlayerUI extends Player {
 		frameHP.setResizable(false);
 		frameHP.setVisible(true);
 		
-        while (!valid) {
+		boolean valid = false;
+		
+        while (!valid) {        	
         	// TODO if too slow do automatic move
-        	if (xPlace != -1 || yPlace != -1 || color != null) {
-        		valid = board.canPlace(xPlace, yPlace, true, 0, color, playerNumber);
+        	try {
+        		this.wait();
+        		valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+        	} catch (InterruptedException ie) {
+        		
         	}
         }
         
-        // Reset valid and never show starting base again
-        valid = false;
+        // Never show starting base again
         showSBase = false;
         
   	    // Close frame
@@ -209,7 +214,7 @@ public class HumanPlayerUI extends Player {
 	} 
 	
 	public Object[] determineMove(Board board, int colorAmount) {
-	
+		
 		init();
 		frameHP.pack();
 		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -218,20 +223,26 @@ public class HumanPlayerUI extends Player {
 		frameHP.setResizable(false);
 		frameHP.setVisible(true);
 		
-        while (!valid) {
+		boolean valid = false;
+		
+        while (!valid) {        	
         	// TODO if too slow do automatic move
-        	if (xPlace != -1 || yPlace != -1 || color != null || ringSize != -1) {
+        	try {
+        		this.wait();
         		valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+        	} catch (InterruptedException ie) {
+        		
         	}
         }
-        
-        // Reset valid
-        valid = false;
         
   	    // Close frame
   	    frameHP.dispose();
         
         Object[] choice = {xPlace, yPlace, base, ringSize, color};
         return choice;   
-	}	
+	}
+	
+	public String getType() {
+		return type;
+	}
 }

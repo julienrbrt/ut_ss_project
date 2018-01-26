@@ -1,7 +1,5 @@
 package game.player;
 
-import java.util.Arrays;
-
 import game.*;
 
 /**
@@ -69,10 +67,8 @@ public class RandomStrategy implements Strategy {
     		result = new Object[0];
     		return result;
     	}
-    	System.out.println("Options (after): " + Arrays.toString(moves));
     	int choice = (int) Math.floor(Math.random() * moves.length);
     	int move = moves[choice];
-    	System.out.println("choice = " + move);
     	result = new Object[5];
     	result[0] = (int) move / 100;
     	result[1] = (int) (move % 100) / 10;
@@ -85,7 +81,6 @@ public class RandomStrategy implements Strategy {
     		result[4] = firstColor;
     	}
     	board.hasRing((boolean) result[2], (int) result[3], (Color) result[4], playerNumber, true);
-    	System.out.println("result = " + Arrays.toString(result));
     	return result;
     	
     }

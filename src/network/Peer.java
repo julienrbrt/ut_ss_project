@@ -18,8 +18,8 @@ import game.player.Mark;
 /**
  * This class for the connection of the client-server of the game.
  * @author  Theo Ruys
- * @author Yordi Hazekamp 
- * @author Julien Robert
+ * @author Richard
+ * @author Julien
  * @version 0.1
  */
 

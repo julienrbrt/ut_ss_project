@@ -102,6 +102,8 @@ public class Game {
      */
     public void play() {
     	
+    	gui.init();
+    	
     	int colorAmount = 1;
     	
     	if (players.length < 4) {

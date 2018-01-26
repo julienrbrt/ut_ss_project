@@ -19,6 +19,7 @@ public class ALGSStartGame implements ActionListener {
 	JFrame frameGS;
 	JPanel aiSelect;
 	String playerName;
+	HumanUI gui = new HumanUI();
 	
 	public ALGSStartGame(JFrame frame, JPanel panel, String name) {
 		this.frameGS = frame;
@@ -29,13 +30,13 @@ public class ALGSStartGame implements ActionListener {
 	Player[] aiPlayers;
 	Player[] players;
 	
-	// HumanUI trick
-	HumanUI gui = new HumanUI();
-	
 	public void actionPerformed(ActionEvent e) {
 	
 		GameSessionAISelect selectAI = (GameSessionAISelect) aiSelect;
 		GameSessionAISelect.AI ai = selectAI.new AI();
+		
+		Thread threadAI = new Thread(ai);
+		threadAI.start();
 
 		ai.addObserver(new Observer() {
             public void update(Observable obj, Object arg) {
@@ -46,7 +47,7 @@ public class ALGSStartGame implements ActionListener {
     			
     			if (players.length == 2 || players.length == 3) {
     				players[0] = new HumanPlayerUI(playerName, Color.REDDD, Color.YELLO, 0, gui);
-    			} else {
+    			} else if (players.length == 4) {
     				players[0] = new HumanPlayerUI(playerName, Color.REDDD, 0, gui);
     			}
     			
@@ -69,9 +70,6 @@ public class ALGSStartGame implements ActionListener {
             }
         });
 		
-		Thread threadAI = new Thread(ai);
-		threadAI.start();
-		
 		if (players == null) {
 			// do nothing
 		} else if (players.length < 2) { // Check Minimum players
@@ -80,7 +78,6 @@ public class ALGSStartGame implements ActionListener {
 		} else {
 			// Close Window
 			frameGS.dispose();
-			threadAI.interrupt();
 			Game game = new Game(players, gui);
 			game.play();
 		}

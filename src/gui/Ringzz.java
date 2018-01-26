@@ -56,7 +56,7 @@ public class Ringzz {
    		buttonImage = new ImageIcon(colorUI.getColorUI());
    		settingsButton[1].setIcon(buttonImage);
    		settingsButton[1].setPressedIcon(buttonImage);
-   		settingsButton[0].addActionListener(new ServerSession());
+   		settingsButton[1].addActionListener(new ServerSession());
 	}
 	
 	public class GameSession implements ActionListener {

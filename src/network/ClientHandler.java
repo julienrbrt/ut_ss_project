@@ -9,8 +9,8 @@ import game.player.*;
 
 /**
  * This class for defining all the method used in the Client of the game.
- * @author Yordi Hazekamp 
- * @author Julien Robert
+ * @author Richard
+ * @author Julien
  * @version 0.1
  */
 

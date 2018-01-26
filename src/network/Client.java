@@ -5,9 +5,9 @@ import java.net.*;
 import java.util.*;
 
 /**
- * This class for maintening the Client of the PuissanceQuatre game for playing in network.
- * @author Yordi Hazekamp 
- * @author Julien Robert
+ * This class for maintening the Client of the Ringgz game for playing in network.
+ * @author Richard
+ * @author Julien
  * @version 0.1
  */
 

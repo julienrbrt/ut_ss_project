@@ -5,12 +5,12 @@ import java.net.*;
 import java.util.*;
 
 import game.*;
-import game.player.Mark;
+import game.player.Color;
 
 /**
  * This class for defining all the method used in the Server of the game.
- * @author Yordi Hazekamp 
- * @author Julien Robert
+ * @author Richard
+ * @author Julien
  * @version 0.1
  */
 
@@ -23,14 +23,14 @@ public class ServerHandler implements Protocol {
 	/**
 	* The server notifies the clients of the move that was performed.
 	*/
-	public String notifyMove(int x, int z) {
-        if (x >= Board.DIM || z >= Board.DIM) {
+	public String notifyMove(int x, int y) {
+        if (x >= Board.SIZE || y >= Board.SIZE) {
         	return error();
         }
-		boolean valid = board.isField(x, z, board.getY(x, z))
-        		&& board.isEmpty(x, z, board.getY(x, z));
+		boolean valid = board.isField(x, y, board.getY(x, y))
+        		&& board.isEmpty(x, z, board.getY(x, y));
 		if (valid) {
-			return "NotifyMove " + x + " " + z;
+			return "NotifyMove " + x + " " + y;
 		} else {
 			return error();
 		}

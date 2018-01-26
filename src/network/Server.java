@@ -5,10 +5,10 @@ import java.net.*;
 import java.util.*;
 
 /**
- * This class for maintening the Server of the PuissanceQuatre game for playing in network.
+ * This class for maintening the Server of the Ringgz game for playing in network.
  * @author  Theo Ruys
- * @author Yordi Hazekamp 
- * @author Julien Robert
+ * @author Richard
+ * @author Julien
  * @version 0.1
  */
 

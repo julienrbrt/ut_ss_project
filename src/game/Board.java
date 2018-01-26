@@ -224,7 +224,6 @@ public class Board {
 		for (int i = 0; i < count; i++) {
 			actResult[i] = result[i];
 		}
-		System.out.println("Options: " + Arrays.toString(actResult));
 		return actResult;
 	}
 	
@@ -250,7 +249,6 @@ public class Board {
 		for (int i = 0; i < count; i++) {
 			actResult[i] = result[i];
 		}
-		System.out.println("Internal: " + Arrays.toString(actResult));
 		return actResult;
 	}
 	
@@ -266,16 +264,24 @@ public class Board {
 	public boolean hasRing(boolean base, int size, Color c, int currentPlayer, boolean change) {
     	boolean firstColor = players[currentPlayer].getColor()[0] == c;
     	if (base && firstColor && playerRings[slots * currentPlayer + 4] > 0) {
-    		if (change) { playerRings[slots * currentPlayer + 4]--; }
+    		if (change) { 
+    			playerRings[slots * currentPlayer + 4]--;
+    		}
     		return true;
     	} else if (base && !firstColor && playerRings[slots * currentPlayer + 9] > 0) {
-    		if (change) { playerRings[slots * currentPlayer + 9]--; }
+    		if (change) {
+    			playerRings[slots * currentPlayer + 9]--;
+    		}
     		return true;
     	} else if (!base && firstColor && playerRings[slots * currentPlayer + size] > 0) {
-    		if (change) { playerRings[slots * currentPlayer + size]--; }
+    		if (change) {
+    			playerRings[slots * currentPlayer + size]--;
+    		}
     		return true;
     	} else if (!base && !firstColor && playerRings[slots * currentPlayer + size + 5] > 0) {
-    		if (change) { playerRings[slots * currentPlayer + size + 5]--; }
+    		if (change) {
+    			playerRings[slots * currentPlayer + size + 5]--;
+    		}
     		return true;
     	} else {
     		return false;

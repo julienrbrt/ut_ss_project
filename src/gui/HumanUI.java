@@ -11,7 +11,6 @@ import game.*;
 // Observer - Observable
 import java.util.Observable;
 
-
 public class HumanUI extends Observable implements Runnable {
 	
 	// GUI handling
@@ -26,20 +25,21 @@ public class HumanUI extends Observable implements Runnable {
 	Player[] players;
 	
 	// Coordinate give back
-	private int xSelect = -1;
-	private int ySelect = -1;
+	int[] choice = new int[2];
 	
 	public HumanUI() {
-		init();
+
+	}
+	
+	public void init() {
+		
 		frameGame.pack();
 		frameGame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameGame.setSize(700, 700);
 		frameGame.setTitle("Ringzz");
 		frameGame.setResizable(false);
 		frameGame.setVisible(true);
-	}
-	
-	public void init() {
+		
 		c.setLayout(new GridLayout(5, 5));
 		
 		for (int y = Board.SIZE - 1; y >= 0; y--) {	
@@ -81,18 +81,13 @@ public class HumanUI extends Observable implements Runnable {
 		}
 		
 		public void actionPerformed(ActionEvent ev) {
-			setPlacement(x, y);
+			choice[0] = x;
+			choice[1] = y;
 		}
 	
 	}
-	
-	public void setPlacement(int x, int y) {
-		this.xSelect = x;
-		this.ySelect = y;
-	}
-	
+		
 	public void run() {
-		int[] choice = {xSelect, ySelect};
 		setChanged();
         notifyObservers(choice);
 	}

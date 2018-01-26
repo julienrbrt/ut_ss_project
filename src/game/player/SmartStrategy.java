@@ -3,11 +3,13 @@ package game.player;
 import game.*;
 
 /**
- * This class manage the random IA of the Ringgz game.
+ * This class manage the SMART IA of the Ringgz game.
  * @author Richard 
  * @author Julien
  * @version 0.1
  */
+
+// Smart strategy is RANDOM
 
 public class SmartStrategy implements Strategy {
 	
@@ -50,8 +52,10 @@ public class SmartStrategy implements Strategy {
     		firstArray = tempMoves.length;
     		int[] tempMoves2 = board.getPossibleMoves(secondColor, playerNumber);
     		moves = new int[firstArray + tempMoves2.length];
-    		for (int i = 0; i < firstArray; i++) {	//concatenate arrays
-    			moves[i] = tempMoves[i];
+    		for (int i = 0; i < moves.length; i++) {	//concatenate arrays
+    			if (i < firstArray) {
+    				moves[i] = tempMoves[i];
+    			}
     			if (i < tempMoves2.length) {
     				moves[firstArray + i] = tempMoves2[i];
     			}
@@ -65,7 +69,6 @@ public class SmartStrategy implements Strategy {
     		result = new Object[0];
     		return result;
     	}
-    	
     	int choice = (int) Math.floor(Math.random() * moves.length);
     	int move = moves[choice];
     	result = new Object[5];
@@ -79,8 +82,8 @@ public class SmartStrategy implements Strategy {
     	} else {
     		result[4] = firstColor;
     	}
-    	
+    	board.hasRing((boolean) result[2], (int) result[3], (Color) result[4], playerNumber, true);
     	return result;
-    
+    	
     }
 }

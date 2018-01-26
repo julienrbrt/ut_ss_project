@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 import game.player.Color;
@@ -194,8 +193,10 @@ public class GameSessionAISelect extends JPanel {
 		}
 		
 	    public void run() {
-			setChanged();
-            notifyObservers(cleanAiPlayers);
+	    	if (cleanAiPlayers != null) {
+				setChanged();
+	            notifyObservers(cleanAiPlayers);
+	    	}
 	    }
 
 	}
