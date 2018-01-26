@@ -71,9 +71,9 @@ public class Ringzz {
 	public class ServerSession implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			new gui.ServerSession();
 			// Close Window
 			frameMain.dispose();
+			new gui.ServerSession();
 		}
 	}
 	

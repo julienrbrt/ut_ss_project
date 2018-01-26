@@ -1,7 +1,5 @@
 package game;
 
-import java.util.Arrays;
-
 import game.player.*;
 
 // MVC (model)

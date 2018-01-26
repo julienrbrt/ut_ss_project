@@ -26,11 +26,7 @@ public class HumanUI extends Observable implements Runnable {
 	
 	// Coordinate give back
 	int[] choice = new int[2];
-	
-	public HumanUI() {
-
-	}
-	
+		
 	public void init() {
 		
 		frameGame.pack();
@@ -83,10 +79,15 @@ public class HumanUI extends Observable implements Runnable {
 		public void actionPerformed(ActionEvent ev) {
 			choice[0] = x;
 			choice[1] = y;
+			System.out.println(choice);
 		}
 	
 	}
-		
+	
+	public int[] getPlacement() {
+		return choice;
+	}
+	
 	public void run() {
 		setChanged();
         notifyObservers(choice);
