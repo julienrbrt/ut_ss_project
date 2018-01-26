@@ -135,7 +135,7 @@ public class Game implements Runnable {
     		if (!gotSkipped[currentPlayer]) {
     		
 	    		JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
-	    		Object[] choice = players[currentPlayer].determineMove(board, colorAmount);
+	    		Object[] choice = new Object[0];
 	    		int checkNo = 1;
 	    		if (players[currentPlayer].getType() == "Human") {
 	    			checkNo = (players[currentPlayer].getColor()[1] != null) ?
@@ -144,8 +144,12 @@ public class Game implements Runnable {
 	    						board.getPossibleMoves(players[currentPlayer].getColor()[0], currentPlayer).length;
 	    		}
 	    		
+	    		if (checkNo != 0) {
+	    			choice = players[currentPlayer].determineMove(board, colorAmount);
+	    		}
+	    		
 	    		// Skip player if no possible choices
-	    		if (choice.length != 0 && checkNo != 0) {
+	    		if (choice.length != 0) {
 		    		board.addRing((Integer) choice[0],
 		            		(Integer) choice[1],
 		            		(Boolean) choice[2],
