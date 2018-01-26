@@ -72,7 +72,6 @@ public class HumanPlayerUI extends Player {
 		frameHP.setSize(350, 800);
 		frameHP.setTitle("Ringzz - Placement");
 		frameHP.setResizable(false);
-		frameHP.setVisible(true);
 	}
 	
 	public void init() {
