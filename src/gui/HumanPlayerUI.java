@@ -33,7 +33,7 @@ public class HumanPlayerUI extends Player {
 	private int xPlace = -1;
 	private int yPlace = -1;
 	private int ringSize = -1;
-	private boolean base = false;
+	private boolean base;
 	private Color color;
 	private volatile boolean valid;
 		
@@ -170,14 +170,20 @@ public class HumanPlayerUI extends Player {
 			
 			xPlace = gui.getPlacement()[0];
 			yPlace = gui.getPlacement()[1];
-						
+			
+			System.out.println("This thing have size:" + size);
+			
 			if (size > 3) {
 				base = true;
-				size = 0;
+				ringSize = 0;
+			} else if (size < 4) {
+				base = false;
+				ringSize = size;
 			}
 			
+			System.out.println("This thing have size:" + size);
+
 			color = ringColor;
-			ringSize = size;
 			
 			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
 		}
