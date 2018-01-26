@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="game.Board" project="ringgz" file="/ringgz/src/game/Board.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1284" y="115"/>    
+    <position height="401" width="270" x="1181" y="604"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="game.ColorUI" project="ringgz" file="/ringgz/src/game/ColorUI.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="619" y="-38"/>    
+    <position height="149" width="147" x="1521" y="1783"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="game.Game" project="ringgz" file="/ringgz/src/game/Game.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1010" y="207"/>    
+    <position height="203" width="143" x="1491" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="game.Tile" project="ringgz" file="/ringgz/src/game/Tile.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="950" y="935"/>    
+    <position height="221" width="173" x="1181" y="1045"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="game.WinConditions" project="ringgz" file="/ringgz/src/game/WinConditions.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1005" y="-18"/>    
+    <position height="131" width="131" x="1320" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <enumeration id="6" language="java" name="game.player.Color" project="ringgz" 
     file="/ringgz/src/game/player/Color.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="404" y="708"/>    
+    <position height="329" width="142" x="1481" y="2026"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </enumeration>  
   <enumeration id="7" language="java" name="game.player.Color.ColGroup" project="ringgz" 
     file="/ringgz/src/game/player/Color.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="302" y="1022"/>    
+    <position height="167" width="121" x="1400" y="2395"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </enumeration>  
   <enumeration id="8" language="java" name="game.player.Color.Group" project="ringgz" 
     file="/ringgz/src/game/player/Color.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="462" y="1004"/>    
+    <position height="131" width="119" x="1561" y="2395"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </enumeration>  
   <class id="9" language="java" name="game.player.ComputerPlayer" project="ringgz" 
     file="/ringgz/src/game/player/ComputerPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1615" y="419"/>    
+    <position height="167" width="218" x="1181" y="1306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,276 +84,526 @@
   </class>  
   <class id="10" language="java" name="game.player.Player" project="ringgz" file="/ringgz/src/game/player/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1216" y="712"/>    
+    <position height="221" width="196" x="1747" y="1045"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="11" language="java" name="game.player.Strategy" project="ringgz" 
+  <class id="11" language="java" name="game.player.RandomStrategy" project="ringgz" 
+    file="/ringgz/src/game/player/RandomStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="245" x="822" y="1306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="game.player.SmartStrategy" project="ringgz" 
+    file="/ringgz/src/game/player/SmartStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="245" x="537" y="1306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="13" language="java" name="game.player.Strategy" project="ringgz" 
     file="/ringgz/src/game/player/Strategy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1623" y="649"/>    
+    <position height="113" width="245" x="680" y="1783"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="12" language="java" name="game.player.SmartStrategy" project="ringgz" 
-    file="/ringgz/src/game/player/SmartStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1521" y="894"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="game.player.RandomStrategy" project="ringgz" 
-    file="/ringgz/src/game/player/RandomStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1808" y="929"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="gui.HumanPlayerUI.PlaceRing" project="ringgz" 
-    file="/ringgz/src/gui/HumanPlayerUI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="624" y="579"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="gui.HumanPlayerUI" project="ringgz" file="/ringgz/src/gui/HumanPlayerUI.java" 
+  <class id="14" language="java" name="gui.HumanUI.RingPlacement" project="ringgz" file="/ringgz/src/gui/HumanUI.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="278" y="287"/>    
+    <position height="131" width="194" x="1394" y="1045"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="gui.HumanUI.RingPlacement" project="ringgz" file="/ringgz/src/gui/HumanUI.java" 
+  <class id="15" language="java" name="gui.ServerSession" project="ringgz" file="/ringgz/src/gui/ServerSession.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="829" y="344"/>    
+    <position height="131" width="109" x="843" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="gui.HumanUI" project="ringgz" file="/ringgz/src/gui/HumanUI.java" binary="false" 
+  <class id="16" language="java" name="gui.ALGSStartOnlineGame" project="ringgz" 
+    file="/ringgz/src/gui/ALGSStartOnlineGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="244" x="559" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="gui.Ringzz.GameSession" project="ringgz" file="/ringgz/src/gui/Ringzz.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="194" x="2302" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="gui.ALGSStartGame" project="ringgz" file="/ringgz/src/gui/ALGSStartGame.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="214" x="1710" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="gui.Ringzz" project="ringgz" file="/ringgz/src/gui/Ringzz.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="612" y="305"/>    
+    <position height="167" width="143" x="2197" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="18">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="19" name="tile"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="22" name="board"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+  <class id="20" language="java" name="gui.HumanPlayerUI.PlaceRing" project="ringgz" 
+    file="/ringgz/src/gui/HumanPlayerUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="194" x="1224" y="1783"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="gui.GameSession" project="ringgz" file="/ringgz/src/gui/GameSession.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="203" width="134" x="965" y="1783"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="gui.HumanUI" project="ringgz" file="/ringgz/src/gui/HumanUI.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="257" width="177" x="1491" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="gui.Ringzz.ServerSession" project="ringgz" file="/ringgz/src/gui/Ringzz.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="194" x="2068" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="gui.GameSessionServerSettings" project="ringgz" 
+    file="/ringgz/src/gui/GameSessionServerSettings.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="293" width="189" x="330" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="gui.GameSessionServerSettings.GameMode" project="ringgz" 
+    file="/ringgz/src/gui/GameSessionServerSettings.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="194" x="330" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="gui.GameSession.OnlineOff" project="ringgz" 
+    file="/ringgz/src/gui/GameSession.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="194" x="965" y="2026"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="gui.GameSessionAISelect" project="ringgz" 
+    file="/ringgz/src/gui/GameSessionAISelect.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="257" width="150" x="2007" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="gui.HumanPlayerUI" project="ringgz" file="/ringgz/src/gui/HumanPlayerUI.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="437" width="247" x="1439" y="1306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="gui.GameSessionAISelect.AI" project="ringgz" 
+    file="/ringgz/src/gui/GameSessionAISelect.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="194" x="1771" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="gui.GameSessionBasic" project="ringgz" 
+    file="/ringgz/src/gui/GameSessionBasic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="288" x="992" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="31" language="java" name="network.Protocol" project="ringgz" file="/ringgz/src/network/Protocol.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="289" y="1136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="32">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="33" name="board"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="25" name="secondColor"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <association id="35">    
+    <bendpoint x="1448" y="1783"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="36" name="firstColor"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="28" name="ringColor"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="31" name="players"/>      
-      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
+  <association id="38">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="39" name="player3"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="33">    
+  <association id="41">    
+    <bendpoint x="1719" y="604"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="42" name="aiPlayers"/>      
+      <multiplicity id="43" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="44">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="8"/>  
   </nesting>  
-  <association id="34">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="35" name="firstColor"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
+  <association id="45">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="46" name="colorUI"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="37">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="38" name="firstColor"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="41" name="strategy"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="43">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="44">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="45" name="group"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="48" name="gui"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="51" name="players"/>      
-      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
+  <nesting id="48">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <association id="49">    
+    <bendpoint x="1995" y="604"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="50" name="aiPlayers"/>      
+      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="53">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="54">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="55" name="color"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="57">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="58" name="secondColor"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="60">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="61" name="colorUI"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="64" name="colorUI"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="66">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="14"/>  
+  <nesting id="52">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="25"/>  
   </nesting>  
-  <association id="67">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="68" name="gui"/>      
-      <multiplicity id="69" minimum="0" maximum="1"/>    
+  <association id="53">    
+    <bendpoint x="1129" y="1306"/>    
+    <bendpoint x="1129" y="1783"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="54" name="tile"/>      
+      <multiplicity id="55" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="71" name="colGroup"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
+  <association id="56">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="57" name="player2"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="73">    
-    <end type="SOURCE" refId="9"/>    
+  <nesting id="59">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="28"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
+  <association id="61">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="62" name="color"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="65" name="strategy"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="67">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <association id="68">    
+    <bendpoint x="2016" y="604"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="69" name="cleanAiPlayers"/>      
+      <multiplicity id="70" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="72" name="players"/>      
+      <multiplicity id="73" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="74">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="75" name="colorUI"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="75" name="gui"/>      
       <multiplicity id="76" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="77">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
-  </nesting>  
-  <realization id="78">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="79">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="80" name="board"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
+  <association id="77">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="78" name="player4"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="82">    
+  <association id="80">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="81" name="gui"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="83" name="board"/>      
-      <multiplicity id="84" minimum="0" maximum="2147483647"/>    
+      <attribute id="84" name="board"/>      
+      <multiplicity id="85" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="85">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="86" name="players"/>      
-      <multiplicity id="87" minimum="0" maximum="2147483647"/>    
+  <nesting id="86">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </nesting>  
+  <nesting id="87">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="23"/>  
+  </nesting>  
+  <association id="88">    
+    <bendpoint x="1740" y="604"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="89" name="players"/>      
+      <multiplicity id="90" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="88">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="16"/>  
+  <association id="91">    
+    <bendpoint x="1150" y="604"/>    
+    <bendpoint x="1150" y="1045"/>    
+    <bendpoint x="1150" y="1306"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="92" name="colorUI"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <bendpoint x="1716" y="1045"/>    
+    <bendpoint x="1716" y="1306"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="95" name="colorUI"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="98" name="players"/>      
+      <multiplicity id="99" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="100">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <association id="101">    
+    <bendpoint x="1490" y="1783"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="102" name="color"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <bendpoint x="1758" y="1306"/>    
+    <bendpoint x="1758" y="1783"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="105" name="firstColor"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="108" name="colGroup"/>      
+      <multiplicity id="109" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <bendpoint x="1698" y="604"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="111" name="players"/>      
+      <multiplicity id="112" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="113">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="29"/>  
   </nesting>  
+  <association id="114">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="115" name="ringColor"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="117">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <generalization id="118">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="119">    
+    <bendpoint x="1469" y="1783"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="120" name="secondColor"/>      
+      <multiplicity id="121" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="122">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </nesting>  
+  <association id="123">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="124" name="board"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="127" name="group"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <bendpoint x="1618" y="1045"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="130" name="gui"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <bendpoint x="1737" y="1306"/>    
+    <bendpoint x="1737" y="1783"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="133" name="secondColor"/>      
+      <multiplicity id="134" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="135">    
+    <bendpoint x="2037" y="604"/>    
+    <bendpoint x="2037" y="1045"/>    
+    <bendpoint x="2037" y="1306"/>    
+    <bendpoint x="2037" y="1783"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="136" name="color"/>      
+      <multiplicity id="137" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
