@@ -78,8 +78,7 @@ public class ALGSStartGame implements ActionListener {
 		} else {
 			// Close Window
 			frameGS.dispose();
-			Game game = new Game(players, gui);
-			game.play();
+			new Game(players, gui).play();
 		}
 	}
 }

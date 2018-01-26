@@ -3,9 +3,6 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
-
 import javax.swing.*;
 
 import game.*;
@@ -28,7 +25,6 @@ public class HumanPlayerUI extends Player {
 	JButton hint;
 	JCheckBox hintOnOff;
 	HumanUI gui;
-	Thread human;
 	
 	// Game handling
 	private boolean showSBase = true;
@@ -146,9 +142,9 @@ public class HumanPlayerUI extends Player {
 	
 	public class PlaceRing implements ActionListener {
 
-		int[] choosen;
 		Color ringColor;
 		int size;
+		Thread human;
 		
 		public PlaceRing(Color color, int size) {
 			this.ringColor = color;
@@ -157,17 +153,13 @@ public class HumanPlayerUI extends Player {
 		
 		public void actionPerformed(ActionEvent ev) {
 			
-			gui.addObserver(new Observer() {
-				public void update(Observable obj, Object arg) {
-					choosen = (int[]) arg;
-					System.out.println(choosen[0] + "" + choosen[1]);
-					xPlace = choosen[0];
-					yPlace = choosen[1];
-            	}
-            });
-			
 			human = new Thread(new HumanUI());
-			human.run();
+			human.start();
+			
+			xPlace = gui.getPlacement()[0];
+			yPlace = gui.getPlacement()[1];
+			
+			human.interrupt();
 			
 			if (size > 4) {
 				base = true;
@@ -177,6 +169,10 @@ public class HumanPlayerUI extends Player {
 			
 			color = ringColor;
 			ringSize = size;
+			
+			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
+
+			this.notifyAll();
 			
 		}
 	}

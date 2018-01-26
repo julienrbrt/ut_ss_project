@@ -8,10 +8,7 @@ import javax.swing.*;
 import game.player.*;
 import game.*;
 
-// Observer - Observable
-import java.util.Observable;
-
-public class HumanUI extends Observable implements Runnable {
+public class HumanUI implements Runnable {
 	
 	// GUI handling
 	private final JFrame frameGame = new JFrame();
@@ -79,7 +76,7 @@ public class HumanUI extends Observable implements Runnable {
 		public void actionPerformed(ActionEvent ev) {
 			choice[0] = x;
 			choice[1] = y;
-			System.out.println(choice);
+			System.out.println(choice[0] + " " + choice[1]);
 		}
 	
 	}
@@ -89,7 +86,6 @@ public class HumanUI extends Observable implements Runnable {
 	}
 	
 	public void run() {
-		setChanged();
-        notifyObservers(choice);
+
 	}
 }
