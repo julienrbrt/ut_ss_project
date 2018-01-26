@@ -181,7 +181,7 @@ public class HumanPlayerUI extends Player {
 			
 			color = ringColor;
 			
-			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
+//			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
 		}
 	}
 	
@@ -189,16 +189,23 @@ public class HumanPlayerUI extends Player {
 		
 		frameHP.setVisible(true);
 		valid = false;
-				
+		int timeCount = 0;
+		
 		while (!valid) {
 			// TODO if too slow do automatic move
 			// Do verification every second
 			try {
-				Thread.sleep(1000);	
+				Thread.sleep(1000);
+				timeCount++;
 			} catch (InterruptedException ie) {
 				
 			}
 			valid = board.canPlace(xPlace, yPlace, true, 0, color, playerNumber);
+			
+			// skip player after 1 minute 30 and make a random move
+			if (timeCount >= 90) {
+				valid = true;
+			}
 		}
                 
         // Never show starting base again
@@ -206,32 +213,55 @@ public class HumanPlayerUI extends Player {
         
   	    // Close frame
   	    frameHP.dispose();
-        
-  	    int[] choice = {xPlace, yPlace};
-  	    return choice;
+  	    
+  	    // Send move
+        if (timeCount >= 90) {
+			// skip player after 1 minute 30 and make a random move
+        	int[] choice = new RandomStrategy(playerNumber).determineBase(board);
+        	return choice;
+        } else {
+        	int[] choice = {xPlace, yPlace};
+        	return choice;
+        }
+  	    
 	} 
 	
 	public Object[] determineMove(Board board, int colorAmount) {
 		
 		frameHP.setVisible(true);
 		valid = false;
+		int timeCount = 0;
 		
 		while (!valid) {
 			// TODO if too slow do automatic move
 			// Do verification every second
 			try {
 				Thread.sleep(1000);
+				timeCount++;
 			} catch (InterruptedException ie) {
 				
 			}
 			valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+			
+			// skip player after 1 minute 30 and make a random move
+			if (timeCount >= 90) {
+				valid = true;
+			}
 		}
         
   	    // Close frame
   	    frameHP.dispose();
         
-        Object[] choice = {xPlace, yPlace, base, ringSize, color};
-        return choice;   
+  	    // Send move
+        if (timeCount >= 90) {
+			// skip player after 1 minute 30 and make a random move
+        	Object[] choice = new RandomStrategy(playerNumber).determineMove(board,
+        			colorAmount, firstColor, secondColor);
+        	return choice;
+        } else {
+        	Object[] choice = {xPlace, yPlace, base, ringSize, color};
+            return choice;   
+        }
 	}
 	
 	public String getType() {
