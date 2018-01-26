@@ -13,43 +13,7 @@ import java.awt.image.BufferedImage;
 
 public class Tools {
 	
-	public static boolean validIP(String ip) {
-	    try {
-	        if (ip == null || ip.isEmpty()) {
-	            return false;
-	        }
-
-	        String[] parts = ip.split("\\.");
-	        if (parts.length != 4) {
-	            return false;
-	        }
-
-	        for (String s : parts) {
-	            int i = Integer.parseInt(s);
-	            if ((i < 0) || (i > 255)) {
-	                return false;
-	            }
-	        }
-	        if (ip.endsWith(".")) {
-	            return false;
-	        }
-	        return true;
-	    } catch (NumberFormatException nfe) {
-	        return false;
-	    }
-	}
-	
-	public static boolean validNum(String number) {
-		try {
-			Integer.parseInt(number);
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
-		return true;
-	}
-	
 	// https://stackoverflow.com/questions/2318020/merging-two-images
-	
 	public static Image mergeImg(Image fore, Image back) {
 
 		BufferedImage img1 = (BufferedImage) fore;
