@@ -8,7 +8,7 @@ import javax.swing.*;
 import game.player.*;
 import game.*;
 
-public class HumanUI implements Runnable {
+public class HumanUI  {
 	
 	// GUI handling
 	private final JFrame frameGame = new JFrame();
@@ -27,7 +27,7 @@ public class HumanUI implements Runnable {
 	public void init() {
 		
 		frameGame.pack();
-		frameGame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameGame.setSize(700, 700);
 		frameGame.setTitle("Ringzz");
 		frameGame.setResizable(false);
@@ -76,7 +76,6 @@ public class HumanUI implements Runnable {
 		public void actionPerformed(ActionEvent ev) {
 			choice[0] = x;
 			choice[1] = y;
-			System.out.println(choice[0] + " " + choice[1]);
 		}
 	
 	}
@@ -85,7 +84,4 @@ public class HumanUI implements Runnable {
 		return choice;
 	}
 	
-	public void run() {
-
-	}
 }
