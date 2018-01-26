@@ -122,7 +122,7 @@ public class Game implements Runnable {
            		buttonImage = colorUI.getColorUI();
         		merged = Tools.mergeImg(emptyButton, buttonImage);
         		gui.updateButton(choice[0], choice[1], merged);
-				System.out.println(board.toString());
+//				System.out.println(board.toString());
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % players.length;
@@ -164,7 +164,7 @@ public class Game implements Runnable {
 		           		merged = Tools.mergeImg(merged, buttonImage);		     
 		           	}
 					gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
-					System.out.println(board.toString());
+//					System.out.println(board.toString());
 	    		} else {
 	    			if (!gotSkipped[currentPlayer]) {
 	    				JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " cannot move again.");

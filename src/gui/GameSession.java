@@ -14,10 +14,9 @@ public class GameSession {
 	Container c = frameGS.getContentPane();
 
 	JPanel aiSelect = new GameSessionAISelect();
-	JPanel title = new GameSessionBasic(frameGS, aiSelect);
 	JPanel serverSettings = new GameSessionServerSettings();
-
-	JCheckBox onlineOff = new JCheckBox();
+	JCheckBox onlineOff = new JCheckBox("Offline");
+	JPanel title = new GameSessionBasic(frameGS, aiSelect, serverSettings, onlineOff);
 	
 	// Player handling
 	Color color = Color.NONEE;	//initiated to make static calls
@@ -53,7 +52,6 @@ public class GameSession {
 		c.add(serverSettings);
 		
 		// Set offline switch
-		onlineOff = new JCheckBox("Offline");
 		onlineOff.addActionListener(new OnlineOff());
 		c.add(onlineOff);
 		

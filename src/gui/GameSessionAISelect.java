@@ -14,9 +14,6 @@ import game.player.Player;
 import game.player.RandomStrategy;
 import game.player.SmartStrategy;
 
-//Observer - Observable
-import java.util.Observable;
-
 public class GameSessionAISelect extends JPanel {
 
 	/**
@@ -91,8 +88,7 @@ public class GameSessionAISelect extends JPanel {
 		threeS.addActionListener(new AI());
 	}
 	
-	// AI handler - Observable / Observer
-	public class AI extends Observable implements ActionListener {
+	public class AI implements ActionListener {
 		
 		Player player2;
 		Player player3;

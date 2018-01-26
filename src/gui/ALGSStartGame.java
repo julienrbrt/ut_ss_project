@@ -10,7 +10,11 @@ import game.Game;
 import game.player.*;
 import game.player.Color;
 
-// Start Offline Game Session
+/**
+ * 
+ * Start offline game session.
+ *
+ */
 public class ALGSStartGame implements ActionListener {
 	
 	JFrame frameGS;
@@ -60,9 +64,7 @@ public class ALGSStartGame implements ActionListener {
     		}
     		
     		// Actually run game
-    		if (players == null) {
-    			// do nothing
-    		} else if (players.length < 2) { // Check Minimum players
+    		if (players.length < 2 || players == null) { // Check Minimum players
             	JOptionPane.showMessageDialog(null,
             			"A minimum of two players is required to play offline.");
     		} else {

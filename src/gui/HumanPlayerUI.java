@@ -192,7 +192,6 @@ public class HumanPlayerUI extends Player {
 		int timeCount = 0;
 		
 		while (!valid) {
-			// TODO if too slow do automatic move
 			// Do verification every second
 			try {
 				Thread.sleep(1000);
@@ -233,7 +232,6 @@ public class HumanPlayerUI extends Player {
 		int timeCount = 0;
 		
 		while (!valid) {
-			// TODO if too slow do automatic move
 			// Do verification every second
 			try {
 				Thread.sleep(1000);

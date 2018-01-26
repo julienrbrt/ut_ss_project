@@ -11,6 +11,7 @@ import java.awt.event.FocusEvent;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -25,7 +26,7 @@ public class GameSessionBasic extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public GameSessionBasic(JFrame frameGS, JPanel panel) {
+	public GameSessionBasic(JFrame frameGS, JPanel aiSelect, JPanel serverSetting, JCheckBox onlineStatus) {
 		
 		JLabel lblRingzz = new JLabel("RINGZZ");
 		lblRingzz.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -47,8 +48,13 @@ public class GameSessionBasic extends JPanel {
 				if (username.contains(" ")) {
 					JOptionPane.showMessageDialog(null, "Spaces are not allowed in username.");
 				}
-				// Add button only if username change
-				btnNewButton.addActionListener(new ALGSStartGame(frameGS, panel, username));
+				// Check if Offline mode on
+				if (onlineStatus.isSelected()) {
+					// Add button only if username change
+					btnNewButton.addActionListener(new ALGSStartGame(frameGS, aiSelect, username));
+				} else {
+					btnNewButton.addActionListener(new ALGSStartOnlineGame(frameGS, serverSetting, username));
+				}
 			}	
 		}
 		);
