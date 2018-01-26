@@ -171,9 +171,9 @@ public class HumanPlayerUI extends Player {
 			xPlace = gui.getPlacement()[0];
 			yPlace = gui.getPlacement()[1];
 						
-			if (size > 4) {
+			if (size >= 4) {
 				base = true;
-				size = 0;
+				size = 3;
 			} else {
 				base = false;
 			}
