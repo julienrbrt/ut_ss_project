@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.FocusListener;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JTextField;
@@ -36,6 +37,9 @@ public class GameSessionBasic extends JPanel {
 		txtUsername.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) {
 				username = txtUsername.getText();
+				for (ActionListener al : btnNewButton.getActionListeners()) {
+					btnNewButton.removeActionListener(al);
+				}
 			}
 			
 			public void focusLost(FocusEvent e) {

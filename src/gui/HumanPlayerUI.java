@@ -33,7 +33,7 @@ public class HumanPlayerUI extends Player {
 	private int xPlace = -1;
 	private int yPlace = -1;
 	private int ringSize = -1;
-	private boolean base;
+	private boolean base = false;
 	private Color color;
 	private volatile boolean valid;
 		
@@ -171,11 +171,9 @@ public class HumanPlayerUI extends Player {
 			xPlace = gui.getPlacement()[0];
 			yPlace = gui.getPlacement()[1];
 						
-			if (size >= 4) {
+			if (size > 3) {
 				base = true;
-				size = 3;
-			} else {
-				base = false;
+				size = 0;
 			}
 			
 			color = ringColor;
@@ -190,17 +188,15 @@ public class HumanPlayerUI extends Player {
 		frameHP.setVisible(true);
 		valid = false;
 				
-		int x = 0;
 		while (!valid) {
 			// TODO if too slow do automatic move
 			// Do verification every second
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000);	
 			} catch (InterruptedException ie) {
 				
 			}
 			valid = board.canPlace(xPlace, yPlace, true, 0, color, playerNumber);
-			System.out.println("It is " + valid + x++);
 		}
                 
         // Never show starting base again
@@ -218,7 +214,6 @@ public class HumanPlayerUI extends Player {
 		frameHP.setVisible(true);
 		valid = false;
 		
-		int x = 0;
 		while (!valid) {
 			// TODO if too slow do automatic move
 			// Do verification every second
@@ -228,7 +223,6 @@ public class HumanPlayerUI extends Player {
 				
 			}
 			valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
-			System.out.println("It is " + valid + x++);
 		}
         
   	    // Close frame
