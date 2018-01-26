@@ -12,7 +12,10 @@ import javax.swing.JPanel;
 import network.Peer;
 
 /**
- * Start Online Game Session.
+ * This is an Action Listener permitting to start an Online Game.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
  */
 public class ALGSStartOnlineGame implements ActionListener {
 	

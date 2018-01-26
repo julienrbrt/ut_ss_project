@@ -13,7 +13,7 @@ import java.awt.event.FocusListener;
 import java.net.*;
 
 /**
- * This class for maintening the Client of the Ringgz game for playing in network.
+ * This class for graphically let the user connect to a distant server and play the game.
  * @author Richard
  * @author Julien
  * @version 0.1

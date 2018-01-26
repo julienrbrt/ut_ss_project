@@ -8,6 +8,12 @@ import javax.swing.*;
 import game.player.*;
 import game.*;
 
+/**
+ * This class for displaying the GUI board.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
+ */
 public class HumanUI implements Runnable {
 	
 	// GUI handling

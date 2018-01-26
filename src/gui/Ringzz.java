@@ -8,6 +8,13 @@ import javax.swing.*;
 import game.ColorUI;
 import game.player.Color;
 
+/**
+ * This class for lauching the Ringgz GUI to permit to host a game or play the game.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
+ */
+
 public class Ringzz {
 
 	// GUI handling

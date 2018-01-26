@@ -11,9 +11,10 @@ import game.player.*;
 import game.player.Color;
 
 /**
- * 
- * Start offline game session.
- *
+ * This is an Action Listener permitting to start an Offline Game.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
  */
 public class ALGSStartGame implements ActionListener {
 	

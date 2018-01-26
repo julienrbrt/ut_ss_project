@@ -14,6 +14,12 @@ import game.player.Player;
 import game.player.RandomStrategy;
 import game.player.SmartStrategy;
 
+/**
+ * This class is the panel for asking for AI type opponents in an Offline game.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
+ */
 public class GameSessionAISelect extends JPanel {
 
 	/**

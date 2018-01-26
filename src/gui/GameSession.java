@@ -7,6 +7,12 @@ import javax.swing.*;
 
 import game.player.Color;
 
+/**
+ * This class for let the user set its game preferences in one place.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
+ */
 public class GameSession {
 	
 	// GUI handling

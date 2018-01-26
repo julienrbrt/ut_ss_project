@@ -16,6 +16,12 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
+/**
+ * This class for lauching the correct game (Online/Offline) depending on the parameters.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
+ */
 public class GameSessionBasic extends JPanel {
 	
 	private static final long serialVersionUID = 1194727121599067942L;

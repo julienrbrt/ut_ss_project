@@ -10,6 +10,12 @@ import game.*;
 import game.player.*;
 import game.player.Color;
 
+/**
+ * This class for displaying the GUI control for human player.
+ * @author Richard
+ * @author Julien
+ * @version 0.1
+ */
 public class HumanPlayerUI extends Player {
 		
 	private Color firstColor;
