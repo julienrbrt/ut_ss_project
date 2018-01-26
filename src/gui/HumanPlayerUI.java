@@ -28,7 +28,7 @@ public class HumanPlayerUI extends Player {
 	HumanUI gui;
 	
 	// Game handling
-	private boolean showSBase = true;
+	int sBasePos;
 	private final int maxRings = 4; 
 	private int xPlace = -1;
 	private int yPlace = -1;
@@ -142,19 +142,17 @@ public class HumanPlayerUI extends Player {
 		}
 		
 		// Adding Default place
-		if (showSBase) {
-			rings[sBasePos] = new JButton();
-			rings[sBasePos].setPreferredSize(new Dimension(128, 128));
-			rings[sBasePos].setContentAreaFilled(false);
-			rings[sBasePos].setMargin(new Insets(0, 0, 0, 0));
-			rings[sBasePos].setBackground(java.awt.Color.WHITE);
-			rings[sBasePos].setOpaque(true);
-			colorUI = new ColorUI(null, true, 0);
-			ringsImage = colorUI.getColorUI();
-			rings[sBasePos].setIcon(new ImageIcon(ringsImage));
-			rings[sBasePos].addActionListener(new PlaceRing(Color.SBASE, 0));
-			c.add(rings[sBasePos]);
-		}	
+		rings[sBasePos] = new JButton();
+		rings[sBasePos].setPreferredSize(new Dimension(128, 128));
+		rings[sBasePos].setContentAreaFilled(false);
+		rings[sBasePos].setMargin(new Insets(0, 0, 0, 0));
+		rings[sBasePos].setBackground(java.awt.Color.WHITE);
+		rings[sBasePos].setOpaque(true);
+		colorUI = new ColorUI(null, true, 0);
+		ringsImage = colorUI.getColorUI();
+		rings[sBasePos].setIcon(new ImageIcon(ringsImage));
+		rings[sBasePos].addActionListener(new PlaceRing(Color.SBASE, 0));
+		c.add(rings[sBasePos]);
 	}
 	
 	public class PlaceRing implements ActionListener {
@@ -177,6 +175,7 @@ public class HumanPlayerUI extends Player {
 						
 			if (size > 4) {
 				base = true;
+				size = 0;
 			} else {
 				base = false;
 			}
@@ -202,12 +201,12 @@ public class HumanPlayerUI extends Player {
 			} catch (InterruptedException ie) {
 				
 			}
-			valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+			valid = board.canPlace(xPlace, yPlace, true, 0, secondColor, playerNumber);
 			System.out.println("It is " + valid + x++);
 		}
                 
         // Never show starting base again
-        showSBase = false;
+		c.remove(rings[sBasePos]);
         
   	    // Close frame
   	    frameHP.dispose();
