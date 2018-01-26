@@ -170,9 +170,7 @@ public class HumanPlayerUI extends Player {
 			
 			xPlace = gui.getPlacement()[0];
 			yPlace = gui.getPlacement()[1];
-			
-			System.out.println("This thing have size:" + size);
-			
+						
 			if (size > 3) {
 				base = true;
 				ringSize = 0;
@@ -181,8 +179,6 @@ public class HumanPlayerUI extends Player {
 				ringSize = size;
 			}
 			
-			System.out.println("This thing have size:" + size);
-
 			color = ringColor;
 			
 			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
