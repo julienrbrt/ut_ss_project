@@ -3,6 +3,7 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 import game.*;
@@ -34,13 +35,21 @@ public class HumanPlayerUI extends Player {
 	private int ringSize = -1;
 	private boolean base;
 	private Color color;
-	
+	private volatile boolean valid;
+		
 	// Constructor for one color
 	public HumanPlayerUI(String name, Color firstColor, int playerNumber, HumanUI gui) {
 		super(name, firstColor, playerNumber);
 		this.firstColor = firstColor;
 		this.playerNumber = playerNumber;
 		this.gui = gui;
+		
+		init();
+		frameHP.pack();
+		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameHP.setSize(350, 800);
+		frameHP.setTitle("Ringzz - Placement");
+		frameHP.setResizable(false);
 	}
 	
 	// Constructor for two colors
@@ -50,9 +59,17 @@ public class HumanPlayerUI extends Player {
 		this.secondColor = secondColor;
 		this.playerNumber = playerNumber;
 		this.gui = gui;
+		
+		init();
+		frameHP.pack();
+		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameHP.setSize(350, 800);
+		frameHP.setTitle("Ringzz - Placement");
+		frameHP.setResizable(false);
+		frameHP.setVisible(true);
 	}
 	
-	public synchronized void init() {
+	public void init() {
 				
 		if (secondColor != null) {
 			c.setLayout(new GridLayout(0, 2));
@@ -153,14 +170,11 @@ public class HumanPlayerUI extends Player {
 		
 		public void actionPerformed(ActionEvent ev) {
 			
-			human = new Thread(new HumanUI());
-			human.start();
-			
 			xPlace = gui.getPlacement()[0];
 			yPlace = gui.getPlacement()[1];
 			
-			human.interrupt();
-			
+			System.out.println(xPlace + " " + yPlace);
+						
 			if (size > 4) {
 				base = true;
 			} else {
@@ -171,34 +185,27 @@ public class HumanPlayerUI extends Player {
 			ringSize = size;
 			
 			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
-
-			this.notifyAll();
-			
 		}
 	}
 	
 	public int[] determineBase(Board board) {
 		
-		init();
-		frameHP.pack();
-		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frameHP.setSize(350, 800);
-		frameHP.setTitle("Ringzz - Placement");
-		frameHP.setResizable(false);
 		frameHP.setVisible(true);
-		
-		boolean valid = false;
-		
-        while (!valid) {        	
-        	// TODO if too slow do automatic move
-        	try {
-        		this.wait();
-        		valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
-        	} catch (InterruptedException ie) {
-        		
-        	}
-        }
-        
+		valid = false;
+				
+		int x = 0;
+		while (!valid) {
+			// TODO if too slow do automatic move
+			// Do verification every second
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException ie) {
+				
+			}
+			valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+			System.out.println("It is " + valid + x++);
+		}
+                
         // Never show starting base again
         showSBase = false;
         
@@ -211,25 +218,21 @@ public class HumanPlayerUI extends Player {
 	
 	public Object[] determineMove(Board board, int colorAmount) {
 		
-		init();
-		frameHP.pack();
-		frameHP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frameHP.setSize(350, 800);
-		frameHP.setTitle("Ringzz - Placement");
-		frameHP.setResizable(false);
 		frameHP.setVisible(true);
+		valid = false;
 		
-		boolean valid = false;
-		
-        while (!valid) {        	
-        	// TODO if too slow do automatic move
-        	try {
-        		this.wait();
-        		valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
-        	} catch (InterruptedException ie) {
-        		
-        	}
-        }
+		int x = 0;
+		while (!valid) {
+			// TODO if too slow do automatic move
+			// Do verification every second
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException ie) {
+				
+			}
+			valid = board.canPlace(xPlace, yPlace, base, ringSize, color, playerNumber);
+			System.out.println("It is " + valid + x++);
+		}
         
   	    // Close frame
   	    frameHP.dispose();

@@ -16,7 +16,7 @@ import game.player.*;
 import gui.HumanUI;
 import tools.Tools;
 
-public class Game {
+public class Game implements Runnable {
 
 	// -- Instance variables -----------------------------------------
     
@@ -101,9 +101,7 @@ public class Game {
     requires board != null & !board.gameOver();
      */
     public void play() {
-    	
-    	gui.init();
-    	
+     	
     	int colorAmount = 1;
     	
     	if (players.length < 4) {
@@ -183,5 +181,16 @@ public class Game {
     		JOptionPane.showMessageDialog(null, "It is a tie");
     	}
     	
+    }
+    
+    public void run() {
+    	Thread waitGUI = new Thread(gui);
+    	waitGUI.start();
+    	try {
+    		waitGUI.join();
+    	} catch (InterruptedException ie) {
+    		
+    	}
+    	play();
     }
 }

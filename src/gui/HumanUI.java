@@ -8,7 +8,7 @@ import javax.swing.*;
 import game.player.*;
 import game.*;
 
-public class HumanUI  {
+public class HumanUI implements Runnable {
 	
 	// GUI handling
 	private final JFrame frameGame = new JFrame();
@@ -25,13 +25,6 @@ public class HumanUI  {
 	int[] choice = new int[2];
 		
 	public void init() {
-		
-		frameGame.pack();
-		frameGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameGame.setSize(700, 700);
-		frameGame.setTitle("Ringzz");
-		frameGame.setResizable(false);
-		frameGame.setVisible(true);
 		
 		c.setLayout(new GridLayout(5, 5));
 		
@@ -82,6 +75,16 @@ public class HumanUI  {
 	
 	public int[] getPlacement() {
 		return choice;
+	}
+	
+	public void run() {
+		init();
+		frameGame.pack();
+		frameGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameGame.setSize(700, 700);
+		frameGame.setTitle("Ringzz - Board");
+		frameGame.setResizable(false);
+		frameGame.setVisible(true);
 	}
 	
 }
