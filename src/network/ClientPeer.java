@@ -163,7 +163,7 @@ public class ClientPeer implements Runnable, Protocol {
                 			// shutdown();
                 			break;
                 		default:
-                			System.out.println("Server info - " + input);
+                			System.out.println("Server info - ignored - " + input);
                 			break;
                 	}
                 }
