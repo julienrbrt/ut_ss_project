@@ -5,7 +5,7 @@ import java.net.*;
 import tools.Tools;
 import javax.swing.JOptionPane;
 
-import network.ServerPeer;
+import network.*;
 
 /**
  * This class for maintening the Server of the Ringgz game for playing in network.
@@ -19,6 +19,7 @@ public class ServerSession {
 	int serverOff = JOptionPane.NO_OPTION;
     ServerSocket ssock = null;
     Socket sock = null;
+    ServerLobby lobby = new ServerLobby();
 	
 	public ServerSession() {
 		
@@ -37,9 +38,8 @@ public class ServerSession {
         			"Error: could not create a server socket on port " + port);
         }
         
-        int clientID = 0;
         while (serverOff == JOptionPane.NO_OPTION) {
-        	start(clientID++);
+        	start();
         }
 
 	}
@@ -48,13 +48,14 @@ public class ServerSession {
      *  create Peer object and start the two-way communication.
      *  add unique identifier to client
      */
-    public void start(int clientID) {
+    public void start() {
         try {
         	sock = ssock.accept();
-    		System.out.println("Client accepted id!");
+    		System.out.println("New client accepted.");
     		
-    		ServerPeer server = new ServerPeer("" + clientID + "", sock);
+    		ServerPeer server = new ServerPeer(sock, lobby);
             new Thread(server).start();
+            
         } catch (IOException e) {
         	JOptionPane.showMessageDialog(null,
         			"Error: Something wrong happened.");

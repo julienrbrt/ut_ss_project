@@ -134,7 +134,7 @@ public class Game implements Runnable {
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
     			// show which turn it is
-	    		JOptionPane.showMessageDialog(null,players[currentPlayer].getName() + " turn");
+	    		JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
 	    		Object[] choice = new Object[0];
 	    		int checkNo = 1;
 	    		if (players[currentPlayer].getType() == "Human") {
