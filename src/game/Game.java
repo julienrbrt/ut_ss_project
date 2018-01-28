@@ -122,7 +122,7 @@ public class Game implements Runnable {
            		buttonImage = colorUI.getColorUI();
         		merged = Tools.mergeImg(emptyButton, buttonImage);
         		gui.updateButton(choice[0], choice[1], merged);
-//				System.out.println(board.toString());
+				// System.out.println(board.toString());
     			firstPlayer = false;
     		}
     		currentPlayer = (currentPlayer + 1) % players.length;
@@ -133,8 +133,8 @@ public class Game implements Runnable {
     		
     		// Manage skipped players
     		if (!gotSkipped[currentPlayer]) {
-    		
-	    		JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " turn");
+    			// show which turn it is
+	    		JOptionPane.showMessageDialog(null,players[currentPlayer].getName() + " turn");
 	    		Object[] choice = new Object[0];
 	    		int checkNo = 1;
 	    		if (players[currentPlayer].getType() == "Human") {
@@ -145,6 +145,13 @@ public class Game implements Runnable {
 	    							currentPlayer).length : 
 	    					board.getPossibleMoves(players[currentPlayer].getColor()[0],
 	    							currentPlayer).length;
+	    		} else {
+	    			try {
+	    				// Simulate thinking time
+	    				Thread.sleep(2000);
+	    			} catch (InterruptedException e) {
+	    				// Nothing to do
+	    			}
 	    		}
 	    		
 	    		if (checkNo != 0) {
@@ -168,7 +175,7 @@ public class Game implements Runnable {
 		           		merged = Tools.mergeImg(merged, buttonImage);		     
 		           	}
 					gui.updateButton((Integer) choice[0], (Integer) choice[1], merged);
-//					System.out.println(board.toString());
+					// System.out.println(board.toString());
 	    		} else {
 	    			if (!gotSkipped[currentPlayer]) {
 	    				JOptionPane.showMessageDialog(null,
