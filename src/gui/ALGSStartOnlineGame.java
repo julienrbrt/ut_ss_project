@@ -9,7 +9,7 @@ import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import network.Peer;
+import network.ClientPeer;
 
 /**
  * This is an Action Listener permitting to start an Online Game.
@@ -21,8 +21,8 @@ public class ALGSStartOnlineGame implements ActionListener {
 	
 	JFrame frameGS;
 	JPanel uiPanel;
+	
 	String playerName;
-
     Socket sock = null;
 	
 	public ALGSStartOnlineGame(JFrame frame, JPanel panel, String name) {
@@ -48,20 +48,19 @@ public class ALGSStartOnlineGame implements ActionListener {
 	         *  try to open a Socket to the server
 	         */
 	        try {
-	            sock = new Socket(addr, port);
+	            sock = new Socket(addr.getHostAddress(), port);
+	            System.out.println("Connected to server.");
 	        } catch (IOException io) {
 	        	JOptionPane.showMessageDialog(null,
-	        			"Error: could connect on the server " + addr + ": " + port);
+	        			"Error: could connect on the server " + addr + ":" + port);
 	        }
 	        
 	        /**
 	         *  create Peer object and start the two-way communication
 	         */
 	        try {
-	            Peer client = new Peer(playerName, sock);
-	            Thread streamInputHandler = new Thread(client);
-	            streamInputHandler.start();
-	            client.clientside();
+	            ClientPeer client = new ClientPeer(playerName, gameWith, sock);
+	            new Thread(client).start();
 	        } catch (IOException io) {
 	            io.printStackTrace();
 	        }

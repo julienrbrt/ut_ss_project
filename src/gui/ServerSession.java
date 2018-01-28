@@ -6,7 +6,7 @@ import java.util.*;
 import tools.Tools;
 import javax.swing.JOptionPane;
 
-import network.Peer;
+import network.ServerPeer;
 
 /**
  * This class for maintening the Server of the Ringgz game for playing in network.
@@ -16,62 +16,66 @@ import network.Peer;
  */
 public class ServerSession extends Observable {
 	
-	String name;
 	int port;
+	int serverOff = JOptionPane.NO_OPTION;
+    ServerSocket ssock = null;
+    Socket sock = null;
 	
 	public ServerSession() {
+		
 		init();
-        ServerSocket ssock = null;
-        Socket sock = null;
-        
         /**
          * try to open a Socket to the server
          */
         try {
+            serverOff = JOptionPane.showConfirmDialog(null,
+            		"Do you want to close it? If no do not close this window.",
+            		"Server Started", JOptionPane.YES_OPTION);
             ssock = new ServerSocket(port);
+
         } catch (IOException e) {
         	JOptionPane.showMessageDialog(null,
-        			"ERROR: could not create a server socket on port " + port);
+        			"Error: could not create a server socket on port " + port);
         }
         
-        try {
-        	int i = 0;
-        	while (sock == null) {
-        		sock = ssock.accept();
-//        		setChanged();
-//        		notifyObservers("new");
-        		System.out.println("Client connected: " + (++i));              
-        	}
-        } catch (IOException e) {
-        	JOptionPane.showMessageDialog(null,
-        			"ERROR: could not create socket.");
+        int clientID = 0;
+        while (serverOff == JOptionPane.NO_OPTION) {
+        	start(clientID++);
         }
-        
-        /**
-         *  create Peer object and start the two-way communication
-         */
-        try {
-            Peer server = new Peer(name, sock);
-            Thread streamInputHandler = new Thread(server);
-            streamInputHandler.start();
-            server.serverside();
-            server.shutDown();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 	}
+	
+    /**
+     *  create Peer object and start the two-way communication.
+     *  add unique identifier to client
+     */
+    public void start(int clientID) {
+        try {
+        	sock = ssock.accept();
+    		System.out.println("Client accepted id!");
+
+    		setChanged();
+    		notifyObservers("new");
+    		
+    		ServerPeer server = new ServerPeer("" + clientID + "", sock);
+            new Thread(server).start();
+        } catch (IOException e) {
+        	JOptionPane.showMessageDialog(null,
+        			"Error: Something wrong happened.");
+        }
+    }
 	
 	public void init() {
 
         boolean valid = false;
-	    
-	    name = JOptionPane.showInputDialog(null, "Set Server name");
-        String askPort = JOptionPane.showInputDialog(null, "Set listening port");
+	    String askPort = JOptionPane.showInputDialog(null, "Set listening port");
 	       
 		while (!valid) {
 			if (!Tools.validNum(askPort)) {
 				JOptionPane.showMessageDialog(null, "Port invalid.");
 				askPort = JOptionPane.showInputDialog(null, "Set listening port");
+			} else {
+				valid = true;
 			}
 		}
 		
