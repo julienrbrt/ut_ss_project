@@ -59,7 +59,8 @@ public class HumanPlayerUI extends Player {
 	}
 	
 	// Constructor for two colors
-	public HumanPlayerUI(String name, Color firstColor, Color secondColor, int playerNumber, HumanUI gui) {
+	public HumanPlayerUI(String name,
+			Color firstColor, Color secondColor, int playerNumber, HumanUI gui) {
 		super(name, firstColor, secondColor, playerNumber);
 		this.firstColor = firstColor;
 		this.secondColor = secondColor;
@@ -142,7 +143,8 @@ public class HumanPlayerUI extends Player {
 			colorUI = new ColorUI(secondColor, true, 0);
 			ringsImage = colorUI.getColorUI();
 			rings[(maxRings * 2) + 1].setIcon(new ImageIcon(ringsImage));
-			rings[(maxRings * 2) + 1].addActionListener(new PlaceRing(secondColor, (maxRings * 2) + 1));
+			rings[(maxRings * 2) + 1].addActionListener(new PlaceRing(secondColor,
+					(maxRings * 2) + 1));
 			c.add(rings[(maxRings * 2) + 1]);
 		}
 		
@@ -186,7 +188,8 @@ public class HumanPlayerUI extends Player {
 			
 			color = ringColor;
 			
-//			System.out.println("x:" + xPlace + " y:" + yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
+//			System.out.println("x:" + xPlace + " y:" 
+//			+ yPlace + " base:" + base + " size:" + ringSize + " color:" + color);
 		}
 	}
 	

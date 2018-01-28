@@ -139,9 +139,12 @@ public class Game implements Runnable {
 	    		int checkNo = 1;
 	    		if (players[currentPlayer].getType() == "Human") {
 	    			checkNo = (players[currentPlayer].getColor()[1] != null) ?
-	    					board.getPossibleMoves(players[currentPlayer].getColor()[0], currentPlayer).length +
-	    					board.getPossibleMoves(players[currentPlayer].getColor()[1], currentPlayer).length : 
-	    						board.getPossibleMoves(players[currentPlayer].getColor()[0], currentPlayer).length;
+	    					board.getPossibleMoves(players[currentPlayer].getColor()[0],
+	    							currentPlayer).length +
+	    					board.getPossibleMoves(players[currentPlayer].getColor()[1],
+	    							currentPlayer).length : 
+	    					board.getPossibleMoves(players[currentPlayer].getColor()[0],
+	    							currentPlayer).length;
 	    		}
 	    		
 	    		if (checkNo != 0) {
@@ -156,7 +159,8 @@ public class Game implements Runnable {
 		            		(Integer) choice[3],
 		            		(Color) choice[4]);
 		           	for (int i = 0; i < 4; i++) {
-		           		Color color = board.getTile((Integer) choice[0], (Integer) choice[1]).getColor(i); 		
+		           		Color color = board.getTile((Integer) choice[0],
+		           				(Integer) choice[1]).getColor(i); 		
 		           		if (color != Color.NONEE && color != null) {
 		           			colorUI = new ColorUI(color, (Boolean) choice[2], i);
 		           			buttonImage = colorUI.getColorUI();
@@ -167,7 +171,8 @@ public class Game implements Runnable {
 //					System.out.println(board.toString());
 	    		} else {
 	    			if (!gotSkipped[currentPlayer]) {
-	    				JOptionPane.showMessageDialog(null, players[currentPlayer].getName() + " cannot move again.");
+	    				JOptionPane.showMessageDialog(null,
+	    						players[currentPlayer].getName() + " cannot move again.");
 	    			}
 	    			System.out.println(players[currentPlayer].getName() + " has been skipped.");
 	    			gotSkipped[currentPlayer] = true;

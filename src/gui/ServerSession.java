@@ -2,7 +2,6 @@ package gui;
 
 import java.io.*;
 import java.net.*;
-import java.util.*;
 import tools.Tools;
 import javax.swing.JOptionPane;
 
@@ -14,7 +13,7 @@ import network.ServerPeer;
  * @author Julien
  * @version 0.1
  */
-public class ServerSession extends Observable {
+public class ServerSession {
 	
 	int port;
 	int serverOff = JOptionPane.NO_OPTION;
@@ -53,9 +52,6 @@ public class ServerSession extends Observable {
         try {
         	sock = ssock.accept();
     		System.out.println("Client accepted id!");
-
-    		setChanged();
-    		notifyObservers("new");
     		
     		ServerPeer server = new ServerPeer("" + clientID + "", sock);
             new Thread(server).start();

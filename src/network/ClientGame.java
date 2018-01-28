@@ -51,7 +51,8 @@ public class ClientGame implements Runnable {
 			}
 		} else {
 			if (amountPlayer > 2) {
-				players[0] = new HumanPlayerUI(name, getColor(playerNum, 1), getColor(playerNum, 2), playerNum, gui);
+				players[0] = new HumanPlayerUI(name,
+						getColor(playerNum, 1), getColor(playerNum, 2), playerNum, gui);
 			} else {
 				players[0] = new HumanPlayerUI(name, getColor(playerNum, 1), playerNum, gui);
 			}
@@ -187,11 +188,11 @@ public class ClientGame implements Runnable {
     public void run() {
     	Thread waitGUI = new Thread(gui);
     	waitGUI.start();
-    	initiate();
     	try {
     		waitGUI.join();
     	} catch (InterruptedException ie) {
     		
     	}
+    	initiate();
     }
 }

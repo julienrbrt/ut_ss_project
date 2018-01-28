@@ -37,9 +37,10 @@ public class RandomStrategy implements Strategy {
 		return result;
 	}
 	
-    public Object[] determineMove(Board board, int colorAmount, Color firstColor, Color secondColor) {
+    public Object[] determineMove(Board board,
+    		int colorAmount, Color firstColor, Color secondColor) {
     	 
-    	boolean multipleColors = (colorAmount == 2);
+    	boolean multipleColors = colorAmount == 2;
     	int firstArray;
     	int[] moves;
     	Object[] result;
@@ -72,7 +73,7 @@ public class RandomStrategy implements Strategy {
     	result = new Object[5];
     	result[0] = (int) move / 100;
     	result[1] = (int) (move % 100) / 10;
-    	result[2] = (move % 10 == 4);
+    	result[2] = move % 10 == 4;
     	result[3] = (move % 10 == 4) ? 3 : (move % 10);
     	
     	if (multipleColors && choice >= firstArray) {

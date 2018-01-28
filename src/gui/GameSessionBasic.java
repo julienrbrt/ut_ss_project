@@ -32,7 +32,8 @@ public class GameSessionBasic extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public GameSessionBasic(JFrame frameGS, JPanel aiSelect, JPanel serverSetting, JCheckBox onlineStatus) {
+	public GameSessionBasic(JFrame frameGS,
+			JPanel aiSelect, JPanel serverSetting, JCheckBox onlineStatus) {
 		
 		JLabel lblRingzz = new JLabel("RINGZZ");
 		lblRingzz.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -59,7 +60,8 @@ public class GameSessionBasic extends JPanel {
 					// Add button only if username change
 					btnNewButton.addActionListener(new ALGSStartGame(frameGS, aiSelect, username));
 				} else {
-					btnNewButton.addActionListener(new ALGSStartOnlineGame(frameGS, serverSetting, username));
+					btnNewButton.addActionListener(
+							new ALGSStartOnlineGame(frameGS, serverSetting, username));
 				}
 			}	
 		}
@@ -72,7 +74,8 @@ public class GameSessionBasic extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(lblRingzz)
 					.addGap(99)
-					.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE,
+							GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(99)
 					.addComponent(btnNewButton))
 		);
@@ -83,7 +86,8 @@ public class GameSessionBasic extends JPanel {
 					.addComponent(lblRingzz))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(13)
-					.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE,
+							GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(10)
 					.addComponent(btnNewButton))

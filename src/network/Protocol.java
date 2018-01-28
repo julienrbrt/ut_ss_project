@@ -5,14 +5,15 @@ public interface Protocol {
     /**
      * PAY ATTENTION:
      *
-     * All arguments must be separated by a space. This also implies that the individual arguments are not allowed to contain spaces. The only exception to
-     * this rule will be the chat function.
+     * All arguments must be separated by a space.
+     * This also implies that the individual arguments are not allowed to contain spaces.
+     * The only exception to this rule will be the chat function.
      */
 
     // --------------- Pre game ---------------
 
     /**
-     * Value for the standart port
+     * Value for the standart port.
      */
     public static final int PORTNUMBER = 1337;
 
@@ -43,7 +44,8 @@ public interface Protocol {
     public static final String CLIENT_JOINREQUEST = "joinrequest";
 
     /**
-     * Used for accepting the client request to join the server  and notify the client of the features that the server supports
+     * Used for accepting the client request to join the server 
+     * and notify the client of the features that the server supports.
      *
      * Arguments:
      * - name = Name of the client
@@ -59,7 +61,8 @@ public interface Protocol {
      * - security = 0 || 1
      *
      * Example:
-     *  Following up on the before mentioned joinrequest, the server only support the challenge feature and the leaderboard
+     *  Following up on the before mentioned joinrequest,
+     *  the server only support the challenge feature and the leaderboard.
      *
      *  code: "acceptjoin Pittt 0 1 1 0
      *
@@ -69,7 +72,7 @@ public interface Protocol {
     //Change to acceptjoin with the 4 booleans
 
     /**
-     * Used to deny the client if the name is already in use
+     * Used to deny the client if the name is already in use.
      *
      * Argument:
      * name : Name of the client
@@ -87,7 +90,7 @@ public interface Protocol {
     public static final String SERVER_DENYJOIN  = "denyjoin";
 
     /**
-     * Used to let the server know that the client wants to start a game with x amount of player
+     * Used to let the server know that the client wants to start a game with x amount of player.
      *
      * code: "gamerequest 2"
      *
@@ -96,7 +99,7 @@ public interface Protocol {
     public static final String CLIENT_GAMEREQUEST = "gamerequest";
 
     /**
-     * Used to let the clients know that a game has been started
+     * Used to let the clients know that a game has been started.
      *
      * Arguments:
      * - name1 = Name of the first player
@@ -115,7 +118,7 @@ public interface Protocol {
     // --------------- In game ---------------
 
     /**
-     * Used by the server to let the client know that he has to do a move
+     * Used by the server to let the client know that he has to do a move.
      *
      * Arguments:
      * - name = name of the player whose turn it is
@@ -131,7 +134,7 @@ public interface Protocol {
 
 
     /**
-     * Used by the client to do a move
+     * Used by the client to do a move.
      *
      * Arguments:
      * - x = x Coordinate on the board
@@ -159,7 +162,7 @@ public interface Protocol {
 
 
     /**
-     * Used to let the clients know that a move has been made
+     * Used to let the clients know that a move has been made.
      *
      * Arguments:
      * - name = Name of the client that performed the move
@@ -199,7 +202,7 @@ public interface Protocol {
     // --------------- Error ---------------
 
     /**
-     * Used when one client disconnects from the server
+     * Used when one client disconnects from the server.
      *
      * Arguments:
      * - name = name of the player who disconnected
@@ -213,7 +216,7 @@ public interface Protocol {
     public static final String SERVER_CONNECTIONLOST = "connectionlost";
 
     /**
-     * Used everytime a client tries to perform an invalid command
+     * Used everytime a client tries to perform an invalid command.
      *
      * Direction: Server -> Client
      */
@@ -222,7 +225,7 @@ public interface Protocol {
     // --------------- Extra features ---------------
 
     /**
-     * Used to send chat messages to the server
+     * Used to send chat messages to the server.
      *
      * Argument:
      * - message = The message that you want to send to the server
@@ -237,7 +240,7 @@ public interface Protocol {
 
 
     /**
-     * Used to broadcast the message to all the clients that support the chat feature
+     * Used to broadcast the message to all the clients that support the chat feature.
      *
      * Argument:
      * - message = The message that you want to send to the server
@@ -252,7 +255,7 @@ public interface Protocol {
 
 
     /**
-     * Used to request a list of all the clients that support the challenge feature
+     * Used to request a list of all the clients that support the challenge feature.
      *
      * Direction: Client -> Server
      */
@@ -271,7 +274,7 @@ public interface Protocol {
     public static final String SERVER_CHALLENGELIST = "challengelist";
 
     /**
-     * Used to send a challenge to the other client
+     * Used to send a challenge to the other client.
      *
      * Arguments:
      * - name = Name of the client that you want to challenge
@@ -286,7 +289,7 @@ public interface Protocol {
     public static final String CLIENT_REQUESTCHALLENGE = "requestchallenge";
 
     /**
-     * Used to notify the client that someone else is challenging him
+     * Used to notify the client that someone else is challenging him.
      *
      * Arguments:
      * - name = Name of the client that is challenging you
@@ -302,7 +305,7 @@ public interface Protocol {
     public static final String SERVER_NOTIFYCHALLENGE = "notifychallenge";
 
     /**
-     * Used by the client that got challenged to answer the challenge
+     * Used by the client that got challenged to answer the challenge.
      *
      * Arguments:
      * - answer = The answer to the challenge
@@ -321,7 +324,7 @@ public interface Protocol {
     public static final String CLIENT_CHALLENGERESPONSE = "challengeresponse";
 
     /**
-     * Used to notify the other client whether the challenge has been accepted or not
+     * Used to notify the other client whether the challenge has been accepted or not.
      *
      * Arguments:
      * - answer = The answer to the challenge
@@ -340,14 +343,15 @@ public interface Protocol {
     public static final String SERVER_RESULTCHALLENGE = "resultchallenge";
 
     /**
-     * Used by the client to request the leaderboard from the server
+     * Used by the client to request the leaderboard from the server.
      *
      * Direction: Client -> Server
      */
     public static final String CLIENT_REQUESTLEADERBOARD = "requestleaderboard";
 
     /**
-     * Used to send the data of the game to the leaderboard. Can be ignored if the server saves the data to the leaderboard.
+     * Used to send the data of the game to the leaderboard.
+     * Can be ignored if the server saves the data to the leaderboard.
      *
      * Arguments:
      * - name  = Name of the player

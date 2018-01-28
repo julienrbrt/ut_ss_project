@@ -2,11 +2,10 @@ package network;
 
 import java.io.*;
 import java.net.*;
-
+import java.util.*;
 import javax.swing.JOptionPane;
 
 import game.player.*;
-import gui.*;
 
 /**
  * This class for the connection of the client-server of the game.
@@ -20,9 +19,8 @@ public class ServerPeer implements Runnable, Protocol {
     protected String name;
     protected Socket sock;
     protected int gameWith;
-    protected HumanUI gui;
-    protected ClientGame game;
-    protected String[] playerList;
+    protected ServerGame game;
+    protected List<Player> playerList = new ArrayList<>();
     
     protected BufferedReader in;
     protected BufferedWriter out;
@@ -39,16 +37,7 @@ public class ServerPeer implements Runnable, Protocol {
      * writes the characters to the default output.
      */
     public void run() {
-    	while (!sock.isClosed()) {
-    		try {
-				if (in.ready()) {
-					System.out.println(in.readLine());
-				}
-			} catch (IOException e) {
-				System.out.println("Whoosh " + e);
-			}
-    		serverside();
-    	}
+    	serverside();
     }
 
     
@@ -58,52 +47,34 @@ public class ServerPeer implements Runnable, Protocol {
      * Manage command received in the server side.
      */
     public void serverside() {
-//		while (!connectLost()) {
-//			try {
-//				String line = in.readLine();
-//				while (line != null) {
-//					List<String> players = client.getPlayer();
-//					String[] args = line.split(" ");
-//					if (args[0].contains("Join")) {
-//						if (players != null) {
-//					    	p1 = new HumanPlayer(players.get(0), Mark.BB);
-//						}
-//						if (!players.contains(args[1])) {
-//							players.add(args[1]);
-//					    	p2 = new HumanPlayer(players.get(1), Mark.YY);
-//						}
-//					} else if (args[0].contains("Ready")) {
-//						Game game = new Game(p1, p2);
-//					    game.start();
-//					} else if (args[0].contains("Move")) {
-//						server.notifyMove(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-//					}
-//				}
-//			} catch (IOException e) {
-//				System.out.println("Error: Socket is closed!");
-//			}
-//		}
+		while (!connectLost()) {
+
+		}
     }
         
-//	/**
-//	* The server notifies the clients that a player lost connection or left the game.
-//	*/
-//	public boolean connectLost() {
-//		boolean connectLost = true;
-//		
-//		while (disconnected) {
-//			for (int i = 0; i < client.getPlayer().size(); i++) {
-//				try {
-//		        	if (sock.getInetAddress().isReachable(300)) {
-//		        		connectLost = false;
-//		        	}
-//		        } catch (IOException e) {
-//		        	return true;
-//		        }
-//	    	}
-//	    }    
-//		return connectLost;
-//	}
+	/**
+	* The server notifies the clients that a player lost connection or left the game.
+	*/
+	public boolean connectLost() {
+		boolean connectLost = true;
+		
+		while (connectLost) {
+			for (int i = 0; i < playerList.size(); i++) {
+				try {
+		        	if (sock.isClosed()) {
+		        		connectLost = true;
+		        	}
+					
+					if (sock.getInetAddress().isReachable(300)) {
+		        		connectLost = false;
+		        	}
+		        } catch (IOException e) {
+		        	return true;
+		        }
+	    	}
+	    }    
+		return connectLost;
+	}
     	
     
 	public String acceptjoin(String username) {
@@ -163,6 +134,8 @@ public class ServerPeer implements Runnable, Protocol {
     public void shutdown() {
 		try {
 			sock.close();
+			out.close();
+			in.close();
 		} catch (IOException e) {
 			System.out.println("Whoosh " + e);
 		}

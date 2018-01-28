@@ -26,7 +26,8 @@ public class ComputerPlayer extends Player {
 		//this.playerNumber = playerNumber;
 	}
 	
-	public ComputerPlayer(Strategy strategy, Color firstColor, Color secondColor, int playerNumber) {
+	public ComputerPlayer(Strategy strategy,
+			Color firstColor, Color secondColor, int playerNumber) {
 		super(strategy.getName() + "-" + firstColor, firstColor, secondColor, playerNumber);
 		this.strategy = strategy;
 		//this.playerNumber = playerNumber;

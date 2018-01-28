@@ -23,8 +23,10 @@ public abstract class Player {
 
     /*@
        requires name != null;
-       requires firstColor == Color.GREEN || color== Color.PURPL || color== Color.REDDD || color== Color.YELLOW;
-       requires secondColor == Color.GREEN || color== Color.PURPL || color== Color.REDDD || color== Color.YELLOW || null;;
+       requires firstColor == Color.GREEN || color== Color.PURPL ||
+       	color== Color.REDDD || color== Color.YELLOW;
+       requires secondColor == Color.GREEN || color== Color.PURPL ||
+       	color== Color.REDDD || color== Color.YELLOW || null;;
        ensures this.getName() == name;
      */
     /**

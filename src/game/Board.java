@@ -31,7 +31,8 @@ public class Board {
     	} else {
     		playerRings = new int[20];
     	}
-    	slots = playerRings.length / playerAmount;	//10 for 2 players, 10 for 3 players, 5 for 4 players
+		//10 for 2 players, 10 for 3 players, 5 for 4 players
+    	slots = playerRings.length / playerAmount;
     	
     	//fill playerRings with right values, depending on amount of players
     	for (int i = 0; i < playerRings.length; i++) {
@@ -117,7 +118,8 @@ public class Board {
 		}
 	}
 	
-	public boolean canPlaceCheck(int x, int y, boolean base, int size, Color color, int currentPlayer) {
+	public boolean canPlaceCheck(int x, int y,
+			boolean base, int size, Color color, int currentPlayer) {
 		int highX;
 		int lowX;
 		int highY;
@@ -189,7 +191,8 @@ public class Board {
 	}
 	
 	/**
-	 * @return array of int of 3 digits, where the first one means x, the second one means y, and the third one means ring size (ring size 4 = base)
+	 * @return array of int of 3 digits, where the first one means x, the second one means y
+	 * and the third one means ring size (ring size 4 = base).
 	 */
 	
 	/*
@@ -312,8 +315,10 @@ public class Board {
 			}
 		} else {
 			//add up scores of the player's colors
-			int player1 = scores[players[0].getColor()[0].getIntFromColor()] + scores[players[0].getColor()[1].getIntFromColor()];
-			int player2 = scores[players[1].getColor()[0].getIntFromColor()] + scores[players[1].getColor()[1].getIntFromColor()];
+			int player1 = scores[players[0].getColor()[0].getIntFromColor()] +
+					 scores[players[0].getColor()[1].getIntFromColor()];
+			int player2 = scores[players[1].getColor()[0].getIntFromColor()] +
+					 scores[players[1].getColor()[1].getIntFromColor()];
 			if (player1 == player2) {
 				draw = true;
 			} else if (player1 > player2) {

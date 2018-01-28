@@ -88,6 +88,6 @@ public class Tile {
 	}
 	
 	public boolean hasBase(Color c) {
-		return (tile[0].getGroup() == Color.Group.BASE && tile[0].getColGroup() == c.getColGroup());
+		return tile[0].getGroup() == Color.Group.BASE && tile[0].getColGroup() == c.getColGroup();
 	}
 }
