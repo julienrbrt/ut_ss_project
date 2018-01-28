@@ -30,6 +30,15 @@ public class ServerGame {
     	}
 	}
 	
+	// TODO
+	/*
+	 * Ask for move
+	 * determine if move correct - send if not and wait
+	 * notify everyone
+	 * if game over send it
+	 * manage color here too
+	 */
+	
 	public void play() {
     	while (!board.gameOver(gotSkipped)) {
     	
