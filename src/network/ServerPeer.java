@@ -102,7 +102,24 @@ public class ServerPeer implements Runnable, Protocol {
                 				out.flush();
                 				break;
                 			} else {
-        
+                				try {
+                					boolean canMove = game.askMove(Integer.parseInt(cmd[1]),
+                							Integer.parseInt(cmd[2]),
+                							Integer.parseInt(cmd[3]), Integer.parseInt(cmd[4]));
+                					
+                					if (canMove) {
+                						game.makeMove(Integer.parseInt(cmd[1]),
+                    							Integer.parseInt(cmd[2]),
+                    							Integer.parseInt(cmd[3]), Integer.parseInt(cmd[4]));
+                					} else {
+                						denymove(playerName);
+                					}
+                				} catch (NumberFormatException nfe) {
+                					out.write(invalidcommand());
+                    				out.newLine();
+                    				out.flush();
+                    				break;
+                				}
                     			break;
                 			}
                 		default:
@@ -235,15 +252,7 @@ public class ServerPeer implements Runnable, Protocol {
 		}
 	}
 	
-	public void gameover(String[] winners) {
-		// When tie
-		if (winners.length > 1) {
-			StringBuilder stringBuilder = new StringBuilder();
-			for (int x = 0; x < winners.length; x++) {
-				stringBuilder.append(winners[x] + " ");
-			}
-		}
-
+	public void gameover(String winners) {
 		try {
 			out.write(SERVER_GAMEOVER + " " + winners);
 			out.newLine();

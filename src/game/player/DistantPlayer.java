@@ -1,6 +1,7 @@
 package game.player;
 
 import game.Board;
+import network.*;
 
 /**
  * Class permitting to define a distant player (ie. playing from network).
@@ -15,6 +16,7 @@ public class DistantPlayer extends Player {
 	private Color secondColor;
 	private final int playerNumber;
 	private final String type = "Distant";
+	private ServerPeer player;
 
 	/**
 	 *  Constructor for one color.
@@ -22,11 +24,12 @@ public class DistantPlayer extends Player {
 	 * @param firstColor, it's first color
 	 * @param playerNumber, his turn number in the game
 	 */
-	public DistantPlayer(String name, Color firstColor, int playerNumber) {
+	public DistantPlayer(String name, Color firstColor, int playerNumber, ServerPeer player) {
 		super(name, firstColor, playerNumber);
 		this.name = name;
 		this.firstColor = firstColor;
 		this.playerNumber = playerNumber;
+		this.player = player;
 	}
 	
 	/**
@@ -36,29 +39,29 @@ public class DistantPlayer extends Player {
 	 * @param secondColor, it's second color
 	 * @param playerNumber, his turn number in the game
 	 */
-	public DistantPlayer(String name, Color firstColor, Color secondColor, int playerNumber) {
+	public DistantPlayer(String name, Color firstColor, Color secondColor,
+			int playerNumber, ServerPeer player) {
 		super(name, firstColor, secondColor, playerNumber);
 		this.name = name;
 		this.firstColor = firstColor;
 		this.secondColor = secondColor;
 		this.playerNumber = playerNumber;
+		this.player = player;
 	}
 	
 	/**
-	 * Determine the first base placement and check of the distant user.
+	 * Determine the first base placement and check of the distant user. Useless Online
 	 * @param board, the board of the game
 	 */
 	public int[] determineBase(Board board) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
-	 * Determine the ring placement of the user.
+	 * Determine the ring placement of the user. Useless Online
 	 * @param board, the board of the game
 	 */
 	public Object[] determineMove(Board board, int colorsAmount) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -68,5 +71,14 @@ public class DistantPlayer extends Player {
 	 */
 	public String getType() {
 		return type;
+	}
+	
+	/**
+	 * Getter for the first color.
+	 * @return the colors of the user
+	 */
+	public Color[] getColors() {
+		Color[] colors = {firstColor, secondColor};
+		return colors;
 	}
 }
