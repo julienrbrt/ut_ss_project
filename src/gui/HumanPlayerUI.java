@@ -9,6 +9,7 @@ import javax.swing.*;
 import game.*;
 import game.player.*;
 import game.player.Color;
+import network.ServerPeer;
 
 /**
  * This class for displaying the GUI control for human player.
@@ -303,5 +304,12 @@ public class HumanPlayerUI extends Player {
 	 */
 	public String getType() {
 		return type;
+	}
+
+	// Useless for offline game
+	@Override
+	public ServerPeer getServerPeer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

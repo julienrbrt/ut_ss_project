@@ -48,6 +48,14 @@ public class DistantPlayer extends Player {
 		this.playerNumber = playerNumber;
 		this.player = player;
 	}
+		
+	/**
+	 * Getter for the ServerPeer.
+	 * @return the server peer
+	 */
+	public ServerPeer getServerPeer() {
+		return player;
+	}
 	
 	/**
 	 * Determine the first base placement and check of the distant user. Useless Online
@@ -67,18 +75,9 @@ public class DistantPlayer extends Player {
 
 	/**
 	 * Getter for strategy.
-	 * @return Type of that Distant player
+	 * @return Type of that Distant player. Useless Online
 	 */
 	public String getType() {
 		return type;
-	}
-	
-	/**
-	 * Getter for the first color.
-	 * @return the colors of the user
-	 */
-	public Color[] getColors() {
-		Color[] colors = {firstColor, secondColor};
-		return colors;
 	}
 }

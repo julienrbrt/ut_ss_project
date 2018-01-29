@@ -1,6 +1,7 @@
 package game.player;
 
 import game.*;
+import network.ServerPeer;
 
 /**
  * Defines the methods for the AI.
@@ -75,5 +76,12 @@ public class ComputerPlayer extends Player {
 	 */
 	public String getType() {
 		return type;
+	}
+
+	// Useless for offline game
+	@Override
+	public ServerPeer getServerPeer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

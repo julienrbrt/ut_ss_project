@@ -1,6 +1,7 @@
 package game.player;
 
 import game.*;
+import network.ServerPeer;
 
 /**
  * Abstract class for keeping/simulating a player in the Ringzz game.
@@ -108,8 +109,12 @@ public abstract class Player {
 	 * @return Type of this Player. Can be Human, Smart, or Random
 	 */
     
-    public String getType() {
-    	return type;
-    }
+    public abstract String getType();
+    
+	/**
+	 * Getter for the ServerPeer.
+	 * @return the server peer
+	 */
+	public abstract ServerPeer getServerPeer();
      
 }

@@ -29,11 +29,9 @@ public class ServerGame {
 		int amountPlayer = players.size();
 		playerList = new Player[amountPlayer];
 		
-		int amountColor = 2;
 		int position = 0;
 
 		if (amountPlayer < 4) {			
-			amountColor = 1;
 			for (ServerPeer player : players) {
 				playerList[position] = new DistantPlayer(player.getPlayerName(),
 						color.getColor(position, 1, amountPlayer),
@@ -72,13 +70,15 @@ public class ServerGame {
 					board.getPossibleMoves(playerList[currentPlayer].getColor()[0],
 							currentPlayer).length;
 			
-			// Skip the current player if cannot mot again.
+			// Skip the current player if cannot not again.
 			if (checkNo == 0) {
 				gotSkipped[currentPlayer] = true;
 			}
 					
 			if (!gotSkipped[currentPlayer]) {
-				// do moverequest
+				playerList[currentPlayer].getServerPeer().
+					moverequest(playerList[currentPlayer].getName());
+	    		currentPlayer = (currentPlayer + 1) % playerList.length;
 			}
 		}
 		
@@ -125,12 +125,12 @@ public class ServerGame {
 		}
 		
 		if (colorUsed == 1) {
-			setColor = playerList[1].getColor()[0];
+			setColor = playerList[currentPlayer].getColor()[0];
 		} else {
-			setColor = playerList[1].getColor()[1];
+			setColor = playerList[currentPlayer].getColor()[1];
 		}
 		
-		return board.canPlace(x, y, base, setSize, setColor, playerNumber);		
+		return board.canPlace(x, y, base, setSize, setColor, currentPlayer);		
 	}
 	
 	/**
@@ -152,9 +152,9 @@ public class ServerGame {
 		}
 		
 		if (colorUsed == 1) {
-			setColor = playerList[1].getColor()[0];
+			setColor = playerList[currentPlayer].getColor()[0];
 		} else {
-			setColor = playerList[1].getColor()[1];
+			setColor = playerList[currentPlayer].getColor()[1];
 		}
 		
 		if (firstPlayer) {
