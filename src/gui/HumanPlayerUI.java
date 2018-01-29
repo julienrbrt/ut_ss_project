@@ -43,7 +43,13 @@ public class HumanPlayerUI extends Player {
 	private Color color;
 	private volatile boolean valid;
 		
-	// Constructor for one color
+	/**
+	 *  Constructor for one color.
+	 * @param name the name of the user
+	 * @param firstColor, it's first color
+	 * @param playerNumber, his turn number in the game
+	 * @param gui, the GUI object to permit interaction with HumanUI.
+	 */
 	public HumanPlayerUI(String name, Color firstColor, int playerNumber, HumanUI gui) {
 		super(name, firstColor, playerNumber);
 		this.firstColor = firstColor;
@@ -58,8 +64,14 @@ public class HumanPlayerUI extends Player {
 		frameHP.setResizable(false);
 	}
 	
-	// Constructor for two colors
-	public HumanPlayerUI(String name,
+	/**
+	 *  Constructor for one color.
+	 * @param name the name of the user
+	 * @param firstColor, it's first color
+	 * @param secondColor, it's second color
+	 * @param playerNumber, his turn number in the game
+	 * @param gui, the GUI object to permit interaction with HumanUI.
+	 */	public HumanPlayerUI(String name,
 			Color firstColor, Color secondColor, int playerNumber, HumanUI gui) {
 		super(name, firstColor, secondColor, playerNumber);
 		this.firstColor = firstColor;
@@ -75,6 +87,9 @@ public class HumanPlayerUI extends Player {
 		frameHP.setResizable(false);
 	}
 	
+	 /**
+	  * Initiate the Human Control GUI.
+	  */
 	public void init() {
 				
 		if (secondColor != null) {
@@ -162,6 +177,10 @@ public class HumanPlayerUI extends Player {
 		c.add(rings[sBasePos]);
 	}
 	
+	/**
+	 * Class permitting to get the information of the controls and the board GUI.
+	 *
+	 */
 	public class PlaceRing implements ActionListener {
 
 		Color ringColor;
@@ -193,6 +212,10 @@ public class HumanPlayerUI extends Player {
 		}
 	}
 	
+	/**
+	 * Determine the first base of the user.
+	 * @param board, the board of the game
+	 */
 	public int[] determineBase(Board board) {
 		
 		frameHP.setVisible(true);
@@ -232,7 +255,12 @@ public class HumanPlayerUI extends Player {
         }
   	    
 	} 
-	
+	/**
+	 * Determine the ring placement of the user.
+	 * @param board, the board of the game
+	 * @param colorAmount, the number of color assigned
+	 * 	(can be 1 or 2 depending of the number of players)
+	 */
 	public Object[] determineMove(Board board, int colorAmount) {
 		
 		frameHP.setVisible(true);
@@ -270,6 +298,9 @@ public class HumanPlayerUI extends Player {
         }
 	}
 	
+	/**
+	 * Get the type of the player (in that case Human) for PossibleMove checking.
+	 */
 	public String getType() {
 		return type;
 	}

@@ -17,7 +17,7 @@ import gui.HumanUI;
 import tools.Tools;
 
 /**
- * Controls gameplay
+ * Controls gameplay.
  * @author Richard
  * @author Julien
  */
@@ -67,7 +67,7 @@ public class Game implements Runnable {
    */
 	
 	/**
-	 * Constructor for Game
+	 * Constructor for Game.
 	 * @param players Array of players joining the current game
 	 * @param gui UI to display everything regarding the game on
 	 */
@@ -200,7 +200,7 @@ public class Game implements Runnable {
     }
     
     /**
-     * Starts a new Game thread, if called through start()
+     * Starts a new Game thread, if called through start().
      */
     
     public void run() {

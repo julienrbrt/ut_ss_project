@@ -2,7 +2,7 @@ package game;
 
 import game.player.*;
 
-/**
+/** Class generation the tiles of the board.
  * 
  * @author Richard
  * @author Julien
@@ -17,7 +17,7 @@ public class Tile {
 	Color[] tile = new Color[rings];
 	
 	/**
-	 * Constructor for Tile
+	 * Constructor for Tile.
 	 */
 	
 	public Tile() {
@@ -97,9 +97,11 @@ public class Tile {
 	}
 	
 	/**
-	 * Checks whether or not a this Tile contains any piece of the ColGroup specified, or the starting base
+	 * Checks whether or not a this Tile contains any piece of
+	 * 	the ColGroup specified, or the starting base.
 	 * @param e The specified ColGroup
-	 * @return true if this Tile contains any piece of the ColGroup specified, or the starting base (as it is a universal color)
+	 * @return true if this Tile contains any piece of the ColGroup specified,
+	 * 	or the starting base (as it is a universal color)
 	 */
 		
 	public boolean contains(Color.ColGroup e) {
@@ -112,7 +114,7 @@ public class Tile {
 	}
 	
 	/**
-	 * Checks whether or not this Tile contains a base of the given Color
+	 * Checks whether or not this Tile contains a base of the given Color.
 	 * @param c Color to check for
 	 * @return true if this Tile contains a base of the given Color
 	 */
@@ -122,7 +124,7 @@ public class Tile {
 	}
 	
 	/**
-	 * Getter for color
+	 * Getter for color.
 	 * @param size Position of the color to return. Corresponds to ring size
 	 * @return Color stored in the specified position in this Tile
 	 */

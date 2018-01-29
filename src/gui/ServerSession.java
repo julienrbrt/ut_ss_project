@@ -21,12 +21,13 @@ public class ServerSession {
     Socket sock = null;
     ServerLobby lobby = new ServerLobby();
 	
+    /**
+     * Constructor of the ServerSession.
+     */
 	public ServerSession() {
 		
 		init();
-        /**
-         * try to open a Socket to the server
-         */
+        // try to open a Socket to the server
         try {
             serverOff = JOptionPane.showConfirmDialog(null,
             		"Do you want to close it? If no do not close this window.",
@@ -62,6 +63,9 @@ public class ServerSession {
         }
     }
 	
+    /**
+     * Generate the GUI (Pop-up) to setup the server.
+     */
 	public void init() {
 
         boolean valid = false;

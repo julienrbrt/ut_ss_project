@@ -42,7 +42,7 @@ public abstract class Player {
     }
     
     /**
-     * Secondary constructor for Player
+     * Secondary constructor for Player.
      * @param name Name of the Player
      * @param firstColor Primary Color of this Player
      * @param secondColor Secondary Color of this Player

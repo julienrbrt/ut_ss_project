@@ -7,6 +7,12 @@ import game.player.*;
 import gui.*;
 import tools.Tools;
 
+/**
+ * Class managing the game for a client connected to a server. 
+ * @author Richard
+ * @author Julien
+ *
+ */
 public class ClientGame implements Runnable {
 
 	private Board board;
@@ -23,6 +29,13 @@ public class ClientGame implements Runnable {
 	private ColorUI colorUI;
 	private int colorAmount = 1;
 
+	/**
+	 * Constructor of the ClientGame.
+	 * @param name, name of the user
+	 * @param playerNum, it's position in the game
+	 * @param amountPlayer, the total amount of players in the game
+	 * @param gui, the HumanUI to interact with
+	 */
 	public ClientGame(String name, int playerNum, int amountPlayer, HumanUI gui) {
 		this.name = name;
 		this.playerNum = playerNum;
@@ -30,6 +43,9 @@ public class ClientGame implements Runnable {
 		this.gui = gui;
 	}
 	
+	/**
+	 * Transform the user as a Player.
+	 */
 	public void initiate() {
 		
 		// Generate player - Color fixed
@@ -66,7 +82,10 @@ public class ClientGame implements Runnable {
 		board = new Board(amountPlayer, players);
 
 	}
-	
+	/**
+	 * Permit to the user to make a move.
+	 * @return the position of the ring chosen.
+	 */
 	public Object[] makeMove() {
 	 	// Reset previous button images
 		emptyButton = new ColorUI(null, false, 0).getColorUI();
@@ -108,7 +127,14 @@ public class ClientGame implements Runnable {
 	    	return choice;
 		}	
 	}
-	
+	/**
+	 * Update the board with a move received from the server.
+	 * @param x, the x position
+	 * @param y, the y position of the rings
+	 * @param size, it's size
+	 * @param color, it's color
+	 * @param playerPosition, the position of the player having made that move.
+	 */
 	public void setMove(int x, int y, int size, int color, int playerPosition) {
 	 	// Reset previous button images
 		emptyButton = new ColorUI(null, false, 0).getColorUI();
@@ -148,7 +174,12 @@ public class ClientGame implements Runnable {
 			
 		}
 	}
-	
+	/**
+	 * Setup the color of the opponents (Client-Side).
+	 * @param playerPosition, the player position.
+	 * @param colorChoosen, the amount of color of the player
+	 * @return the color generated.
+	 */
 	public Color getColor(int playerPosition, int colorChoosen) {
 		if (amountPlayer > 2) {
 			if (colorChoosen > 1) {

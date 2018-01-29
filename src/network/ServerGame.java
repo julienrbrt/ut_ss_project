@@ -5,13 +5,11 @@ import java.util.List;
 import game.*;
 
 /**
- * This class for defining all the method used in the Server of the game.
- * For comment see Protocol.java
+ * Class managing the game for a Server interaction with clients. 
  * @author Richard
  * @author Julien
- * @version 0.1
+ *
  */
-
 public class ServerGame {
 	
 	private Board board;

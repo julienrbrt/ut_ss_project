@@ -32,6 +32,10 @@ public class ALGSStartGame implements ActionListener {
 	Player[] aiPlayers;
 	Player[] players;
 	
+	/**
+	 * Detect if an action was performed with the start button.
+	 * @param e, the ActionEvent of the start button.
+	 */
 	public void actionPerformed(ActionEvent e) {
 	
 		GameSessionAISelect selectAI = (GameSessionAISelect) aiSelect;

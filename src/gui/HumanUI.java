@@ -29,7 +29,10 @@ public class HumanUI implements Runnable {
 	
 	// Coordinate give back
 	int[] choice = new int[2];
-		
+	
+	/**
+	 * Generate an empty GUI board.
+	 */
 	public void init() {
 		
 		c.setLayout(new GridLayout(5, 5));
@@ -54,7 +57,12 @@ public class HumanUI implements Runnable {
 			}
 		}
 	}
-	
+	/**
+	 * Permit to change the image of the board.
+	 * @param x, position x of the button / rings on the board.
+	 * @param y, position y of the button / rings on the board.
+	 * @param merged, image to display merged
+	 */
 	public void updateButton(int x, int y, Image merged) {
 		
 		ImageIcon rings = new ImageIcon(merged);
@@ -78,11 +86,17 @@ public class HumanUI implements Runnable {
 		}
 	
 	}
-	
+	/**
+	 * Get the x/y position of the board in which the user wants to place a ring.
+	 * @return choice, the choice mentioned above.
+	 */
 	public int[] getPlacement() {
 		return choice;
 	}
 	
+	/**
+	 * Permit to run the GUI concurrently.
+	 */
 	public void run() {
 		init();
 		frameGame.pack();

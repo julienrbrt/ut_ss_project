@@ -126,6 +126,11 @@ public class GameSessionServerSettings extends JPanel {
 
 	}
 	
+	/**
+	 * Class managing the user parameters to play offline
+	 * (Versus who).
+	 *
+	 */
 	public class GameMode implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
@@ -147,7 +152,10 @@ public class GameSessionServerSettings extends JPanel {
 		}
 		
 	}
-	
+	/**
+	 * Getter of the information of the UI for Server Settings.
+	 * @return settings of the user (port, game opponents and IP)
+	 */
 	public Object[] getServerSettings() {
 		Object[] settings = {addr, port, gameWith};
 		return settings;

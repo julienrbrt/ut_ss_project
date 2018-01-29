@@ -27,6 +27,9 @@ public class GameSession {
 	// Player handling
 	Color color = Color.NONEE;	//initiated to make static calls
 	
+	/**
+	 * Constructor of GameSession.
+	 */
 	public GameSession() {
 		init();
 		frameGS.pack();
@@ -39,6 +42,9 @@ public class GameSession {
 		frameGS.setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * Method initializing the layout of the parameter GUI.
+	 */
 	public void init() {
 		
 		// Layout fix
@@ -63,6 +69,12 @@ public class GameSession {
 		
 	}
 	
+	/**
+	 * 
+	 * Class being an ActionListener managing the GUI if the button "Offline"
+	 * triggered.
+	 *
+	 */
 	// Online / Offline management
 	public class OnlineOff implements ActionListener {
 

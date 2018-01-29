@@ -16,7 +16,7 @@ public class ComputerPlayer extends Player {
 	private final String type = "Computer";
 	
 	/**
-	 * Primary constructor for ComputerPlayer
+	 * Primary constructor for ComputerPlayer.
 	 * @param strategy Type of AI
 	 * @param firstColor Color for this AI
 	 * @param playerNumber ID of this Player
@@ -29,7 +29,7 @@ public class ComputerPlayer extends Player {
 	}
 	
 	/**
-	 * Secondary constructor for ComputerPlayer
+	 * Secondary constructor for ComputerPlayer.
 	 * @param strategy Type of AI
 	 * @param firstColor && secondColor Colors for this AI
 	 * @param playerNumber ID of this Player
@@ -43,7 +43,8 @@ public class ComputerPlayer extends Player {
 	}
 	
 	/**
-	 * Forward determineBase to Strategy, while passing board. Generates coordinates for the starting base.
+	 * Forward determineBase to Strategy, while passing board.
+	 * 	Generates coordinates for the starting base.
 	 * <p>
 	 * Should only be called once per game, at the beginning of the game.
 	 * @param board Board to determine the base off of
@@ -56,7 +57,8 @@ public class ComputerPlayer extends Player {
 	}
 	
 	/**
-	 * Forward determineMove to Strategy, while passing board and colorAmount. Generates a valid move, or an empty array if no moves are possible.
+	 * Forward determineMove to Strategy, while passing board and colorAmount.
+	 * 	Generates a valid move, or an empty array if no moves are possible.
 	 * @param board Board to determine move on
 	 * @param colorAmount Amount of Colors this Player possesses
 	 * @return Array of possible moves

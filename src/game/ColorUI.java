@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import game.player.Color;
 
 /**
- * Constructs the images needed to display the correct images in the GUI
+ * Constructs the images needed to display the correct images in the GUI.
  * @author Richard
  * @author Julien
  */

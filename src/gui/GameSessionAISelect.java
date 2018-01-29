@@ -94,6 +94,11 @@ public class GameSessionAISelect extends JPanel {
 		threeS.addActionListener(new AI());
 	}
 	
+	/**
+	 * Class permitting to generate AI player in accordance to user choice.
+	 *
+	 */
+	
 	public class AI implements ActionListener {
 		
 		Player player2;

@@ -9,7 +9,7 @@ import game.ColorUI;
 import game.player.Color;
 
 /**
- * This class for lauching the Ringgz GUI to permit to host a game or play the game.
+ * This class for launching the Ringgz GUI to permit to host a game or play the game.
  * @author Richard
  * @author Julien
  * @version 0.1
@@ -22,6 +22,9 @@ public class Ringzz {
 	JButton[] settingsButton = new JButton[2];
 	Container c = frameMain.getContentPane();
 	
+	/**
+	 * Contructor of the launcher.
+	 */
 	public Ringzz() {
 		init();
 		frameMain.pack();
@@ -34,6 +37,9 @@ public class Ringzz {
 		frameMain.setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * Generate the GUI.
+	 */
 	public void init() {
 		c.setLayout(new GridBagLayout());
 		
@@ -66,6 +72,10 @@ public class Ringzz {
    		settingsButton[1].addActionListener(new ServerSession());
 	}
 	
+	/**
+	 * Permit to trigger the GameSession class.
+	 *
+	 */
 	public class GameSession implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
@@ -74,7 +84,10 @@ public class Ringzz {
 			frameMain.dispose();
 		}
 	}
-	
+	/**
+	 * Permit to trigger the ServerSession class.
+	 *
+	 */
 	public class ServerSession implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {

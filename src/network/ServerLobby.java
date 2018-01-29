@@ -3,12 +3,21 @@ package network;
 import exception.*;
 import java.util.*;
 
+/**
+ * Class managing how are started the game (by setting up lobbies). 
+ * @author Richard
+ * @author Julien
+ *
+ */
 public class ServerLobby {
 	
 	// info LinkedHashMap preserver order, so first come, first serve
     private Map<String, ServerPeer> playerList;
     private LinkedHashMap<Integer, List<ServerPeer>> lobby;
 	
+    /**
+     * Constructor managing the distant users and lobbies.
+     */
 	public ServerLobby() {
 		// Create 4 lobby
 		lobby = new LinkedHashMap<>();
@@ -20,6 +29,13 @@ public class ServerLobby {
 		playerList = new LinkedHashMap<>();
 	}
 	
+	/**
+	 * Add a player to a lobby.
+	 * @param playerName, the name of the player
+	 * @param server, it's connection peer
+	 * @throws NameSpaceException if the name contains a space (invalid)
+	 * @throws NameUsedException if the name is already existing in the server.
+	 */
 	// Should not happen at the same time
 	public synchronized void addPlayer(String playerName, ServerPeer server)
 			throws NameSpaceException, NameUsedException {
@@ -32,10 +48,19 @@ public class ServerLobby {
 		}
 	}
 	
+	/**
+	 * Delete a player from the list.
+	 * @param name, name of the player.
+	 */
 	public synchronized void deletePlayer(String name) {
 		playerList.remove(name);
 	}
 	
+	/**
+	 * Add a player to a lobby.
+	 * @param gameWith, the number of people he wants to play with.
+	 * @param server, it's connection peer.
+	 */
 	public synchronized void addLobby(int gameWith, ServerPeer server) {
 		// Assign people to lobby
 		lobby.get(gameWith).add(server);
@@ -66,7 +91,10 @@ public class ServerLobby {
 		}
 	}
 	
-	// TODO
+	/**
+	 * Delete a player from a lobby.
+	 * @param server, it's connection peer.
+	 */
 	public synchronized void deleteLobby(ServerPeer server) {
 		
 	}

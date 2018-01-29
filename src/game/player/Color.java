@@ -27,7 +27,7 @@ public enum Color {
 	private ColGroup colGroup;
 	
 	/**
-	 * Constructor for Color
+	 * Constructor for Color.
 	 * @param group Group type
 	 * @param colGroup
 	 */
@@ -38,7 +38,7 @@ public enum Color {
 	}
 	
 	/**
-	 * Getter for group type of this Color
+	 * Getter for group type of this Color.
 	 * @return type of this Color. Can be NONE, RING, or BASE
 	 */
 	
@@ -47,7 +47,7 @@ public enum Color {
 	}
 	
 	/**
-	 * Getter for color group of this Color
+	 * Getter for color group of this Color.
 	 * @return color group of this Color. Can be NONE, RED, BLUE, GREEN, or YELLOW
 	 */
 	
@@ -70,7 +70,7 @@ public enum Color {
 	}
 	
 	/**
-	 * Simple number to Color converter
+	 * Simple number to Color converter.
 	 * @param i Number to be converted
 	 * @return Color corresponding to the number given
 	 */
@@ -91,7 +91,7 @@ public enum Color {
 	}
 	
 	/**
-	 * simple Color to number converter
+	 * simple Color to number converter.
 	 * @return int value of this Color
 	 */
 	

@@ -31,6 +31,10 @@ public class ALGSStartOnlineGame implements ActionListener {
 		this.playerName = name;
 	}
 
+	/**
+	 * Detect if an action was performed with the start button.
+	 * @param e, the ActionEvent of the start button.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		GameSessionServerSettings uiClass = (GameSessionServerSettings) uiPanel;

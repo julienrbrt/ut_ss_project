@@ -29,7 +29,7 @@ public class Tools {
 	}
 	
 	/**
-	 * Merges the 2 images given
+	 * Merges the 2 images given.
 	 * @param front Image to go on the front
 	 * @param back Image to go on the back
 	 * @return Merged Image

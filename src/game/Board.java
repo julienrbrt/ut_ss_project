@@ -65,7 +65,8 @@ public class Board {
 	 * Adds a ring (or a base) to the board.
 	 * @param x X coordinate of the ring to be placed
 	 * @param y Y coordinate of the ring to be placed
-	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param base Boolean that, if true,
+	 * 	tells the function to place a base instead, regardless of size value
 	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
 	 * @param e Color of the ring to be placed
 	 */
@@ -87,10 +88,12 @@ public class Board {
 	}
 	
 	/**
-	 * Checks whether or not all arguments are in a valid range and valid for placement on the board, in accordance with the game's rules.
+	 * Checks whether or not all arguments are in a valid range and
+	 * 	valid for placement on the board, in accordance with the game's rules.
 	 * @param x X coordinate from place to check
 	 * @param y Y coordinate from place to check
-	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param base Boolean that, if true, tells the function to place a base instead,
+	 * 	regardless of size value
 	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
 	 * @param color Color of the ring for which to check the place
 	 * @param currentPlayer ID of the player currently being checked. To be passed to hasRing() only
@@ -168,7 +171,8 @@ public class Board {
 	 * Used for generating a set of possible placement positions.
 	 * @param x X coordinate from place to check
 	 * @param y Y coordinate from place to check
-	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param base Boolean that, if true,
+	 * 	tells the function to place a base instead, regardless of size value
 	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
 	 * @param color Color of the ring for which to check the place
 	 * @param currentPlayer ID of the player currently being checked. To be passed to hasRing() only
@@ -264,7 +268,9 @@ public class Board {
 	 * Creates a array of all possible moves for the given color.
 	 * @param color Color to find moves for
 	 * @param playerNumber ID of the player currently being checked. To be passed only
-	 * @return Array of int of 3 digits, where the first one means x, the second one means y and the third one means ring size (ring size 4 = base). Each int stands for a individual possible move
+	 * @return Array of int of 3 digits, where the first one means x,
+	 * 	the second one means y and the third one means ring size (ring size 4 = base).
+	 * 	Each int stands for a individual possible move
 	 */
 	
 	public int[] getPossibleMoves(Color color, int playerNumber) {
@@ -299,7 +305,8 @@ public class Board {
 	/**
 	 * Generates an array of possible moves for a particular color and particular ring size.
 	 * @param color Color to find moves for
-	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param base Boolean that, if true,
+	 * 	tells the function to place a base instead, regardless of size value
 	 * @param size Size of ring being checked
 	 * @param playerNumber ID of the player currently being checked. To be passed only
 	 * @return Array of int of 2 digits, where the first one means x and the second one means y
@@ -328,7 +335,8 @@ public class Board {
 	
 	/**
 	 * Checks whether or not the game is over yet, based on amount of players being skipped.
-	 * @param skipped Array of skipped players. Size of array corresponds to amount of players in the current game
+	 * @param skipped Array of skipped players
+	 *  Size of array corresponds to amount of players in the current game
 	 * @return true when all players are being skipped
 	 */
 	
@@ -342,12 +350,14 @@ public class Board {
 	}
 	
 	/**
-	 * Checks if the current ring size can be placed, based on amount of current ring size is left to place for the current player.
+	 * Checks if the current ring size can be placed,
+	 * based on amount of current ring size is left to place for the current player.
 	 * @param base Boolean that specifies whether or not a base is being checked
 	 * @param size Size of ring to be checked
 	 * @param c Color of ring to be checked
 	 * @param currentPlayer ID of player being checked
-	 * @param change Boolean that indicates whether or not the values in the ring counter should be modified during this check
+	 * @param change Boolean that indicates whether or not the values in the ring counter
+	 * 	should be modified during this check
 	 * @return true if current player still has a ring of the current type and color left to place
 	 */
 	
@@ -379,8 +389,10 @@ public class Board {
     }
 	
 	/**
-	 * Calculate and broadcast the name of the winner or, in case of a tie, broadcast that the result was a tie
-	 * @param scores Array of scores per color. Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
+	 * Calculate and broadcast the name of the winner or,
+	 * 	in case of a tie, broadcast that the result was a tie.
+	 * @param scores Array of scores per color.
+	 * 	Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
 	 * @return ID of winner. In case of a tie, returns 5
 	 */
 	

@@ -23,7 +23,7 @@ public class RandomStrategy implements Strategy {
 	}
 	
 	/**
-	 * Getter for name of this Strategy
+	 * Getter for name of this Strategy.
 	 * @return Name of this Strategy
 	 */
 	

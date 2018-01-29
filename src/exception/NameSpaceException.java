@@ -1,7 +1,7 @@
 package exception;
 
 /**
- * Exception to be thrown when a name is typed in the inputfield that contains at least one space
+ * Exception to be thrown when a name is typed in the inputfield that contains at least one space.
  * @author Richard
  * @author Julien
  */
@@ -14,7 +14,7 @@ public class NameSpaceException extends Exception {
 	private static final long serialVersionUID = 3461535333680139264L;
 	
 	/**
-	 * Constructor for NameSpaceException
+	 * Constructor for NameSpaceException.
 	 */
 	
 	public NameSpaceException() {

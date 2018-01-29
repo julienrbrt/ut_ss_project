@@ -14,7 +14,7 @@ public class WinConditions {
 	int[] scores;
 	
 	/**
-	 * Constructor for WinConditions
+	 * Constructor for WinConditions.
 	 * @param board Board containing all the rings and bases
 	 */
 	
@@ -27,7 +27,7 @@ public class WinConditions {
 	}
 	
 	/**
-	 * Calculates the scores based on Board and stores them in an array
+	 * Calculates the scores based on Board and stores them in an array.
 	 */
 	
 	public void calculate() {
@@ -121,7 +121,7 @@ public class WinConditions {
 	}
 	
 	/**
-	 * Getter for scores
+	 * Getter for scores.
 	 * @return Array of scores per Color. Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
 	 */
 	
