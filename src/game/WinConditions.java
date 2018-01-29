@@ -1,9 +1,22 @@
 package game;
 
+/**
+ * Calculates scores based on Board given.
+ * <p>
+ * Should only be constructed when the game is over.
+ * @author Richard
+ * @author Julien
+ */
+
 public class WinConditions {
 	
 	Board board;
 	int[] scores;
+	
+	/**
+	 * Constructor for WinConditions
+	 * @param board Board containing all the rings and bases
+	 */
 	
 	public WinConditions(Board board) {
 		this.board = board;
@@ -12,6 +25,10 @@ public class WinConditions {
 			scores[i] = 0;
 		}
 	}
+	
+	/**
+	 * Calculates the scores based on Board and stores them in an array
+	 */
 	
 	public void calculate() {
 		int size = board.getSize();
@@ -102,6 +119,11 @@ public class WinConditions {
 			}
 		}
 	}
+	
+	/**
+	 * Getter for scores
+	 * @return Array of scores per Color. Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
+	 */
 	
 	public int[] getScores() {
 		return scores;

@@ -7,11 +7,24 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import game.player.Color;
 
+/**
+ * Constructs the images needed to display the correct images in the GUI
+ * @author Richard
+ * @author Julien
+ */
+
 public class ColorUI {
 	
 	int size;
 	String color;
 	Boolean base;
+	
+	/**
+	 * Constructor for ColorUI.
+	 * @param colorName Current color
+	 * @param base Boolean that specifies whether or not the current ring is a base
+	 * @param size Size of the current ring
+	 */
 		
 	public ColorUI(Color colorName, boolean base, int size) {
 		this.size = size;
@@ -39,6 +52,11 @@ public class ColorUI {
 			}
 		}
 	}
+	
+	/**
+	 * Converts current ColorUI into an image, based on stored size, color, and base.
+	 * @return Image of current ColorUI
+	 */
 	
 	public Image getColorUI() {
 

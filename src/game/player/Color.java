@@ -25,14 +25,30 @@ public enum Color {
 	private Group group;
 	private ColGroup colGroup;
 	
+	/**
+	 * Constructor for Color
+	 * @param group Group type
+	 * @param colGroup
+	 */
+	
 	Color(Group group, ColGroup colGroup) {
 		this.group = group;
 		this.colGroup = colGroup;
 	}
 	
+	/**
+	 * Getter for group type of this Color
+	 * @return type of this Color. Can be NONE, RING, or BASE
+	 */
+	
 	public Group getGroup() {
 		return group;
 	}
+	
+	/**
+	 * Getter for color group of this Color
+	 * @return color group of this Color. Can be NONE, RED, BLUE, GREEN, or YELLOW
+	 */
 	
 	public ColGroup getColGroup() {
 		return colGroup;
@@ -52,7 +68,13 @@ public enum Color {
 		YELLOW;
 	}
 	
-	public Color getColor(int i) {	//simple number to color converter
+	/**
+	 * Simple number to Color converter
+	 * @param i Number to be converted
+	 * @return Color corresponding to the number given
+	 */
+	
+	public Color getColor(int i) {
 		switch (i) {
 			case 0:
 				return REDDD;
@@ -67,7 +89,12 @@ public enum Color {
 		}
 	}
 	
-	public int getIntFromColor() {	//simple color to number converter
+	/**
+	 * simple Color to number converter
+	 * @return int value of this Color
+	 */
+	
+	public int getIntFromColor() {
 		switch (getColGroup()) {	//NONE and default should never be reached
 			case RED:
 				return 0;

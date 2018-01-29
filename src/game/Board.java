@@ -2,6 +2,14 @@ package game;
 
 import game.player.*;
 
+/**
+ * Calculates the majority of the functionality behind the game.
+ * <p>
+ * Contains all information on what the game board is filled with.
+ * @author Richard
+ * @author Julien
+ */
+
 // MVC (model)
 public class Board {
 
@@ -16,6 +24,13 @@ public class Board {
 	private final int slots;	//keeps track of amount of slots per player in playerRings
 	
 	// ------------- Constructor ------------------------------------------
+	
+	/**
+	 * Constructor for Board.
+	 * @param amount Number of players joining the current game
+	 * @param player Set of Players joining the current game
+	 */
+	
 	public Board(int amount, Player[] player) {
 		board = new Tile[SIZE][SIZE];	//set up 2D matrix for the board
 		for (int i = 0; i < SIZE; i++) {	//fill board with empty tiles
@@ -45,15 +60,44 @@ public class Board {
 	}
 	
 	// ------------- Commands ----------------------------------------------
+	
+	/**
+	 * Adds a ring (or a base) to the board.
+	 * @param x X coordinate of the ring to be placed
+	 * @param y Y coordinate of the ring to be placed
+	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
+	 * @param e Color of the ring to be placed
+	 */
 
 	public void addRing(int x, int y, boolean base, int size, Color e) {
 		board[x][y].change(base, size, e);
 	}
 	
+	/**
+	 * Adds the home/starting base.
+	 * <p>
+	 * Is only to be called once.
+	 * @param x
+	 * @param y
+	 */
+	
 	public void addHome(int x, int y) {
 		board[x][y].change(true, 1, Color.SBASE);
 	}
-			
+	
+	/**
+	 * Checks whether or not all arguments are in a valid range and valid for placement on the board, in accordance with the game's rules.
+	 * @param x X coordinate from place to check
+	 * @param y Y coordinate from place to check
+	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
+	 * @param color Color of the ring for which to check the place
+	 * @param currentPlayer ID of the player currently being checked. To be passed to hasRing() only
+	 * @return Boolean that says whether or not the current ring configuration is place-able
+	 * @see hasRing
+	 */
+	
 	public boolean canPlace(int x, int y, boolean base, int size, Color color, int currentPlayer) {
 		
 		int highX;
@@ -117,6 +161,20 @@ public class Board {
 			}
 		}
 	}
+	
+	/**
+	 * Different type of canPlace() that does not update the ring counter.
+	 * <p>
+	 * Used for generating a set of possible placement positions.
+	 * @param x X coordinate from place to check
+	 * @param y Y coordinate from place to check
+	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
+	 * @param color Color of the ring for which to check the place
+	 * @param currentPlayer ID of the player currently being checked. To be passed to hasRing() only
+	 * @return Boolean that says whether or not the current ring configuration is place-able
+	 * @see canPlace
+	 */
 	
 	public boolean canPlaceCheck(int x, int y,
 			boolean base, int size, Color color, int currentPlayer) {
@@ -182,23 +240,33 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Getter for board size.
+	 * @return Size of the board in 1 dimension (5 for this board)
+	 */
+	
 	public int getSize() {
 		return SIZE;
 	}
+	
+	/**
+	 * Getter for a tile from the board that corresponds with the coordinates given.
+	 * @param x X coordinate of tile to return
+	 * @param y Y coordinate of tile to return
+	 * @return Tile corresponding to coordinates given
+	 */
 		
 	public Tile getTile(int x, int y) {
 		return board[x][y];
 	}
-	
+
 	/**
-	 * @return array of int of 3 digits, where the first one means x, the second one means y
-	 * and the third one means ring size (ring size 4 = base).
+	 * Creates a array of all possible moves for the given color.
+	 * @param color Color to find moves for
+	 * @param playerNumber ID of the player currently being checked. To be passed only
+	 * @return Array of int of 3 digits, where the first one means x, the second one means y and the third one means ring size (ring size 4 = base). Each int stands for a individual possible move
 	 */
 	
-	/*
-	 * returns an array of possible moves in the form x*100+y*10+size
-	 * with size 4 being a base, for a specified color
-	 */
 	public int[] getPossibleMoves(Color color, int playerNumber) {
 		int[] result = new int[SIZE * SIZE * SIZE];
 		int count = 0;
@@ -229,7 +297,12 @@ public class Board {
 	}
 	
 	/**
-	 * @return array of ints of 2 digits, where the first one means x and the second one means y
+	 * Generates an array of possible moves for a particular color and particular ring size.
+	 * @param color Color to find moves for
+	 * @param base Boolean that, if true, tells the function to place a base instead, regardless of size value
+	 * @param size Size of ring being checked
+	 * @param playerNumber ID of the player currently being checked. To be passed only
+	 * @return Array of int of 2 digits, where the first one means x and the second one means y
 	 */
 	
 	//returns an array of possible moves in the form x*10+y, for the given size and color
@@ -253,6 +326,12 @@ public class Board {
 		return actResult;
 	}
 	
+	/**
+	 * Checks whether or not the game is over yet, based on amount of players being skipped.
+	 * @param skipped Array of skipped players. Size of array corresponds to amount of players in the current game
+	 * @return true when all players are being skipped
+	 */
+	
 	public boolean gameOver(boolean[] skipped) {
 		for (int i = 0; i < skipped.length; i++) {
 			if (!skipped[i]) {
@@ -261,6 +340,16 @@ public class Board {
 		}
 		return true;
 	}
+	
+	/**
+	 * Checks if the current ring size can be placed, based on amount of current ring size is left to place for the current player.
+	 * @param base Boolean that specifies whether or not a base is being checked
+	 * @param size Size of ring to be checked
+	 * @param c Color of ring to be checked
+	 * @param currentPlayer ID of player being checked
+	 * @param change Boolean that indicates whether or not the values in the ring counter should be modified during this check
+	 * @return true if current player still has a ring of the current type and color left to place
+	 */
 	
 	public boolean hasRing(boolean base, int size, Color c, int currentPlayer, boolean change) {
     	boolean firstColor = players[currentPlayer].getColor()[0] == c;
@@ -288,6 +377,12 @@ public class Board {
     		return false;
     	}
     }
+	
+	/**
+	 * Calculate and broadcast the name of the winner or, in case of a tie, broadcast that the result was a tie
+	 * @param scores Array of scores per color. Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
+	 * @return ID of winner. In case of a tie, returns 5
+	 */
 	
 	public int getWinner(int[] scores) {
 		int winner = 0;
@@ -336,7 +431,7 @@ public class Board {
 			return winner;
 		}
 	}
-		
+	
 	public String toString() {
 		String output = "";
 		for (int x = 0; x < SIZE; x++) {

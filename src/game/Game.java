@@ -16,6 +16,12 @@ import game.player.*;
 import gui.HumanUI;
 import tools.Tools;
 
+/**
+ * Controls gameplay
+ * @author Richard
+ * @author Julien
+ */
+
 public class Game implements Runnable {
 
 	// -- Instance variables -----------------------------------------
@@ -23,13 +29,14 @@ public class Game implements Runnable {
 	/*@
     	private invariant board != null;
 	*/
+	
 	/**
 	 * The board.
 	 */
     private Board board;
     
 	/**
-	* The four players of the game.
+	* The (up to) four players of the game.
 	*/
     private Player[] players;
     
@@ -48,24 +55,23 @@ public class Game implements Runnable {
 	ColorUI colorUI;
 	
 	/**
-	 * Player skipping handling / Game-Over.
+	 * Player skipping handling / Game Over.
 	 */
 	private boolean[] gotSkipped;
 	
     // -- Constructors -----------------------------------------------
 
    /*@
-   	requires p0 != null;
-    requires p1 != null;
+   	requires players[0] != null;
+    requires players[1] != null;
    */
-   /**
-    * Creates a new Game object.
-    * 
-    * @param p0 the first player
-    * @param p1 the second player
-    * @param p2 the third possible player
-    * @param p3 he fourth possible player
-    */    
+	
+	/**
+	 * Constructor for Game
+	 * @param players Array of players joining the current game
+	 * @param gui UI to display everything regarding the game on
+	 */
+	
     public Game(Player[] players, HumanUI gui) {
         this.players = players;
         board = new Board(players.length, players);
@@ -81,25 +87,19 @@ public class Game implements Runnable {
     }
 
     // -- Commands ---------------------------------------------------
-    
-    /**
-     * Resets the game.
-     * The board is emptied and player[0] becomes the current player.
+
+    /*@
+    requires board != null && !board.gameOver();
      */
-    /*private void reset() {
-        currentPlayer = 0;
-        board = new Board(players.length, players);
-    }*/
     
     /**
-     * Plays the Ringgz game.
+     * Starts a game.
+     * <p>
      * First the (still empty) board is shown. Then the game is played until it
      * is over. Players can make a move one after the other. After each move,
      * the changed game situation is printed.
      */
-    /*@
-    requires board != null & !board.gameOver();
-     */
+    
     public void play() {
      	
     	int colorAmount = 1;
@@ -198,6 +198,10 @@ public class Game implements Runnable {
     	}
     	
     }
+    
+    /**
+     * Starts a new Game thread, if called through start()
+     */
     
     public void run() {
     	Thread waitGUI = new Thread(gui);
