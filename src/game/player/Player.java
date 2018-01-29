@@ -17,7 +17,6 @@ public abstract class Player {
     private String name;
     private Color firstColor;
     private Color secondColor;
-    private final String type = "none";
 
     // -- Constructors -----------------------------------------------
 

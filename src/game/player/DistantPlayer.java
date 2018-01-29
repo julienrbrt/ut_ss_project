@@ -11,10 +11,6 @@ import network.*;
  */
 public class DistantPlayer extends Player {
 
-	private String name;
-	private Color firstColor;
-	private Color secondColor;
-	private final int playerNumber;
 	private final String type = "Distant";
 	private ServerPeer player;
 
@@ -26,9 +22,6 @@ public class DistantPlayer extends Player {
 	 */
 	public DistantPlayer(String name, Color firstColor, int playerNumber, ServerPeer player) {
 		super(name, firstColor, playerNumber);
-		this.name = name;
-		this.firstColor = firstColor;
-		this.playerNumber = playerNumber;
 		this.player = player;
 	}
 	
@@ -42,10 +35,6 @@ public class DistantPlayer extends Player {
 	public DistantPlayer(String name, Color firstColor, Color secondColor,
 			int playerNumber, ServerPeer player) {
 		super(name, firstColor, secondColor, playerNumber);
-		this.name = name;
-		this.firstColor = firstColor;
-		this.secondColor = secondColor;
-		this.playerNumber = playerNumber;
 		this.player = player;
 	}
 		
