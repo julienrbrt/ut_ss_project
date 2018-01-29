@@ -2,8 +2,6 @@ package network;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import game.*;
 import game.player.*;
 

@@ -131,7 +131,9 @@ public class ClientPeer implements Runnable, Protocol {
                 			}
                 			break;
                 		case SERVER_DENYMOVE:
-                			shutdown(); // :))
+                			if (cmd[1].equals(name)) {
+                    			shutdown(); // :))
+                			}
                 			break;
                 		case SERVER_NOTIFYMOVE:
                 			if (!cmd[1].equals(name)) { 
