@@ -1,5 +1,5 @@
 /**
- * This class is a tooling class for the Ringgz game.
+ * Various tools for our game.
  * @author Richard
  * @author Julien
  * @version 0.1
@@ -12,6 +12,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class Tools {
+	
+	/**
+	 * Checks whether or not an int can be obtained from a given String.
+	 * @param number String to get an int out of
+	 * @return true if number can be converted to an int
+	 */
 		
 	public static boolean validNum(String number) {
 		try {
@@ -22,10 +28,17 @@ public class Tools {
 		return true;
 	}
 	
+	/**
+	 * Merges the 2 images given
+	 * @param front Image to go on the front
+	 * @param back Image to go on the back
+	 * @return Merged Image
+	 */
+	
 	// https://stackoverflow.com/questions/2318020/merging-two-images
-	public static Image mergeImg(Image fore, Image back) {
+	public static Image mergeImg(Image front, Image back) {
 
-		BufferedImage img1 = (BufferedImage) fore;
+		BufferedImage img1 = (BufferedImage) front;
 		BufferedImage img2 = (BufferedImage) back;
 				
 		// create the new image, canvas size is the max. of both image sizes
