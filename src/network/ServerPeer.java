@@ -133,6 +133,14 @@ public class ServerPeer implements Runnable, Protocol {
     	this.opponents = opponent;
     }
     
+    
+    /**
+     * Get the player name.
+     */
+    public String getPlayerName() {
+    	return playerName;
+    }
+    
 	/**
 	* The server check if client still connected.
 	*/

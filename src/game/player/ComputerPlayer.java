@@ -73,7 +73,6 @@ public class ComputerPlayer extends Player {
 	 * Getter for strategy.
 	 * @return Type of this AI
 	 */
-	
 	public String getType() {
 		return type;
 	}

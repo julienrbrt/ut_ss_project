@@ -65,7 +65,7 @@ public class HumanPlayerUI extends Player {
 	}
 	
 	/**
-	 *  Constructor for one color.
+	 *  Constructor for two color.
 	 * @param name the name of the user
 	 * @param firstColor, it's first color
 	 * @param secondColor, it's second color

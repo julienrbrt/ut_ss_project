@@ -50,27 +50,31 @@ public class ClientGame implements Runnable {
 		
 		// Generate player - Color fixed
 		if (name.equals("RANDOM")) {
-			if (amountPlayer > 2) {
+			if (amountPlayer < 4) {
 				players[0] = new ComputerPlayer(new RandomStrategy(playerNum),
-						getColor(playerNum, 1), getColor(playerNum, 2), playerNum);
+						getColor(playerNum, 1, amountPlayer),
+						getColor(playerNum, 2, amountPlayer), playerNum);
 			} else {
 				players[0] = new ComputerPlayer(new RandomStrategy(playerNum),
-						getColor(playerNum, 1), playerNum);
+						getColor(playerNum, 0, amountPlayer), playerNum);
 			}
 		} else if (name.equals("SMART")) {
-			if (amountPlayer > 2) {
+			if (amountPlayer < 4) {
 				players[0] = new ComputerPlayer(new SmartStrategy(playerNum),
-						getColor(playerNum, 1), getColor(playerNum, 2), playerNum);
+						getColor(playerNum, 1, amountPlayer),
+						getColor(playerNum, 2, amountPlayer), playerNum);
 			} else {
 				players[0] = new ComputerPlayer(new SmartStrategy(playerNum),
-						getColor(playerNum, 1), playerNum);
+						getColor(playerNum, 0, amountPlayer), playerNum);
 			}
 		} else {
-			if (amountPlayer > 2) {
+			if (amountPlayer < 4) {
 				players[0] = new HumanPlayerUI(name,
-						getColor(playerNum, 1), getColor(playerNum, 2), playerNum, gui);
+						getColor(playerNum, 1, amountPlayer),
+						getColor(playerNum, 2, amountPlayer), playerNum, gui);
 			} else {
-				players[0] = new HumanPlayerUI(name, getColor(playerNum, 1), playerNum, gui);
+				players[0] = new HumanPlayerUI(name,
+						getColor(playerNum, 0, amountPlayer), playerNum, gui);
 			}
 		}
 		    	
@@ -155,9 +159,9 @@ public class ClientGame implements Runnable {
 			boolean base = false;
 			if (size == 5) {
 				base = true;
-			   	board.addRing(x, y, base, 0, getColor(playerNum, color));
+			   	board.addRing(x, y, base, 0, getColor(playerNum, color, amountPlayer));
 			} else {
-			   	board.addRing(x, y, base, 0, getColor(playerNum, color));
+			   	board.addRing(x, y, base, 0, getColor(playerNum, color, amountPlayer));
 
 			}
 		    for (int i = 0; i < 4; i++) {
@@ -180,8 +184,8 @@ public class ClientGame implements Runnable {
 	 * @param colorChoosen, the amount of color of the player
 	 * @return the color generated.
 	 */
-	public Color getColor(int playerPosition, int colorChoosen) {
-		if (amountPlayer > 2) {
+	public Color getColor(int playerPosition, int colorChoosen, int amountPlay) {
+		if (amountPlay == 3) {
 			if (colorChoosen > 1) {
 				return Color.YELLO;
 			} else {
@@ -192,11 +196,9 @@ public class ClientGame implements Runnable {
 						return Color.GREEN;
 					case 3:
 						return Color.REDDD;
-					case 4:
-						return Color.YELLO;
 				}
 			}
-		} else {
+		} else if (amountPlayer == 2) {
 			if (colorChoosen > 1) {
 				switch (playerPosition) {
 					case 1:
@@ -211,6 +213,17 @@ public class ClientGame implements Runnable {
 					case 2:
 						return Color.GREEN;
 				}
+			} 
+		} else {
+			switch (playerPosition) {
+				case 1:
+					return Color.BLUEE;
+				case 2:
+					return Color.GREEN;
+				case 3:
+					return Color.REDDD;
+				case 4:
+					return Color.YELLO;
 			}
 		}
 		return Color.NONEE;
