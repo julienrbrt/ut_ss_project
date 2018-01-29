@@ -3,34 +3,41 @@ package game.player;
 import game.*;
 
 /**
- * This class manage the SMART IA of the Ringgz game.
+ * Manages the Smart AI. The same as RandomStrategy, for now.
  * @author Richard 
  * @author Julien
  * @version 0.1
  */
 
-// Smart strategy is RANDOM
-
 public class SmartStrategy implements Strategy {
 	
 	int playerNumber;
+	
+	/**
+	 * Constructor for RandomStrategy.
+	 * @param playerNumber ID of this Player
+	 */
 	
 	public SmartStrategy(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
 	
 	/**
-	 * @see game.player.Strategy#getName()
-	 * @return the name of the Strategy
+	 * Getter for name of this Strategy
+	 * @return Name of this Strategy
 	 */
+	
 	public String getName() {
 		return "Smart";
 	}
 	
 	/**
-	 * @see game.player.Strategy#determineMove(game.Board, game.player.Color)
-	 * @return the randomly generated choice of the move of the IA 
-	 */
+     * Generates coordinates for the starting base.
+	 * <p>
+	 * Should only be called once per game, at the beginning of the game.
+	 * @param board Board to determine the base off of
+	 * @return Array of coordinates to place the starting base on
+     */
 	
 	public int[] determineBase(Board board) {
 		int[] result = new int[2];
@@ -38,6 +45,15 @@ public class SmartStrategy implements Strategy {
 		result[1] = (int) Math.floor(Math.random() * 3) + 1;
 		return result;
 	}
+	
+	/**
+	 * Generates a valid move, or an empty array if no moves are possible.
+	 * @param board Board to determine move on
+	 * @param colorAmount Amount of Colors this Player possesses
+	 * @param firstColor Primary Color of this Player
+	 * @param secondColor Secondary Color of this Player, if applicable. Otherwise null
+	 * @return Array of possible moves
+	 */
 	
     public Object[] determineMove(Board board,
     		int colorAmount, Color firstColor, Color secondColor) {

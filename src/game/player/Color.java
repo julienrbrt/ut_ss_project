@@ -1,7 +1,8 @@
 package game.player;
 
 /**
- * Represents the color in the Ringgz game.
+ * Enum class to represent the colors of the rings in the Ringgz game.
+ * <p>
  * There is four colors available and one empty field, Color.REDDD (Red), Color.BLUEE (Blue),
  * Color.GREEN (Green), Color.YELLO (Yellow) and Color.NONEE (Empty) 
  * @author Richard
