@@ -79,7 +79,7 @@ public abstract class Player {
     }
 
     /*@
-       requires board != null & !board.gameOver();
+       requires board != null;
      */
     
     /**

@@ -11,15 +11,14 @@ import game.player.*;
 public class Tile {
 	
 	//The smaller the number, the smaller the ring (0=smallest, 3=largest, 4=base), for GUI purposes
-	
 	final int rings = 4;
 	//array for storing colors (4 positions for the 4 possible ring sizes)
-	Color[] tile = new Color[rings];
+	public Color[] tile = new Color[rings];
 	
 	/**
 	 * Constructor for Tile.
 	 */
-	
+
 	public Tile() {
 		for (int i = 0; i < rings; i++) {
 			tile[i] = Color.NONEE;
@@ -32,7 +31,9 @@ public class Tile {
 	 * @param size Size of the ring to be placed, if base = false
 	 * @param e Color of the piece to be added
 	 */
-	
+	//@ requires size >= 0 & e != null;
+	//@ ensures isTileEmpty() == true || tile[size] == e;
+	//@ ensures tile[size] != \old(tile[size]);
 	public void change(boolean base, int size, Color e) {
 		if (tile[0].getGroup() != Color.Group.BASE && tile[size] == Color.NONEE) {
 			if (base && isTileEmpty()) {
@@ -74,7 +75,7 @@ public class Tile {
 	 * Checks whether or not this tile is completely empty.
 	 * @return true if this Tile is completely empty
 	 */
-	
+	//@ pure;
 	public boolean isTileEmpty() {
 		for (int i = 0; i < rings; i++) {
 			if (tile[i] != Color.NONEE) {
@@ -91,7 +92,8 @@ public class Tile {
 	 * @param size Position to check in
 	 * @return true if the spot is empty
 	 */
-	
+	//@ requires size >= 0;
+	//@ ensures \result == false || \result == true;
 	public boolean isSpotEmpty(int size) {
 		return tile[size] == Color.NONEE;
 	}
@@ -103,7 +105,7 @@ public class Tile {
 	 * @return true if this Tile contains any piece of the ColGroup specified,
 	 * 	or the starting base (as it is a universal color)
 	 */
-		
+	//@ requires e != null & tile != null;
 	public boolean contains(Color.ColGroup e) {
 		for (int i = 0; i < rings; i++) {
 			if (tile[i].getColGroup() == e || tile[i] == Color.SBASE) {
@@ -118,7 +120,8 @@ public class Tile {
 	 * @param c Color to check for
 	 * @return true if this Tile contains a base of the given Color
 	 */
-	
+	//@ requires c != null; 
+	//@ ensures \result == false || \result == true;
 	public boolean hasBase(Color c) {
 		return tile[0].getGroup() == Color.Group.BASE && tile[0].getColGroup() == c.getColGroup();
 	}
@@ -128,11 +131,12 @@ public class Tile {
 	 * @param size Position of the color to return. Corresponds to ring size
 	 * @return Color stored in the specified position in this Tile
 	 */
-	
+	//@ requires size >= 0;
 	public Color getColor(int size) {
 		return tile[size];
 	}
 	
+	//@ ensures \result instanceof String;
 	public String toString() {
 		String output = "";
 		for (int i = 0; i < rings; i++) {

@@ -29,7 +29,6 @@ public class WinConditions {
 	/**
 	 * Calculates the scores based on Board and stores them in an array.
 	 */
-	
 	public void calculate() {
 		int size = board.getSize();
 		int rings = 4;
@@ -124,7 +123,7 @@ public class WinConditions {
 	 * Getter for scores.
 	 * @return Array of scores per Color. Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
 	 */
-	
+	//@ ensures \result != null & \result.length != 0;
 	public int[] getScores() {
 		return scores;
 	}

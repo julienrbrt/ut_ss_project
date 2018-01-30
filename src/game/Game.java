@@ -27,13 +27,13 @@ public class Game implements Runnable {
 	// -- Instance variables -----------------------------------------
     
 	/*@
-    	private invariant board != null;
+    	public invariant board != null;
 	*/
 	
 	/**
 	 * The board.
 	 */
-    private Board board;
+    public Board board;
     
 	/**
 	* The (up to) four players of the game.
@@ -89,7 +89,7 @@ public class Game implements Runnable {
     // -- Commands ---------------------------------------------------
 
     /*@
-    requires board != null && !board.gameOver();
+    requires board != null;
      */
     
     /**
