@@ -56,7 +56,7 @@ public class ALGSStartOnlineGame implements ActionListener {
 	            System.out.println("Connected to server.");
 	        } catch (IOException io) {
 	        	JOptionPane.showMessageDialog(null,
-	        			"Error: could connect on the server " + addr + ":" + port);
+	        			"Error: could not connect on the server " + addr + ":" + port);
 	        }
 	        
 	        /**
