@@ -77,5 +77,27 @@ public class BoardTest {
 		//check same-colored bases not being able to be placed next to each other
 		assertFalse(board4p.canPlaceCheck(3, 4, true, 0, Color.BLUEE, 1));
 	}
+	
+	@Test
+	public void getSizeAndWinnerTest() {
+		assertEquals(5, board2p.getSize());
+		//prepare for getWinner test
+		int[] scores = new int[4];
+		scores[0] = 0;
+		scores[1] = 1;
+		scores[2] = 2;
+		scores[3] = 3;
+		assertEquals(1, board2p.getWinner(scores));
+		assertEquals(2, board3p.getWinner(scores));
+		assertEquals(3, board4p.getWinner(scores));
+		scores[1] = 3;
+		assertEquals(1, board2p.getWinner(scores));
+		assertEquals(1, board3p.getWinner(scores));
+		assertEquals(5, board4p.getWinner(scores));
+		scores[3] = 0;
+		assertEquals(0, board2p.getWinner(scores));
+		assertEquals(1, board3p.getWinner(scores));
+		assertEquals(1, board4p.getWinner(scores));
+	}
 
 }
