@@ -13,12 +13,11 @@ public class Tile {
 	//The smaller the number, the smaller the ring (0=smallest, 3=largest, 4=base), for GUI purposes
 	final int rings = 4;
 	//array for storing colors (4 positions for the 4 possible ring sizes)
-	public Color[] tile = new Color[rings];
+	Color[] tile = new Color[rings];
 	
 	/**
 	 * Constructor for Tile.
 	 */
-
 	public Tile() {
 		for (int i = 0; i < rings; i++) {
 			tile[i] = Color.NONEE;
@@ -32,8 +31,7 @@ public class Tile {
 	 * @param e Color of the piece to be added
 	 */
 	//@ requires size >= 0 & e != null;
-	//@ ensures isTileEmpty() == true || tile[size] == e;
-	//@ ensures tile[size] != \old(tile[size]);
+	//@ ensures isTileEmpty() == true;
 	public void change(boolean base, int size, Color e) {
 		if (tile[0].getGroup() != Color.Group.BASE && tile[size] == Color.NONEE) {
 			if (base && isTileEmpty()) {
@@ -105,7 +103,7 @@ public class Tile {
 	 * @return true if this Tile contains any piece of the ColGroup specified,
 	 * 	or the starting base (as it is a universal color)
 	 */
-	//@ requires e != null & tile != null;
+	//@ requires e != null;
 	public boolean contains(Color.ColGroup e) {
 		for (int i = 0; i < rings; i++) {
 			if (tile[i].getColGroup() == e || tile[i] == Color.SBASE) {

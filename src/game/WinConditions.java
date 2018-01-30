@@ -18,6 +18,7 @@ public class WinConditions {
 	 * @param board Board containing all the rings and bases
 	 */
 	
+	//@ requires board != null;
 	public WinConditions(Board board) {
 		this.board = board;
 		scores = new int[4];	//0 = red, 1 = blue, 2 = green, 3 = yellow
