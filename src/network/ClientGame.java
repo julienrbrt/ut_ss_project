@@ -162,10 +162,8 @@ public class ClientGame implements Runnable {
 			boolean base = false;
 			if (size == 0) {
 				base = true;
-				System.out.println("Base " + color);
 			   	board.addRing(x, y, base, 0, getColor(playerPosition, color, amountPlayer));
 			} else {
-				System.out.println("Rings " + color);
 			   	board.addRing(x, y, base, size - 1, getColor(playerPosition, color, amountPlayer));
 			}
 		    for (int i = 0; i < 4; i++) {

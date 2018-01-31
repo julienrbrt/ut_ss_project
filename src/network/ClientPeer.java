@@ -117,9 +117,12 @@ public class ClientPeer implements Runnable, Protocol {
                 				} else {
                 					// get color number
                 					int colorNum = 1;
-                					if ((Color) setmove[4] == Color.YELLO && playerList.length == 3) {
+                					if ((Color) setmove[4] == Color.YELLO
+                							&& playerList.length == 3) {
                 						colorNum = 2;
-                					} else if (playerList.length == 2 && ((Color) setmove[4] == Color.YELLO || (Color) setmove[4] == Color.BLUEE)) {
+                					} else if (playerList.length == 2
+                							&& ((Color) setmove[4] == Color.YELLO
+                							|| (Color) setmove[4] == Color.BLUEE)) {
                 						colorNum = 2;
                 					}
                 					
@@ -158,9 +161,7 @@ public class ClientPeer implements Runnable, Protocol {
                     					if (playerNumber == 0) {
                     						playerNumber = playerList.length;
                     					}
-                    					
-                    					System.out.println("Start " + cmd[5]);
-                    					
+                    					                    					
                         				game.setMove(Integer.parseInt(cmd[2]),
                         						Integer.parseInt(cmd[3]),
                         						Integer.parseInt(cmd[4]),
