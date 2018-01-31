@@ -3,4 +3,5 @@ game
 game.player
 gui
 network
+test
 tools

@@ -115,6 +115,7 @@ public class ServerGame {
 		boolean base = false;
 		int setSize = 0;
 		Color setColor;
+		
 		if (size == 0) {
 			base = true;
 		} else {
