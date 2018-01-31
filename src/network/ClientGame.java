@@ -28,6 +28,7 @@ public class ClientGame implements Runnable {
 	private Image merged;
 	private ColorUI colorUI;
 	private int colorAmount = 1;
+	private boolean start = true;
 
 	/**
 	 * Constructor of the ClientGame.
@@ -53,28 +54,28 @@ public class ClientGame implements Runnable {
 			if (amountPlayer < 4) {
 				players[0] = new ComputerPlayer(new RandomStrategy(playerNum),
 						getColor(playerNum, 1, amountPlayer),
-						getColor(playerNum, 2, amountPlayer), playerNum);
+						getColor(playerNum, 2, amountPlayer), 0);
 			} else {
 				players[0] = new ComputerPlayer(new RandomStrategy(playerNum),
-						getColor(playerNum, 0, amountPlayer), playerNum);
+						getColor(playerNum, 0, amountPlayer), 0);
 			}
 		} else if (name.equals("SMART")) {
 			if (amountPlayer < 4) {
 				players[0] = new ComputerPlayer(new SmartStrategy(playerNum),
 						getColor(playerNum, 1, amountPlayer),
-						getColor(playerNum, 2, amountPlayer), playerNum);
+						getColor(playerNum, 2, amountPlayer), 0);
 			} else {
 				players[0] = new ComputerPlayer(new SmartStrategy(playerNum),
-						getColor(playerNum, 0, amountPlayer), playerNum);
+						getColor(playerNum, 0, amountPlayer), 0);
 			}
 		} else {
 			if (amountPlayer < 4) {
 				players[0] = new HumanPlayerUI(name,
 						getColor(playerNum, 1, amountPlayer),
-						getColor(playerNum, 2, amountPlayer), playerNum, gui);
+						getColor(playerNum, 2, amountPlayer), 0, gui);
 			} else {
 				players[0] = new HumanPlayerUI(name,
-						getColor(playerNum, 0, amountPlayer), playerNum, gui);
+						getColor(playerNum, 0, amountPlayer), 0, gui);
 			}
 		}
 		    	
@@ -96,7 +97,7 @@ public class ClientGame implements Runnable {
 		merged = emptyButton;
 		buttonImage = emptyButton;
 		
-		if (playerNum == 0) {
+		if (playerNum == 1 && start) {
     		int[] choice = players[0].determineBase(board);
     	    board.addHome(choice[0], choice[1]);
     	    // Empty Board Image
@@ -109,6 +110,7 @@ public class ClientGame implements Runnable {
         	gui.updateButton(choice[0], choice[1], merged);
         	Integer[] con = {(Integer) choice[0], (Integer) choice[1]};
         	Object[] conv = (Object[]) con;
+        	start = false;
     		return conv;
 		} else {			
 			Object[] choice = players[0].determineMove(board, colorAmount);
@@ -140,6 +142,7 @@ public class ClientGame implements Runnable {
 	 * @param playerPosition, the position of the player having made that move.
 	 */
 	public void setMove(int x, int y, int size, int color, int playerPosition) {
+				
 	 	// Reset previous button images
 		emptyButton = new ColorUI(null, false, 0).getColorUI();
 		merged = emptyButton;
@@ -157,12 +160,13 @@ public class ClientGame implements Runnable {
         	gui.updateButton(x, y, merged);
 		} else {
 			boolean base = false;
-			if (size == 5) {
+			if (size == 0) {
 				base = true;
-			   	board.addRing(x, y, base, 0, getColor(playerNum, color, amountPlayer));
+				System.out.println("Base " + color);
+			   	board.addRing(x, y, base, 0, getColor(playerPosition, color, amountPlayer));
 			} else {
-			   	board.addRing(x, y, base, 0, getColor(playerNum, color, amountPlayer));
-
+				System.out.println("Rings " + color);
+			   	board.addRing(x, y, base, size - 1, getColor(playerPosition, color, amountPlayer));
 			}
 		    for (int i = 0; i < 4; i++) {
 		    	Color colored = board.getTile((Integer) x,
@@ -186,7 +190,7 @@ public class ClientGame implements Runnable {
 	 */
 	public Color getColor(int playerPosition, int colorChoosen, int amountPlay) {
 		if (amountPlay == 3) {
-			if (colorChoosen > 1) {
+			if (colorChoosen == 2) {
 				return Color.YELLO;
 			} else {
 				switch (playerPosition) {
@@ -199,17 +203,18 @@ public class ClientGame implements Runnable {
 				}
 			}
 		} else if (amountPlay == 2) {
-			if (colorChoosen > 1) {
+			System.out.println(playerPosition + " " + colorChoosen);
+			if (colorChoosen == 2) {
 				switch (playerPosition) {
 					case 1:
-						return Color.REDDD;
+						return Color.BLUEE;
 					case 2:
 						return Color.YELLO;
 				}
 			} else {
 				switch (playerPosition) {
 					case 1:
-						return Color.BLUEE;
+						return Color.REDDD;
 					case 2:
 						return Color.GREEN;
 				}
@@ -237,6 +242,5 @@ public class ClientGame implements Runnable {
     	} catch (InterruptedException ie) {
     		
     	}
-    	initiate();
     }
 }

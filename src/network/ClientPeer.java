@@ -2,6 +2,7 @@ package network;
 
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
@@ -66,11 +67,13 @@ public class ClientPeer implements Runnable, Protocol {
 			try {				
 				// Handle Game
                 String input = in.readLine();
-                
+                               
                 if (input != null) {
                 	String[] cmd = input.split(" ");
                 	switch (cmd[0]) {
                 		case SERVER_ACCEPTJOIN:
+                            System.out.println(input);
+
                 			if (cmd[1].equals(name)) {
                 				JOptionPane.showMessageDialog(null, "You are now connected");
                 				out.write(CLIENT_GAMEREQUEST + " " + gameWith);
@@ -79,29 +82,32 @@ public class ClientPeer implements Runnable, Protocol {
                 			}
                 			break;
                 		case SERVER_DENYJOIN:
+                            System.out.println(input);
+
                 			if (cmd.length > 1 && cmd[1].equals(name)) {
                 				JOptionPane.showMessageDialog(null, "Username invalid. Try again.");
                 				shutdown();
                 			}
                 			break;
                 		case SERVER_STARTGAME:
-                			int playerNum = -1;
+                            System.out.println(input);
+
                 			playerList = new String[cmd.length - 1];
+                			
                 			for (int x = 1; x < cmd.length; x++) {
                 				playerList[x - 1] = cmd[x];
                 				// Check if message  and if server respect preferences & create GUI
                 				if (cmd[x].contains(name) && (cmd.length - 1) == gameWith) {
-                					playerNum = x;
-                					gui = new HumanUI();
+                					game = new ClientGame(name, x, cmd.length - 1, new HumanUI());
+                    				new Thread(game).start();
+                    				game.initiate();
                 				}
                 			}
                 			
-                			if (playerNum != -1) {
-                				game = new ClientGame(name, playerNum, cmd.length - 1, gui);
-                				new Thread(game).start();
-                			}
                 			break;
                 		case SERVER_MOVEREQUEST:
+                            System.out.println(input);
+
                 			if (cmd[1].equals(name)) {
                 				Object[] setmove = game.makeMove();
                 				// main base placement
@@ -111,18 +117,21 @@ public class ClientPeer implements Runnable, Protocol {
                 				} else {
                 					// get color number
                 					int colorNum = 1;
-                					if ((Color) setmove[4] == Color.YELLO) {
+                					if ((Color) setmove[4] == Color.YELLO && playerList.length == 3) {
+                						colorNum = 2;
+                					} else if (playerList.length == 2 && ((Color) setmove[4] == Color.YELLO || (Color) setmove[4] == Color.BLUEE)) {
                 						colorNum = 2;
                 					}
+                					
                 					// base placement
                 					if ((Boolean) setmove[2]) {
                     					out.write(CLIENT_SETMOVE + " " + (Integer) setmove[0] +
                     							" " + (Integer) setmove[1] +
-                    							" " + 5 + " " + colorNum);
+                    							" " + 0 + " " + colorNum);
                 					} else {
                 						out.write(CLIENT_SETMOVE + " " + (Integer) setmove[0] +
                 								" " + (Integer) setmove[1] + " " +
-                								(Integer) setmove[3] + " " + colorNum);
+                								((Integer) setmove[3] + 1) % 5 + " " + colorNum);
                 					}
                 				}
                 				out.newLine();
@@ -130,25 +139,40 @@ public class ClientPeer implements Runnable, Protocol {
                 			}
                 			break;
                 		case SERVER_DENYMOVE:
+                            System.out.println(input);
+
                 			if (cmd[1].equals(name)) {
                     			shutdown(); // :))
                 			}
                 			break;
                 		case SERVER_NOTIFYMOVE:
+                            System.out.println(input);
+
                 			if (!cmd[1].equals(name)) { 
                 				// get player number name
                 	  			for (int x = 0; x < playerList.length; x++) {
                     				if (playerList[x].contains(name)) {
+                    					
+                    					int playerNumber = Arrays.asList(playerList).indexOf(name);
+                    					
+                    					if (playerNumber == 0) {
+                    						playerNumber = playerList.length;
+                    					}
+                    					
+                    					System.out.println("Start " + cmd[5]);
+                    					
                         				game.setMove(Integer.parseInt(cmd[2]),
                         						Integer.parseInt(cmd[3]),
                         						Integer.parseInt(cmd[4]),
                         						Integer.parseInt(cmd[5]),
-                        						x + 1);
+                        						playerNumber);
                     				}                				
                 	  			}
                 			}
                 			break;
                 		case SERVER_GAMEOVER:
+                            System.out.println(input);
+
                 			if (cmd.length > 2) {
                 	    		JOptionPane.showMessageDialog(null, "It is a tie");
                 			} else {
@@ -157,9 +181,13 @@ public class ClientPeer implements Runnable, Protocol {
                 			shutdown(); //  nicer handling to be done
                 			break;
                 		case SERVER_CONNECTIONLOST:
+                            System.out.println(input);
+
             	    		JOptionPane.showMessageDialog(null, cmd[1] + " have been disconected.");
             	    		break;
                 		case SERVER_INVALIDCOMMAND:
+                            System.out.println(input);
+
                 			System.out.println("Should NEVER happen.");
                 			// shutdown();
                 			break;

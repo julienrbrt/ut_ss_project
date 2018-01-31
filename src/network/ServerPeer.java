@@ -46,19 +46,19 @@ public class ServerPeer implements Runnable, Protocol {
 		while (!connectLost()) {
 			try {
 				String input = in.readLine();
-                
+				
                 // Setup game if can play
                 if (game != null && opponents != null) {
                 	out.write(startgame(opponents));
                 	out.newLine();
                 	out.flush();
                 }
-                
+
                 if (input != null) {
                 	String[] cmd = input.split(" ");
                 	switch (cmd[0]) {
                 		case CLIENT_JOINREQUEST:
-                			
+                            System.out.println(input);
                 			if (cmd[1] != null) {
                 				playerName = cmd[1];
                 			} else {
@@ -84,6 +84,7 @@ public class ServerPeer implements Runnable, Protocol {
                 			}
                 			break;
                 		case CLIENT_GAMEREQUEST:
+                            System.out.println(input);
                 			if (cmd.length < 2 || Integer.parseInt(cmd[1]) < 2 ||
                 					Integer.parseInt(cmd[1]) > 4) {
                 				out.write(invalidcommand());
@@ -95,6 +96,8 @@ public class ServerPeer implements Runnable, Protocol {
                     			break;
                 			}               			
                 		case CLIENT_SETMOVE:
+                            System.out.println(input);
+
                 			if (cmd.length < 2 || game == null) {
                 				out.write(invalidcommand());
                 				out.newLine();

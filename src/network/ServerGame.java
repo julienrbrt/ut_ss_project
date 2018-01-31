@@ -19,7 +19,6 @@ public class ServerGame {
     private int currentPlayer;
     private boolean firstPlayer = true;
 	private boolean[] gotSkipped;
-	private ClientGame color; // used only for getting the color.
 	
 	public ServerGame(List<ServerPeer> players) {
 		
@@ -31,15 +30,15 @@ public class ServerGame {
 
 		if (amountPlayer < 4) {			
 			for (ServerPeer player : players) {
-				playerList[position] = new DistantPlayer(player.getPlayerName(),
-						color.getColor(position, 1, amountPlayer),
-						color.getColor(position, 2, amountPlayer), position, player);
+				playerList[position - 1] = new DistantPlayer(player.getPlayerName(),
+						getColor(position, 1, amountPlayer),
+						getColor(position, 2, amountPlayer), position, player);
 				position++;
 			}
 		} else {
 			for (ServerPeer player : players) {
-				playerList[position] = new DistantPlayer(player.getPlayerName(),
-						color.getColor(position, 0, amountPlayer), position, player);
+				playerList[position - 1] = new DistantPlayer(player.getPlayerName(),
+						getColor(position, 0, amountPlayer), position, player);
 				position++;
 			}
 		}
@@ -165,5 +164,56 @@ public class ServerGame {
 		for (ServerPeer player : players) {
 			player.notifymove(x, y, size, colorUsed);
 		}
+	}
+	
+	/**
+	 * Setup the color of the opponents (Client-Side).
+	 * @param playerPosition, the player position.
+	 * @param colorChoosen, the amount of color of the player
+	 * @return the color generated.
+	 */
+	public Color getColor(int playerPosition, int colorChoosen, int amountPlay) {
+		if (amountPlay == 3) {
+			if (colorChoosen > 1) {
+				return Color.YELLO;
+			} else {
+				switch (playerPosition) {
+					case 1:
+						return Color.BLUEE;
+					case 2:
+						return Color.GREEN;
+					case 3:
+						return Color.REDDD;
+				}
+			}
+		} else if (amountPlay == 2) {
+			if (colorChoosen > 1) {
+				switch (playerPosition) {
+					case 1:
+						return Color.BLUEE;
+					case 2:
+						return Color.YELLO;
+				}
+			} else {
+				switch (playerPosition) {
+					case 1:
+						return Color.REDDD;
+					case 2:
+						return Color.GREEN;
+				}
+			} 
+		} else {
+			switch (playerPosition) {
+				case 1:
+					return Color.BLUEE;
+				case 2:
+					return Color.GREEN;
+				case 3:
+					return Color.REDDD;
+				case 4:
+					return Color.YELLO;
+			}
+		}
+		return Color.NONEE;
 	}
 }
