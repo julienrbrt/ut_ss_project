@@ -63,8 +63,8 @@ public class ClientPeer implements Runnable, Protocol {
     		}
     	}
     	
-		while (playing) {
-			try {				
+		try {				
+			while (playing) {
 				// Handle Game
                 String input = in.readLine();
                                
@@ -197,11 +197,10 @@ public class ClientPeer implements Runnable, Protocol {
                 			break;
                 	}
                 }
-				
-			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "You have been disconnected.");
-				shutdown();
-			}
+			}	
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "You have been disconnected.");
+			shutdown();
 		}
     }
     	

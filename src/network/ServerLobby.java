@@ -1,6 +1,8 @@
 package network;
 
 import exception.*;
+
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -82,7 +84,11 @@ public class ServerLobby {
 			// Set the game with every people from that lobby
 			for (ServerPeer player : lobby.get(gameWith)) {
 				player.start(game);
-				player.setOpponents(opponents.toString());
+				try {
+					player.out.write(player.startgame(opponents.toString()));
+				} catch (IOException ie) {
+					//
+				}
 			}
 			
 			// remove those people from queue

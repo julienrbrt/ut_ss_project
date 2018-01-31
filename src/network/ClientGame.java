@@ -50,7 +50,7 @@ public class ClientGame implements Runnable {
 	public void initiate() {
 		
 		// Generate player - Color fixed
-		if (name.equals("RANDOM")) {
+		if (name.equals("efoldjkvkc")) {
 			if (amountPlayer < 4) {
 				players[0] = new ComputerPlayer(new RandomStrategy(playerNum),
 						getColor(playerNum, 1, amountPlayer),

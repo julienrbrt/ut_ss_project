@@ -22,7 +22,6 @@ public class ServerPeer implements Runnable, Protocol {
     protected BufferedWriter out;
     
     protected String playerName;
-    protected String opponents;
     
     public ServerPeer(Socket sock, ServerLobby lobby) throws IOException {
     	this.lobby = lobby;
@@ -46,13 +45,6 @@ public class ServerPeer implements Runnable, Protocol {
 		while (!connectLost()) {
 			try {
 				String input = in.readLine();
-				
-                // Setup game if can play
-                if (game != null && opponents != null) {
-                	out.write(startgame(opponents));
-                	out.newLine();
-                	out.flush();
-                }
 
                 if (input != null) {
                 	String[] cmd = input.split(" ");
@@ -144,14 +136,6 @@ public class ServerPeer implements Runnable, Protocol {
     public void start(ServerGame gameSession) {
     	this.game = gameSession;
     }
-    
-    /**
-     * Set opponents list.
-     */
-    public void setOpponents(String opponent) {
-    	this.opponents = opponent;
-    }
-    
     
     /**
      * Get the player name.

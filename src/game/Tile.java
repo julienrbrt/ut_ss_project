@@ -31,7 +31,7 @@ public class Tile {
 	 * @param e Color of the piece to be added
 	 */
 	//@ requires size >= 0 & e != null;
-	//@ ensures isTileEmpty() == true;
+	//@ requires isTileEmpty() == true;
 	public void change(boolean base, int size, Color e) {
 		if (tile[0].getGroup() != Color.Group.BASE && tile[size] == Color.NONEE) {
 			if (base && isTileEmpty()) {
