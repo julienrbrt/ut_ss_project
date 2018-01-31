@@ -85,7 +85,9 @@ public class ServerLobby {
 			for (ServerPeer player : lobby.get(gameWith)) {
 				player.start(game);
 				try {
-					player.out.write(player.startgame(opponents.toString()));
+					player.out.write(Protocol.SERVER_STARTGAME + " " + opponents.toString());
+					player.out.newLine();
+					player.out.flush();
 				} catch (IOException ie) {
 					//
 				}

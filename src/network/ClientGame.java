@@ -201,7 +201,6 @@ public class ClientGame implements Runnable {
 				}
 			}
 		} else if (amountPlay == 2) {
-			System.out.println(playerPosition + " " + colorChoosen);
 			if (colorChoosen == 2) {
 				switch (playerPosition) {
 					case 1:

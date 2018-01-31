@@ -195,7 +195,8 @@ public class ServerPeer implements Runnable, Protocol {
 		return SERVER_DENYJOIN + " " + username;
 	}
 	
-	public String startgame(String usernames) {	
+	// used in ServerLobby
+	public String startgame(String usernames) {
 		return SERVER_STARTGAME + usernames;
 	}
 	

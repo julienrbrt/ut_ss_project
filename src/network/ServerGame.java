@@ -115,7 +115,7 @@ public class ServerGame {
 		boolean base = false;
 		int setSize = 0;
 		Color setColor;
-		if (size == 5) {
+		if (size == 0) {
 			base = true;
 		} else {
 			setSize = size;
@@ -127,7 +127,7 @@ public class ServerGame {
 			setColor = playerList[currentPlayer].getColor()[1];
 		}
 		
-		return board.canPlace(x, y, base, setSize, setColor, currentPlayer);		
+		return board.canPlaceCheck(x, y, base, setSize, setColor, currentPlayer);		
 	}
 	
 	/**
@@ -142,7 +142,7 @@ public class ServerGame {
 		boolean base = false;
 		int setSize = 0;
 		Color setColor;
-		if (size == 5) {
+		if (size == 0) {
 			base = true;
 		} else {
 			setSize = size;
@@ -153,6 +153,9 @@ public class ServerGame {
 		} else {
 			setColor = playerList[currentPlayer].getColor()[1];
 		}
+		
+		// Use to update ring counter
+		board.canPlace(x, y, base, setSize, setColor, currentPlayer);
 		
 		if (firstPlayer) {
 			board.addHome(x, y);
