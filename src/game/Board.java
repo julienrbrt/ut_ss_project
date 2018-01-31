@@ -31,6 +31,11 @@ public class Board {
 	 * @param player Set of Players joining the current game
 	 */
 	
+	/*
+	 * @requires amount != null && amount > 1 && amount < 5
+	 * @requires player != null && player.length > 1 && player.length < 5
+	 */
+	
 	public Board(int amount, Player[] player) {
 		board = new Tile[SIZE][SIZE];	//set up 2D matrix for the board
 		for (int i = 0; i < SIZE; i++) {	//fill board with empty tiles
@@ -70,6 +75,13 @@ public class Board {
 	 * @param size Size of the ring, with 0 being the smallest and 3 being the biggest
 	 * @param e Color of the ring to be placed
 	 */
+	
+	/*
+	 * @requires x >= 0 && x < 5
+	 * @requires y >= 0 && y < 5
+	 * @requires size >= 0 && size < 4
+	 * @requires e != null
+	 */
 
 	public void addRing(int x, int y, boolean base, int size, Color e) {
 		board[x][y].change(base, size, e);
@@ -81,6 +93,11 @@ public class Board {
 	 * Is only to be called once.
 	 * @param x
 	 * @param y
+	 */
+	
+	/*
+	 * @requires x >= 0 && x < 5
+	 * @requires y >= 0 && y < 5
 	 */
 	
 	public void addHome(int x, int y) {
@@ -99,6 +116,14 @@ public class Board {
 	 * @param currentPlayer ID of the player currently being checked. To be passed to hasRing() only
 	 * @return Boolean that says whether or not the current ring configuration is place-able
 	 * @see hasRing
+	 */
+	
+	/*
+	 * @requires x >= 0 && x < 5
+	 * @requires y >= 0 && y < 5
+	 * @requires size >= 0 && size < 4
+	 * @requires color != null
+	 * @requires currentPlayer <= playerAmount && currentPlayer >= 0
 	 */
 	
 	public boolean canPlace(int x, int y, boolean base, int size, Color color, int currentPlayer) {
@@ -180,6 +205,14 @@ public class Board {
 	 * @see canPlace
 	 */
 	
+	/*
+	 * @requires x >= 0 && x < 5
+	 * @requires y >= 0 && y < 5
+	 * @requires size >= 0 && size < 4
+	 * @requires color != null
+	 * @requires currentPlayer <= playerAmount && currentPlayer >= 0
+	 */
+	
 	public boolean canPlaceCheck(int x, int y,
 			boolean base, int size, Color color, int currentPlayer) {
 		int highX;
@@ -249,6 +282,11 @@ public class Board {
 	 * @return Size of the board in 1 dimension (5 for this board)
 	 */
 	
+	/*
+	 * @ensures \result == SIZE
+	 */
+	
+	/*@pure*/
 	public int getSize() {
 		return SIZE;
 	}
@@ -259,7 +297,14 @@ public class Board {
 	 * @param y Y coordinate of tile to return
 	 * @return Tile corresponding to coordinates given
 	 */
-		
+	
+	/*
+	 * @requires x >= 0 && x < 6
+	 * @requires y >= 0 && y < 6
+	 * @ensures \result == board[x][y]
+	 */
+	
+	/*@pure*/
 	public Tile getTile(int x, int y) {
 		return board[x][y];
 	}
@@ -271,6 +316,12 @@ public class Board {
 	 * @return Array of int of 3 digits, where the first one means x,
 	 * 	the second one means y and the third one means ring size (ring size 4 = base).
 	 * 	Each int stands for a individual possible move
+	 */
+	
+	/*
+	 * @requires color != null
+	 * @requires playerNumber >= 0 && playerNumber < playerAmount
+	 * @ensures \result != null
 	 */
 	
 	public int[] getPossibleMoves(Color color, int playerNumber) {
@@ -312,6 +363,13 @@ public class Board {
 	 * @return Array of int of 2 digits, where the first one means x and the second one means y
 	 */
 	
+	/*
+	 * @requires color != null
+	 * @requires size >= 0 && size < 4
+	 * @requires playerNumber >= 0 && playerNumber < playerAmount
+	 * @ensures \result != null
+	 */
+	
 	//returns an array of possible moves in the form x*10+y, for the given size and color
 	public int[] getPossibleMoves(Color color, boolean base, int size, int playerNumber) {
 		int[] result = new int[SIZE * SIZE];
@@ -340,6 +398,11 @@ public class Board {
 	 * @return true when all players are being skipped
 	 */
 	
+	/*
+	 * @requires skipped != null
+	 */
+	
+	/*@pure*/
 	public boolean gameOver(boolean[] skipped) {
 		for (int i = 0; i < skipped.length; i++) {
 			if (!skipped[i]) {
@@ -359,6 +422,12 @@ public class Board {
 	 * @param change Boolean that indicates whether or not the values in the ring counter
 	 * 	should be modified during this check
 	 * @return true if current player still has a ring of the current type and color left to place
+	 */
+	
+	/*
+	 * @requires size >= 0 && size < 4
+	 * @requires c != null
+	 * @requires currentPlayer >= 0 && currentPlayer < playerAmount
 	 */
 	
 	public boolean hasRing(boolean base, int size, Color c, int currentPlayer, boolean change) {
@@ -394,6 +463,10 @@ public class Board {
 	 * @param scores Array of scores per color.
 	 * 	Position 0 = Red, 1 = Blue, 2 = Green, and 3 = Yellow
 	 * @return ID of winner. In case of a tie, returns 5
+	 */
+	
+	/*
+	 * @requires scores != null && scores.length == 4
 	 */
 	
 	public int getWinner(int[] scores) {
@@ -443,7 +516,7 @@ public class Board {
 			return winner;
 		}
 	}
-	
+		
 	public String toString() {
 		String output = "";
 		for (int x = 0; x < SIZE; x++) {
