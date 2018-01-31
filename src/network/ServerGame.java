@@ -27,7 +27,7 @@ public class ServerGame {
 		int amountPlayer = players.size();
 		playerList = new Player[amountPlayer];
 		
-		int position = 0;
+		int position = 1;
 
 		if (amountPlayer < 4) {			
 			for (ServerPeer player : players) {

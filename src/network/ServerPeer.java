@@ -46,7 +46,6 @@ public class ServerPeer implements Runnable, Protocol {
 		while (!connectLost()) {
 			try {
 				String input = in.readLine();
-                System.out.println("Client info - " + input);
                 
                 // Setup game if can play
                 if (game != null && opponents != null) {

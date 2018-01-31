@@ -66,7 +66,6 @@ public class ClientPeer implements Runnable, Protocol {
 			try {				
 				// Handle Game
                 String input = in.readLine();
-                System.out.println("Server info - " + input);
                 
                 if (input != null) {
                 	String[] cmd = input.split(" ");

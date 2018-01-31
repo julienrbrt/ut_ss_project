@@ -198,7 +198,7 @@ public class ClientGame implements Runnable {
 						return Color.REDDD;
 				}
 			}
-		} else if (amountPlayer == 2) {
+		} else if (amountPlay == 2) {
 			if (colorChoosen > 1) {
 				switch (playerPosition) {
 					case 1:
